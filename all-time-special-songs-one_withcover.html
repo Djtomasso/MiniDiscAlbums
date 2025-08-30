@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>All Time Special Songs One — Tracklist</title>
+  <meta name="theme-color" content="#0a0a0a">
+  <style>
+    :root{--bg:#0a0a0a;--surface:#121212;--surface2:#151515;--text:#f5f5f5;--muted:#c7c7c7;--border:#2a2a2a;--focus:#fff}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;background:var(--bg);color:var(--text)}
+    .wrap{max-width:820px;margin:auto;padding:16px;display:grid;gap:16px}
+    header.hero{border:1px solid var(--border);background:var(--surface);border-radius:16px;overflow:hidden}
+    .cover img{width:100%;height:auto;display:block}
+    .titlebar{padding:14px;background:var(--surface2);border-top:1px solid var(--border)}
+    h1{margin:0;font-size:1.3rem}
+    .sub{color:var(--muted)}
+    .toolbar{position:sticky;top:0;z-index:3;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px}
+    .search{display:flex;gap:8px}
+    .search input{flex:1;background:#0e0e0e;border:0;color:var(--text);padding:10px;border-radius:10px}
+    .search button{background:#151515;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px}
+    main.tracks{display:grid;gap:10px}
+    .item{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:12px}
+    .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+    .row b{font-size:1rem}
+    .artist{color:var(--muted)}
+    footer{color:var(--muted);font-size:.9rem;text-align:center;padding:10px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero" role="banner">
+      <div class="cover"><img id="cover" alt="Albumcover"></div>
+      <div class="titlebar">
+        <h1 id="albumTitle"></h1>
+        <div class="sub" id="subtitle"></div>
+      </div>
+    </header>
+
+    <nav class="toolbar" aria-label="Zoekbalk">
+      <div class="search">
+        <input id="filter" type="search" placeholder="Zoek in titels of artiest…" aria-label="Zoek in titels of artiest">
+        <button id="clearBtn" type="button">Wissen</button>
+      </div>
+    </nav>
+
+    <main id="list" class="tracks" aria-live="polite"></main>
+
+    <footer>© Persoonlijke tracklist — deel via QR-code naar dit bestand.</footer>
+  </div>
+
+  <script type="application/json" id="data">{"album_title": "All Time Special Songs One", "subtitle": "Mobielvriendelijke tracklist — klaar voor QR-link", "cover": "image/alltimespecialone.png", "tracks": [{"title": "Butterfly", "artist": "Crazy Town"}, {"title": "Letter from America", "artist": "The Proclaimers"}, {"title": "Life In a Northern Town", "artist": "The Dream Academy"}, {"title": "Slip into Something More Comfortable", "artist": "Kinobe"}, {"title": "Theme From A Summer Place", "artist": "Percy Faith & His Orchestra"}, {"title": "(Just Like) Starting Over", "artist": "John Lennon"}, {"title": "Follow Me", "artist": "Amanda Lear"}, {"title": "Hey Mal Yo", "artist": "O Malhao"}, {"title": "Live It Up", "artist": "Mental As Anything"}, {"title": "My Sister's Crown", "artist": "Vesna"}, {"title": "Red Light Spells Danger", "artist": "Billy Ocean"}, {"title": "St. Elmo's Fire (Man In Motion)", "artist": "John Parr"}, {"title": "I'll Never Fall In Love Again", "artist": "Tom Jones"}, {"title": "Killing In The Name", "artist": "Rage Against The Machine"}, {"title": "Only Time", "artist": "Enya"}, {"title": "Rose rouge", "artist": "St Germain"}, {"title": "Take Me Home Tonight", "artist": "Eddie Money"}, {"title": "Blame It On The Milky Way", "artist": "VENICE"}, {"title": "Dancing in the City", "artist": "Marshall Hain"}, {"title": "Somewhere Out There", "artist": "Linda Ronstadt and James Ingram"}, {"title": "Tinseltown in the Rain", "artist": "The Blue Nile"}, {"title": "You", "artist": "Judith"}, {"title": "Dreamin'", "artist": "Cliff Richard"}, {"title": "End Of The Line", "artist": "Traveling Wilburys"}, {"title": "Gloria", "artist": "Laura Branigan"}, {"title": "I Feel It", "artist": "Hannes"}, {"title": "Let's Go", "artist": "De Glows"}, {"title": "With You I'm Born Again", "artist": "Billy Preston & Syreeta"}, {"title": "Conselho - Ao Vivo", "artist": "Samba De Raiz"}, {"title": "Im Nin'alu - (Played in Full Mix) (7_ English Mix)", "artist": "Ofra Haza\\"}, {"title": "January\\February", "artist": "Barbara Dickson"}, {"title": "La Belle De Jour", "artist": "Alceu Valenca"}, {"title": "Lay Love on You", "artist": "Luisa Fernandez"}, {"title": "Let Me Think About It - Radio Edit", "artist": "Ida Corr ft. Fedde Le Grand"}, {"title": "God Only Knows - Remastered 1996", "artist": "The Beach Boys"}, {"title": "Lean On (feat. MO & DJ Snake)", "artist": "Major Lazer"}, {"title": "Mono", "artist": "The Monotones"}, {"title": "This Is My Night", "artist": "Chaka Khan"}, {"title": "Turn of a Card", "artist": "Pony Sherrell"}, {"title": "You Needed Me", "artist": "Anne Murray"}]}</script>
+
+  <script>
+    const data = JSON.parse(document.getElementById("data").textContent);
+    const $title = document.getElementById("albumTitle");
+    const $subtitle = document.getElementById("subtitle");
+    const $list = document.getElementById("list");
+    const $filter = document.getElementById("filter");
+    const $clear = document.getElementById("clearBtn");
+    const $cover = document.getElementById("cover");
+
+    $title.textContent = data.album_title || "Album";
+    $subtitle.textContent = data.subtitle || "";
+    if (data.cover) $cover.src = data.cover;
+
+    function escapeHtml(s){ return (s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;","&gt;":">","\"":"&quot;","'":"&#039;"}[c])); }
+
+    function render(items){
+      $list.innerHTML = "";
+      if(!items.length){ $list.innerHTML = "<div class='item'><div class='artist'>Geen resultaten…</div></div>"; return; }
+      for(const t of items){
+        const card = document.createElement("div");
+        card.className = "item";
+        const head = document.createElement("div");
+        head.className = "row";
+        head.innerHTML = `<b>${escapeHtml(t.title||"")}</b><span class="artist">${escapeHtml(t.artist||"")}</span>`;
+        card.appendChild(head);
+        $list.appendChild(card);
+      }
+    }
+
+    function applyFilter(){
+      const q = ($filter.value||"").toLowerCase().trim();
+      if(!q){ render(data.tracks); return; }
+      render(data.tracks.filter(t =>
+        (t.title||"").toLowerCase().includes(q) ||
+        (t.artist||"").toLowerCase().includes(q)
+      ));
+    }
+
+    $filter.addEventListener("input", applyFilter);
+    $clear.addEventListener("click", () => { $filter.value=""; applyFilter(); $filter.focus(); });
+
+    render(data.tracks);
+  </script>
+</body>
+</html>

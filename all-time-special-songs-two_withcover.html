@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>All Time Special Songs Two — Tracklist</title>
+  <meta name="theme-color" content="#0a0a0a">
+  <style>
+    :root{--bg:#0a0a0a;--surface:#121212;--surface2:#151515;--text:#f5f5f5;--muted:#c7c7c7;--border:#2a2a2a;--focus:#fff}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;background:var(--bg);color:var(--text)}
+    .wrap{max-width:820px;margin:auto;padding:16px;display:grid;gap:16px}
+    header.hero{border:1px solid var(--border);background:var(--surface);border-radius:16px;overflow:hidden}
+    .cover img{width:100%;height:auto;display:block}
+    .titlebar{padding:14px;background:var(--surface2);border-top:1px solid var(--border)}
+    h1{margin:0;font-size:1.3rem}
+    .sub{color:var(--muted)}
+    .toolbar{position:sticky;top:0;z-index:3;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px}
+    .search{display:flex;gap:8px}
+    .search input{flex:1;background:#0e0e0e;border:0;color:var(--text);padding:10px;border-radius:10px}
+    .search button{background:#151515;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px}
+    main.tracks{display:grid;gap:10px}
+    .item{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:12px}
+    .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+    .row b{font-size:1rem}
+    .artist{color:var(--muted)}
+    footer{color:var(--muted);font-size:.9rem;text-align:center;padding:10px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero" role="banner">
+      <div class="cover"><img id="cover" alt="Albumcover"></div>
+      <div class="titlebar">
+        <h1 id="albumTitle"></h1>
+        <div class="sub" id="subtitle"></div>
+      </div>
+    </header>
+
+    <nav class="toolbar" aria-label="Zoekbalk">
+      <div class="search">
+        <input id="filter" type="search" placeholder="Zoek in titels of artiest…" aria-label="Zoek in titels of artiest">
+        <button id="clearBtn" type="button">Wissen</button>
+      </div>
+    </nav>
+
+    <main id="list" class="tracks" aria-live="polite"></main>
+
+    <footer>© Persoonlijke tracklist — deel via QR-code naar dit bestand.</footer>
+  </div>
+
+  <script type="application/json" id="data">{"album_title": "All Time Special Songs Two", "subtitle": "Mobielvriendelijke tracklist — klaar voor QR-link", "cover": "image/alltimespecialtwo.png", "tracks": [{"title": "A Little Bit Further Away", "artist": "Kokomo"}, {"title": "Goodbye", "artist": "Mary Hopkin"}, {"title": "I'm Gonna Shoot the Deejay", "artist": "The Press"}, {"title": "Never", "artist": "Shirley Bassey"}, {"title": "Sweet Like Chocolate (Radio Edit)", "artist": "Shanks & Bigfoot"}, {"title": "Closest Thing to Heaven", "artist": "The Kane Gang"}, {"title": "Oude Maasweg", "artist": "The Amazing Stroopwafels"}, {"title": "Can't Rely on You", "artist": "Paloma Faith"}, {"title": "El Sonidito - Magan Remix", "artist": "Hechizeros Band"}, {"title": "Chuck E's in Love", "artist": "Rickie Lee Jones"}, {"title": "Love Is Contagious", "artist": "Taja Sevelle"}, {"title": "Out On My Own", "artist": "Michelle"}, {"title": "Tutta n'ata storia - 2017 Remaster", "artist": "Pino Daniele"}, {"title": "All I Need (feat. Beth Hirsch)", "artist": "Air"}, {"title": "At Seventeen", "artist": "Janis Ian"}, {"title": "Coming Around Again", "artist": "Carly Simon"}, {"title": "Glory Box", "artist": "Portishead"}, {"title": "Here Comes That Rainy Day Feeling Again", "artist": "The Fortunes"}, {"title": "Rosie", "artist": "Joan Armatrading"}, {"title": "Agua (instrumental)", "artist": "Los Dinamitos Estefan"}, {"title": "Argentina", "artist": "Conquistador"}, {"title": "I Know There's Something Going On - Single Version", "artist": "Frida"}, {"title": "If You Feel The Funk", "artist": "La Toya Jackson"}, {"title": "One of These Nights - 2013 Remaster", "artist": "Eagles"}, {"title": "Take That to the Bank", "artist": "Shalamar"}, {"title": "Body To Body", "artist": "XYP"}, {"title": "Robinson Crusoe", "artist": "The Art Of Noise"}, {"title": "Time Is Now", "artist": "Moloko"}, {"title": "Believer", "artist": "Imagine Dragons"}, {"title": "Eagle - Short Version", "artist": "ABBA"}, {"title": "Feel It Still", "artist": "Portugal. The Man"}, {"title": "Loving You Is Sweeter Than Ever", "artist": "Nick Kamen"}, {"title": "Show Me Your Love", "artist": "Tina Karol"}, {"title": "America - From _The Jazz Singer_ Soundtrack", "artist": "Neil Diamond"}, {"title": "Cogli la prima mela", "artist": "Angelo Branduardi"}, {"title": "Le temps est bon", "artist": "Bon Entendeur ft. Isabelle Pierre"}, {"title": "Let Your Sun Shine", "artist": "Frank Ashton & Mariska van Kolck"}, {"title": "Thank You", "artist": "The Pale Fountains"}, {"title": "This Guy's In Love With You", "artist": "Herb Alpert & The Tijuana Brass"}, {"title": "Another Weekend", "artist": "Five Star"}, {"title": "Thinking About Your Love - Extended 12 Inch Version", "artist": "Turner and Skipworth"}]}</script>
+
+  <script>
+    const data = JSON.parse(document.getElementById("data").textContent);
+    const $title = document.getElementById("albumTitle");
+    const $subtitle = document.getElementById("subtitle");
+    const $list = document.getElementById("list");
+    const $filter = document.getElementById("filter");
+    const $clear = document.getElementById("clearBtn");
+    const $cover = document.getElementById("cover");
+
+    $title.textContent = data.album_title || "Album";
+    $subtitle.textContent = data.subtitle || "";
+    if (data.cover) $cover.src = data.cover;
+
+    function escapeHtml(s){ return (s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;","&gt;":">","\"":"&quot;","'":"&#039;"}[c])); }
+
+    function render(items){
+      $list.innerHTML = "";
+      if(!items.length){ $list.innerHTML = "<div class='item'><div class='artist'>Geen resultaten…</div></div>"; return; }
+      for(const t of items){
+        const card = document.createElement("div");
+        card.className = "item";
+        const head = document.createElement("div");
+        head.className = "row";
+        head.innerHTML = `<b>${escapeHtml(t.title||"")}</b><span class="artist">${escapeHtml(t.artist||"")}</span>`;
+        card.appendChild(head);
+        $list.appendChild(card);
+      }
+    }
+
+    function applyFilter(){
+      const q = ($filter.value||"").toLowerCase().trim();
+      if(!q){ render(data.tracks); return; }
+      render(data.tracks.filter(t =>
+        (t.title||"").toLowerCase().includes(q) ||
+        (t.artist||"").toLowerCase().includes(q)
+      ));
+    }
+
+    $filter.addEventListener("input", applyFilter);
+    $clear.addEventListener("click", () => { $filter.value=""; applyFilter(); $filter.focus(); });
+
+    render(data.tracks);
+  </script>
+</body>
+</html>

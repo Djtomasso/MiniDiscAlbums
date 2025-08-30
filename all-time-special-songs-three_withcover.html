@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>All Time Special Songs Three — Tracklist</title>
+  <meta name="theme-color" content="#0a0a0a">
+  <style>
+    :root{--bg:#0a0a0a;--surface:#121212;--surface2:#151515;--text:#f5f5f5;--muted:#c7c7c7;--border:#2a2a2a;--focus:#fff}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;background:var(--bg);color:var(--text)}
+    .wrap{max-width:820px;margin:auto;padding:16px;display:grid;gap:16px}
+    header.hero{border:1px solid var(--border);background:var(--surface);border-radius:16px;overflow:hidden}
+    .cover img{width:100%;height:auto;display:block}
+    .titlebar{padding:14px;background:var(--surface2);border-top:1px solid var(--border)}
+    h1{margin:0;font-size:1.3rem}
+    .sub{color:var(--muted)}
+    .toolbar{position:sticky;top:0;z-index:3;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px}
+    .search{display:flex;gap:8px}
+    .search input{flex:1;background:#0e0e0e;border:0;color:var(--text);padding:10px;border-radius:10px}
+    .search button{background:#151515;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px}
+    main.tracks{display:grid;gap:10px}
+    .item{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:12px}
+    .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+    .row b{font-size:1rem}
+    .artist{color:var(--muted)}
+    footer{color:var(--muted);font-size:.9rem;text-align:center;padding:10px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero" role="banner">
+      <div class="cover"><img id="cover" alt="Albumcover"></div>
+      <div class="titlebar">
+        <h1 id="albumTitle"></h1>
+        <div class="sub" id="subtitle"></div>
+      </div>
+    </header>
+
+    <nav class="toolbar" aria-label="Zoekbalk">
+      <div class="search">
+        <input id="filter" type="search" placeholder="Zoek in titels of artiest…" aria-label="Zoek in titels of artiest">
+        <button id="clearBtn" type="button">Wissen</button>
+      </div>
+    </nav>
+
+    <main id="list" class="tracks" aria-live="polite"></main>
+
+    <footer>© Persoonlijke tracklist — deel via QR-code naar dit bestand.</footer>
+  </div>
+
+  <script type="application/json" id="data">{"album_title": "All Time Special Songs Three", "subtitle": "Mobielvriendelijke tracklist — klaar voor QR-link", "cover": "image/alltimespecial3.png", "tracks": [{"title": "Heaven", "artist": "The Chimes"}, {"title": "Lucky Love", "artist": "Ace of Base"}, {"title": "Boom! There She Was - US Mix", "artist": "Scritti Politti"}, {"title": "How 'Bout Us - Single Version", "artist": "Champaign"}, {"title": "Standing Outside in the Rain", "artist": "Skipper Wise"}, {"title": "De Magische Klok _By The Sleepy Lagoon_", "artist": "Efteling"}, {"title": "Diamonds on the Soles of Her Shoes", "artist": "Paul Simon"}, {"title": "Strung Out", "artist": "Wendy & Lisa"}, {"title": "These Days", "artist": "Take That"}, {"title": "I'm Not Scared", "artist": "Eighth Wonder"}, {"title": "Kiss My Eyes - Made In Jamaica Album Version", "artist": "Bob Sinclar\\Camille Lefort"}, {"title": "Make the World Go Round (feat. R.Kelly)", "artist": "DJ Cassidy"}, {"title": "More Than You'll Ever Know", "artist": "Milli Vanilli"}, {"title": "Foto's Van Jou En Mij (Flits)", "artist": "F en de broer van Roos"}, {"title": "Love On Top", "artist": "Beyonce"}, {"title": "Que Bueno Bailas", "artist": "Sparx"}, {"title": "Suit & Tie (feat. JAY-Z)", "artist": "Justin Timberlake"}, {"title": "Chandelier", "artist": "Sia"}, {"title": "Hold My Hand", "artist": "Jess Glynne"}, {"title": "Rise to the Occasion - Hip-Hop Version", "artist": "Climie Fisher"}, {"title": "Workin' Out Fine", "artist": "Princess Freesia"}, {"title": "All True Man", "artist": "Alexander O'Neal"}, {"title": "Make That Move - Single Version", "artist": "Shalamar"}, {"title": "Only A Fool (Breaks His Own Heart)", "artist": "Mighty Sparrow & Byron Lee"}, {"title": "This I Swear", "artist": "Richard Darbyshire"}, {"title": "Hold On to Love", "artist": "Jon Anderson"}, {"title": "I'll Find My Way Home - Remastered", "artist": "Jon & Vangelis"}, {"title": "Adiemus", "artist": "Adiemus"}, {"title": "Slipping Through My Fingers", "artist": "ABBA"}, {"title": "Bakerman", "artist": "Laid Back"}, {"title": "How Long - Remastered", "artist": "Paul Carrack"}, {"title": "Keep Your Eye On Me", "artist": "Herb Alpert"}, {"title": "When I Looked at Him", "artist": "Expose"}, {"title": "Crunchy Granola Suite", "artist": "Percy Faith"}, {"title": "Get Dat", "artist": "Rayelle"}, {"title": "Good Morning Starshine", "artist": "Oliver"}, {"title": "Heather", "artist": "Carpenters"}, {"title": "Till Death Do Us Part", "artist": "Madonna"}]}</script>
+
+  <script>
+    const data = JSON.parse(document.getElementById("data").textContent);
+    const $title = document.getElementById("albumTitle");
+    const $subtitle = document.getElementById("subtitle");
+    const $list = document.getElementById("list");
+    const $filter = document.getElementById("filter");
+    const $clear = document.getElementById("clearBtn");
+    const $cover = document.getElementById("cover");
+
+    $title.textContent = data.album_title || "Album";
+    $subtitle.textContent = data.subtitle || "";
+    if (data.cover) $cover.src = data.cover;
+
+    function escapeHtml(s){ return (s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;","&gt;":">","\"":"&quot;","'":"&#039;"}[c])); }
+
+    function render(items){
+      $list.innerHTML = "";
+      if(!items.length){ $list.innerHTML = "<div class='item'><div class='artist'>Geen resultaten…</div></div>"; return; }
+      for(const t of items){
+        const card = document.createElement("div");
+        card.className = "item";
+        const head = document.createElement("div");
+        head.className = "row";
+        head.innerHTML = `<b>${escapeHtml(t.title||"")}</b><span class="artist">${escapeHtml(t.artist||"")}</span>`;
+        card.appendChild(head);
+        $list.appendChild(card);
+      }
+    }
+
+    function applyFilter(){
+      const q = ($filter.value||"").toLowerCase().trim();
+      if(!q){ render(data.tracks); return; }
+      render(data.tracks.filter(t =>
+        (t.title||"").toLowerCase().includes(q) ||
+        (t.artist||"").toLowerCase().includes(q)
+      ));
+    }
+
+    $filter.addEventListener("input", applyFilter);
+    $clear.addEventListener("click", () => { $filter.value=""; applyFilter(); $filter.focus(); });
+
+    render(data.tracks);
+  </script>
+</body>
+</html>
