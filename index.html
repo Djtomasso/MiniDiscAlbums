@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>All Time Special Songs — Bibliotheek</title>
+  <title>Album Bibliotheek</title>
   <meta name="theme-color" content="#0a0a0a">
   <style>
     :root{--bg:#0a0a0a;--surface:#121212;--text:#f5f5f5;--muted:#c7c7c7;--border:#2a2a2a}
@@ -23,13 +23,14 @@
     .muted{color:var(--muted)}
     .empty{border:1px dashed var(--border);border-radius:12px;padding:16px;text-align:center;color:var(--muted)}
     footer{color:var(--muted);text-align:center;margin-top:6px;font-size:.9rem}
+    a.coverlink{display:block;line-height:0}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <h1>All Time Special Songs — Bibliotheek</h1>
-      <div class="muted">album tracklists — samengesteld door Tomasso 2025</div>
+      <h1>Album Bibliotheek</h1>
+      <div class="muted">tracklists — samengesteld door Tomasso 2025</div>
     </header>
 
     <section id="albums" class="grid" aria-label="Albums">
@@ -48,10 +49,8 @@
     const $ph = document.getElementById("placeholder");
     const PLACEHOLDER = `${basePages}/image/placeholder.png`;
 
-    // Base64 decode (GitHub API returns file content as base64)
     function b64ToUtf8(b64){ try{ return decodeURIComponent(escape(atob(b64))); }catch(e){ return atob(b64); } }
 
-    // Extract embedded JSON from an album HTML (script#data)
     function extractAlbumJSON(htmlText){
       const m = htmlText.match(/<script[^>]*id=["']data["'][^>]*>([\s\S]*?)<\/script>/i);
       if(!m) return null;
@@ -63,14 +62,15 @@
       const title = (album && album.album_title) ? album.album_title : fileName.replace(/_/g," ");
       let coverUrl = PLACEHOLDER;
       if (album && album.cover){
-        // Try album.cover as provided (e.g., image/foo.png), otherwise fall back to placeholder.
         coverUrl = `${basePages}/${album.cover}`;
       }
       return `
       <article class="card">
-        <div class="cover">
-          <img src="${coverUrl}" alt="Cover ${title}" onerror="this.onerror=null;this.src='${PLACEHOLDER}'">
-        </div>
+        <a class="coverlink" href="${pageUrl}" aria-label="Open ${title}">
+          <div class="cover">
+            <img src="${coverUrl}" alt="Cover ${title}" onerror="this.onerror=null;this.src='${PLACEHOLDER}'">
+          </div>
+        </a>
         <div class="meta">
           <div class="title">${title}</div>
           <a class="btn" href="${pageUrl}">Open tracklist</a>
@@ -93,7 +93,6 @@
           return;
         }
 
-        // Clear placeholder
         $grid.innerHTML = "";
 
         for(const name of albumFiles){
@@ -107,7 +106,6 @@
                 albumJSON = extractAlbumJSON(htmlText);
               }
             }
-            // Even if JSON failed or has no cover, the card will display with placeholder
             $grid.insertAdjacentHTML("beforeend", cardTemplate(name, albumJSON));
           }catch(e){
             $grid.insertAdjacentHTML("beforeend", cardTemplate(name, null));
