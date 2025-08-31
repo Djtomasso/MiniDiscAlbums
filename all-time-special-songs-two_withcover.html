@@ -11,24 +11,35 @@
     body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;background:var(--bg);color:var(--text)}
     .wrap{max-width:820px;margin:auto;padding:16px;display:grid;gap:16px}
     header.hero{border:1px solid var(--border);background:var(--surface);border-radius:16px;overflow:hidden}
+    .topnav{display:flex;gap:10px;align-items:center;padding:10px;background:#0e0e0e;border:1px solid var(--border);border-radius:10px;position:sticky;top:0;z-index:5}
+    .homebtn{display:inline-block;background:#191919;border:1px solid var(--border);padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--text)}
+    .homebtn:hover{background:#222}
     .cover img{width:100%;height:auto;display:block}
     .titlebar{padding:14px;background:var(--surface2);border-top:1px solid var(--border)}
     h1{margin:0;font-size:1.3rem}
     .sub{color:var(--muted)}
-    .toolbar{position:sticky;top:0;z-index:3;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px}
+    .toolbar{position:sticky;top:64px;z-index:4;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px}
     .search{display:flex;gap:8px}
     .search input{flex:1;background:#0e0e0e;border:0;color:var(--text);padding:10px;border-radius:10px}
     .search button{background:#151515;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px}
     main.tracks{display:grid;gap:10px}
-    .item{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:12px}
-    .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
-    .row b{font-size:1rem}
-    .artist{color:var(--muted)}
+    .item{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:12px;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start}
+    .idx{min-width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--border);border-radius:8px;background:#151515;font-weight:700}
+    .meta{display:block}
+    .meta b{display:block;font-size:1rem;line-height:1.3}
+    .artist{display:block;color:var(--muted);margin-top:2px}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    a.btn{background:#151515;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:8px 10px;text-decoration:none;font-size:.95rem}
+    a.btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
     footer{color:var(--muted);font-size:.9rem;text-align:center;padding:10px}
   </style>
 </head>
 <body>
   <div class="wrap">
+    <nav class="topnav" aria-label="Hoofdmenu">
+      <a class="homebtn" href="index.html">← Hoofdmenu</a>
+    </nav>
+
     <header class="hero" role="banner">
       <div class="cover"><img id="cover" alt="Albumcover"></div>
       <div class="titlebar">
@@ -46,10 +57,10 @@
 
     <main id="list" class="tracks" aria-live="polite"></main>
 
-    <footer>© Persoonlijke tracklist — deel via QR-code naar dit bestand.</footer>
+    <footer>album samengesteld door Tomasso 2025</footer>
   </div>
 
-  <script type="application/json" id="data">{"album_title": "All Time Special Songs Two", "subtitle": "Mobielvriendelijke tracklist — klaar voor QR-link", "cover": "image/alltimespecialtwo.png", "tracks": [{"title": "A Little Bit Further Away", "artist": "Kokomo"}, {"title": "Goodbye", "artist": "Mary Hopkin"}, {"title": "I'm Gonna Shoot the Deejay", "artist": "The Press"}, {"title": "Never", "artist": "Shirley Bassey"}, {"title": "Sweet Like Chocolate (Radio Edit)", "artist": "Shanks & Bigfoot"}, {"title": "Closest Thing to Heaven", "artist": "The Kane Gang"}, {"title": "Oude Maasweg", "artist": "The Amazing Stroopwafels"}, {"title": "Can't Rely on You", "artist": "Paloma Faith"}, {"title": "El Sonidito - Magan Remix", "artist": "Hechizeros Band"}, {"title": "Chuck E's in Love", "artist": "Rickie Lee Jones"}, {"title": "Love Is Contagious", "artist": "Taja Sevelle"}, {"title": "Out On My Own", "artist": "Michelle"}, {"title": "Tutta n'ata storia - 2017 Remaster", "artist": "Pino Daniele"}, {"title": "All I Need (feat. Beth Hirsch)", "artist": "Air"}, {"title": "At Seventeen", "artist": "Janis Ian"}, {"title": "Coming Around Again", "artist": "Carly Simon"}, {"title": "Glory Box", "artist": "Portishead"}, {"title": "Here Comes That Rainy Day Feeling Again", "artist": "The Fortunes"}, {"title": "Rosie", "artist": "Joan Armatrading"}, {"title": "Agua (instrumental)", "artist": "Los Dinamitos Estefan"}, {"title": "Argentina", "artist": "Conquistador"}, {"title": "I Know There's Something Going On - Single Version", "artist": "Frida"}, {"title": "If You Feel The Funk", "artist": "La Toya Jackson"}, {"title": "One of These Nights - 2013 Remaster", "artist": "Eagles"}, {"title": "Take That to the Bank", "artist": "Shalamar"}, {"title": "Body To Body", "artist": "XYP"}, {"title": "Robinson Crusoe", "artist": "The Art Of Noise"}, {"title": "Time Is Now", "artist": "Moloko"}, {"title": "Believer", "artist": "Imagine Dragons"}, {"title": "Eagle - Short Version", "artist": "ABBA"}, {"title": "Feel It Still", "artist": "Portugal. The Man"}, {"title": "Loving You Is Sweeter Than Ever", "artist": "Nick Kamen"}, {"title": "Show Me Your Love", "artist": "Tina Karol"}, {"title": "America - From _The Jazz Singer_ Soundtrack", "artist": "Neil Diamond"}, {"title": "Cogli la prima mela", "artist": "Angelo Branduardi"}, {"title": "Le temps est bon", "artist": "Bon Entendeur ft. Isabelle Pierre"}, {"title": "Let Your Sun Shine", "artist": "Frank Ashton & Mariska van Kolck"}, {"title": "Thank You", "artist": "The Pale Fountains"}, {"title": "This Guy's In Love With You", "artist": "Herb Alpert & The Tijuana Brass"}, {"title": "Another Weekend", "artist": "Five Star"}, {"title": "Thinking About Your Love - Extended 12 Inch Version", "artist": "Turner and Skipworth"}]}</script>
+  <script type="application/json" id="data">{"album_title": "All Time Special Songs Two", "subtitle": "", "cover": "image/alltimespecialtwo.png", "tracks": [{"title": "A Little Bit Further Away", "artist": "Kokomo", "youtube": "https://www.youtube.com/results?search_query=A+Little+Bit+Further+Away+Kokomo"}, {"title": "Goodbye", "artist": "Mary Hopkin", "youtube": "https://www.youtube.com/results?search_query=Goodbye+Mary+Hopkin"}, {"title": "I'm Gonna Shoot the Deejay", "artist": "The Press", "youtube": "https://www.youtube.com/results?search_query=I'm+Gonna+Shoot+the+Deejay+The+Press"}, {"title": "Never", "artist": "Shirley Bassey", "youtube": "https://www.youtube.com/results?search_query=Never+Shirley+Bassey"}, {"title": "Sweet Like Chocolate (Radio Edit)", "artist": "Shanks & Bigfoot", "youtube": "https://www.youtube.com/results?search_query=Sweet+Like+Chocolate+(Radio+Edit)+Shanks+&+Bigfoot"}, {"title": "Closest Thing to Heaven", "artist": "The Kane Gang", "youtube": "https://www.youtube.com/results?search_query=Closest+Thing+to+Heaven+The+Kane+Gang"}, {"title": "Oude Maasweg", "artist": "The Amazing Stroopwafels", "youtube": "https://www.youtube.com/results?search_query=Oude+Maasweg+The+Amazing+Stroopwafels"}, {"title": "Can't Rely on You", "artist": "Paloma Faith", "youtube": "https://www.youtube.com/results?search_query=Can't+Rely+on+You+Paloma+Faith"}, {"title": "El Sonidito - Magan Remix", "artist": "Hechizeros Band", "youtube": "https://www.youtube.com/results?search_query=El+Sonidito+-+Magan+Remix+Hechizeros+Band"}, {"title": "Chuck E's in Love", "artist": "Rickie Lee Jones", "youtube": "https://www.youtube.com/results?search_query=Chuck+E's+in+Love+Rickie+Lee+Jones"}, {"title": "Love Is Contagious", "artist": "Taja Sevelle", "youtube": "https://www.youtube.com/results?search_query=Love+Is+Contagious+Taja+Sevelle"}, {"title": "Out On My Own", "artist": "Michelle", "youtube": "https://www.youtube.com/results?search_query=Out+On+My+Own+Michelle"}, {"title": "Tutta n'ata storia - 2017 Remaster", "artist": "Pino Daniele", "youtube": "https://www.youtube.com/results?search_query=Tutta+n'ata+storia+-+2017+Remaster+Pino+Daniele"}, {"title": "All I Need (feat. Beth Hirsch)", "artist": "Air", "youtube": "https://www.youtube.com/results?search_query=All+I+Need+(feat.+Beth+Hirsch)+Air"}, {"title": "At Seventeen", "artist": "Janis Ian", "youtube": "https://www.youtube.com/results?search_query=At+Seventeen+Janis+Ian"}, {"title": "Coming Around Again", "artist": "Carly Simon", "youtube": "https://www.youtube.com/results?search_query=Coming+Around+Again+Carly+Simon"}, {"title": "Glory Box", "artist": "Portishead", "youtube": "https://www.youtube.com/results?search_query=Glory+Box+Portishead"}, {"title": "Here Comes That Rainy Day Feeling Again", "artist": "The Fortunes", "youtube": "https://www.youtube.com/results?search_query=Here+Comes+That+Rainy+Day+Feeling+Again+The+Fortunes"}, {"title": "Rosie", "artist": "Joan Armatrading", "youtube": "https://www.youtube.com/results?search_query=Rosie+Joan+Armatrading"}, {"title": "Agua (instrumental)", "artist": "Los Dinamitos Estefan", "youtube": "https://www.youtube.com/results?search_query=Agua+(instrumental)+Los+Dinamitos+Estefan"}, {"title": "Argentina", "artist": "Conquistador", "youtube": "https://www.youtube.com/results?search_query=Argentina+Conquistador"}, {"title": "I Know There's Something Going On - Single Version", "artist": "Frida", "youtube": "https://www.youtube.com/results?search_query=I+Know+There's+Something+Going+On+-+Single+Version+Frida"}, {"title": "If You Feel The Funk", "artist": "La Toya Jackson", "youtube": "https://www.youtube.com/results?search_query=If+You+Feel+The+Funk+La+Toya+Jackson"}, {"title": "One of These Nights - 2013 Remaster", "artist": "Eagles", "youtube": "https://www.youtube.com/results?search_query=One+of+These+Nights+-+2013+Remaster+Eagles"}, {"title": "Take That to the Bank", "artist": "Shalamar", "youtube": "https://www.youtube.com/results?search_query=Take+That+to+the+Bank+Shalamar"}, {"title": "Body To Body", "artist": "XYP", "youtube": "https://www.youtube.com/results?search_query=Body+To+Body+XYP"}, {"title": "Robinson Crusoe", "artist": "The Art Of Noise", "youtube": "https://www.youtube.com/results?search_query=Robinson+Crusoe+The+Art+Of+Noise"}, {"title": "Time Is Now", "artist": "Moloko", "youtube": "https://www.youtube.com/results?search_query=Time+Is+Now+Moloko"}, {"title": "Believer", "artist": "Imagine Dragons", "youtube": "https://www.youtube.com/results?search_query=Believer+Imagine+Dragons"}, {"title": "Eagle - Short Version", "artist": "ABBA", "youtube": "https://www.youtube.com/results?search_query=Eagle+-+Short+Version+ABBA"}, {"title": "Feel It Still", "artist": "Portugal. The Man", "youtube": "https://www.youtube.com/results?search_query=Feel+It+Still+Portugal.+The+Man"}, {"title": "Loving You Is Sweeter Than Ever", "artist": "Nick Kamen", "youtube": "https://www.youtube.com/results?search_query=Loving+You+Is+Sweeter+Than+Ever+Nick+Kamen"}, {"title": "Show Me Your Love", "artist": "Tina Karol", "youtube": "https://www.youtube.com/results?search_query=Show+Me+Your+Love+Tina+Karol"}, {"title": "America - From _The Jazz Singer_ Soundtrack", "artist": "Neil Diamond", "youtube": "https://www.youtube.com/results?search_query=America+-+From+_The+Jazz+Singer_+Soundtrack+Neil+Diamond"}, {"title": "Cogli la prima mela", "artist": "Angelo Branduardi", "youtube": "https://www.youtube.com/results?search_query=Cogli+la+prima+mela+Angelo+Branduardi"}, {"title": "Le temps est bon", "artist": "Bon Entendeur ft. Isabelle Pierre", "youtube": "https://www.youtube.com/results?search_query=Le+temps+est+bon+Bon+Entendeur+ft.+Isabelle+Pierre"}, {"title": "Let Your Sun Shine", "artist": "Frank Ashton & Mariska van Kolck", "youtube": "https://www.youtube.com/results?search_query=Let+Your+Sun+Shine+Frank+Ashton+&+Mariska+van+Kolck"}, {"title": "Thank You", "artist": "The Pale Fountains", "youtube": "https://www.youtube.com/results?search_query=Thank+You+The+Pale+Fountains"}, {"title": "This Guy's In Love With You", "artist": "Herb Alpert & The Tijuana Brass", "youtube": "https://www.youtube.com/results?search_query=This+Guy's+In+Love+With+You+Herb+Alpert+&+The+Tijuana+Brass"}, {"title": "Another Weekend", "artist": "Five Star", "youtube": "https://www.youtube.com/results?search_query=Another+Weekend+Five+Star"}, {"title": "Thinking About Your Love - Extended 12 Inch Version", "artist": "Turner and Skipworth", "youtube": "https://www.youtube.com/results?search_query=Thinking+About+Your+Love+-+Extended+12+Inch+Version+Turner+and+Skipworth"}]}</script>
 
   <script>
     const data = JSON.parse(document.getElementById("data").textContent);
@@ -62,22 +73,59 @@
 
     $title.textContent = data.album_title || "Album";
     $subtitle.textContent = data.subtitle || "";
-    if (data.cover) $cover.src = data.cover;
+
+    if (data.cover) {
+      $cover.src = data.cover;
+      $cover.onerror = () => { 
+        if ($cover.src.endsWith(data.cover)) { 
+          $cover.onerror = null; 
+          $cover.src = data.cover.replace(/^image\//, ""); 
+        } 
+      };
+    }
 
     function escapeHtml(s){ return (s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;","&gt;":">","\"":"&quot;","'":"&#039;"}[c])); }
 
     function render(items){
       $list.innerHTML = "";
-      if(!items.length){ $list.innerHTML = "<div class='item'><div class='artist'>Geen resultaten…</div></div>"; return; }
-      for(const t of items){
+      if(!items.length){ $list.innerHTML = "<div class='item'><div class='meta'><span class='artist'>Geen resultaten…</span></div></div>"; return; }
+      items.forEach((t, i) => {
         const card = document.createElement("div");
         card.className = "item";
-        const head = document.createElement("div");
-        head.className = "row";
-        head.innerHTML = `<b>${escapeHtml(t.title||"")}</b><span class="artist">${escapeHtml(t.artist||"")}</span>`;
-        card.appendChild(head);
+
+        const idx = document.createElement("div");
+        idx.className = "idx";
+        idx.textContent = (i+1).toString();
+        card.appendChild(idx);
+
+        const meta = document.createElement("div");
+        meta.className = "meta";
+        meta.innerHTML = `<b>${escapeHtml(t.title||"")}</b><span class="artist">${escapeHtml(t.artist||"")}</span>`;
+
+        const actions = document.createElement("div");
+        actions.className = "actions";
+
+        if (t.youtube){
+          const a = document.createElement("a");
+          a.className = "btn";
+          a.href = t.youtube;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.textContent = "YouTube (zoek)";
+          actions.appendChild(a);
+        }
+
+        const infoBtn = document.createElement("a");
+        infoBtn.className = "btn";
+        infoBtn.href = `https://nl.wikipedia.org/w/index.php?search=${encodeURIComponent(t.artist||t.title)}`;
+        infoBtn.target = "_blank"; infoBtn.rel="noopener noreferrer";
+        infoBtn.textContent = "Wikipedia";
+        actions.appendChild(infoBtn);
+
+        meta.appendChild(actions);
+        card.appendChild(meta);
         $list.appendChild(card);
-      }
+      });
     }
 
     function applyFilter(){

@@ -1,28 +1,68 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MiniDisc Albums</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>All Time Special Songs — Bibliotheek</title>
+  <meta name="theme-color" content="#0a0a0a">
   <style>
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#0a0a0a;color:#f5f5f5}
-    .wrap{max-width:900px;margin:auto;padding:24px;display:grid;gap:16px}
+    :root{--bg:#0a0a0a;--surface:#121212;--text:#f5f5f5;--muted:#c7c7c7;--border:#2a2a2a}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;background:var(--bg);color:var(--text)}
+    .wrap{max-width:1100px;margin:auto;padding:20px;display:grid;gap:18px}
+    header{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
     h1{margin:0;font-size:1.6rem}
-    ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
-    a{color:#cfe1ff;text-decoration:none}
-    a:hover{text-decoration:underline}
-    .muted{color:#bdbdbd}
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+    .card{border:1px solid var(--border);background:var(--surface);border-radius:14px;overflow:hidden;display:grid}
+    .cover{aspect-ratio:1/1;background:#0f0f0f;overflow:hidden}
+    .cover img{width:100%;height:100%;object-fit:cover;display:block}
+    .meta{padding:12px;display:grid;gap:10px}
+    .title{font-weight:700}
+    .btn{display:inline-block;background:#191919;border:1px solid var(--border);padding:9px 12px;border-radius:10px;text-decoration:none;color:#f5f5f5;text-align:center}
+    .btn:hover{background:#222}
+    footer{color:var(--muted);text-align:center;margin-top:6px;font-size:.9rem}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <h1>MiniDisc Albums</h1>
-    <p class="muted">Kies een album:</p>
-    <ul>
-      <li><a href="./all-time-special-songs-one_withcover.html">All Time Special Songs One</a></li>
-      <li><a href="./all-time-special-songs-two_withcover.html">All Time Special Songs Two</a></li>
-      <li><a href="./all-time-special-songs-three_withcover.html">All Time Special Songs Three</a></li>
-    </ul>
+    <header>
+      <h1>All Time Special Songs — Bibliotheek</h1>
+      <div class="muted">album tracklists — samengesteld door Tomasso 2025</div>
+    </header>
+
+    <section class="grid" aria-label="Albums">
+      <article class="card">
+        <div class="cover">
+          <img src="image/alltimespecialone.png" alt="Cover All Time Special Songs One" onerror="this.onerror=null;this.src='alltimespecialone.png'">
+        </div>
+        <div class="meta">
+          <div class="title">All Time Special Songs One</div>
+          <a class="btn" href="all-time-special-songs-one_withcover.html">Open tracklist</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="cover">
+          <img src="image/alltimespecialtwo.png" alt="Cover All Time Special Songs Two" onerror="this.onerror=null;this.src='alltimespecialtwo.png'">
+        </div>
+        <div class="meta">
+          <div class="title">All Time Special Songs Two</div>
+          <a class="btn" href="all-time-special-songs-two_withcover.html">Open tracklist</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="cover">
+          <img src="image/alltimespecial3.png" alt="Cover All Time Special Songs Three" onerror="this.onerror=null;this.src='alltimespecial3.png'">
+        </div>
+        <div class="meta">
+          <div class="title">All Time Special Songs Three</div>
+          <a class="btn" href="all-time-special-songs-three_withcover.html">Open tracklist</a>
+        </div>
+      </article>
+    </section>
+
+    <footer>© Tomasso — 2025</footer>
   </div>
 </body>
 </html>
