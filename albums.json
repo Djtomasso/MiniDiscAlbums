@@ -1,0 +1,27 @@
+[
+  {
+    "file": "all-time-special-songs-one_withcover.html",
+    "title": "All Time Special Songs One",
+    "cover": "image/alltimespecialone.png"
+  },
+  {
+    "file": "all-time-special-songs-two_withcover.html",
+    "title": "All Time Special Songs Two",
+    "cover": "image/alltimespecialtwo.png"
+  },
+  {
+    "file": "all-time-special-songs-three_withcover.html",
+    "title": "All Time Special Songs Three",
+    "cover": "image/alltimespecial3.png"
+  },
+  {
+    "file": "eros-ramazzotti-sempre-eros-una_withcover.html",
+    "title": "Eros Ramazzotti — Sempre Eros Una",
+    "cover": "image/eros-sempre-eros-una.png"
+  },
+  {
+    "file": "eros-ramazzotti-sempre-eros-due_withcover.html",
+    "title": "Eros Ramazzotti — Sempre Eros Due",
+    "cover": "image/eros-sempre-eros-due.png"
+  }
+]

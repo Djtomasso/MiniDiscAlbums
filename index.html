@@ -34,85 +34,52 @@
     </header>
 
     <section id="albums" class="grid" aria-label="Albums">
-      <div class="empty" id="placeholder">Zoeken naar albums…</div>
+      <div class="empty" id="placeholder">Laden…</div>
     </section>
 
     <footer>© Tomasso — 2025</footer>
   </div>
 
   <script>
-    const owner = "Djtomasso";
-    const repo = "MiniDiscAlbums";
-    const basePages = `https://${owner}.github.io/${repo}`;
+    const MANIFEST_URL = './albums.json';
+    const PLACEHOLDER = './image/placeholder.png';
+    const $grid = document.getElementById('albums');
+    const $ph = document.getElementById('placeholder');
 
-    const $grid = document.getElementById("albums");
-    const $ph = document.getElementById("placeholder");
-    const PLACEHOLDER = `${basePages}/image/placeholder.png`;
-
-    function b64ToUtf8(b64){ try{ return decodeURIComponent(escape(atob(b64))); }catch(e){ return atob(b64); } }
-
-    function extractAlbumJSON(htmlText){
-      const m = htmlText.match(/<script[^>]*id=["']data["'][^>]*>([\s\S]*?)<\/script>/i);
-      if(!m) return null;
-      try{ return JSON.parse(m[1].trim()); }catch(e){ return null; }
-    }
-
-    function cardTemplate(fileName, album){
-      const pageUrl = `${basePages}/${encodeURIComponent(fileName)}`;
-      const title = (album && album.album_title) ? album.album_title : fileName.replace(/_/g," ");
-      let coverUrl = PLACEHOLDER;
-      if (album && album.cover){
-        coverUrl = `${basePages}/${album.cover}`;
-      }
+    function cardTemplate(entry){
+      const title = entry.title || entry.file;
+      const fileUrl = entry.file;
+      const cover = entry.cover || PLACEHOLDER;
       return `
       <article class="card">
-        <a class="coverlink" href="${pageUrl}" aria-label="Open ${title}">
+        <a class="coverlink" href="${fileUrl}" aria-label="Open ${title}">
           <div class="cover">
-            <img src="${coverUrl}" alt="Cover ${title}" onerror="this.onerror=null;this.src='${PLACEHOLDER}'">
+            <img src="${cover}" alt="Cover ${title}" onerror="this.onerror=null;this.src='${PLACEHOLDER}'">
           </div>
         </a>
         <div class="meta">
           <div class="title">${title}</div>
-          <a class="btn" href="${pageUrl}">Open tracklist</a>
+          <a class="btn" href="${fileUrl}">Open tracklist</a>
         </div>
       </article>`;
     }
 
+    async function loadFromManifest(){
+      const res = await fetch(MANIFEST_URL, {cache: 'no-store'});
+      if(!res.ok) throw new Error('manifest not found');
+      const list = await res.json();
+      if(!Array.isArray(list) || !list.length) throw new Error('empty manifest');
+      // Ensure alphabetical order by title (A–Z)
+      list.sort((a,b) => (a.title || a.file).localeCompare(b.title || b.file, 'nl-NL', {sensitivity:'base'}));
+      $grid.innerHTML = '';
+      list.forEach(item => $grid.insertAdjacentHTML('beforeend', cardTemplate(item)));
+    }
+
     async function buildIndex(){
       try{
-        const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/`);
-        if(!res.ok) throw new Error("Kan repo-inhoud niet laden");
-        const files = await res.json();
-        const albumFiles = files
-          .filter(f => f && f.name && f.name.endsWith("_withcover.html"))
-          .map(f => f.name)
-          .sort((a,b)=> a.localeCompare(b, 'nl-NL', {numeric:true,sensitivity:'base'}));
-
-        if(!albumFiles.length){
-          $ph.textContent = "Geen albums gevonden. Zet *_withcover.html bestanden in de root.";
-          return;
-        }
-
-        $grid.innerHTML = "";
-
-        for(const name of albumFiles){
-          try{
-            const fRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(name)}`);
-            let albumJSON = null;
-            if (fRes.ok){
-              const meta = await fRes.json();
-              if (meta && meta.content){
-                const htmlText = b64ToUtf8(meta.content);
-                albumJSON = extractAlbumJSON(htmlText);
-              }
-            }
-            $grid.insertAdjacentHTML("beforeend", cardTemplate(name, albumJSON));
-          }catch(e){
-            $grid.insertAdjacentHTML("beforeend", cardTemplate(name, null));
-          }
-        }
-      }catch(err){
-        $ph.textContent = "Kon de lijst niet laden. Vernieuw de pagina of probeer later opnieuw.";
+        await loadFromManifest();
+      }catch(e){
+        $ph.textContent = "Kon albums.json niet laden. Voeg een manifest toe in de root of vernieuw later.";
       }
     }
 
