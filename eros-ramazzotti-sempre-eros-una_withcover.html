@@ -23,7 +23,8 @@
     .toolbar{position:sticky;top:64px;z-index:4;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px}
     .search{display:flex;gap:8px}
     .search input{flex:1;background:#0e0e0e;border:0;color:var(--text);padding:10px;border-radius:10px}
-    .search button{background:#151515;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px;cursor:pointer}
+    .search button{background:#151515;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px}
+
     main.tracks{display:grid;gap:10px}
     .item{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:12px;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start}
     .idx{min-width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--border);border-radius:8px;background:#151515;font-weight:700}
@@ -37,21 +38,30 @@
     /* Fotoblokken tussen de tracks */
     .galleryRow{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:12px;display:grid;gap:10px}
     .galleryRow h3{margin:0 0 6px 0;font-size:1rem;color:var(--muted);font-weight:600}
-    .thumbGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-    @media(min-width:560px){.thumbGrid{grid-template-columns:repeat(3,1fr)}}
+
+    /* GRID per viewport:
+       - Mobiel: 1 kolom  -> nooit 3+1
+       - Tablet: 2 kolommen
+       - Desktop: 4 kolommen
+    */
+    .thumbGrid{display:grid;grid-template-columns:1fr;gap:10px}
+    @media(min-width:560px){.thumbGrid{grid-template-columns:repeat(2,1fr)}}
     @media(min-width:760px){.thumbGrid{grid-template-columns:repeat(4,1fr)}}
 
-    /* VERTICALE langwerpige thumbnails (portrait 9:16) */
+    /* Aspect-ratio per viewport:
+       - Mobiel: 4:5 (portrait)
+       - Tablet: 3:2
+       - Desktop: 16:9
+    */
     .thumb{
       width:100%;
-      aspect-ratio:9/16;
+      aspect-ratio:4/5;
       object-fit:cover;
-      background:#0c0c0c;
-      border:1px solid #222;
-      border-radius:10px;
-      cursor:zoom-in;
-      transition:transform .08s ease;
+      background:#0c0c0c;border:1px solid #222;border-radius:10px;
+      cursor:zoom-in;transition:transform .08s ease;
     }
+    @media(min-width:560px){ .thumb{ aspect-ratio:3/2; } }
+    @media(min-width:760px){ .thumb{ aspect-ratio:16/9; } }
     .thumb:hover{transform:scale(1.01)}
 
     /* Lightbox */
@@ -149,7 +159,7 @@
   }</script>
 
   <script>
-    /* ===== Basis ===== */
+    /* ===== Basis (titel/cover/zoek) ===== */
     const data = JSON.parse(document.getElementById("data").textContent);
     const $title = document.getElementById("albumTitle");
     const $subtitle = document.getElementById("subtitle");
@@ -171,14 +181,14 @@
       };
     }
 
-    function escapeHtml(s){ return (s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;","&gt;":">","\"":"&quot;","'":"&#039;"}[c])); }
+    function escapeHtml(s){ return (s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt","&gt":">","\"":"&quot;","'":"&#039;"}[c])); }
 
     /* ===== Afbeeldingen: eros-01..eros-32 met extensie-fallback ===== */
     const PHOTO_COUNT = 32;
     const THUMBS_PER_ROW = 4;
     const START_NUM = 1; // begint bij eros-01
     const makeName = (i) => `eros-${String(i).padStart(2,'0')}`;
-    const exts = ['webp','jpg','jpeg','png'];
+    const exts = ['webp','jpg','jpeg','png']; // voorkeur
 
     function resolveExistingSrc(basePath, basename, extensions){
       return new Promise((resolve)=>{
@@ -205,7 +215,7 @@
       return Promise.all(indices.map(n => resolveExistingSrc(base, makeName(n), exts)));
     }
 
-    /* ===== Interleaving: blokken van precies 4 (portrait 9:16) ===== */
+    /* ===== Interleaving: blokken van precies 4, verdeeld over tracks ===== */
     function computeGroupEvery(tracksLen, photosLen){
       const requiredGroups = Math.ceil(photosLen / THUMBS_PER_ROW); // 32/4=8
       return Math.max(1, Math.ceil(tracksLen / requiredGroups));    // verdeelt blokken gelijk
@@ -220,7 +230,7 @@
       const GROUP_EVERY = computeGroupEvery(tracksLen, totalPhotos);
       const blockPoints = Math.ceil(tracksLen / GROUP_EVERY);
       const groupsWeCanShow = Math.min(blockPoints, Math.floor(totalPhotos / THUMBS_PER_ROW));
-      const photosPerGroup = THUMBS_PER_ROW;
+      const photosPerGroup = THUMBS_PER_ROW; // exact 4 per blok
 
       let photoIdx = 0;
       let groupIdx = 0;
@@ -264,9 +274,9 @@
         card.appendChild(meta);
         $list.appendChild(card);
 
-        // Fotoblok op groepsgrens (alleen complete rijen tonen)
+        // Fotoblok bij groepsgrens (alleen complete rijen)
         const isGroupEnd = ((i+1) % GROUP_EVERY === 0) || (i === tracksLen - 1);
-        if (isGroupEnd && groupIdx < Math.min(blockPoints, Math.floor(totalPhotos / THUMBS_PER_ROW))){
+        if (isGroupEnd && groupIdx < groupsWeCanShow){
           const row = document.createElement('div');
           row.className = 'galleryRow';
           row.innerHTML = `<h3>Foto’s</h3>`;
@@ -283,7 +293,6 @@
             img.alt = `Eros foto ${globalIndex+1}`;
             img.loading = 'lazy';
             img.decoding = 'async';
-            img.width = 540; img.height = 960;  /* 9:16 layout hints */
             img.src = src;
             img.dataset.index = String(globalIndex);
             img.addEventListener('click', (e) => {
@@ -328,11 +337,9 @@
       current = i;
       updateLightbox(list);
       lb.classList.add('open');
-      document.body.style.overflow = 'hidden';
     }
     function closeLightbox(){
       lb.classList.remove('open');
-      document.body.style.overflow = '';
       lbImg.src = ''; lbImg.alt = '';
     }
     function updateLightbox(list = window.__gallerySources){
