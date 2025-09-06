@@ -6,10 +6,7 @@
   <title>JANET - Janet Jackson — Tracklist</title>
   <meta name="theme-color" content="#0a0a0a">
   <style>
-    :root{
-      --bg:#0a0a0a; --surface:#121212; --surface2:#151515; --text:#f5f5f5;
-      --muted:#c7c7c7; --border:#2a2a2a; --focus:#fff
-    }
+    :root{--bg:#0a0a0a;--surface:#121212;--surface2:#151515;--text:#f5f5f5;--muted:#c7c7c7;--border:#2a2a2a;--focus:#fff}
     html{scrollbar-gutter:stable both-edges}
     *{box-sizing:border-box}
     body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;background:var(--bg);color:var(--text)}
@@ -27,6 +24,7 @@
     .search{display:flex;gap:8px}
     .search input{flex:1;background:#0e0e0e;border:0;color:var(--text);padding:10px;border-radius:10px}
     .search button{background:#151515;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px;cursor:pointer}
+
     main.tracks{display:grid;gap:10px}
     .item{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:12px;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start}
     .idx{min-width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--border);border-radius:8px;background:#151515;font-weight:700}
@@ -37,38 +35,25 @@
     a.btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
     footer{color:var(--muted);font-size:.9rem;text-align:center;padding:10px}
 
-    /* ===== Galerijblokken tussen de tracks ===== */
-    .galleryRow{
-      border:1px solid var(--border);
-      background:#0f0f0f;
-      border-radius:12px;
-      padding:12px;
-      display:grid;
-      gap:10px;
-    }
-    .galleryRow h3{
-      margin:0 0 6px 0;
-      font-size:1rem;
-      color:var(--muted);
-      font-weight:600;
-    }
-    .thumbGrid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:10px;
-    }
-    @media(min-width:560px){.thumbGrid{grid-template-columns:repeat(3,1fr)}}
-    @media(min-width:860px){.thumbGrid{grid-template-columns:repeat(4,1fr)}}
+    /* Fotoblokken tussen de tracks */
+    .galleryRow{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:12px;display:grid;gap:10px}
+    .galleryRow h3{margin:0 0 6px 0;font-size:1rem;color:var(--muted);font-weight:600}
+
+    /* Kolommen per viewport: 1 / 2 / 4 */
+    .thumbGrid{display:grid;grid-template-columns:1fr;gap:10px}
+    @media(min-width:560px){.thumbGrid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:760px){.thumbGrid{grid-template-columns:repeat(4,1fr)}}
+
+    /* Aspect ratio per viewport: 4:5 / 3:2 / 16:9 */
     .thumb{
       width:100%;
-      aspect-ratio:1/1;
+      aspect-ratio:4/5;
       object-fit:cover;
-      background:#0c0c0c;
-      border:1px solid #222;
-      border-radius:10px;
-      cursor:zoom-in;
-      transition:transform .08s ease;
+      background:#0c0c0c;border:1px solid #222;border-radius:10px;
+      cursor:zoom-in;transition:transform .08s ease;
     }
+    @media(min-width:560px){ .thumb{ aspect-ratio:3/2; } }
+    @media(min-width:760px){ .thumb{ aspect-ratio:16/9; } }
     .thumb:hover{transform:scale(1.01)}
 
     /* Lightbox */
@@ -84,7 +69,6 @@
     .iconbtn{background:#171717;border:1px solid #2a2a2a;color:var(--text);border-radius:999px;padding:.5rem .9rem;cursor:pointer}
     .iconbtn:hover{background:#1e1e1e}
     .lb-close{position:absolute; top:-44px; right:0}
-    .muted{color:var(--muted)}
   </style>
 </head>
 <body>
@@ -169,7 +153,7 @@
   }</script>
 
   <script>
-    /* ====== Basis (titel/cover) ====== */
+    /* ===== Basis (titel/cover/zoek) ===== */
     const data = JSON.parse(document.getElementById("data").textContent);
     const $title = document.getElementById("albumTitle");
     const $subtitle = document.getElementById("subtitle");
@@ -193,10 +177,13 @@
 
     function escapeHtml(s){ return (s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;","&gt;":">","\"":"&quot;","'":"&#039;"}[c])); }
 
-    /* ====== Afbeeldingen: .webp → .jpg → .png ====== */
-    const COUNT = 56;                           // janet-01 .. janet-56
+    /* ===== Foto's: janet-01..janet-56 met extensie-fallback ===== */
+    const PHOTO_COUNT = 56;
+    const THUMBS_PER_ROW = 4;
+    const START_NUM = 1;
     const makeName = (i) => `janet-${String(i).padStart(2,'0')}`;
-    const exts = ['webp','jpg','png'];         // voorkeur volgorde
+    const exts = ['webp','jpg','jpeg','png'];
+
     function resolveExistingSrc(basePath, basename, extensions){
       return new Promise((resolve)=>{
         let idx = 0, done = false;
@@ -215,34 +202,35 @@
         tryNext();
       });
     }
+
     async function buildSrcList(){
       const base = 'image/janet/';
-      return Promise.all(
-        Array.from({length:COUNT}, (_,k)=>resolveExistingSrc(base, makeName(k+1), exts))
-      );
+      const indices = Array.from({length:PHOTO_COUNT}, (_,k)=> START_NUM + k);
+      return Promise.all(indices.map(n => resolveExistingSrc(base, makeName(n), exts)));
     }
 
-    /* ====== Render: tracks + VERDELEN van alle 56 foto's ====== */
-    const GROUP_EVERY = 5;   // na elke 5 tracks een blok
-    const THUMBS_PER_ROW = 4;
-
-    function calcGroupSizes(totalPhotos, tracksLen){
-      const groups = Math.max(1, Math.ceil(tracksLen / GROUP_EVERY)); // # van blokmomenten
-      const base = Math.floor(totalPhotos / groups);
-      const rest = totalPhotos % groups;
-      // Verdeel zo gelijk mogelijk; eerste 'rest' groepen krijgen 1 extra
-      return { groups, sizes: Array.from({length:groups}, (_,i)=> base + (i < rest ? 1 : 0)) };
+    /* ===== Interleaving: alleen complete rijen van 4, gelijk verdeeld ===== */
+    function computeGroupEvery(tracksLen, photosLen){
+      const requiredGroups = Math.ceil(photosLen / THUMBS_PER_ROW);
+      return Math.max(1, Math.ceil(tracksLen / requiredGroups));
     }
 
     function renderInterleaved(tracks, sources){
       $list.innerHTML = "";
-      const { groups, sizes } = calcGroupSizes(sources.length, tracks.length);
 
-      let photoIdx = 0;   // globale index in sources
-      let groupIdx = 0;   // welk blok zijn we aan het vullen?
+      const tracksLen = tracks.length;
+      const totalPhotos = sources.length;
+
+      const GROUP_EVERY = computeGroupEvery(tracksLen, totalPhotos);
+      const blockPoints = Math.ceil(tracksLen / GROUP_EVERY);
+      const groupsWeCanShow = Math.min(blockPoints, Math.floor(totalPhotos / THUMBS_PER_ROW));
+      const photosPerGroup = THUMBS_PER_ROW;
+
+      let photoIdx = 0;
+      let groupIdx = 0;
 
       tracks.forEach((t, i) => {
-        // Track-kaart
+        // Trackkaart
         const card = document.createElement("div");
         card.className = "item";
 
@@ -267,6 +255,7 @@
           a.textContent = "YouTube (zoek)";
           actions.appendChild(a);
         }
+
         const infoBtn = document.createElement("a");
         infoBtn.className = "btn";
         const artist = t.artist || (t.title || "");
@@ -279,54 +268,44 @@
         card.appendChild(meta);
         $list.appendChild(card);
 
-        // Bepalen of we hier een galerijblok plaatsen (einde groep of laatste track)
-        const isGroupEnd = ((i+1) % GROUP_EVERY === 0) || (i === tracks.length - 1);
-        if (isGroupEnd && groupIdx < groups){
-          const photosInThisGroup = sizes[groupIdx++] || 0;
-          if (photosInThisGroup > 0){
-            const row = document.createElement('div');
-            row.className = 'galleryRow';
-            row.innerHTML = `<h3>Foto’s</h3>`;
+        // Fotoblok bij groepsgrens (alleen complete rijen)
+        const isGroupEnd = ((i+1) % GROUP_EVERY === 0) || (i === tracksLen - 1);
+        if (isGroupEnd && groupIdx < groupsWeCanShow){
+          const row = document.createElement('div');
+          row.className = 'galleryRow';
+          row.innerHTML = `<h3>Foto’s</h3>`;
 
-            // Meerdere rijen indien nodig
-            let remaining = photosInThisGroup;
-            while (remaining > 0){
-              const grid = document.createElement('div');
-              grid.className = 'thumbGrid';
+          const grid = document.createElement('div');
+          grid.className = 'thumbGrid';
 
-              const toAdd = Math.min(THUMBS_PER_ROW, remaining);
-              for (let k=0; k<toAdd; k++){
-                const globalIndex = photoIdx;          // vastleggen vóór increment (fix voor closure)
-                const src = sources[globalIndex] || 'data:image/gif;base64,R0lGODlhAQABAAAAACw=';
+          for (let k=0; k<photosPerGroup; k++){
+            const globalIndex = photoIdx;
+            const src = sources[globalIndex] || 'data:image/gif;base64,R0lGODlhAQABAAAAACw=';
 
-                const img = document.createElement('img');
-                img.className = 'thumb';
-                img.alt = `Janet foto ${globalIndex+1}`;
-                img.loading = 'lazy';
-                img.decoding = 'async';
-                img.width = 600; img.height = 600;     // layout hints
-                img.src = src;
-                img.dataset.index = String(globalIndex);
-                img.addEventListener('click', (e) => {
-                  const idx = Number(e.currentTarget.dataset.index);
-                  openLightbox(idx, sources);
-                });
+            const img = document.createElement('img');
+            img.className = 'thumb';
+            img.alt = `Janet foto ${globalIndex+1}`;
+            img.loading = 'lazy';
+            img.decoding = 'async';
+            img.src = src;
+            img.dataset.index = String(globalIndex);
+            img.addEventListener('click', (e) => {
+              const idx = Number(e.currentTarget.dataset.index);
+              openLightbox(idx, sources);
+            });
 
-                grid.appendChild(img);
-                photoIdx++; // verbruik één foto
-              }
-
-              row.appendChild(grid);
-              remaining -= toAdd;
-            }
-
-            $list.appendChild(row);
+            grid.appendChild(img);
+            photoIdx++;
           }
+
+          row.appendChild(grid);
+          $list.appendChild(row);
+          groupIdx++;
         }
       });
     }
 
-    /* ====== Filter ====== */
+    /* ===== Filter ===== */
     function applyFilter(allTracks, sources){
       const q = ($filter.value||"").toLowerCase().trim();
       if(!q){ renderInterleaved(allTracks, sources); return; }
@@ -340,7 +319,7 @@
     $filter.addEventListener("input", () => applyFilter(data.tracks, window.__gallerySources || []));
     $clear.addEventListener("click", () => { $filter.value=""; applyFilter(data.tracks, window.__gallerySources || []); $filter.focus(); });
 
-    /* ====== Lightbox ====== */
+    /* ===== Lightbox ===== */
     const lb = document.getElementById('lightbox');
     const lbImg = document.getElementById('lb-img');
     const btnPrev = document.getElementById('lb-prev');
@@ -352,7 +331,7 @@
       current = i;
       updateLightbox(list);
       lb.classList.add('open');
-      document.body.style.overflow = 'hidden'; // geen jump door scrollbar-gutter
+      document.body.style.overflow = 'hidden';
     }
     function closeLightbox(){
       lb.classList.remove('open');
@@ -376,7 +355,7 @@
       if(e.key === 'ArrowLeft') prev();
       if(e.key === 'ArrowRight') next();
     });
-    // swipe
+    // Swipe
     let sx=0, sy=0;
     lb?.addEventListener('touchstart',(e)=>{ sx=e.touches[0].clientX; sy=e.touches[0].clientY; },{passive:true});
     lb?.addEventListener('touchend',(e)=>{
@@ -385,11 +364,11 @@
       if(Math.abs(dx)>Math.abs(dy) && Math.abs(dx)>30){ dx>0 ? prev() : next(); }
     },{passive:true});
 
-    /* ====== Start ====== */
+    /* ===== Start ===== */
     (async () => {
-      const srcList = await buildSrcList();           // 56 paden met extensie-fallback
+      const srcList = await buildSrcList();          // 56 paden (janet-01..janet-56) met extensie-fallback
       window.__gallerySources = srcList;
-      renderInterleaved(data.tracks, srcList);        // tracks + ALLE foto’s verdeeld
+      applyFilter(data.tracks, srcList);             // render + zoek
     })();
   </script>
 </body>
