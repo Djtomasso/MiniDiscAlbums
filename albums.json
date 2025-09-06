@@ -2,31 +2,43 @@
   {
     "file": "all-time-special-songs-one_withcover.html",
     "title": "All Time Special Songs One",
-    "cover": "image/alltimespecialone.png"
-  },
-  {
-    "file": "all-time-special-songs-three_withcover.html",
-    "title": "All Time Special Songs Three",
-    "cover": "image/alltimespecial3.png"
+    "cover": "image/alltimespecialone.png",
+    "series": "All Time Special Songs",
+    "volume": 1
   },
   {
     "file": "all-time-special-songs-two_withcover.html",
     "title": "All Time Special Songs Two",
-    "cover": "image/alltimespecialtwo.png"
+    "cover": "image/alltimespecialtwo.png",
+    "series": "All Time Special Songs",
+    "volume": 2
   },
   {
-    "file": "eros-ramazzotti-sempre-eros-due_withcover.html",
-    "title": "Eros Ramazzotti — Sempre Eros Due",
-    "cover": "image/eros-sempre-eros-due.png"
+    "file": "all-time-special-songs-three_withcover.html",
+    "title": "All Time Special Songs Three",
+    "cover": "image/alltimespecial3.png",
+    "series": "All Time Special Songs",
+    "volume": 3
   },
   {
     "file": "eros-ramazzotti-sempre-eros-una_withcover.html",
     "title": "Eros Ramazzotti — Sempre Eros Una",
-    "cover": "image/eros-sempre-eros-una.png"
+    "cover": "image/eros-sempre-eros-una.png",
+    "series": "Sempre Eros",
+    "volume": 1
+  },
+  {
+    "file": "eros-ramazzotti-sempre-eros-due_withcover.html",
+    "title": "Eros Ramazzotti — Sempre Eros Due",
+    "cover": "image/eros-sempre-eros-due.png",
+    "series": "Sempre Eros",
+    "volume": 2
   },
   {
     "file": "janet-jackson-janet_withcover.html",
     "title": "Janet Jackson — Janet",
-    "cover": "image/janet-jackson-janet.png"
+    "cover": "image/janet-jackson-janet.png",
+    "series": "Janet Jackson",
+    "volume": 1
   }
 ]
