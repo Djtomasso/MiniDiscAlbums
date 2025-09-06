@@ -27,21 +27,18 @@
       background:#151515;color:var(--text);border:1px solid var(--border);
       border-radius:10px;padding:10px 12px;cursor:pointer
     }
-    .grid{
-      display:grid;gap:12px;
-      grid-template-columns:repeat(2,1fr)
-    }
+    .grid{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
     @media(min-width:680px){ .grid{ grid-template-columns:repeat(3,1fr)} }
     @media(min-width:980px){ .grid{ grid-template-columns:repeat(4,1fr)} }
     .card{
       border:1px solid var(--border);background:var(--surface);
       border-radius:14px;overflow:hidden;display:grid;grid-template-rows:auto 1fr
     }
-    .cover{aspect-ratio:16/9;background:#0c0c0c}
+    /* Vierkante thumbnails */
+    .cover{aspect-ratio:1/1;background:#0c0c0c}
     .cover img{width:100%;height:100%;object-fit:cover;display:block}
     .meta{padding:10px;display:grid;gap:8px}
     .title{font-weight:600;line-height:1.25}
-    .series{font-size:.9rem;color:var(--muted)}
     .btn{
       display:inline-block;text-decoration:none;padding:8px 10px;border-radius:8px;
       border:1px solid var(--border);background:#191919;justify-self:start
@@ -83,8 +80,6 @@
       const title = entry.title || entry.file || 'Album';
       const fileUrl = entry.file || '#';
       const cover = entry.cover || PLACEHOLDER;
-      const series = entry.series || '';
-      const vol = (Number.isFinite(entry.volume) ? ` • Deel ${entry.volume}` : '');
       return `
         <article class="card">
           <a class="coverlink" href="${fileUrl}" aria-label="Open ${title}">
@@ -94,13 +89,13 @@
           </a>
           <div class="meta">
             <div class="title">${title}</div>
-            <div class="series">${series}${vol}</div>
+            <!-- Serie/volume worden bewust NIET getoond -->
             <a class="btn" href="${fileUrl}">Open tracklist</a>
           </div>
         </article>`;
     }
 
-    // ===== Slimme sortering =====
+    /* ===== Slimme sortering (gebruikt series/volume, maar toont ze niet) ===== */
     const NUMWORDS = new Map(Object.entries({
       // it
       "una":1,"uno":1,"due":2,"tre":3,"quattro":4,"cinque":5,"sei":6,"sette":7,"otto":8,"nove":9,"dieci":10,
@@ -169,7 +164,7 @@
       return 0;
     }
 
-    // ===== Laden & tonen =====
+    /* ===== Laden & tonen ===== */
     let manifest = [];
 
     async function loadManifest(){
