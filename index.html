@@ -1,89 +1,222 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Album Bibliotheek</title>
-  <meta name="theme-color" content="#0a0a0a">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Albums</title>
+  <meta name="theme-color" content="#0a0a0a" />
   <style>
-    :root{--bg:#0a0a0a;--surface:#121212;--text:#f5f5f5;--muted:#c7c7c7;--border:#2a2a2a}
+    :root{
+      --bg:#0a0a0a; --surface:#121212; --surface2:#151515;
+      --text:#f5f5f5; --muted:#c7c7c7; --border:#2a2a2a; --focus:#fff
+    }
     *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;background:var(--bg);color:var(--text)}
-    .wrap{max-width:1100px;margin:auto;padding:20px;display:grid;gap:18px}
-    header{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
-    h1{margin:0;font-size:1.6rem}
-    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
-    .card{border:1px solid var(--border);background:var(--surface);border-radius:14px;overflow:hidden;display:grid}
-    .cover{aspect-ratio:1/1;background:#0f0f0f;overflow:hidden}
+    html{scrollbar-gutter:stable both-edges}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial}
+    a{color:inherit}
+    .wrap{max-width:1100px;margin:auto;padding:16px;display:grid;gap:16px}
+    header{display:grid;gap:8px}
+    h1{margin:0;font-size:1.5rem}
+    .bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .search{flex:1;display:flex;gap:8px}
+    .search input{
+      flex:1;background:#0e0e0e;border:1px solid var(--border);color:var(--text);
+      padding:10px;border-radius:10px
+    }
+    .search button{
+      background:#151515;color:var(--text);border:1px solid var(--border);
+      border-radius:10px;padding:10px 12px;cursor:pointer
+    }
+    .grid{
+      display:grid;gap:12px;
+      grid-template-columns:repeat(2,1fr)
+    }
+    @media(min-width:680px){ .grid{ grid-template-columns:repeat(3,1fr)} }
+    @media(min-width:980px){ .grid{ grid-template-columns:repeat(4,1fr)} }
+    .card{
+      border:1px solid var(--border);background:var(--surface);
+      border-radius:14px;overflow:hidden;display:grid;grid-template-rows:auto 1fr
+    }
+    .cover{aspect-ratio:16/9;background:#0c0c0c}
     .cover img{width:100%;height:100%;object-fit:cover;display:block}
-    .meta{padding:12px;display:grid;gap:10px}
-    .title{font-weight:700}
-    .btn{display:inline-block;background:#191919;border:1px solid var(--border);padding:9px 12px;border-radius:10px;text-decoration:none;color:#f5f5f5;text-align:center}
-    .btn:hover{background:#222}
-    .muted{color:var(--muted)}
-    .empty{border:1px dashed var(--border);border-radius:12px;padding:16px;text-align:center;color:var(--muted)}
-    footer{color:var(--muted);text-align:center;margin-top:6px;font-size:.9rem}
-    a.coverlink{display:block;line-height:0}
+    .meta{padding:10px;display:grid;gap:8px}
+    .title{font-weight:600;line-height:1.25}
+    .series{font-size:.9rem;color:var(--muted)}
+    .btn{
+      display:inline-block;text-decoration:none;padding:8px 10px;border-radius:8px;
+      border:1px solid var(--border);background:#191919;justify-self:start
+    }
+    .empty, .error{color:var(--muted);text-align:center;padding:20px;border:1px dashed var(--border);border-radius:12px}
+    footer{color:var(--muted);font-size:.9rem;text-align:center;padding:10px}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <h1>Album Bibliotheek</h1>
-      <div class="muted">tracklists — samengesteld door Tomasso 2025</div>
+      <h1>Albums</h1>
+      <div class="bar">
+        <div class="search">
+          <input id="q" type="search" placeholder="Zoek op titel of serie…" aria-label="Zoek albums">
+          <button id="clear" type="button">Wissen</button>
+        </div>
+      </div>
     </header>
 
-    <section id="albums" class="grid" aria-label="Albums">
-      <div class="empty" id="placeholder">Laden…</div>
+    <section id="content">
+      <div id="status" class="empty">Laden…</div>
+      <div id="albums" class="grid" hidden></div>
     </section>
 
-    <footer>© Tomasso — 2025</footer>
+    <footer>overzicht door Tomasso 2025</footer>
   </div>
 
   <script>
     const MANIFEST_URL = './albums.json';
     const PLACEHOLDER = './image/placeholder.png';
+
     const $grid = document.getElementById('albums');
-    const $ph = document.getElementById('placeholder');
+    const $status = document.getElementById('status');
+    const $q = document.getElementById('q');
+    const $clear = document.getElementById('clear');
 
     function cardTemplate(entry){
-      const title = entry.title || entry.file;
-      const fileUrl = entry.file;
+      const title = entry.title || entry.file || 'Album';
+      const fileUrl = entry.file || '#';
       const cover = entry.cover || PLACEHOLDER;
+      const series = entry.series || '';
+      const vol = (Number.isFinite(entry.volume) ? ` • Deel ${entry.volume}` : '');
       return `
-      <article class="card">
-        <a class="coverlink" href="${fileUrl}" aria-label="Open ${title}">
-          <div class="cover">
-            <img src="${cover}" alt="Cover ${title}" onerror="this.onerror=null;this.src='${PLACEHOLDER}'">
+        <article class="card">
+          <a class="coverlink" href="${fileUrl}" aria-label="Open ${title}">
+            <div class="cover">
+              <img src="${cover}" alt="Cover ${title}" onerror="this.onerror=null;this.src='${PLACEHOLDER}'">
+            </div>
+          </a>
+          <div class="meta">
+            <div class="title">${title}</div>
+            <div class="series">${series}${vol}</div>
+            <a class="btn" href="${fileUrl}">Open tracklist</a>
           </div>
-        </a>
-        <div class="meta">
-          <div class="title">${title}</div>
-          <a class="btn" href="${fileUrl}">Open tracklist</a>
-        </div>
-      </article>`;
+        </article>`;
     }
 
-    async function loadFromManifest(){
-      const res = await fetch(MANIFEST_URL, {cache: 'no-store'});
-      if(!res.ok) throw new Error('manifest not found');
+    // ===== Slimme sortering =====
+    const NUMWORDS = new Map(Object.entries({
+      // it
+      "una":1,"uno":1,"due":2,"tre":3,"quattro":4,"cinque":5,"sei":6,"sette":7,"otto":8,"nove":9,"dieci":10,
+      // en
+      "one":1,"two":2,"three":3,"four":4,"five":5,"six":6,"seven":7,"eight":8,"nine":9,"ten":10,
+      // nl
+      "een":1,"twee":2,"drie":3,"vier":4,"vijf":5,"zes":6,"zeven":7,"acht":8,"negen":9,"tien":10,
+      // es
+      "uno":1,"dos":2,"tres":3,"cuatro":4,"cinco":5,"seis":6,"siete":7,"ocho":8,"nueve":9,"diez":10,
+      // fr
+      "un":1,"deux":2,"trois":3,"quatre":4,"cinq":5,"six":6,"sept":7,"huit":8,"neuf":9,"dix":10
+    }));
+
+    function romanToInt(s){
+      if(!s) return null;
+      const map = {I:1,V:5,X:10,L:50,C:100,D:500,M:1000};
+      let n = 0;
+      for(let i=0;i<s.length;i++){
+        const v = map[s[i]], w = map[s[i+1]]||0;
+        if(v < w){ n += w - v; i++; } else { n += v; }
+      }
+      return n || null;
+    }
+
+    function inferVolumeFromTitle(title){
+      if(!title) return null;
+      const t = title.toLowerCase()
+        .normalize('NFD').replace(/\p{Diacritic}+/gu,''); // accenten weg
+      const words = t.match(/\b[\p{L}]+|\d+\b/gu) || [];
+
+      // 1) woordgetallen
+      for(const w of words){ if(NUMWORDS.has(w)) return NUMWORDS.get(w); }
+      // 2) roman numerals
+      const roman = t.match(/\bM{0,3}(CM|CD|D?C{0,3})?(XC|XL|L?X{0,3})?(IX|IV|V?I{0,3})\b/i);
+      if(roman && roman[0] && /[ivxlcdm]/i.test(roman[0])){
+        const v = romanToInt(roman[0].toUpperCase());
+        if(v) return v;
+      }
+      // 3) cijfers
+      const digit = t.match(/\b(\d{1,3})\b/);
+      if(digit) return parseInt(digit[1],10);
+
+      return null;
+    }
+
+    function sortTuple(entry){
+      const order = Number.isFinite(entry.order) ? entry.order : Infinity;
+      const series = (entry.series || '').toLowerCase();
+      const volume = Number.isFinite(entry.volume)
+        ? entry.volume
+        : (inferVolumeFromTitle(entry.title || entry.file) ?? Infinity);
+      const titleKey = (entry.title || entry.file || '').toLowerCase();
+      return [order, series, volume, titleKey];
+    }
+
+    function smartSort(a,b){
+      const A = sortTuple(a), B = sortTuple(b);
+      for(let i=0;i<A.length;i++){
+        const x = A[i], y = B[i];
+        if(x === y) continue;
+        if(typeof x === 'string' || typeof y === 'string'){
+          return String(x).localeCompare(String(y), 'nl-NL', {sensitivity:'base'});
+        }
+        return (x < y) ? -1 : 1;
+      }
+      return 0;
+    }
+
+    // ===== Laden & tonen =====
+    let manifest = [];
+
+    async function loadManifest(){
+      const res = await fetch(MANIFEST_URL, {cache:'no-store'});
+      if(!res.ok) throw new Error('albums.json niet gevonden');
       const list = await res.json();
-      if(!Array.isArray(list) || !list.length) throw new Error('empty manifest');
-      // Ensure alphabetical order by title (A–Z)
-      list.sort((a,b) => (a.title || a.file).localeCompare(b.title || b.file, 'nl-NL', {sensitivity:'base'}));
+      if(!Array.isArray(list)) throw new Error('albums.json is geen array');
+      manifest = list.slice(); // kopie
+    }
+
+    function render(list){
+      if(!list.length){
+        $grid.hidden = true;
+        $status.textContent = 'Geen albums gevonden.';
+        $status.className = 'empty';
+        return;
+      }
       $grid.innerHTML = '';
       list.forEach(item => $grid.insertAdjacentHTML('beforeend', cardTemplate(item)));
+      $status.textContent = '';
+      $status.className = 'empty';
+      $grid.hidden = false;
     }
 
-    async function buildIndex(){
+    function applyFilter(){
+      const q = ($q.value || '').toLowerCase().trim();
+      const filtered = !q ? manifest : manifest.filter(a =>
+        (a.title || '').toLowerCase().includes(q) ||
+        (a.series || '').toLowerCase().includes(q)
+      );
+      const sorted = filtered.sort(smartSort);
+      render(sorted);
+    }
+
+    $q.addEventListener('input', applyFilter);
+    $clear.addEventListener('click', () => { $q.value=''; applyFilter(); $q.focus(); });
+
+    (async () => {
       try{
-        await loadFromManifest();
-      }catch(e){
-        $ph.textContent = "Kon albums.json niet laden. Voeg een manifest toe in de root of vernieuw later.";
+        await loadManifest();
+        applyFilter(); // sorteer direct bij start
+      }catch(err){
+        $status.textContent = 'Kon albums.json niet laden. Controleer of het bestand in de root staat.';
+        $status.className = 'error';
+        console.error(err);
       }
-    }
-
-    buildIndex();
+    })();
   </script>
 </body>
 </html>
