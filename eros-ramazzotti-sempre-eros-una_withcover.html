@@ -20,6 +20,20 @@
     .titlebar{padding:14px;background:var(--surface2);border-top:1px solid var(--border)}
     h1{margin:0;font-size:1.3rem}
     .sub{color:var(--muted)}
+
+    /* Bio-sectie onder cover/titel */
+    .bio{
+      border:1px solid var(--border);
+      background:#0f0f0f;
+      border-radius:12px;
+      padding:14px;
+      line-height:1.55;
+      color:var(--text);
+    }
+    .bio p{margin:0 0 .9rem 0}
+    .bio p:last-child{margin-bottom:0}
+    .bio b{color:#fff}
+
     .toolbar{position:sticky;top:64px;z-index:4;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px}
     .search{display:flex;gap:8px}
     .search input{flex:1;background:#0e0e0e;border:0;color:var(--text);padding:10px;border-radius:10px}
@@ -39,20 +53,12 @@
     .galleryRow{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:12px;display:grid;gap:10px}
     .galleryRow h3{margin:0 0 6px 0;font-size:1rem;color:var(--muted);font-weight:600}
 
-    /* GRID per viewport:
-       - Mobiel: 1 kolom  -> nooit 3+1
-       - Tablet: 2 kolommen
-       - Desktop: 4 kolommen
-    */
+    /* GRID per viewport: 1 / 2 / 4 */
     .thumbGrid{display:grid;grid-template-columns:1fr;gap:10px}
     @media(min-width:560px){.thumbGrid{grid-template-columns:repeat(2,1fr)}}
     @media(min-width:760px){.thumbGrid{grid-template-columns:repeat(4,1fr)}}
 
-    /* Aspect-ratio per viewport:
-       - Mobiel: 4:5 (portrait)
-       - Tablet: 3:2
-       - Desktop: 16:9
-    */
+    /* Aspect ratio per viewport: 4:5 / 3:2 / 16:9 */
     .thumb{
       width:100%;
       aspect-ratio:4/5;
@@ -92,6 +98,16 @@
         <div class="sub" id="subtitle"></div>
       </div>
     </header>
+
+    <!-- KORTE BIO ONDER ALBUMFOTO -->
+    <section class="bio" aria-label="Korte biografie van Eros Ramazzotti">
+      <p><b>Eros Luciano Walter Ramazzotti</b> (geboren op 28 oktober 1963 in Rome, Italië) is een internationaal gevierde Italiaanse zanger-songwriter, bekend om zijn expressieve tenorstem en hartstochtelijke liefdesliedjes.</p>
+      <p>Al op jonge leeftijd droomde hij ervan om zanger te worden en behaalde zijn eerste succes in 1984 met de overwinning in de “Nieuwe Stem”-categorie op het Sanremo Festival met <i>Terra promessa</i>.</p>
+      <p>Kort daarna vestigde hij zich als ster met albums als <i>Cuori agitati</i>, <i>Nuovi eroi</i> en <i>In certi momenti</i>, waarmee hij zowel in Italië als daarbuiten doorbrak.</p>
+      <p>Zijn repertoire omvat zowel Italiaanse als Spaanstalige versies van zijn nummers, waarmee hij een enorme populariteit opbouwde in heel Europa en de Spaanstalige wereld.</p>
+      <p>Zijn muziek, gekenmerkt door emotionele ballades en krachtige pop-rock, heeft wereldwijd naar schatting 60 miljoen platen verkocht. Eros brak ook internationaal door met hits als <i>Cose della vita</i> (1993), dat een wereldwijde hit werd, mede dankzij een duetversie in het Italiaans-Engels met Tina Turner in 1997. Hij werkte verder samen met grote namen als Andrea Bocelli, Cher, Tina Turner en Alejandro Sanz.</p>
+      <p>Zijn artistieke kracht werd bekroond met meerdere internationale onderscheidingen, waaronder wereldprijzen zoals Best Italian Artist (World Music Awards) en BMI Latin Awards voor hitnummers als <i>La cosa más bella</i> en <i>Una emoción para siempre</i>.</p>
+    </section>
 
     <nav class="toolbar" aria-label="Zoekbalk">
       <div class="search">
@@ -337,9 +353,11 @@
       current = i;
       updateLightbox(list);
       lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
     }
     function closeLightbox(){
       lb.classList.remove('open');
+      document.body.style.overflow = '';
       lbImg.src = ''; lbImg.alt = '';
     }
     function updateLightbox(list = window.__gallerySources){
