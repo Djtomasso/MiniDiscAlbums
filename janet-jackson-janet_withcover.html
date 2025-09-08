@@ -20,6 +20,20 @@
     .titlebar{padding:14px;background:var(--surface2);border-top:1px solid var(--border)}
     h1{margin:0;font-size:1.3rem}
     .sub{color:var(--muted)}
+
+    /* Nieuwe bio-sectie onder de cover/titel */
+    .bio{
+      border:1px solid var(--border);
+      background:#0f0f0f;
+      border-radius:12px;
+      padding:14px;
+      line-height:1.55;
+      color:var(--text);
+    }
+    .bio p{margin:0 0 .9rem 0}
+    .bio p:last-child{margin-bottom:0}
+    .bio b{color:#fff}
+
     .toolbar{position:sticky;top:64px;z-index:4;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px}
     .search{display:flex;gap:8px}
     .search input{flex:1;background:#0e0e0e;border:0;color:var(--text);padding:10px;border-radius:10px}
@@ -84,6 +98,16 @@
         <div class="sub" id="subtitle"></div>
       </div>
     </header>
+
+    <!-- KORTE BIO ONDER ALBUMFOTO -->
+    <section class="bio" aria-label="Korte biografie van Janet Jackson">
+      <p><b>Janet Damita Jo Jackson</b> (geboren op 16 mei 1966 in Gary, Indiana) is een Amerikaanse zangeres, songwriter, danseres en actrice. Als jongste lid van de beroemde Jackson-familie begon ze als kindster in televisieseries zoals <i>Good Times</i> en <i>Fame</i>. Al snel koos ze haar eigen muzikale pad en groeide uit tot een van de invloedrijkste artiesten van haar generatie.</p>
+      <p>Met haar derde album <i>Control</i> (1986) brak Janet definitief door. Het was een krachtig statement waarin ze zich losmaakte van het familie-imago en een vernieuwende mix van pop, R&amp;B en rap neerzette. Haar samenwerking met producers Jimmy Jam &amp; Terry Lewis legde de basis voor een reeks baanbrekende hits en een frisse, ritmische sound die de popmuziek blijvend beïnvloedde.</p>
+      <p>Het succes werd nog groter met <i>Rhythm Nation 1814</i> (1989). Dit album leverde zeven opeenvolgende top-5-hits op, waarvan vier de nummer-1-positie bereikten, een ongeëvenaard record in de Billboard-geschiedenis. Met zijn sociaal bewuste thema’s en strakke choreografie werd <i>Rhythm Nation</i> een cultureel fenomeen.</p>
+      <p>Jackson staat bekend om haar visueel indrukwekkende videoclips en revolutionaire live-shows. Haar krachtige dansroutines en stijlvolle, vaak futuristische looks maakten haar tot een MTV-icoon en een inspiratiebron voor generaties artiesten.</p>
+      <p>In de loop van haar carrière won Janet vijf Grammy Awards, elf American Music Awards en tien MTV Video Music Awards. Met meer dan 100 miljoen verkochte platen wereldwijd behoort ze tot de bestverkopende artiesten aller tijden.</p>
+      <p><b>Janet Jackson</b> blijft een symbool van onafhankelijkheid, creativiteit en artistieke durf – een icoon die de pop- en R&amp;B-wereld blijvend heeft veranderd.</p>
+    </section>
 
     <nav class="toolbar" aria-label="Zoekbalk">
       <div class="search">
