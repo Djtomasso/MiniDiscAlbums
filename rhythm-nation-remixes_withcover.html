@@ -7,8 +7,8 @@
   <meta name="theme-color" content="#0a0a0a">
   <style>
     :root{--bg:#0a0a0a;--surface:#121212;--surface2:#151515;--text:#f5f5f5;--muted:#c7c7c7;--border:#2a2a2a;--focus:#fff}
-    html{scrollbar-gutter:stable both-edges}
     *{box-sizing:border-box}
+    html{scrollbar-gutter:stable both-edges}
     body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;background:var(--bg);color:var(--text)}
     img{display:block;max-width:100%;height:auto}
     a{color:inherit}
@@ -22,6 +22,7 @@
     h1{margin:0;font-size:1.35rem}
     .sub{color:var(--muted)}
 
+    /* Bio + Links */
     .bio, .links{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:14px;line-height:1.6}
     .bio p{margin:.6rem 0}
     .links h3{margin:.2rem 0 .6rem;font-size:1rem;color:var(--muted)}
@@ -44,6 +45,27 @@
     a.btn{background:#151515;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:8px 10px;text-decoration:none;font-size:.95rem}
     a.btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
     footer{color:var(--muted);font-size:.9rem;text-align:center;padding:10px}
+
+    /* Gallery */
+    .galleryRow{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:12px;display:grid;gap:10px;margin-top:6px}
+    .galleryRow h3{margin:0 0 6px 0;font-size:1rem;color:var(--muted);font-weight:600}
+    .thumbGrid{display:grid;grid-template-columns:1fr;gap:10px}
+    @media(min-width:560px){.thumbGrid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:760px){.thumbGrid{grid-template-columns:repeat(4,1fr)}}
+    .thumb{width:100%;aspect-ratio:4/5;object-fit:cover;background:#0c0c0c;border:1px solid #222;border-radius:10px;cursor:zoom-in;transition:transform .08s ease}
+    @media(min-width:560px){ .thumb{ aspect-ratio:3/2; } }
+    @media(min-width:760px){ .thumb{ aspect-ratio:16/9; } }
+    .thumb:hover{transform:scale(1.01)}
+
+    /* Lightbox */
+    .lightbox{position:fixed; inset:0; display:none; place-items:center;background:rgba(0,0,0,.86); backdrop-filter:saturate(115%) blur(2px); z-index:9999; padding:16px}
+    .lightbox.open{display:grid}
+    .lb-inner{max-width:min(96vw,1200px);max-height:90vh;position:relative}
+    .lb-img{max-width:100%;max-height:90vh;border-radius:12px;border:1px solid #333}
+    .lb-ui{position:absolute; inset-inline:0; bottom:-44px; display:flex; justify-content:center; gap:8px}
+    .iconbtn{background:#171717;border:1px solid #2a2a2a;color:var(--text);border-radius:999px;padding:.5rem .9rem;cursor:pointer}
+    .iconbtn:hover{background:#1e1e1e}
+    .lb-close{position:absolute; top:-44px; right:0}
   </style>
 </head>
 <body>
@@ -60,23 +82,29 @@
       </div>
     </header>
 
+    <!-- Bio -->
     <section class="bio" aria-label="Korte achtergrond">
-      <p><b>Janet Jackson – Rhythm Nation 1814 (1989)</b></p><p>In 1989 bracht Janet Jackson haar vierde studioalbum uit: <i>Rhythm Nation 1814</i>, een artistiek baanbrekend conceptalbum waarin thema’s als racisme, armoede, drugs en ongelijkheid centraal staan. Met frisse producties van Jimmy Jam &amp; Terry Lewis combineert het album pop, R&amp;B, rock en industriële grooves tot een krachtige, maatschappelijk betrokken sound.</p><p>Het album kende uitzonderlijk commercieel succes: het was haar tweede album op rij dat de Amerikaanse Billboard-200 bereikte, werd zesmaal platina gecertificeerd in de VS en verkochte naar schatting meer dan 12 miljoen exemplaren wereldwijd.</p><p>Het leverde maar liefst zeven opeenvolgende top-5-singles op — waarvan vier #1-hits — een record in de geschiedenis van de Billboard Hot 100.</p><p>Videovisueel brak zij ook door met iconische videoclips. De video voor <i>Rhythm Nation</i> zelf, met militaire outfits en strak uitgevoerde choreografie in een industrieel decor, zette een nieuwe standaard voor muziekvideo’s en wordt nog steeds beschouwd als één van de meest memorabele choreografieën in de popgeschiedenis.</p><p>Bij critici viel het album eveneens in de smaak: <i>Rolling Stone</i> prees Jackson’s artistieke groei en constateerde dat ze zich ontwikkelde van persoonlijke thema’s naar universele zorgen zoals onrecht en sociale pijn — “without missing a beat.”</p><p>Bovendien plaatste <i>Rolling Stone</i> <i>Rhythm Nation 1814</i> op nummer 275 in hun lijst van de 500 Greatest Albums of All Time.</p>
+      <p><b>Janet Jackson – Rhythm Nation 1814 (1989)</b></p>
+      <p>In 1989 bracht Janet Jackson haar vierde studioalbum uit: <i>Rhythm Nation 1814</i>, een artistiek baanbrekend conceptalbum waarin thema’s als racisme, armoede, drugs en ongelijkheid centraal staan. Met frisse producties van Jimmy Jam &amp; Terry Lewis combineert het album pop, R&amp;B, rock en industriële grooves tot een krachtige, maatschappelijk betrokken sound.</p>
+      <p>Het album kende uitzonderlijk commercieel succes: het was haar tweede album op rij dat de Amerikaanse Billboard-200 bereikte, werd zesmaal platina gecertificeerd in de VS en verkochte naar schatting meer dan 12 miljoen exemplaren wereldwijd.</p>
+      <p>Het leverde maar liefst zeven opeenvolgende top-5-singles op — waarvan vier #1-hits — een record in de geschiedenis van de Billboard Hot 100.</p>
+      <p>Videovisueel brak zij ook door met iconische videoclips. De video voor <i>Rhythm Nation</i> zelf, met militaire outfits en strak uitgevoerde choreografie in een industrieel decor, zette een nieuwe standaard voor muziekvideo’s en wordt nog steeds beschouwd als één van de meest memorabele choreografieën in de popgeschiedenis.</p>
+      <p>Bij critici viel het album eveneens in de smaak: <i>Rolling Stone</i> prees Jackson’s artistieke groei en constateerde dat ze zich ontwikkelde van persoonlijke thema’s naar universele zorgen zoals onrecht en sociale pijn — “without missing a beat.”</p>
+      <p>Bovendien plaatste <i>Rolling Stone</i> <i>Rhythm Nation 1814</i> op nummer 275 in hun lijst van de 500 Greatest Albums of All Time.</p>
     </section>
 
-    
-<section class="links" aria-label="Links en extra's">
-  <h3>Links</h3>
-  <ul>
-    <li><a href="https://en.wikipedia.org/wiki/Janet_Jackson%27s_Rhythm_Nation_1814" target="_blank" rel="noopener noreferrer">Wikipedia — Janet Jackson's Rhythm Nation 1814</a></li>
-    <li><a href="https://reverb.com/news/the-making-of-janet-jacksons-rhythm-nation" target="_blank" rel="noopener noreferrer">The Making of “Rhythm Nation 1814” (Reverb)</a></li>
-    <li><a href="https://hellobeautiful.com/playlist/rhythm-nation-janet-jacksons-greatest-performance-photos-through-the-years/item/1" target="_blank" rel="noopener noreferrer">‘Rhythm Nation’ Turns 30 — photo retrospective</a></li>
-    <li><a href="https://www.youtube.com/watch?v=-wCldfbFiEs" target="_blank" rel="noopener noreferrer">Janet Jackson's Rhythm Nation 1814 — Film (YouTube)</a></li>
-    <li><a href="https://vimeo.com/177506514" target="_blank" rel="noopener noreferrer">The Making of the Short Film — Vimeo</a></li>
-    <li><a href="https://www.youtube.com/watch?v=7Msyu5nmBlM" target="_blank" rel="noopener noreferrer">The Making of the Short Film — YouTube</a></li>
-  </ul>
-</section>
-
+    <!-- Links -->
+    <section class="links" aria-label="Links en extra's">
+      <h3>Links</h3>
+      <ul>
+        <li><a href="https://en.wikipedia.org/wiki/Janet_Jackson%27s_Rhythm_Nation_1814" target="_blank" rel="noopener noreferrer">Wikipedia — Janet Jackson's Rhythm Nation 1814</a></li>
+        <li><a href="https://reverb.com/news/the-making-of-janet-jacksons-rhythm-nation" target="_blank" rel="noopener noreferrer">The Making of “Rhythm Nation 1814” (Reverb)</a></li>
+        <li><a href="https://hellobeautiful.com/playlist/rhythm-nation-janet-jacksons-greatest-performance-photos-through-the-years/item/1" target="_blank" rel="noopener noreferrer">‘Rhythm Nation’ Turns 30 — photo retrospective</a></li>
+        <li><a href="https://www.youtube.com/watch?v=-wCldfbFiEs" target="_blank" rel="noopener noreferrer">Janet Jackson's Rhythm Nation 1814 — Film (YouTube)</a></li>
+        <li><a href="https://vimeo.com/177506514" target="_blank" rel="noopener noreferrer">The Making of the Short Film — Vimeo</a></li>
+        <li><a href="https://www.youtube.com/watch?v=7Msyu5nmBlM" target="_blank" rel="noopener noreferrer">The Making of the Short Film — YouTube</a></li>
+      </ul>
+    </section>
 
     <nav class="toolbar" aria-label="Zoekbalk">
       <div class="search">
@@ -87,74 +115,49 @@
 
     <main id="list" class="tracks" aria-live="polite"></main>
 
+    <!-- Foto’s na de tracklist -->
+    <section class="galleryRow" id="rn-gallery">
+      <h3>Foto’s</h3>
+      <div class="thumbGrid" id="rn-grid"></div>
+    </section>
+
     <footer>album samengesteld door Tomasso 2025</footer>
   </div>
 
-  <script type="application/json" id="data">
-{
-  "album_title": "Janet Jackson — Rhythm Nation 1814 (35th Anniversary — The Remixes)",
-  "subtitle": "Remixes",
-  "cover": "image/rhythm-nation-remixes.png",
-  "tracks": [
-    {
-      "title": "Rhythm Nation (Music Video Version)",
-      "artist": "Janet Jackson"
-    },
-    {
-      "title": "Come Back To Me - The Abandoned Heart Mix",
-      "artist": "Janet Jackson"
-    },
-    {
-      "title": "State Of The World - United Nations 7\"",
-      "artist": "Janet Jackson"
-    },
-    {
-      "title": "Vuelve A Mi",
-      "artist": "Janet Jackson"
-    },
-    {
-      "title": "Black Cat ft.Vernon Reid, Vaughn Halyard",
-      "artist": "Janet Jackson"
-    },
-    {
-      "title": "Love Will Never Do (Without You) - Acapella",
-      "artist": "Janet Jackson"
-    },
-    {
-      "title": "Love Will Never Do (Without You) - Shep's Original 7\"",
-      "artist": "Janet Jackson"
-    },
-    {
-      "title": "Alright - 12\" R&B Mix",
-      "artist": "Janet Jackson"
-    },
-    {
-      "title": "Alright (remixed)",
-      "artist": "Janet Jackson"
-    },
-    {
-      "title": "Escapade - We've Got It Made 7\"",
-      "artist": "Janet Jackson"
-    },
-    {
-      "title": "Miss You Much - Slammin' R&B Mix",
-      "artist": "Janet Jackson"
-    },
-    {
-      "title": "Miss You Much (DMC Remix by Ben Liebrand) - Janet Jackson",
-      "artist": "Janet Jackson"
-    },
-    {
-      "title": "You Need Me",
-      "artist": "Janet Jackson"
-    },
-    {
-      "title": "The Skin Game - Pt. 1",
-      "artist": "Janet Jackson"
-    }
-  ]
-}
-  </script>
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Foto viewer">
+    <div class="lb-inner">
+      <img id="lb-img" class="lb-img" src="" alt="" />
+      <div class="lb-ui">
+        <button class="iconbtn" id="lb-prev" aria-label="Vorige foto">◀︎</button>
+        <button class="iconbtn" id="lb-next" aria-label="Volgende foto">▶︎</button>
+        <button class="iconbtn lb-close" id="lb-close" aria-label="Sluiten">✕</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Data -->
+  <script type="application/json" id="data">{
+    "album_title": "Janet Jackson — Rhythm Nation 1814 (35th Anniversary — The Remixes)",
+    "subtitle": "Remixes",
+    "cover": "image/rhythm-nation-remixes.png",
+    "tracks": [
+      {"title":"Rhythm Nation (Music Video Version)","artist":"Janet Jackson"},
+      {"title":"Come Back To Me - The Abandoned Heart Mix","artist":"Janet Jackson"},
+      {"title":"State Of The World - United Nations 7\"","artist":"Janet Jackson"},
+      {"title":"Vuelve A Mi","artist":"Janet Jackson"},
+      {"title":"Black Cat ft.Vernon Reid, Vaughn Halyard","artist":"Janet Jackson"},
+      {"title":"Love Will Never Do (Without You) - Acapella","artist":"Janet Jackson"},
+      {"title":"Love Will Never Do (Without You) - Shep's Original 7\"","artist":"Janet Jackson"},
+      {"title":"Alright - 12\" R&B Mix","artist":"Janet Jackson"},
+      {"title":"Alright (remixed)","artist":"Janet Jackson"},
+      {"title":"Escapade - We've Got It Made 7\"","artist":"Janet Jackson"},
+      {"title":"Miss You Much - Slammin' R&B Mix","artist":"Janet Jackson"},
+      {"title":"Miss You Much (DMC Remix by Ben Liebrand) - Janet Jackson","artist":"Janet Jackson"},
+      {"title":"You Need Me","artist":"Janet Jackson"},
+      {"title":"The Skin Game - Pt. 1","artist":"Janet Jackson"}
+    ]
+  }</script>
 
   <script>
     const data = JSON.parse(document.getElementById("data").textContent);
@@ -202,7 +205,7 @@
       $list.innerHTML = '';
       tracks.forEach((t,i)=> $list.appendChild(cardFor(t,i)));
       if(!tracks.length){
-        $list.innerHTML = '<div class="alert">Geen tracks gevonden.</div>';
+        $list.innerHTML = '<div class="item"><div class="idx">–</div><div class="meta"><b>Geen tracks</b><span class="artist">Leeg</span></div></div>';
       }
     }
 
@@ -219,7 +222,103 @@
     $filter.addEventListener('input', ()=> applyFilter(data.tracks));
     $clear.addEventListener('click', ()=> { $filter.value=''; applyFilter(data.tracks); $filter.focus(); });
 
-    render(data.tracks);
+    // ===== Gallery (30 foto's, extensie fallback) =====
+    const GALLERY_DIR = 'image/1814/';
+    const GALLERY_BASENAME = '1814-';
+    const GALLERY_COUNT = 30;
+    const GALLERY_EXTS = ['webp','jpg','jpeg','png'];
+
+    function pad2(n){ return String(n).padStart(2,'0'); }
+
+    function resolveExistingSrc(basePath, basename, extensions){
+      return new Promise((resolve)=>{
+        let idx = 0, done = false;
+        const tryNext = () => {
+          if (idx >= extensions.length){
+            resolve('data:image/gif;base64,R0lGODlhAQABAAAAACw=');
+            return;
+          }
+          const url = `${basePath}${basename}.${extensions[idx++]}`;
+          const probe = new Image();
+          probe.decoding = 'async';
+          probe.onload = () => { if(!done){ done=true; resolve(url); } };
+          probe.onerror = () => { if(!done) tryNext(); };
+          probe.src = url;
+        };
+        tryNext();
+      });
+    }
+
+    async function buildGallerySources(){
+      const names = Array.from({length:GALLERY_COUNT}, (_,k)=> `${GALLERY_BASENAME}${pad2(k+1)}`);
+      return Promise.all(names.map(n => resolveExistingSrc(GALLERY_DIR, n, GALLERY_EXTS)));
+    }
+
+    function appendGallery(sources){
+      const $grid = document.getElementById('rn-grid');
+      if(!$grid) return;
+      $grid.innerHTML = '';
+      sources.forEach((src, i) => {
+        const img = document.createElement('img');
+        img.className = 'thumb';
+        img.alt = `Rhythm Nation foto ${i+1}`;
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.src = src;
+        img.addEventListener('click', () => openLightbox(i, sources));
+        $grid.appendChild(img);
+      });
+    }
+
+    // Lightbox
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    const btnPrev = document.getElementById('lb-prev');
+    const btnNext = document.getElementById('lb-next');
+    const btnClose = document.getElementById('lb-close');
+    let current = 0;
+    let currentList = [];
+
+    function openLightbox(i, list){
+      currentList = list || currentList;
+      current = i; updateLightbox();
+      lb.classList.add('open'); document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(){
+      lb.classList.remove('open'); document.body.style.overflow = '';
+      lbImg.src = ''; lbImg.alt = '';
+    }
+    function updateLightbox(){
+      lbImg.src = currentList[current];
+      lbImg.alt = `Rhythm Nation foto ${current+1}`;
+    }
+    function prev(){ current = (current - 1 + currentList.length) % currentList.length; updateLightbox(); }
+    function next(){ current = (current + 1) % currentList.length; updateLightbox(); }
+
+    btnPrev?.addEventListener('click', prev);
+    btnNext?.addEventListener('click', next);
+    btnClose?.addEventListener('click', closeLightbox);
+    lb?.addEventListener('click', (e)=>{ if(e.target === lb) closeLightbox(); });
+    document.addEventListener('keydown', (e)=>{
+      if(!lb.classList.contains('open')) return;
+      if(e.key === 'Escape') closeLightbox();
+      if(e.key === 'ArrowLeft') prev();
+      if(e.key === 'ArrowRight') next();
+    });
+    let sx=0, sy=0;
+    lb?.addEventListener('touchstart',(e)=>{ sx=e.touches[0].clientX; sy=e.touches[0].clientY; },{passive:true});
+    lb?.addEventListener('touchend',(e)=>{
+      const dx=e.changedTouches[0].clientX - sx;
+      const dy=e.changedTouches[0].clientY - sy;
+      if(Math.abs(dx)>Math.abs(dy) && Math.abs(dx)>30){ dx>0 ? prev() : next(); }
+    },{passive:true});
+
+    // Init
+    (async ()=>{
+      applyFilter(data.tracks);
+      const srcs = await buildGallerySources();
+      appendGallery(srcs);
+    })();
   </script>
 </body>
 </html>
