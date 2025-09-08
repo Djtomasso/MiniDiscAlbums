@@ -40,5 +40,33 @@
     "cover": "image/janet-jackson-janet.png",
     "series": "Janet Jackson",
     "volume": 1
+  },
+  {
+    "file": "summer-party-001_withcover.html",
+    "title": "Summer Party",
+    "cover": "image/summer-party.png",
+    "series": "Summer Party",
+    "volume": 1
+  },
+  {
+    "file": "its-summer-time_withcover.html",
+    "title": "It's Summer Time",
+    "cover": "image/itsummertime.png",
+    "series": "Summer Party",
+    "volume": 2
+  },
+  {
+    "file": "summer-holiday_withcover.html",
+    "title": "Summer Holiday",
+    "cover": "image/summerholiday.png",
+    "series": "Summer Party",
+    "volume": 3
+  },
+  {
+    "file": "hello-summer_withcover.html",
+    "title": "Hello Summer",
+    "cover": "image/hellosummer.png",
+    "series": "Summer Party",
+    "volume": 4
   }
 ]
