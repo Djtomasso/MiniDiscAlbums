@@ -23,7 +23,12 @@
     .toolbar{position:sticky;top:64px;z-index:4;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px}
     .search{display:flex;gap:8px}
     .search input{flex:1;background:#0e0e0e;border:0;color:var(--text);padding:10px;border-radius:10px}
-    .search button{background:#151515;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px;cursor:pointer}
+    .search button{background:#151515;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px}
+    /* BIO-sectie */
+    .bio{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:14px;line-height:1.55}
+    .bio p{margin:0 0 .9rem 0}
+    .bio p:last-child{margin-bottom:0}
+
     main.tracks{display:grid;gap:10px}
     .item{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:12px;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start}
     .idx{min-width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--border);border-radius:8px;background:#151515;font-weight:700}
@@ -38,37 +43,19 @@
     .galleryRow{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:12px;display:grid;gap:10px}
     .galleryRow h3{margin:0 0 6px 0;font-size:1rem;color:var(--muted);font-weight:600}
 
-    /* GRID-COLUMNS per viewport
-       - Mobiel: 1 kolom  => nooit 3+1
-       - Tablet: 2 kolommen
-       - Desktop: 4 kolommen
-    */
+    /* GRID per viewport: mobiel 1, tablet 2, desktop 4 */
     .thumbGrid{display:grid;grid-template-columns:1fr;gap:10px}
     @media(min-width:560px){.thumbGrid{grid-template-columns:repeat(2,1fr)}}
     @media(min-width:760px){.thumbGrid{grid-template-columns:repeat(4,1fr)}}
 
-    /* Creatieve aspect-ratio per viewport
-       - Mobiel: 4:5 (portrait)
-       - Tablet: 3:2
-       - Desktop: 16:9 (cinematic)
-    */
-    .thumb{
-      width:100%;
-      aspect-ratio:4/5;           /* mobiel */
-      object-fit:cover;
-      background:#0c0c0c;border:1px solid #222;border-radius:10px;
-      cursor:zoom-in;transition:transform .08s ease;
-    }
-    @media(min-width:560px){ .thumb{ aspect-ratio:3/2; } }
-    @media(min-width:760px){ .thumb{ aspect-ratio:16/9; } }
+    /* Aspect-ratio per viewport: 4:5 / 3:2 / 16:9 */
+    .thumb{width:100%;aspect-ratio:4/5;object-fit:cover;background:#0c0c0c;border:1px solid #222;border-radius:10px;cursor:zoom-in;transition:transform .08s ease}
+    @media(min-width:560px){ .thumb{ aspect-ratio:3/2 } }
+    @media(min-width:760px){ .thumb{ aspect-ratio:16/9 } }
     .thumb:hover{transform:scale(1.01)}
 
     /* Lightbox */
-    .lightbox{
-      position:fixed;inset:0;display:none;place-items:center;
-      background:rgba(0,0,0,.86);backdrop-filter:saturate(115%) blur(2px);
-      z-index:9999;padding:16px;
-    }
+    .lightbox{position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.86);backdrop-filter:saturate(115%) blur(2px);z-index:9999;padding:16px}
     .lightbox.open{display:grid}
     .lb-inner{max-width:min(96vw,1200px);max-height:90vh;position:relative}
     .lb-img{max-width:100%;max-height:90vh;border-radius:12px;border:1px solid #333}
@@ -91,6 +78,15 @@
         <div class="sub" id="subtitle"></div>
       </div>
     </header>
+
+<!-- KORTE BIO ONDER ALBUMFOTO (Eros Ramazzotti — Due) -->
+<section class="bio" aria-label="Korte biografie van Eros Ramazzotti">
+  <p><b>Eros Ramazzotti</b> (1963, Rome) groeide in de jaren tachtig uit tot een van de grootste Italiaanse pop-iconen, geliefd om zijn herkenbare stem en meeslepende melodieën. Na zijn eerste successen werd zijn internationale doorbraak vooral gedragen door drie albums die zijn carrière hebben gedefinieerd.</p>
+  <p>Het eerste hoogtepunt was <i>In ogni senso</i> (1990). Met dit album bereikte Ramazzotti voor het eerst een wereldwijd publiek. De single <i>Se bastasse una canzone</i> groeide uit tot een van zijn meest geliefde nummers, waarin zijn vermogen om universele emoties te vertalen naar muziek volledig tot zijn recht kwam. Het album leidde tot optredens in de Verenigde Staten en Latijns-Amerika, waarmee hij zijn reputatie als internationaal artiest vestigde.</p>
+  <p>In 1993 volgde <i>Tutte storie</i>, een album dat zijn status nog verder verstevigde. Het leverde de hit <i>Cose della vita</i> op, een nummer dat later in duet met Tina Turner een wereldwijde klassieker werd. Het album combineerde krachtige poprock met de typisch Italiaanse passie en gaf Ramazzotti een vaste plek in de Europese hitlijsten.</p>
+  <p>Het derde meesterwerk, <i>Dove c’è musica</i> (1996), betekende een artistieke mijlpaal: voor het eerst produceerde Eros een album volledig zelf. De plaat verkocht miljoenen exemplaren en bracht tijdloze hits voort zoals <i>Più bella cosa</i> en <i>L’aurora</i>. Met dit album bewees hij niet alleen een zanger, maar ook een veelzijdige muzikant en producer te zijn.</p>
+</section>
+
 
     <nav class="toolbar" aria-label="Zoekbalk">
       <div class="search">
@@ -116,7 +112,7 @@
     </div>
   </div>
 
-  <!-- Data (ongewijzigd) -->
+  <!-- Data -->
   <script type="application/json" id="data">{
     "album_title": "Sempre Eros Due - Eros Ramazzotti",
     "subtitle": "",
@@ -158,7 +154,6 @@
   }</script>
 
   <script>
-    /* ===== Basis (titel/cover/zoek) ===== */
     const data = JSON.parse(document.getElementById("data").textContent);
     const $title = document.getElementById("albumTitle");
     const $subtitle = document.getElementById("subtitle");
@@ -180,14 +175,12 @@
       };
     }
 
-    function escapeHtml(s){ return (s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;","&gt;":">","\"":"&quot;","'":"&#039;"}[c])); }
+    function escapeHtml(s){ return (s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt","&gt":">","\"":"&quot;","'":"&#039;"}[c])); }
 
-    /* ===== Afbeeldingen: eros-33..eros-64 met extensie-fallback ===== */
-    const PHOTO_COUNT = 32;
-    const THUMBS_PER_ROW = 4;
-    const START_NUM = 33; // begint bij eros-33
+    /* Afbeeldingen: eros-33..eros-64 (ext: webp/jpg/jpeg/png) */
+    const PHOTO_COUNT = 32, THUMBS_PER_ROW = 4, START_NUM = 33;
     const makeName = (i) => `eros-${String(i).padStart(2,'0')}`;
-    const exts = ['webp','jpg','jpeg','png']; // voorkeur
+    const exts = ['webp','jpg','jpeg','png'];
 
     function resolveExistingSrc(basePath, basename, extensions){
       return new Promise((resolve)=>{
@@ -198,8 +191,7 @@
             resolve(`data:image/svg+xml;charset=utf-8,${svg}`); return;
           }
           const url = `${basePath}${basename}.${extensions[idx++]}`;
-          const probe = new Image();
-          probe.decoding = 'async';
+          const probe = new Image(); probe.decoding = 'async';
           probe.onload = () => { if(!done){ done=true; resolve(url); } };
           probe.onerror = () => { if(!done) tryNext(); };
           probe.src = url;
@@ -214,34 +206,27 @@
       return Promise.all(indices.map(n => resolveExistingSrc(base, makeName(n), exts)));
     }
 
-    /* ===== Interleaving: blokken van precies 4, verdeeld over tracks ===== */
     function computeGroupEvery(tracksLen, photosLen){
-      const requiredGroups = Math.ceil(photosLen / THUMBS_PER_ROW); // 32/4=8 groepen
-      return Math.max(1, Math.ceil(tracksLen / requiredGroups));    // bv. 32 tracks / 8 = 4 → elke 4 tracks
+      const requiredGroups = Math.ceil(photosLen / THUMBS_PER_ROW);
+      return Math.max(1, Math.ceil(tracksLen / requiredGroups));
     }
 
     function renderInterleaved(tracks, sources){
       $list.innerHTML = "";
-
-      const tracksLen = tracks.length;
-      const totalPhotos = sources.length;
-
+      const tracksLen = tracks.length, totalPhotos = sources.length;
       const GROUP_EVERY = computeGroupEvery(tracksLen, totalPhotos);
       const blockPoints = Math.ceil(tracksLen / GROUP_EVERY);
       const groupsWeCanShow = Math.min(blockPoints, Math.floor(totalPhotos / THUMBS_PER_ROW));
-      const photosPerGroup = THUMBS_PER_ROW; // exact 4 per blok
+      const photosPerGroup = THUMBS_PER_ROW;
 
-      let photoIdx = 0;
-      let groupIdx = 0;
+      let photoIdx = 0, groupIdx = 0;
 
       tracks.forEach((t, i) => {
-        // Trackkaart
         const card = document.createElement("div");
         card.className = "item";
 
         const idx = document.createElement("div");
-        idx.className = "idx";
-        idx.textContent = (i+1).toString();
+        idx.className = "idx"; idx.textContent = (i+1).toString();
         card.appendChild(idx);
 
         const meta = document.createElement("div");
@@ -273,15 +258,11 @@
         card.appendChild(meta);
         $list.appendChild(card);
 
-        // Fotoblok bij groepsgrens (alleen complete rijen)
         const isGroupEnd = ((i+1) % GROUP_EVERY === 0) || (i === tracksLen - 1);
         if (isGroupEnd && groupIdx < groupsWeCanShow){
-          const row = document.createElement('div');
-          row.className = 'galleryRow';
+          const row = document.createElement('div'); row.className = 'galleryRow';
           row.innerHTML = `<h3>Foto’s</h3>`;
-
-          const grid = document.createElement('div');
-          grid.className = 'thumbGrid';
+          const grid = document.createElement('div'); grid.className = 'thumbGrid';
 
           for (let k=0; k<photosPerGroup; k++){
             const globalIndex = photoIdx;
@@ -290,10 +271,8 @@
             const img = document.createElement('img');
             img.className = 'thumb';
             img.alt = `Eros foto ${globalIndex+1}`;
-            img.loading = 'lazy';
-            img.decoding = 'async';
-            img.src = src;
-            img.dataset.index = String(globalIndex);
+            img.loading = 'lazy'; img.decoding = 'async';
+            img.src = src; img.dataset.index = String(globalIndex);
             img.addEventListener('click', (e) => {
               const idx = Number(e.currentTarget.dataset.index);
               openLightbox(idx, sources);
@@ -310,21 +289,6 @@
       });
     }
 
-    /* ===== Filter ===== */
-    function applyFilter(allTracks, sources){
-      const q = ($filter.value||"").toLowerCase().trim();
-      if(!q){ renderInterleaved(allTracks, sources); return; }
-      const filtered = allTracks.filter(t =>
-        (t.title||"").toLowerCase().includes(q) ||
-        (t.artist||"").toLowerCase().includes(q)
-      );
-      renderInterleaved(filtered, sources);
-    }
-
-    $filter.addEventListener("input", () => applyFilter(data.tracks, window.__gallerySources || []));
-    $clear.addEventListener("click", () => { $filter.value=""; applyFilter(data.tracks, window.__gallerySources || []); $filter.focus(); });
-
-    /* ===== Lightbox ===== */
     const lb = document.getElementById('lightbox');
     const lbImg = document.getElementById('lb-img');
     const btnPrev = document.getElementById('lb-prev');
@@ -333,20 +297,11 @@
     let current = 0;
 
     function openLightbox(i, list = window.__gallerySources){
-      current = i;
-      updateLightbox(list);
+      current = i; updateLightbox(list);
       lb.classList.add('open');
-      document.body.style.overflow = 'hidden';
     }
-    function closeLightbox(){
-      lb.classList.remove('open');
-      document.body.style.overflow = '';
-      lbImg.src = ''; lbImg.alt = '';
-    }
-    function updateLightbox(list = window.__gallerySources){
-      lbImg.src = list[current];
-      lbImg.alt = `Eros foto ${current+1}`;
-    }
+    function closeLightbox(){ lb.classList.remove('open'); lbImg.src = ''; lbImg.alt = ''; }
+    function updateLightbox(list = window.__gallerySources){ lbImg.src = list[current]; lbImg.alt = `Eros foto ${current+1}`; }
     function prev(list = window.__gallerySources){ current = (current - 1 + list.length) % list.length; updateLightbox(list); }
     function next(list = window.__gallerySources){ current = (current + 1) % list.length; updateLightbox(list); }
 
@@ -360,20 +315,17 @@
       if(e.key === 'ArrowLeft') prev();
       if(e.key === 'ArrowRight') next();
     });
-    // Swipe
     let sx=0, sy=0;
     lb?.addEventListener('touchstart',(e)=>{ sx=e.touches[0].clientX; sy=e.touches[0].clientY; },{passive:true});
     lb?.addEventListener('touchend',(e)=>{
-      const dx=e.changedTouches[0].clientX - sx;
-      const dy=e.changedTouches[0].clientY - sy;
+      const dx=e.changedTouches[0].clientX - sx, dy=e.changedTouches[0].clientY - sy;
       if(Math.abs(dx)>Math.abs(dy) && Math.abs(dx)>30){ dx>0 ? prev() : next(); }
     },{passive:true});
 
-    /* ===== Start ===== */
     (async () => {
-      const srcList = await buildSrcList();          // 32 paden (eros-33..eros-64) met extensie-fallback
+      const srcList = await buildSrcList();
       window.__gallerySources = srcList;
-      applyFilter(data.tracks, srcList);             // render + zoek
+      renderInterleaved(data.tracks, srcList);
     })();
   </script>
 </body>
