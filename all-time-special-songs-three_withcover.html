@@ -8,17 +8,23 @@
 :root{--bg:#0a0a0a;--surface:#121212;--surface2:#161616;--text:#f6f6f6;--muted:#bdbdbd;--border:#2a2a2a}
 *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
 .wrap{max-width:860px;margin:auto;padding:16px;display:grid;gap:16px}
-.topnav{display:flex;gap:10px;align-items:center;padding:10px;background:#0e0e0e;border:1px solid var(--border);border-radius:10px;position:sticky;top:0;z-index:5}
-.search{display:flex;gap:10px;align-items:center;width:100%}
-.search input[type=search]{flex:1;background:#0f0f0f;border:1px solid var(--border);color:var(--text);padding:10px;border-radius:10px}
-.search button{background:#161616;border:1px solid var(--border);color:var(--text);padding:10px 12px;border-radius:10px}
+
+/* Kleine topbalk uitsluitend voor Hoofdmenu */
+.topnav{display:flex;gap:10px;align-items:center;padding:10px;background:#0e0e0e;border:1px solid var(--border);border-radius:10px}
 .homebtn{display:inline-block;background:#191919;border:1px solid var(--border);padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--text)}
 .homebtn:hover{background:#222}
+
 header.hero{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#101010}
 header .cover img{width:100%;display:block;background:#0f0f0f;aspect-ratio:1/1;object-fit:cover}
 .titlebar{padding:12px 14px;background:var(--surface2);border-top:1px solid var(--border)}
 .titlebar h1{margin:0;font-size:1.25rem}
 .titlebar .sub{color:var(--muted)}
+
+/* Zoekbalk als eigen balk ONDER het album */
+.searchbar{display:flex;gap:10px;align-items:center;padding:10px;background:#0e0e0e;border:1px solid var(--border);border-radius:10px}
+.searchbar input[type=search]{flex:1;background:#0f0f0f;border:1px solid var(--border);color:var(--text);padding:10px;border-radius:10px}
+.searchbar button{background:#161616;border:1px solid var(--border);color:var(--text);padding:10px 12px;border-radius:10px}
+
 main.tracks{display:grid;gap:10px}
 .item{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:12px;display:grid;grid-template-columns:52px 36px 1fr;gap:10px;align-items:center}
 .thumb{width:52px;height:52px;border-radius:10px;object-fit:cover;border:1px solid var(--border);background:#191919;transition:transform .25s ease}
@@ -33,12 +39,9 @@ footer{color:var(--muted);text-align:center;padding:10px}
 </head>
 <body>
 <div class="wrap">
+  <!-- Alleen Hoofdmenu bovenaan -->
   <nav class="topnav" aria-label="Hoofdmenu">
     <a class="homebtn" href="index.html">← Hoofdmenu</a>
-    <div class="search">
-      <input id="filter" type="search" placeholder="Zoek in titels of artiest…" />
-      <button id="clearBtn" type="button">Wissen</button>
-    </div>
   </nav>
 
   <header class="hero">
@@ -49,11 +52,16 @@ footer{color:var(--muted);text-align:center;padding:10px}
     </div>
   </header>
 
+  <!-- Zoekbalk onder het album (zoals bij One/Two) -->
+  <div class="searchbar">
+    <input id="filter" type="search" placeholder="Zoek in titels of artiest…" />
+    <button id="clearBtn" type="button">Wissen</button>
+  </div>
+
   <main id="list" class="tracks" aria-live="polite"></main>
   <footer>album samengesteld door Tomasso 2025</footer>
 </div>
 
-<!-- DATA: je directe cover-URL’s -->
 <script type="application/json" id="data">{
   "album_title": "All Time Special Songs Three",
   "subtitle": "",
@@ -126,15 +134,11 @@ function setAlbumCover(u){
 }
 setAlbumCover(data.cover || "");
 
-// URL-escape voor HTML
 function esc(s){ return (s||"").replace(/[&<>\"']/g,c=>({"&":"&amp;","<":"&lt;","&gt;":">","\"":"&quot;","'":"&#039;"}[c])); }
 
-// Proxy-resolver (alleen als direct laden faalt)
 function resolveProxy(u){
-  try {
-    const raw = u.replace(/^https?:\/\//,'');
-    return 'https://images.weserv.nl/?url=' + encodeURIComponent(raw);
-  } catch(e){ return u; }
+  try { const raw = u.replace(/^https?:\/\//,''); return 'https://images.weserv.nl/?url=' + encodeURIComponent(raw); }
+  catch(e){ return u; }
 }
 
 function render(items){
@@ -144,67 +148,32 @@ function render(items){
     return;
   }
   items.forEach((t,i)=>{
-    const card = document.createElement('div');
-    card.className = 'item';
+    const card = document.createElement('div'); card.className='item';
 
-    const img = document.createElement('img');
-    img.className = 'thumb';
-    img.alt = (t.title||'') + ' – ' + (t.artist||'');
-
-    // 1) probeer de directe URL
-    let triedProxy = false;
-    if (t.cover) {
-      img.referrerPolicy = 'no-referrer';
-      img.src = t.cover;
-      img.onerror = ()=>{
-        // 2) als direct laden faalt: probeer een proxy-weergave
-        if (!triedProxy) {
-          triedProxy = true;
-          img.src = resolveProxy(t.cover);
-        } else {
-          // 3) als zelfs dat faalt: markeer visueel
-          img.style.borderColor='#f44';
-          img.title='cover kon niet laden: '+(t.cover||'');
-        }
-      };
+    const img = document.createElement('img'); img.className='thumb';
+    img.alt = (t.title||'')+' – '+(t.artist||'');
+    let triedProxy=false;
+    if(t.cover){
+      img.referrerPolicy='no-referrer';
+      img.src=t.cover;
+      img.onerror=()=>{ if(!triedProxy){ triedProxy=true; img.src=resolveProxy(t.cover); } else { img.style.borderColor='#f44'; } };
     } else {
       img.style.objectFit='contain'; img.style.background='#222';
       img.src='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="52" height="52"><rect width="100%" height="100%" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#aaa" font-family="system-ui,Arial" font-size="16">—</text></svg>');
     }
     card.appendChild(img);
 
-    const idx = document.createElement('div');
-    idx.className = 'idx';
-    idx.textContent = String(i+1);
-    card.appendChild(idx);
+    const idx=document.createElement('div'); idx.className='idx'; idx.textContent=String(i+1); card.appendChild(idx);
 
-    const meta = document.createElement('div');
-    meta.className = 'meta';
-    meta.innerHTML = '<b>'+esc(t.title||'')+'</b><span class="artist">'+esc(t.artist||'')+'</span>';
+    const meta=document.createElement('div'); meta.className='meta';
+    meta.innerHTML='<b>'+esc(t.title||'')+'</b><span class="artist">'+esc(t.artist||'')+'</span>';
 
-    // Acties
-    const actions = document.createElement('div');
-    actions.className = 'actions';
-
-    // Link om originele cover-URL te openen (handig testen)
-    if (t.cover) {
-      const link = document.createElement('a');
-      link.className = 'btn';
-      link.href = t.cover; link.target = '_blank'; link.rel = 'noopener';
-      link.textContent = 'Cover openen';
-      actions.appendChild(link);
-    }
-
-    if (t.youtube) {
-      const a = document.createElement('a');
-      a.className = 'btn'; a.href = t.youtube; a.target='_blank'; a.rel='noopener';
-      a.textContent = 'YouTube (zoek)';
-      actions.appendChild(a);
-    }
-
+    const actions=document.createElement('div'); actions.className='actions';
+    if(t.cover){ const link=document.createElement('a'); link.className='btn'; link.href=t.cover; link.target='_blank'; link.rel='noopener'; link.textContent='Cover openen'; actions.appendChild(link); }
+    if(t.youtube){ const a=document.createElement('a'); a.className='btn'; a.href=t.youtube; a.target='_blank'; a.rel='noopener'; a.textContent='YouTube (zoek)'; actions.appendChild(a); }
     meta.appendChild(actions);
-    card.appendChild(meta);
-    $list.appendChild(card);
+
+    card.appendChild(meta); $list.appendChild(card);
   });
 }
 
