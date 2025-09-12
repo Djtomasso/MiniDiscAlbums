@@ -1,146 +1,225 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>All Time Special Songs Three — Tracklist</title>
-  <meta name="theme-color" content="#0a0a0a">
-  <style>
-    :root{--bg:#0a0a0a;--surface:#121212;--surface2:#151515;--text:#f5f5f5;--muted:#c7c7c7;--border:#2a2a2a;--focus:#fff}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;background:var(--bg);color:var(--text)}
-    .wrap{max-width:820px;margin:auto;padding:16px;display:grid;gap:16px}
-    header.hero{border:1px solid var(--border);background:var(--surface);border-radius:16px;overflow:hidden}
-    .topnav{display:flex;gap:10px;align-items:center;padding:10px;background:#0e0e0e;border:1px solid var(--border);border-radius:10px;position:sticky;top:0;z-index:5}
-    .homebtn{display:inline-block;background:#191919;border:1px solid var(--border);padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--text)}
-    .homebtn:hover{background:#222}
-    .cover img{width:100%;height:auto;display:block}
-    .titlebar{padding:14px;background:var(--surface2);border-top:1px solid var(--border)}
-    h1{margin:0;font-size:1.3rem}
-    .sub{color:var(--muted)}
-    .toolbar{position:sticky;top:64px;z-index:4;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px}
-    .search{display:flex;gap:8px}
-    .search input{flex:1;background:#0e0e0e;border:0;color:var(--text);padding:10px;border-radius:10px}
-    .search button{background:#151515;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px}
-    main.tracks{display:grid;gap:10px}
-    .item{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:12px;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start}
-    .idx{min-width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--border);border-radius:8px;background:#151515;font-weight:700}
-    .meta{display:block}
-    .meta b{display:block;font-size:1rem;line-height:1.3}
-    .artist{display:block;color:var(--muted);margin-top:2px}
-    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-    a.btn{background:#151515;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:8px 10px;text-decoration:none;font-size:.95rem}
-    a.btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
-    footer{color:var(--muted);font-size:.9rem;text-align:center;padding:10px}
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>All Time Special Songs Three</title>
+<style>
+:root{--bg:#0a0a0a;--surface:#121212;--surface2:#161616;--text:#f6f6f6;--muted:#bdbdbd;--border:#2a2a2a}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
+.wrap{max-width:860px;margin:auto;padding:16px;display:grid;gap:16px}
+.topnav{display:flex;gap:10px;align-items:center;padding:10px;background:#0e0e0e;border:1px solid var(--border);border-radius:10px;position:sticky;top:0;z-index:5}
+.search{display:flex;gap:10px;align-items:center;width:100%}
+.search input[type=search]{flex:1;background:#0f0f0f;border:1px solid var(--border);color:var(--text);padding:10px;border-radius:10px}
+.search button{background:#161616;border:1px solid var(--border);color:var(--text);padding:10px 12px;border-radius:10px}
+.homebtn{display:inline-block;background:#191919;border:1px solid var(--border);padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--text)}
+.homebtn:hover{background:#222}
+header.hero{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#101010}
+header .cover img{width:100%;display:block;background:#0f0f0f;aspect-ratio:1/1;object-fit:cover}
+.titlebar{padding:12px 14px;background:var(--surface2);border-top:1px solid var(--border)}
+.titlebar h1{margin:0;font-size:1.25rem}
+.titlebar .sub{color:var(--muted)}
+main.tracks{display:grid;gap:10px}
+.item{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:12px;display:grid;grid-template-columns:52px 36px 1fr;gap:10px;align-items:center}
+.thumb{width:52px;height:52px;border-radius:10px;object-fit:cover;border:1px solid var(--border);background:#191919;transition:transform .25s ease}
+.thumb:hover{transform:scale(2.5);z-index:10;position:relative}
+.idx{min-width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--border);border-radius:8px;background:#161616;font-weight:700}
+.meta b{display:block;font-size:1rem;line-height:1.3}
+.artist{display:block;color:var(--muted);margin-top:2px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+a.btn{background:#151515;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:8px 10px;text-decoration:none;font-size:.95rem}
+footer{color:var(--muted);text-align:center;padding:10px}
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <nav class="topnav" aria-label="Hoofdmenu">
-      <a class="homebtn" href="index.html">← Hoofdmenu</a>
-    </nav>
+<div class="wrap">
+  <nav class="topnav" aria-label="Hoofdmenu">
+    <a class="homebtn" href="index.html">← Hoofdmenu</a>
+    <div class="search">
+      <input id="filter" type="search" placeholder="Zoek in titels of artiest…" />
+      <button id="clearBtn" type="button">Wissen</button>
+    </div>
+  </nav>
 
-    <header class="hero" role="banner">
-      <div class="cover"><img id="cover" alt="Albumcover"></div>
-      <div class="titlebar">
-        <h1 id="albumTitle"></h1>
-        <div class="sub" id="subtitle"></div>
-      </div>
-    </header>
+  <header class="hero">
+    <div class="cover"><img id="albumCover" alt="Album cover"></div>
+    <div class="titlebar">
+      <h1 id="title"></h1>
+      <div class="sub" id="subtitle"></div>
+    </div>
+  </header>
 
-    <nav class="toolbar" aria-label="Zoekbalk">
-      <div class="search">
-        <input id="filter" type="search" placeholder="Zoek in titels of artiest…" aria-label="Zoek in titels of artiest">
-        <button id="clearBtn" type="button">Wissen</button>
-      </div>
-    </nav>
+  <main id="list" class="tracks" aria-live="polite"></main>
+  <footer>album samengesteld door Tomasso 2025</footer>
+</div>
 
-    <main id="list" class="tracks" aria-live="polite"></main>
+<!-- DATA: je directe cover-URL’s -->
+<script type="application/json" id="data">{
+  "album_title": "All Time Special Songs Three",
+  "subtitle": "",
+  "cover": "image/alltimespecial3.png",
+  "tracks": [
+    {"artist":"The Chimes","title":"Heaven","cover":"https://www.top40.nl/media/cache/related/uploads/subtitle/18138/original.jpg"},
+    {"artist":"Ace of Base","title":"Lucky Love","cover":"https://www.top40.nl/media/cache/related/uploads/subtitle/9036/original.jpg"},
+    {"artist":"Champaign","title":"How ’Bout Us (Single Version)","cover":"https://www.top40.nl/media/cache/related/uploads/subtitle/6675/original.jpg"},
+    {"artist":"Paul Simon","title":"Diamonds on the Soles of Her Shoes","cover":"https://upload.wikimedia.org/wikipedia/en/thumb/f/f5/Diamondssoles.jpeg/250px-Diamondssoles.jpeg"},
+    {"artist":"Wendy & Lisa","title":"Strung Out","cover":"https://www.top40.nl/media/cache/related/uploads/subtitle/10700/original.jpg"},
+    {"artist":"Take That","title":"These Days","cover":"https://upload.wikimedia.org/wikipedia/en/9/9f/TheseDayssinglecover.jpg"},
+    {"artist":"Eighth Wonder","title":"I’m Not Scared","cover":"https://www.top40.nl/media/cache/related/uploads/subtitle/14336/original.jpg"},
+    {"artist":"Justin Timberlake feat. JAY-Z","title":"Suit & Tie","cover":"https://www.top40.nl/media/cache/related/uploads/title/22886/original.jpg"},
+    {"artist":"Beyoncé","title":"Love On Top","cover":"https://www.top40.nl/media/cache/related/uploads/title/10844/original.jpg"},
+    {"artist":"Sia","title":"Chandelier","cover":"https://www.top40.nl/media/cache/related/uploads/title/37012/original.jpg"},
+    {"artist":"Jess Glynne","title":"Hold My Hand","cover":"https://www.top40.nl/media/cache/related/uploads/title/46837/original.jpg"},
+    {"artist":"Jon & Vangelis","title":"I’ll Find My Way Home","cover":"https://www.top40.nl/media/cache/related/uploads/title/27638/original.jpg"},
+    {"artist":"Jon Anderson","title":"Hold On to Love","cover":"https://www.top40.nl/media/cache/related/uploads/subtitle/6585/original.jpg"},
+    {"artist":"Adiemus","title":"Adiemus","cover":"https://www.top40.nl/media/cache/related/uploads/subtitle/126/original.jpg"},
 
-    <footer>album samengesteld door Tomasso 2025</footer>
-  </div>
+    {"artist":"ABBA","title":"Slipping Through My Fingers","cover":"https://i.discogs.com/ypStgGGfqYlHt8uVS1ram7horSg3v71xR4jqXQG-Esg/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTYxODMw/MS0xNTM3NzEzNTg0/LTgxNjguanBlZw.jpeg"},
+    {"artist":"Laid Back","title":"Bakerman","cover":"https://www.top40.nl/media/cache/related/uploads/title/25583/original.jpg"},
+    {"artist":"Ace","title":"How Long","cover":"https://www.top40.nl/media/cache/related/uploads/title/23735/original.jpg"},
+    {"artist":"Herb Alpert","title":"Keep Your Eye On Me","cover":"https://www.top40.nl/media/cache/related/uploads/title/25780/original.jpg"},
+    {"artist":"Skipper Wise","title":"Standing Outside In The Rain","cover":"https://www.top40.nl/media/cache/related/uploads/subtitle/6775/original.jpg"},
+    {"artist":"Scritti Politti","title":"Boom! There She Was (US Mix)","cover":"https://i.discogs.com/mCy9ih6yhG_CrJ9ER0ntCUvnoyP1RCUMrdtCF4MaWCA/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTIyMTMy/NjMtMTQ3OTU3NzEx/MS0zMjg1LmpwZWc.jpeg"},
 
-  <script type="application/json" id="data">{"album_title": "All Time Special Songs Three", "subtitle": "", "cover": "image/alltimespecial3.png", "tracks": [{"title": "Heaven", "artist": "The Chimes", "youtube": "https://www.youtube.com/results?search_query=Heaven+The+Chimes"}, {"title": "Lucky Love", "artist": "Ace of Base", "youtube": "https://www.youtube.com/results?search_query=Lucky+Love+Ace+of+Base"}, {"title": "Boom! There She Was - US Mix", "artist": "Scritti Politti", "youtube": "https://www.youtube.com/results?search_query=Boom!+There+She+Was+-+US+Mix+Scritti+Politti"}, {"title": "How 'Bout Us - Single Version", "artist": "Champaign", "youtube": "https://www.youtube.com/results?search_query=How+'Bout+Us+-+Single+Version+Champaign"}, {"title": "Standing Outside in the Rain", "artist": "Skipper Wise", "youtube": "https://www.youtube.com/results?search_query=Standing+Outside+in+the+Rain+Skipper+Wise"}, {"title": "De Magische Klok _By The Sleepy Lagoon_", "artist": "Efteling", "youtube": "https://www.youtube.com/results?search_query=De+Magische+Klok+_By+The+Sleepy+Lagoon_+Efteling"}, {"title": "Diamonds on the Soles of Her Shoes", "artist": "Paul Simon", "youtube": "https://www.youtube.com/results?search_query=Diamonds+on+the+Soles+of+Her+Shoes+Paul+Simon"}, {"title": "Strung Out", "artist": "Wendy & Lisa", "youtube": "https://www.youtube.com/results?search_query=Strung+Out+Wendy+&+Lisa"}, {"title": "These Days", "artist": "Take That", "youtube": "https://www.youtube.com/results?search_query=These+Days+Take+That"}, {"title": "I'm Not Scared", "artist": "Eighth Wonder", "youtube": "https://www.youtube.com/results?search_query=I'm+Not+Scared+Eighth+Wonder"}, {"title": "Kiss My Eyes - Made In Jamaica Album Version", "artist": "Bob Sinclar\\Camille Lefort", "youtube": "https://www.youtube.com/results?search_query=Kiss+My+Eyes+-+Made+In+Jamaica+Album+Version+Bob+Sinclar\\Camille+Lefort"}, {"title": "Make the World Go Round (feat. R.Kelly)", "artist": "DJ Cassidy", "youtube": "https://www.youtube.com/results?search_query=Make+the+World+Go+Round+(feat.+R.Kelly)+DJ+Cassidy"}, {"title": "More Than You'll Ever Know", "artist": "Milli Vanilli", "youtube": "https://www.youtube.com/results?search_query=More+Than+You'll+Ever+Know+Milli+Vanilli"}, {"title": "Foto's Van Jou En Mij (Flits)", "artist": "F en de broer van Roos", "youtube": "https://www.youtube.com/results?search_query=Foto's+Van+Jou+En+Mij+(Flits)+F+en+de+broer+van+Roos"}, {"title": "Love On Top", "artist": "Beyonce", "youtube": "https://www.youtube.com/results?search_query=Love+On+Top+Beyonce"}, {"title": "Que Bueno Bailas", "artist": "Sparx", "youtube": "https://www.youtube.com/results?search_query=Que+Bueno+Bailas+Sparx"}, {"title": "Suit & Tie (feat. JAY-Z)", "artist": "Justin Timberlake", "youtube": "https://www.youtube.com/results?search_query=Suit+&+Tie+(feat.+JAY-Z)+Justin+Timberlake"}, {"title": "Chandelier", "artist": "Sia", "youtube": "https://www.youtube.com/results?search_query=Chandelier+Sia"}, {"title": "Hold My Hand", "artist": "Jess Glynne", "youtube": "https://www.youtube.com/results?search_query=Hold+My+Hand+Jess+Glynne"}, {"title": "Rise to the Occasion - Hip-Hop Version", "artist": "Climie Fisher", "youtube": "https://www.youtube.com/results?search_query=Rise+to+the+Occasion+-+Hip-Hop+Version+Climie+Fisher"}, {"title": "Workin' Out Fine", "artist": "Princess Freesia", "youtube": "https://www.youtube.com/results?search_query=Workin'+Out+Fine+Princess+Freesia"}, {"title": "All True Man", "artist": "Alexander O'Neal", "youtube": "https://www.youtube.com/results?search_query=All+True+Man+Alexander+O'Neal"}, {"title": "Make That Move - Single Version", "artist": "Shalamar", "youtube": "https://www.youtube.com/results?search_query=Make+That+Move+-+Single+Version+Shalamar"}, {"title": "Only A Fool (Breaks His Own Heart)", "artist": "Mighty Sparrow & Byron Lee", "youtube": "https://www.youtube.com/results?search_query=Only+A+Fool+(Breaks+His+Own+Heart)+Mighty+Sparrow+&+Byron+Lee"}, {"title": "This I Swear", "artist": "Richard Darbyshire", "youtube": "https://www.youtube.com/results?search_query=This+I+Swear+Richard+Darbyshire"}, {"title": "Hold On to Love", "artist": "Jon Anderson", "youtube": "https://www.youtube.com/results?search_query=Hold+On+to+Love+Jon+Anderson"}, {"title": "I'll Find My Way Home - Remastered", "artist": "Jon & Vangelis", "youtube": "https://www.youtube.com/results?search_query=I'll+Find+My+Way+Home+-+Remastered+Jon+&+Vangelis"}, {"title": "Adiemus", "artist": "Adiemus", "youtube": "https://www.youtube.com/results?search_query=Adiemus+Adiemus"}, {"title": "Slipping Through My Fingers", "artist": "ABBA", "youtube": "https://www.youtube.com/results?search_query=Slipping+Through+My+Fingers+ABBA"}, {"title": "Bakerman", "artist": "Laid Back", "youtube": "https://www.youtube.com/results?search_query=Bakerman+Laid+Back"}, {"title": "How Long - Remastered", "artist": "Paul Carrack", "youtube": "https://www.youtube.com/results?search_query=How+Long+-+Remastered+Paul+Carrack"}, {"title": "Keep Your Eye On Me", "artist": "Herb Alpert", "youtube": "https://www.youtube.com/results?search_query=Keep+Your+Eye+On+Me+Herb+Alpert"}, {"title": "When I Looked at Him", "artist": "Expose", "youtube": "https://www.youtube.com/results?search_query=When+I+Looked+at+Him+Expose"}, {"title": "Crunchy Granola Suite", "artist": "Percy Faith", "youtube": "https://www.youtube.com/results?search_query=Crunchy+Granola+Suite+Percy+Faith"}, {"title": "Get Dat", "artist": "Rayelle", "youtube": "https://www.youtube.com/results?search_query=Get+Dat+Rayelle"}, {"title": "Good Morning Starshine", "artist": "Oliver", "youtube": "https://www.youtube.com/results?search_query=Good+Morning+Starshine+Oliver"}, {"title": "Heather", "artist": "Carpenters", "youtube": "https://www.youtube.com/results?search_query=Heather+Carpenters"}, {"title": "Till Death Do Us Part", "artist": "Madonna", "youtube": "https://www.youtube.com/results?search_query=Till+Death+Do+Us+Part+Madonna"}]}</script>
+    {"artist":"Efteling","title":"De Magische Klok (By The Sleepy Lagoon)","cover":"https://m.media-amazon.com/images/I/61cvQueILvL._UX420_FMwebp_QL85_.jpg"},
+    {"artist":"Bob Sinclar & Camille Lefort","title":"Kiss My Eyes (Made In Jamaica)","cover":"https://i.discogs.com/oUWFth6qvMoJ9ZCSrLM9MZXMmX2frL6KSFB1DcrqXko/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ2NTM4/NDEtMTU0NDk4Njc0/Ni0yOTc5LmpwZWc.jpeg"},
+    {"artist":"DJ Cassidy feat. R. Kelly","title":"Make the World Go ’Round","cover":"https://i.discogs.com/NBM6LTx4XSsM2G5MVnanEWdEJgCi26hxLJHXp7aaoWM/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU5MDQz/MzMtMTcwMjc0NjUw/NC0xNTEzLmpwZWc.jpeg"},
+    {"artist":"Milli Vanilli","title":"More Than You’ll Ever Know","cover":"https://i.discogs.com/g4SkraD-F6YgZWO6fBKZBJaUSjcTZnxn88MHGuBgnSg/rs:fit/g:sm/q:90/h:587/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyNzQ4/MDctMTM0NjU5NTEy/MC03MTMxLmpwZWc.jpeg"},
+    {"artist":"F en de broer van Roos","title":"Foto’s Van Jou En Mij (Flits)","cover":"https://images.genius.com/8fc7d86bdbf3122135ceb8f7ac436532.640x640x1.jpg"},
+    {"artist":"Sparx","title":"Qué Bueno Bailas","cover":"https://i.discogs.com/0rl3swacOYUvPZMO61UOzScbjbJelDGyDXebSmq9H0o/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE0NTA2/OTU3LTE1NzU5MzIz/OTQtNDQ1My5qcGVn.jpeg"},
+    {"artist":"Climie Fisher","title":"Rise To The Occasion (Hip-Hop Version)","cover":"https://www.top40.nl/media/cache/related/uploads/subtitle/5704/original.jpg"},
 
-  <script>
-    const data = JSON.parse(document.getElementById("data").textContent);
-    const $title = document.getElementById("albumTitle");
-    const $subtitle = document.getElementById("subtitle");
-    const $list = document.getElementById("list");
-    const $filter = document.getElementById("filter");
-    const $clear = document.getElementById("clearBtn");
-    const $cover = document.getElementById("cover");
+    {"artist":"Princess Freesia","title":"Workin’ Out Fine","cover":"https://f4.bcbits.com/img/a3178498875_10.jpg"},
+    {"artist":"Alexander O’Neal","title":"All True Man","cover":"https://www.top40.nl/media/cache/related/uploads/subtitle/223/original.jpg"},
 
-    $title.textContent = data.album_title || "Album";
-    $subtitle.textContent = data.subtitle || "";
+    {"artist":"Shalamar","title":"Make That Move (Single Version)","cover":"https://i.discogs.com/fx0TLbHdnr9TUaxBbOvgFnen_jt1d3zKOTFmUcK7bLQ/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTExMTY0/NjEtMTQ2MDkwMTk5/Ny04ODI5LmpwZWc.jpeg"},
+    {"artist":"Mighty Sparrow & Byron Lee","title":"Only A Fool (Breaks His Own Heart)","cover":"https://www.top40.nl/media/cache/related/uploads/title/19156/original.jpg"},
+    {"artist":"Richard Darbyshire","title":"This I Swear","cover":"https://i.discogs.com/CTLYqw-bOD98jByXAFt5DaMsI3iJtmlLIXNbnYDPA5s/rs:fit/g:sm/q:90/h:500/w:500/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE1MDQ2/ODk2LTE1ODU5NzM4/NzItNTEzOC5qcGVn.jpeg"},
+    {"artist":"Exposé","title":"When I Looked At Him","cover":"https://www.top40.nl/media/cache/related/uploads/subtitle/9789_8684/original.jpg"},
+    {"artist":"Percy Faith","title":"Crunchy Granola Suite","cover":"https://www.top40.nl/media/cache/related/uploads/subtitle/12821/original.jpg"},
+    {"artist":"Rayelle","title":"Get Dat","cover":"https://i1.sndcdn.com/artworks-000496349562-jjwzjl-t500x500.jpg"},
+    {"artist":"Oliver","title":"Good Morning Starshine","cover":"https://www.top40.nl/media/cache/related/uploads/subtitle/6047/original.jpg"},
+    {"artist":"Carpenters","title":"Heather","cover":"https://i.discogs.com/Fmzp8sXLX5wkS6b-5yT8bIEfMTM_MWGL3opSjyIw4P0/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE4MDQ5/NzMtMTQwNzQ0NjE1/OS0xODg4LmpwZWc.jpeg"},
+    {"artist":"Madonna","title":"Till Death Do Us Part","cover":"https://www.hot-vinyl.com/cache/images/104195.jpg"}
+  ]
+}</script>
 
-    if (data.cover) {
-      $cover.src = data.cover;
-      $cover.onerror = () => { 
-        if ($cover.src.endsWith(data.cover)) { 
-          $cover.onerror = null; 
-          $cover.src = data.cover.replace(/^image\//, ""); 
-        } 
-      };
-    }
+<script>
+const data = JSON.parse(document.getElementById('data').textContent);
+const $list = document.getElementById('list');
+const $filter = document.getElementById('filter');
+const $clear = document.getElementById('clearBtn');
+const $title = document.getElementById('title');
+const $subtitle = document.getElementById('subtitle');
+const $albumCover = document.getElementById('albumCover');
 
-    function escapeHtml(s){ return (s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;","&gt;":">","\"":"&quot;","'":"&#039;"}[c])); }
+$title.textContent = data.album_title || "Album";
+$subtitle.textContent = data.subtitle || "";
 
-    function render(items){
-      $list.innerHTML = "";
-      if(!items.length){ $list.innerHTML = "<div class='item'><div class='meta'><span class='artist'>Geen resultaten…</span></div></div>"; return; }
-      items.forEach((t, i) => {
-        const card = document.createElement("div");
-        card.className = "item";
+// Albumcover met eenvoudige fallback paden
+function setAlbumCover(u){
+  if(!u) return;
+  const variants = [u, u.replace(/^image\//,''), './'+u, u.replace(/^\.\/image\//,'image/'), u.replace(/^images\//,'image/')];
+  let i = 0;
+  $albumCover.onerror = ()=>{ if (++i < variants.length) $albumCover.src = variants[i]; };
+  $albumCover.src = variants[i];
+}
+setAlbumCover(data.cover || "");
 
-        const idx = document.createElement("div");
-        idx.className = "idx";
-        idx.textContent = (i+1).toString();
-        card.appendChild(idx);
+// URL-escape voor HTML
+function esc(s){ return (s||"").replace(/[&<>\"']/g,c=>({"&":"&amp;","<":"&lt;","&gt;":">","\"":"&quot;","'":"&#039;"}[c])); }
 
-        const meta = document.createElement("div");
-        meta.className = "meta";
-        meta.innerHTML = `<b>${escapeHtml(t.title||"")}</b><span class="artist">${escapeHtml(t.artist||"")}</span>`;
+// Proxy-resolver (alleen als direct laden faalt)
+function resolveProxy(u){
+  try {
+    const raw = u.replace(/^https?:\/\//,'');
+    return 'https://images.weserv.nl/?url=' + encodeURIComponent(raw);
+  } catch(e){ return u; }
+}
 
-        const actions = document.createElement("div");
-        actions.className = "actions";
+function render(items){
+  $list.innerHTML = "";
+  if(!Array.isArray(items) || items.length===0){
+    $list.innerHTML = "<div class='item'><div></div><div class='idx'>–</div><div class='meta'><em>Geen resultaten…</em></div></div>";
+    return;
+  }
+  items.forEach((t,i)=>{
+    const card = document.createElement('div');
+    card.className = 'item';
 
-        if (t.youtube){
-          const a = document.createElement("a");
-          a.className = "btn";
-          a.href = t.youtube;
-          a.target = "_blank";
-          a.rel = "noopener noreferrer";
-          a.textContent = "YouTube (zoek)";
-          actions.appendChild(a);
+    const img = document.createElement('img');
+    img.className = 'thumb';
+    img.alt = (t.title||'') + ' – ' + (t.artist||'');
+
+    // 1) probeer de directe URL
+    let triedProxy = false;
+    if (t.cover) {
+      img.referrerPolicy = 'no-referrer';
+      img.src = t.cover;
+      img.onerror = ()=>{
+        // 2) als direct laden faalt: probeer een proxy-weergave
+        if (!triedProxy) {
+          triedProxy = true;
+          img.src = resolveProxy(t.cover);
+        } else {
+          // 3) als zelfs dat faalt: markeer visueel
+          img.style.borderColor='#f44';
+          img.title='cover kon niet laden: '+(t.cover||'');
         }
+      };
+    } else {
+      img.style.objectFit='contain'; img.style.background='#222';
+      img.src='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="52" height="52"><rect width="100%" height="100%" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#aaa" font-family="system-ui,Arial" font-size="16">—</text></svg>');
+    }
+    card.appendChild(img);
 
-        const infoBtn = document.createElement("a");
-        infoBtn.className = "btn";
-        infoBtn.href = `https://nl.wikipedia.org/w/index.php?search=${encodeURIComponent(t.artist||t.title)}`;
-        infoBtn.target = "_blank"; infoBtn.rel="noopener noreferrer";
-        infoBtn.textContent = "Wikipedia";
-        actions.appendChild(infoBtn);
+    const idx = document.createElement('div');
+    idx.className = 'idx';
+    idx.textContent = String(i+1);
+    card.appendChild(idx);
 
-        meta.appendChild(actions);
-        card.appendChild(meta);
-        $list.appendChild(card);
-      });
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.innerHTML = '<b>'+esc(t.title||'')+'</b><span class="artist">'+esc(t.artist||'')+'</span>';
+
+    // Acties
+    const actions = document.createElement('div');
+    actions.className = 'actions';
+
+    // Link om originele cover-URL te openen (handig testen)
+    if (t.cover) {
+      const link = document.createElement('a');
+      link.className = 'btn';
+      link.href = t.cover; link.target = '_blank'; link.rel = 'noopener';
+      link.textContent = 'Cover openen';
+      actions.appendChild(link);
     }
 
-    function applyFilter(){
-      const q = ($filter.value||"").toLowerCase().trim();
-      if(!q){ render(data.tracks); return; }
-      render(data.tracks.filter(t =>
-        (t.title||"").toLowerCase().includes(q) ||
-        (t.artist||"").toLowerCase().includes(q)
-      ));
+    if (t.youtube) {
+      const a = document.createElement('a');
+      a.className = 'btn'; a.href = t.youtube; a.target='_blank'; a.rel='noopener';
+      a.textContent = 'YouTube (zoek)';
+      actions.appendChild(a);
     }
 
-    $filter.addEventListener("input", applyFilter);
-    $clear.addEventListener("click", () => { $filter.value=""; applyFilter(); $filter.focus(); });
+    meta.appendChild(actions);
+    card.appendChild(meta);
+    $list.appendChild(card);
+  });
+}
 
-    render(data.tracks);
-  </script>
+function applyFilter(){
+  const q = ($filter.value||'').toLowerCase().trim();
+  if (!q) return render(data.tracks||[]);
+  render((data.tracks||[]).filter(t =>
+    (t.title||'').toLowerCase().includes(q) ||
+    (t.artist||'').toLowerCase().includes(q)
+  ));
+}
+$filter.addEventListener('input', applyFilter);
+$clear.addEventListener('click', ()=>{ $filter.value=''; applyFilter(); $filter.focus(); });
+
+render(data.tracks||[]);
+</script>
 </body>
 </html>
