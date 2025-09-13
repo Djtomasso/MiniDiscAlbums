@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>spirit in motion — Madonna</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0c; --card:#121214; --muted:#a1a6ad; --text:#f1f3f4; --accent:#ff2d82; --accent-2:#7c4dff; --border:#242427;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+  a{color:inherit;text-decoration:none}
+  header.topnav{position:sticky;top:0;z-index:50;background:rgba(11,11,12,.8);backdrop-filter:saturate(120%) blur(8px);border-bottom:1px solid var(--border)}
+  header .wrap{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:10px 12px}
+  .brand a{font-weight:700;letter-spacing:.3px}
+  .search{margin-left:auto;display:flex;gap:8px;align-items:center}
+  .search input{background:#18181b;border:1px solid var(--border);color:var(--text);padding:10px 12px;border-radius:10px;min-width:260px}
+  .search button{background:#1f1f23;border:1px solid var(--border);color:var(--text);padding:10px 12px;border-radius:10px;cursor:pointer}
+  main{max-width:1100px;margin:0 auto;padding:20px 12px 64px}
+
+  /* Cover: full-width square like Janet */
+  .cover-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:8px;margin:8px 0 16px}
+  .cover-img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px;display:block;}
+  .album-title{margin:10px 0 0 4px;font-size:14px;color:var(--muted)}
+  .album-title b{color:var(--text);}
+
+  .bio{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;line-height:1.55;margin:12px 0 20px;white-space:pre-wrap}
+  .section-title{margin:24px 0 12px;font-size:20px}
+
+  /* Single-column track list */
+  .grid-tracks{display:grid;grid-template-columns:1fr;gap:12px}
+  .track-card{display:grid;grid-template-columns:52px 1fr;gap:12px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:14px}
+  .track-num{width:40px;height:40px;display:grid;place-items:center;border-radius:10px;background:#1c1c20;color:#c9cdd3;font-weight:700;border:1px solid var(--border)}
+  .track-title{margin:0 0 4px;font-size:16px;line-height:1.3}
+  .track-artist{margin:0;color:var(--muted);font-size:13px}
+  .track-actions{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:8px 10px;border-radius:10px;background:var(--accent);color:white;font-weight:600;font-size:13px}
+  .btn.outline{background:transparent;border:1px solid var(--accent-2);color:var(--text)}
+  .btn.ghost{background:#1c1c20;border:1px solid var(--border);}
+
+  /* Photo cards */
+  .card.photos-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:12px}
+  .photos-title{margin:4px 0 10px 4px;color:var(--muted);font-weight:600}
+
+  /* Photo grid ratios */
+  .photos-grid{display:grid;gap:10px;grid-template-columns:1fr}
+  .photos-grid .photo img{width:100%;height:100%;object-fit:cover;border-radius:14px;border:1px solid var(--border);aspect-ratio:4/5}
+  @media(min-width:560px){.photos-grid{grid-template-columns:repeat(2,1fr)} .photos-grid .photo img{aspect-ratio:3/2}}
+  @media(min-width:760px){.photos-grid{grid-template-columns:repeat(4,1fr)} .photos-grid .photo img{aspect-ratio:16/9}}
+
+  footer{margin-top:32px;color:var(--muted);font-size:12px;text-align:center}
+
+  /* Lightbox */
+  dialog#lightbox::backdrop{background:rgba(0,0,0,.8)}
+  dialog#lightbox{padding:0;border:none;background:transparent}
+  .lightbox-img{max-width:95vw;max-height:90vh;border-radius:12px}
+</style>
+<script>
+  function tryFallback(img){
+    const exts = ['jpg','jpeg','png'];
+    const base = img.getAttribute('data-base');
+    let i = parseInt(img.getAttribute('data-fallback-idx')||'0',10);
+    if(i >= exts.length){ img.style.display='none'; return; }
+    img.src = base + '.' + exts[i];
+    img.setAttribute('data-fallback-idx', String(i+1));
+  }
+  function openLightbox(el){
+    const dlg = document.getElementById('lightbox');
+    const full = document.getElementById('lightbox-img');
+    full.src = el.src;
+    dlg.showModal();
+  }
+  function closeLightbox(){ document.getElementById('lightbox').close(); }
+  function filterTracks(input){
+    const q = input.value.toLowerCase();
+    document.querySelectorAll('.track-card').forEach(card=>{
+      const txt = card.textContent.toLowerCase();
+      card.style.display = txt.includes(q) ? '' : 'none';
+    });
+  }
+  function clearSearch(){
+    const el = document.getElementById('search');
+    el.value = '';
+    filterTracks(el);
+  }
+</script>
+</head>
+<body>
+  <header class="topnav">
+    <div class="wrap">
+      <div class="brand"><a href="index.html">← Hoofdmenu</a></div>
+      <div class="search">
+        <input id="search" type="search" placeholder="Zoek in titels of artiest…" oninput="filterTracks(this)" aria-label="Zoek in nummers…">
+        <button onclick="clearSearch()">Wissen</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Cover -->
+    <section class="cover-card">
+      <img class="cover-img" src="image/madonna%202%20albumhoesmd.png" alt="Cover — Madonna — spirit in motion">
+      <div class="album-title"><b>SPIRIT IN MOTION</b> – Madonna</div>
+    </section>
+
+    <section class="bio">Madonna Louise Ciccone (1958) bouwde sinds de jaren ’80 een indrukwekkende carrière op waarin muziek en film elkaar vaak kruisten. Met haar debuutalbum Madonna (1983) introduceerde ze zichzelf als popfenomeen. Het opvolgende Like a Virgin (1984) maakte haar wereldwijd een icoon dankzij titelsongs die zowel commercieel als cultureel invloedrijk waren. Albums als True Blue (1986) en Like a Prayer (1989) bevestigden haar status; ze combineerde pakkende pop met thema’s als religie, liefde en vrijheid.
+
+In de jaren ’90 verraste ze met Erotica (1992) en het succesvolle Bedtime Stories (1994), die een sensueler en experimenteler geluid lieten horen. Het hoogtepunt kwam in 1998 met Ray of Light, een album dat elektronische muziek mainstream maakte en haar een Grammy opleverde. Ook Music (2000) en Confessions on a Dance Floor (2005) bewezen haar vermogen om trends te omarmen en heruit te vinden. Haar discografie telt inmiddels meer dan een dozijn studioalbums, die samen honderden miljoenen keren verkocht zijn.
+
+Parallel aan haar muziek zocht Madonna ook het witte doek op. Ze speelde in films als Desperately Seeking Susan (1985), dat haar charme en gevoel voor stijl benadrukte, en in Dick Tracy (1990). Hoewel niet al haar rollen positief werden ontvangen, bereikte ze een artistiek hoogtepunt met de hoofdrol in Evita (1996). Voor haar vertolking van Eva Perón won ze een Golden Globe voor beste actrice.
+
+Madonna’s films en muziekprojecten versterken elkaar vaak door hun visuele en thematische lef. Haar constante zoektocht naar vernieuwing en de combinatie van commerciële kracht met artistieke ambitie maken haar tot een van de meest veelzijdige en blijvende sterren uit de moderne popcultuur.</section>
+
+    <h2 class="section-title">Tracklist</h2>
+    <div class="grid-tracks">
+      <article class="track-card" id="t1">
+        <div class="track-num">1</div>
+        <div class="track-meta">
+          <h3 class="track-title">titel;spirit in motion</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna titel;spirit in motion">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=titel;spirit in motion (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna titel;spirit in motion">Google</a>
+          </div>
+        </div>
+      </article>
+<article class="track-card" id="t2">
+        <div class="track-num">2</div>
+        <div class="track-meta">
+          <h3 class="track-title">Like a Prayer</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Like a Prayer">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Like a Prayer (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Like a Prayer">Google</a>
+          </div>
+        </div>
+      </article>
+<article class="track-card" id="t3">
+        <div class="track-num">3</div>
+        <div class="track-meta">
+          <h3 class="track-title">Like a Virgin</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Like a Virgin">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Like a Virgin (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Like a Virgin">Google</a>
+          </div>
+        </div>
+      </article>
+
+    <section class="card photos-card">
+      <div class="photos-title">Foto’s</div>
+      <div class="photos-grid">
+        
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-01.webp" data-base="image/madonna/mad-01" alt="mad-01" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-02.webp" data-base="image/madonna/mad-02" alt="mad-02" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-03.webp" data-base="image/madonna/mad-03" alt="mad-03" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-04.webp" data-base="image/madonna/mad-04" alt="mad-04" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-05.webp" data-base="image/madonna/mad-05" alt="mad-05" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-06.webp" data-base="image/madonna/mad-06" alt="mad-06" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-07.webp" data-base="image/madonna/mad-07" alt="mad-07" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-08.webp" data-base="image/madonna/mad-08" alt="mad-08" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      </div>
+    </section>
+    
+<article class="track-card" id="t4">
+        <div class="track-num">4</div>
+        <div class="track-meta">
+          <h3 class="track-title">Live to Tell</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Live to Tell">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Live to Tell (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Live to Tell">Google</a>
+          </div>
+        </div>
+      </article>
+<article class="track-card" id="t5">
+        <div class="track-num">5</div>
+        <div class="track-meta">
+          <h3 class="track-title">Lucky Star</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Lucky Star">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Lucky Star (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Lucky Star">Google</a>
+          </div>
+        </div>
+      </article>
+<article class="track-card" id="t6">
+        <div class="track-num">6</div>
+        <div class="track-meta">
+          <h3 class="track-title">Material Girl</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Material Girl">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Material Girl (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Material Girl">Google</a>
+          </div>
+        </div>
+      </article>
+
+    <section class="card photos-card">
+      <div class="photos-title">Foto’s</div>
+      <div class="photos-grid">
+        
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-09.webp" data-base="image/madonna/mad-09" alt="mad-09" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-10.webp" data-base="image/madonna/mad-10" alt="mad-10" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-11.webp" data-base="image/madonna/mad-11" alt="mad-11" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-12.webp" data-base="image/madonna/mad-12" alt="mad-12" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-13.webp" data-base="image/madonna/mad-13" alt="mad-13" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-14.webp" data-base="image/madonna/mad-14" alt="mad-14" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-15.webp" data-base="image/madonna/mad-15" alt="mad-15" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-16.webp" data-base="image/madonna/mad-16" alt="mad-16" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      </div>
+    </section>
+    
+<article class="track-card" id="t7">
+        <div class="track-num">7</div>
+        <div class="track-meta">
+          <h3 class="track-title">Miles Away</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Miles Away">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Miles Away (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Miles Away">Google</a>
+          </div>
+        </div>
+      </article>
+<article class="track-card" id="t8">
+        <div class="track-num">8</div>
+        <div class="track-meta">
+          <h3 class="track-title">Music</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Music">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Music (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Music">Google</a>
+          </div>
+        </div>
+      </article>
+<article class="track-card" id="t9">
+        <div class="track-num">9</div>
+        <div class="track-meta">
+          <h3 class="track-title">Nothing Really Matters</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Nothing Really Matters">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Nothing Really Matters (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Nothing Really Matters">Google</a>
+          </div>
+        </div>
+      </article>
+
+    <section class="card photos-card">
+      <div class="photos-title">Foto’s</div>
+      <div class="photos-grid">
+        
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-17.webp" data-base="image/madonna/mad-17" alt="mad-17" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-18.webp" data-base="image/madonna/mad-18" alt="mad-18" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-19.webp" data-base="image/madonna/mad-19" alt="mad-19" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-20.webp" data-base="image/madonna/mad-20" alt="mad-20" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-21.webp" data-base="image/madonna/mad-21" alt="mad-21" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-22.webp" data-base="image/madonna/mad-22" alt="mad-22" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-23.webp" data-base="image/madonna/mad-23" alt="mad-23" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-24.webp" data-base="image/madonna/mad-24" alt="mad-24" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      </div>
+    </section>
+    
+<article class="track-card" id="t10">
+        <div class="track-num">10</div>
+        <div class="track-meta">
+          <h3 class="track-title">Oh Father</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Oh Father">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Oh Father (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Oh Father">Google</a>
+          </div>
+        </div>
+      </article>
+<article class="track-card" id="t11">
+        <div class="track-num">11</div>
+        <div class="track-meta">
+          <h3 class="track-title">Open Your Heart</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Open Your Heart">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Open Your Heart (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Open Your Heart">Google</a>
+          </div>
+        </div>
+      </article>
+<article class="track-card" id="t12">
+        <div class="track-num">12</div>
+        <div class="track-meta">
+          <h3 class="track-title">Papa Don&#x27;t Preach</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Papa Don&#x27;t Preach">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Papa Don&#x27;t Preach (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Papa Don&#x27;t Preach">Google</a>
+          </div>
+        </div>
+      </article>
+
+    <section class="card photos-card">
+      <div class="photos-title">Foto’s</div>
+      <div class="photos-grid">
+        
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-25.webp" data-base="image/madonna/mad-25" alt="mad-25" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-26.webp" data-base="image/madonna/mad-26" alt="mad-26" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-27.webp" data-base="image/madonna/mad-27" alt="mad-27" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-28.webp" data-base="image/madonna/mad-28" alt="mad-28" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-29.webp" data-base="image/madonna/mad-29" alt="mad-29" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-30.webp" data-base="image/madonna/mad-30" alt="mad-30" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-31.webp" data-base="image/madonna/mad-31" alt="mad-31" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-32.webp" data-base="image/madonna/mad-32" alt="mad-32" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      </div>
+    </section>
+    
+<article class="track-card" id="t13">
+        <div class="track-num">13</div>
+        <div class="track-meta">
+          <h3 class="track-title">Rain [LP Version]</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Rain [LP Version]">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Rain [LP Version] (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Rain [LP Version]">Google</a>
+          </div>
+        </div>
+      </article>
+<article class="track-card" id="t14">
+        <div class="track-num">14</div>
+        <div class="track-meta">
+          <h3 class="track-title">Ray of Light</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Ray of Light">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Ray of Light (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Ray of Light">Google</a>
+          </div>
+        </div>
+      </article>
+<article class="track-card" id="t15">
+        <div class="track-num">15</div>
+        <div class="track-meta">
+          <h3 class="track-title">Rescue Me</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Rescue Me">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Rescue Me (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Rescue Me">Google</a>
+          </div>
+        </div>
+      </article>
+
+    <section class="card photos-card">
+      <div class="photos-title">Foto’s</div>
+      <div class="photos-grid">
+        
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-33.webp" data-base="image/madonna/mad-33" alt="mad-33" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-34.webp" data-base="image/madonna/mad-34" alt="mad-34" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-35.webp" data-base="image/madonna/mad-35" alt="mad-35" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-36.webp" data-base="image/madonna/mad-36" alt="mad-36" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-37.webp" data-base="image/madonna/mad-37" alt="mad-37" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-38.webp" data-base="image/madonna/mad-38" alt="mad-38" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-39.webp" data-base="image/madonna/mad-39" alt="mad-39" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-40.webp" data-base="image/madonna/mad-40" alt="mad-40" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      </div>
+    </section>
+    
+<article class="track-card" id="t16">
+        <div class="track-num">16</div>
+        <div class="track-meta">
+          <h3 class="track-title">Secret</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Secret">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Secret (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Secret">Google</a>
+          </div>
+        </div>
+      </article>
+<article class="track-card" id="t17">
+        <div class="track-num">17</div>
+        <div class="track-meta">
+          <h3 class="track-title">Sorry</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Sorry">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Sorry (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Sorry">Google</a>
+          </div>
+        </div>
+      </article>
+<article class="track-card" id="t18">
+        <div class="track-num">18</div>
+        <div class="track-meta">
+          <h3 class="track-title">Take a Bow</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Take a Bow">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Take a Bow (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Take a Bow">Google</a>
+          </div>
+        </div>
+      </article>
+
+    <section class="card photos-card">
+      <div class="photos-title">Foto’s</div>
+      <div class="photos-grid">
+        
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-41.webp" data-base="image/madonna/mad-41" alt="mad-41" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-42.webp" data-base="image/madonna/mad-42" alt="mad-42" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-43.webp" data-base="image/madonna/mad-43" alt="mad-43" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-44.webp" data-base="image/madonna/mad-44" alt="mad-44" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-45.webp" data-base="image/madonna/mad-45" alt="mad-45" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-46.webp" data-base="image/madonna/mad-46" alt="mad-46" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-47.webp" data-base="image/madonna/mad-47" alt="mad-47" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-48.webp" data-base="image/madonna/mad-48" alt="mad-48" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      </div>
+    </section>
+    
+<article class="track-card" id="t19">
+        <div class="track-num">19</div>
+        <div class="track-meta">
+          <h3 class="track-title">The Power of Good-Bye</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna The Power of Good-Bye">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=The Power of Good-Bye (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna The Power of Good-Bye">Google</a>
+          </div>
+        </div>
+      </article>
+<article class="track-card" id="t20">
+        <div class="track-num">20</div>
+        <div class="track-meta">
+          <h3 class="track-title">Till Death Do Us Part</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Till Death Do Us Part">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Till Death Do Us Part (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Till Death Do Us Part">Google</a>
+          </div>
+        </div>
+      </article>
+<article class="track-card" id="t21">
+        <div class="track-num">21</div>
+        <div class="track-meta">
+          <h3 class="track-title">True Blue</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna True Blue">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=True Blue (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna True Blue">Google</a>
+          </div>
+        </div>
+      </article>
+
+    <section class="card photos-card">
+      <div class="photos-title">Foto’s</div>
+      <div class="photos-grid">
+        
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-49.webp" data-base="image/madonna/mad-49" alt="mad-49" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-50.webp" data-base="image/madonna/mad-50" alt="mad-50" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-51.webp" data-base="image/madonna/mad-51" alt="mad-51" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-52.webp" data-base="image/madonna/mad-52" alt="mad-52" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-53.webp" data-base="image/madonna/mad-53" alt="mad-53" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-54.webp" data-base="image/madonna/mad-54" alt="mad-54" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-55.webp" data-base="image/madonna/mad-55" alt="mad-55" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-56.webp" data-base="image/madonna/mad-56" alt="mad-56" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      </div>
+    </section>
+    
+<article class="track-card" id="t22">
+        <div class="track-num">22</div>
+        <div class="track-meta">
+          <h3 class="track-title">Vogue - Edit</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Vogue - Edit">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Vogue - Edit (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Vogue - Edit">Google</a>
+          </div>
+        </div>
+      </article>
+<article class="track-card" id="t23">
+        <div class="track-num">23</div>
+        <div class="track-meta">
+          <h3 class="track-title">What It Feels Like for a Girl</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna What It Feels Like for a Girl">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=What It Feels Like for a Girl (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna What It Feels Like for a Girl">Google</a>
+          </div>
+        </div>
+      </article>
+<article class="track-card" id="t24">
+        <div class="track-num">24</div>
+        <div class="track-meta">
+          <h3 class="track-title">Where&#x27;s the Party</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Where&#x27;s the Party">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Where&#x27;s the Party (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Where&#x27;s the Party">Google</a>
+          </div>
+        </div>
+      </article>
+
+    <section class="card photos-card">
+      <div class="photos-title">Foto’s</div>
+      <div class="photos-grid">
+        
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-57.webp" data-base="image/madonna/mad-57" alt="mad-57" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-58.webp" data-base="image/madonna/mad-58" alt="mad-58" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-59.webp" data-base="image/madonna/mad-59" alt="mad-59" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-60.webp" data-base="image/madonna/mad-60" alt="mad-60" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-61.webp" data-base="image/madonna/mad-61" alt="mad-61" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-62.webp" data-base="image/madonna/mad-62" alt="mad-62" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-63.webp" data-base="image/madonna/mad-63" alt="mad-63" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-64.webp" data-base="image/madonna/mad-64" alt="mad-64" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      </div>
+    </section>
+    
+<article class="track-card" id="t25">
+        <div class="track-num">25</div>
+        <div class="track-meta">
+          <h3 class="track-title">Who&#x27;s That Girl</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Who&#x27;s That Girl">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Who&#x27;s That Girl (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Who&#x27;s That Girl">Google</a>
+          </div>
+        </div>
+      </article>
+<article class="track-card" id="t26">
+        <div class="track-num">26</div>
+        <div class="track-meta">
+          <h3 class="track-title">You&#x27;ll See (Single Edit)</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna You&#x27;ll See (Single Edit)">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=You&#x27;ll See (Single Edit) (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna You&#x27;ll See (Single Edit)">Google</a>
+          </div>
+        </div>
+      </article>
+<article class="track-card" id="t27">
+        <div class="track-num">27</div>
+        <div class="track-meta">
+          <h3 class="track-title">&quot;Keep It Together (12&quot;&quot; Remix)-Madonna&quot;</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna &quot;Keep It Together (12&quot;&quot; Remix)-Madonna&quot;">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=&quot;Keep It Together (12&quot;&quot; Remix)-Madonna&quot; (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna &quot;Keep It Together (12&quot;&quot; Remix)-Madonna&quot;">Google</a>
+          </div>
+        </div>
+      </article>
+
+    <section class="card photos-card">
+      <div class="photos-title">Foto’s</div>
+      <div class="photos-grid">
+        
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-65.webp" data-base="image/madonna/mad-65" alt="mad-65" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-66.webp" data-base="image/madonna/mad-66" alt="mad-66" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-67.webp" data-base="image/madonna/mad-67" alt="mad-67" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-68.webp" data-base="image/madonna/mad-68" alt="mad-68" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-69.webp" data-base="image/madonna/mad-69" alt="mad-69" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-70.webp" data-base="image/madonna/mad-70" alt="mad-70" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-71.webp" data-base="image/madonna/mad-71" alt="mad-71" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-72.webp" data-base="image/madonna/mad-72" alt="mad-72" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      </div>
+    </section>
+    
+<article class="track-card" id="t28">
+        <div class="track-num">28</div>
+        <div class="track-meta">
+          <h3 class="track-title">Holiday [12&#x27;&#x27; Version]</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Holiday [12&#x27;&#x27; Version]">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Holiday [12&#x27;&#x27; Version] (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Holiday [12&#x27;&#x27; Version]">Google</a>
+          </div>
+        </div>
+      </article>
+<article class="track-card" id="t29">
+        <div class="track-num">29</div>
+        <div class="track-meta">
+          <h3 class="track-title">Vogue (12&#x27;&#x27; Version)</h3>
+          <p class="track-artist">Madonna</p>
+          <div class="track-actions">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Madonna Vogue (12&#x27;&#x27; Version)">YouTube (zoek)</a>
+            <a class="btn outline" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=Vogue (12&#x27;&#x27; Version) (song) Madonna">Wikipedia</a>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Madonna Vogue (12&#x27;&#x27; Version)">Google</a>
+          </div>
+        </div>
+      </article>
+
+    <section class="card photos-card">
+      <div class="photos-title">Meer foto’s</div>
+      <div class="photos-grid">
+        
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-73.webp" data-base="image/madonna/mad-73" alt="mad-73" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-74.webp" data-base="image/madonna/mad-74" alt="mad-74" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-75.webp" data-base="image/madonna/mad-75" alt="mad-75" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-76.webp" data-base="image/madonna/mad-76" alt="mad-76" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-77.webp" data-base="image/madonna/mad-77" alt="mad-77" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-78.webp" data-base="image/madonna/mad-78" alt="mad-78" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-79.webp" data-base="image/madonna/mad-79" alt="mad-79" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-80.webp" data-base="image/madonna/mad-80" alt="mad-80" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-81.webp" data-base="image/madonna/mad-81" alt="mad-81" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-82.webp" data-base="image/madonna/mad-82" alt="mad-82" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-83.webp" data-base="image/madonna/mad-83" alt="mad-83" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-84.webp" data-base="image/madonna/mad-84" alt="mad-84" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-85.webp" data-base="image/madonna/mad-85" alt="mad-85" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-86.webp" data-base="image/madonna/mad-86" alt="mad-86" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-87.webp" data-base="image/madonna/mad-87" alt="mad-87" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-88.webp" data-base="image/madonna/mad-88" alt="mad-88" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-89.webp" data-base="image/madonna/mad-89" alt="mad-89" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-90.webp" data-base="image/madonna/mad-90" alt="mad-90" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-91.webp" data-base="image/madonna/mad-91" alt="mad-91" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-92.webp" data-base="image/madonna/mad-92" alt="mad-92" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-93.webp" data-base="image/madonna/mad-93" alt="mad-93" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-94.webp" data-base="image/madonna/mad-94" alt="mad-94" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-95.webp" data-base="image/madonna/mad-95" alt="mad-95" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-96.webp" data-base="image/madonna/mad-96" alt="mad-96" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-97.webp" data-base="image/madonna/mad-97" alt="mad-97" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-98.webp" data-base="image/madonna/mad-98" alt="mad-98" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-99.webp" data-base="image/madonna/mad-99" alt="mad-99" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-100.webp" data-base="image/madonna/mad-100" alt="mad-100" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-101.webp" data-base="image/madonna/mad-101" alt="mad-101" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-102.webp" data-base="image/madonna/mad-102" alt="mad-102" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-103.webp" data-base="image/madonna/mad-103" alt="mad-103" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-104.webp" data-base="image/madonna/mad-104" alt="mad-104" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-105.webp" data-base="image/madonna/mad-105" alt="mad-105" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-106.webp" data-base="image/madonna/mad-106" alt="mad-106" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-107.webp" data-base="image/madonna/mad-107" alt="mad-107" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-108.webp" data-base="image/madonna/mad-108" alt="mad-108" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-109.webp" data-base="image/madonna/mad-109" alt="mad-109" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-110.webp" data-base="image/madonna/mad-110" alt="mad-110" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-111.webp" data-base="image/madonna/mad-111" alt="mad-111" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-112.webp" data-base="image/madonna/mad-112" alt="mad-112" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-113.webp" data-base="image/madonna/mad-113" alt="mad-113" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-114.webp" data-base="image/madonna/mad-114" alt="mad-114" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-115.webp" data-base="image/madonna/mad-115" alt="mad-115" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-116.webp" data-base="image/madonna/mad-116" alt="mad-116" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-117.webp" data-base="image/madonna/mad-117" alt="mad-117" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-118.webp" data-base="image/madonna/mad-118" alt="mad-118" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-119.webp" data-base="image/madonna/mad-119" alt="mad-119" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-120.webp" data-base="image/madonna/mad-120" alt="mad-120" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-121.webp" data-base="image/madonna/mad-121" alt="mad-121" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-122.webp" data-base="image/madonna/mad-122" alt="mad-122" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-123.webp" data-base="image/madonna/mad-123" alt="mad-123" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-124.webp" data-base="image/madonna/mad-124" alt="mad-124" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-125.webp" data-base="image/madonna/mad-125" alt="mad-125" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-126.webp" data-base="image/madonna/mad-126" alt="mad-126" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-127.webp" data-base="image/madonna/mad-127" alt="mad-127" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-128.webp" data-base="image/madonna/mad-128" alt="mad-128" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-129.webp" data-base="image/madonna/mad-129" alt="mad-129" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-130.webp" data-base="image/madonna/mad-130" alt="mad-130" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-131.webp" data-base="image/madonna/mad-131" alt="mad-131" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-132.webp" data-base="image/madonna/mad-132" alt="mad-132" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-133.webp" data-base="image/madonna/mad-133" alt="mad-133" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-134.webp" data-base="image/madonna/mad-134" alt="mad-134" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-135.webp" data-base="image/madonna/mad-135" alt="mad-135" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-136.webp" data-base="image/madonna/mad-136" alt="mad-136" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-137.webp" data-base="image/madonna/mad-137" alt="mad-137" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-138.webp" data-base="image/madonna/mad-138" alt="mad-138" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-139.webp" data-base="image/madonna/mad-139" alt="mad-139" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-140.webp" data-base="image/madonna/mad-140" alt="mad-140" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-141.webp" data-base="image/madonna/mad-141" alt="mad-141" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-142.webp" data-base="image/madonna/mad-142" alt="mad-142" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-143.webp" data-base="image/madonna/mad-143" alt="mad-143" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="image/madonna/mad-144.webp" data-base="image/madonna/mad-144" alt="mad-144" onclick="openLightbox(this)" onerror="tryFallback(this)">
+      </figure>
+      </div>
+    </section>
+    
+    </div>
+
+    <footer>© Madonna. Pagina gegenereerd voor archief/privé gebruik.</footer>
+  </main>
+
+  <dialog id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" class="lightbox-img" alt="">
+  </dialog>
+</body>
+</html>

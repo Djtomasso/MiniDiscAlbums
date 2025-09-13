@@ -70,18 +70,31 @@
     "volume": 4
   },
   {
-  "file": "rhythm-nation-1814_withcover.html",
-  "title": "Janet Jackson — Rhythm Nation 1814",
-  "cover": "image/rhythm-nation-1814.png",
-  "series": "Janet Jackson",
-  "volume": 1
+    "file": "rhythm-nation-1814_withcover.html",
+    "title": "Janet Jackson — Rhythm Nation 1814",
+    "cover": "image/rhythm-nation-1814.png",
+    "series": "Janet Jackson",
+    "volume": 1
   },
   {
-  "file": "rhythm-nation-remixes_withcover.html",
-  "title": "Janet Jackson — Rhythm Nation 1814 (Remixes)",
-  "cover": "image/rhythm-nation-remixes.png",
-  "series": "Janet Jackson",
-  "volume": 2
-}
-
+    "file": "rhythm-nation-remixes_withcover.html",
+    "title": "Janet Jackson — Rhythm Nation 1814 (Remixes)",
+    "cover": "image/rhythm-nation-remixes.png",
+    "series": "Janet Jackson",
+    "volume": 2
+  },
+  {
+    "file": "madonna-born-to-reinvent_withcover.html",
+    "title": "Madonna — born to reinvent",
+    "cover": "image/madonna 1 albumhoesmd.png",
+    "series": "Madonna",
+    "volume": 1
+  },
+  {
+    "file": "madonna-spirit-in-motion_withcover.html",
+    "title": "Madonna — spirit in motion",
+    "cover": "image/madonna 2 albumhoesmd.png",
+    "series": "Madonna",
+    "volume": 2
+  }
 ]
