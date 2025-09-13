@@ -58,6 +58,26 @@
   dialog#lightbox::backdrop{background:rgba(0,0,0,.8)}
   dialog#lightbox{padding:0;border:none;background:transparent}
   .lightbox-img{max-width:95vw;max-height:90vh;border-radius:12px}
+
+  
+  .lb-frame{ position:relative; display:inline-block; }
+  .lb-btn{ width:36px; height:36px; border-radius:50%; border:1px solid var(--border);
+  background:rgba(20,20,22,.85); color:var(--text); font-size:16px; display:grid; place-items:center;
+  cursor:pointer; box-shadow:0 2px 10px rgba(0,0,0,.35); margin:0 6px; }
+  .lb-close{ position:absolute; right:12px; bottom:12px;
+  background:rgba(0,0,0,.6); border:none; color:white; width:32px; height:32px;
+  border-radius:50%; display:grid; place-items:center; cursor:pointer; }
+  .lb-controls{ display:flex; justify-content:center; gap:16px; margin-top:12px; }
+/* In-photo Lightbox controls */
+  .lb-frame{ position:relative; display:inline-block; }
+  .lb-btn{ width:36px; height:36px; border-radius:50%; border:1px solid var(--border);
+  background:rgba(20,20,22,.85); color:var(--text); font-size:16px; display:grid; place-items:center;
+  cursor:pointer; box-shadow:0 2px 10px rgba(0,0,0,.35); margin:0 6px; }
+  .lb-prev{ left:12px; top:50%; transform:translateY(-50%); }
+  .lb-next{ right:12px; top:50%; transform:translateY(-50%); }
+  .lb-close{ position:absolute; right:12px; bottom:12px;
+  background:rgba(0,0,0,.6); border:none; color:white; width:32px; height:32px;
+  border-radius:50%; display:grid; place-items:center; cursor:pointer; }
 </style>
 <script>
   function tryFallback(img){
@@ -68,13 +88,42 @@
     img.src = base + '.' + exts[i];
     img.setAttribute('data-fallback-idx', String(i+1));
   }
+  
+  let LB_IMAGES = [];
+  let LB_INDEX = -1;
+
+  function lbInit(){
+    LB_IMAGES = Array.from(document.querySelectorAll('.photos-grid img, .photos img'));
+    LB_IMAGES.forEach((img, i)=>{
+      img.dataset.lbIndex = i;
+      img.addEventListener('click', ()=> openLightbox(img));
+    });
+    document.addEventListener('keydown', (e)=>{
+      if(!document.getElementById('lightbox').open) return;
+      if(e.key === 'ArrowLeft') { e.preventDefault(); lbPrev(e); }
+      if(e.key === 'ArrowRight'){ e.preventDefault(); lbNext(e); }
+      if(e.key === 'Escape'){ e.preventDefault(); lbClose(e); }
+    });
+  }
+  document.addEventListener('DOMContentLoaded', lbInit);
+
   function openLightbox(el){
+    const idx = parseInt(el.dataset.lbIndex || '0', 10);
     const dlg = document.getElementById('lightbox');
-    const full = document.getElementById('lightbox-img');
-    full.src = el.src;
+    LB_INDEX = isNaN(idx) ? 0 : idx;
+    updateLightboxImage();
     dlg.showModal();
   }
-  function closeLightbox(){ document.getElementById('lightbox').close(); }
+  function updateLightboxImage(){
+    if(LB_IMAGES.length === 0) return;
+    const full = document.getElementById('lightbox-img');
+    const el = LB_IMAGES[(LB_INDEX + LB_IMAGES.length) % LB_IMAGES.length];
+    full.src = el.src;
+  }
+  function lbPrev(e){ if(e) e.stopPropagation(); LB_INDEX = (LB_INDEX - 1 + LB_IMAGES.length) % LB_IMAGES.length; updateLightboxImage(); }
+  function lbNext(e){ if(e) e.stopPropagation(); LB_INDEX = (LB_INDEX + 1) % LB_IMAGES.length; updateLightboxImage(); }
+  function lbClose(e){ if(e) e.stopPropagation(); document.getElementById('lightbox').close(); }
+            
   function filterTracks(input){
     const q = input.value.toLowerCase();
     document.querySelectorAll('.track-card').forEach(card=>{
@@ -1019,8 +1068,24 @@ Invloed &amp; prestaties. Madonna heeft wereldwijd meer dan 300 miljoen platen v
     <footer>© Madonna. Pagina gegenereerd voor archief/privé gebruik.</footer>
   </main>
 
-  <dialog id="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-img" class="lightbox-img" alt="">
+  
+  
+  
+  
+  <dialog id="lightbox" onclick="lbClose(event)">
+    <div class="lb-frame" onclick="event.stopPropagation()">
+      <img id="lightbox-img" class="lightbox-img" alt="">
+      <!-- Close button inside photo -->
+      <button type="button" class="lb-btn lb-close" aria-label="Sluiten" onclick="lbClose(event)"><span>✕</span></button>
+    </div>
+    <div class="lb-controls">
+      <button type="button" class="lb-btn" aria-label="Vorige" onclick="lbPrev(event)"><span>◀</span></button>
+      <button type="button" class="lb-btn" aria-label="Volgende" onclick="lbNext(event)"><span>▶</span></button>
+    </div>
   </dialog>
+        
+        
+        
+        
 </body>
 </html>
