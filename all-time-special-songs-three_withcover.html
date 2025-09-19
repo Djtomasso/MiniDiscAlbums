@@ -134,6 +134,7 @@ function setAlbumCover(u){
 }
 setAlbumCover(data.cover || "");
 
+
 function esc(s){ return (s||"").replace(/[&<>\"']/g,c=>({"&":"&amp;","<":"&lt;","&gt;":">","\"":"&quot;","'":"&#039;"}[c])); }
 
 function resolveProxy(u){
@@ -141,42 +142,87 @@ function resolveProxy(u){
   catch(e){ return u; }
 }
 
+function wikiLink(t){
+  const q = (t.artist && t.title) ? (t.artist) : (t.artist || t.title || "");
+  return "https://nl.wikipedia.org/w/index.php?search=" + encodeURIComponent(q);
+}
+
+function ytLink(t){
+  const q = ((t.title||"") + " " + (t.artist||"")).trim();
+  return "https://www.youtube.com/results?search_query=" + encodeURIComponent(q);
+}
+
 function render(items){
   $list.innerHTML = "";
   if(!Array.isArray(items) || items.length===0){
-    $list.innerHTML = "<div class='item'><div></div><div class='idx'>–</div><div class='meta'><em>Geen resultaten…</em></div></div>";
+    $list.innerHTML = "<div class='item'><div class='thumb'></div><div class='idx'>–</div><div class='meta'><span class='artist'>Geen resultaten…</span></div></div>";
     return;
   }
   items.forEach((t,i)=>{
-    const card = document.createElement('div'); card.className='item';
+    const card = document.createElement('div'); 
+    card.className='item';
 
-    const img = document.createElement('img'); img.className='thumb';
+    // Thumb (keep hover behavior via CSS)
+    const img = document.createElement('img'); 
+    img.className='thumb';
     img.alt = (t.title||'')+' – '+(t.artist||'');
     let triedProxy=false;
     if(t.cover){
       img.referrerPolicy='no-referrer';
       img.src=t.cover;
-      img.onerror=()=>{ if(!triedProxy){ triedProxy=true; img.src=resolveProxy(t.cover); } else { img.style.borderColor='#f44'; } };
+      img.onerror=()=>{ 
+        if(!triedProxy){ 
+          triedProxy=true; 
+          img.src=resolveProxy(t.cover); 
+        } else { 
+          img.style.objectFit='contain'; 
+          img.style.background='#222';
+          img.src='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="52" height="52"><rect width="100%" height="100%" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#aaa" font-family="system-ui,Arial" font-size="16">—</text></svg>');
+        } 
+      };
     } else {
       img.style.objectFit='contain'; img.style.background='#222';
       img.src='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="52" height="52"><rect width="100%" height="100%" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#aaa" font-family="system-ui,Arial" font-size="16">—</text></svg>');
     }
     card.appendChild(img);
 
-    const idx=document.createElement('div'); idx.className='idx'; idx.textContent=String(i+1); card.appendChild(idx);
+    // Index
+    const idx=document.createElement('div'); 
+    idx.className='idx'; 
+    idx.textContent=String(i+1); 
+    card.appendChild(idx);
 
-    const meta=document.createElement('div'); meta.className='meta';
+    // Meta + actions
+    const meta=document.createElement('div'); 
+    meta.className='meta';
     meta.innerHTML='<b>'+esc(t.title||'')+'</b><span class="artist">'+esc(t.artist||'')+'</span>';
 
-    const actions=document.createElement('div'); actions.className='actions';
-    if(t.cover){ const link=document.createElement('a'); link.className='btn'; link.href=t.cover; link.target='_blank'; link.rel='noopener'; link.textContent='Cover openen'; actions.appendChild(link); }
-    if(t.youtube){ const a=document.createElement('a'); a.className='btn'; a.href=t.youtube; a.target='_blank'; a.rel='noopener'; a.textContent='YouTube (zoek)'; actions.appendChild(a); }
-    meta.appendChild(actions);
+    const actions=document.createElement('div'); 
+    actions.className='actions';
 
-    card.appendChild(meta); $list.appendChild(card);
+    // YouTube (zoek) — always add as search link (like "one")
+    const yta = document.createElement('a'); 
+    yta.className='btn'; 
+    yta.href = t.youtube ? t.youtube : ytLink(t);
+    yta.target='_blank'; 
+    yta.rel='noopener noreferrer'; 
+    yta.textContent='YouTube (zoek)';
+    actions.appendChild(yta);
+
+    // Wikipedia — always add as search link
+    const wpa = document.createElement('a'); 
+    wpa.className='btn'; 
+    wpa.href = wikiLink(t);
+    wpa.target='_blank'; 
+    wpa.rel='noopener noreferrer'; 
+    wpa.textContent='Wikipedia';
+    actions.appendChild(wpa);
+
+    meta.appendChild(actions);
+    card.appendChild(meta);
+    $list.appendChild(card);
   });
 }
-
 function applyFilter(){
   const q = ($filter.value||'').toLowerCase().trim();
   if (!q) return render(data.tracks||[]);
