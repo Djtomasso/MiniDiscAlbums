@@ -239,6 +239,8 @@
       return Math.max(1, Math.ceil(tracksLen / requiredGroups));
     }
 
+    
+    
     function renderInterleaved(tracks, sources){
       $list.innerHTML = "";
 
@@ -248,6 +250,9 @@
       const GROUP_EVERY = computeGroupEvery(tracksLen, totalPhotos);
       const blockPoints = Math.ceil(tracksLen / GROUP_EVERY);
       const groupsWeCanShow = Math.min(blockPoints, Math.floor(totalPhotos / THUMBS_PER_ROW));
+
+      // We interleave all but the very last possible group
+      const interleaveGroups = Math.max(0, groupsWeCanShow - 1);
       const photosPerGroup = THUMBS_PER_ROW;
 
       let photoIdx = 0;
@@ -292,9 +297,9 @@
         card.appendChild(meta);
         $list.appendChild(card);
 
-        // Fotoblok bij groepsgrens (alleen complete rijen)
+        // Interleaved fotoblok op groepsgrenzen, maar maximaliseer tot interleaveGroups
         const isGroupEnd = ((i+1) % GROUP_EVERY === 0) || (i === tracksLen - 1);
-        if (isGroupEnd && groupIdx < groupsWeCanShow){
+        if (isGroupEnd && groupIdx < interleaveGroups){
           const row = document.createElement('div');
           row.className = 'galleryRow';
           row.innerHTML = `<h3>Foto’s</h3>`;
@@ -303,7 +308,8 @@
           grid.className = 'thumbGrid';
 
           for (let k=0; k<photosPerGroup; k++){
-            const globalIndex = photoIdx;
+            if (photoIdx >= totalPhotos) break;
+            const globalIndex = photoIdx++;
             const src = sources[globalIndex] || 'data:image/gif;base64,R0lGODlhAQABAAAAACw=';
 
             const img = document.createElement('img');
@@ -319,7 +325,6 @@
             });
 
             grid.appendChild(img);
-            photoIdx++;
           }
 
           row.appendChild(grid);
@@ -327,7 +332,41 @@
           groupIdx++;
         }
       });
+
+      // Eén slotblok met ALLE resterende foto's (incl. wat anders de laatste interleaved rij was)
+      if (photoIdx < totalPhotos){
+        const row = document.createElement('div');
+        row.className = 'galleryRow';
+        row.innerHTML = `<h3>Meer foto’s</h3>`;
+
+        const grid = document.createElement('div');
+        grid.className = 'thumbGrid';
+
+        for (let g = photoIdx; g < totalPhotos; g++){
+          const src = sources[g] || 'data:image/gif;base64,R0lGODlhAQABAAAAACw=';
+
+          const img = document.createElement('img');
+          img.className = 'thumb';
+          img.alt = `Janet foto ${g+1}`;
+          img.loading = 'lazy';
+          img.decoding = 'async';
+          img.src = src;
+          img.dataset.index = String(g);
+          img.addEventListener('click', (e) => {
+            const idx = Number(e.currentTarget.dataset.index);
+            openLightbox(idx, sources);
+          });
+
+          grid.appendChild(img);
+        }
+
+        // update index
+        photoIdx = totalPhotos;
+        row.appendChild(grid);
+        $list.appendChild(row);
+      }
     }
+
 
     /* ===== Filter ===== */
     function applyFilter(allTracks, sources){
