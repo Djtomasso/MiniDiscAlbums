@@ -107,28 +107,28 @@
   {
     "file": "lovesoul1_withcover.html",
     "title": "Love Soul - Soul Love Songs (part one)",
-    "cover": "image/lovesoul1.png",
+    "cover": "image/soulove1.png",
     "series": "lovesoul",
     "volume": 1
   },
   {
     "file": "lovesoul2_withcover.html",
     "title": "Love Soul - Soul Love Songs (part two)",
-    "cover": "image/lovesoul2.png",
+    "cover": "image/soulove2.png",
     "series": "lovesoul",
     "volume": 2
   },
   {
     "file": "lovesoul3_withcover.html",
     "title": "Love Soul - Soul Love Songs (part three)",
-    "cover": "image/lovesoul3.png",
+    "cover": "image/soulove3.png",
     "series": "lovesoul",
     "volume": 3
   },
   {
     "file": "lovesoul4_withcover.html",
     "title": "Love Soul - Soul Love Songs (part four)",
-    "cover": "image/lovesoul4.png",
+    "cover": "image/soulove4.png",
     "series": "lovesoul",
     "volume": 4
   }
