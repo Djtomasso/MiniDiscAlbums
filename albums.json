@@ -103,7 +103,7 @@
     "cover": "image/madonna 2 albumhoesmd.png",
     "series": "Madonna",
     "volume": 2
-  }  ,
+  },
   {
     "file": "lovesoul1_withcover.html",
     "title": "Love Soul - Soul Love Songs (part one)",
@@ -131,5 +131,12 @@
     "cover": "image/soulove4.png",
     "series": "lovesoul",
     "volume": 4
+  },
+  {
+    "file": "legacy-of-dance_withcover.html",
+    "title": "Legacy Of Dance",
+    "cover": "image/legacyofdance_hoes1.png",
+    "series": "Legacy Of Dance",
+    "volume": 1
   }
 ]
