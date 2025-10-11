@@ -16,10 +16,10 @@
     .topnav{display:flex;gap:10px;align-items:center;padding:10px;background:#0e0e0e;border:1px solid var(--border);border-radius:10px;position:sticky;top:0;z-index:5}
     .homebtn{display:inline-block;background:#191919;border:1px solid var(--border);padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--text)}
     .homebtn:hover{background:#222}
-    .titlebar{padding:14px;background:var(--surface2);}
+    .cover img{width:100%}
+    .titlebar{padding:14px;background:var(--surface2);border-top:1px solid var(--border)}
     h1{margin:0;font-size:1.3rem}
     .sub{color:var(--muted)}
-
     .toolbar{position:sticky;top:64px;z-index:4;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px}
     .search{display:flex;gap:8px}
     .search input{flex:1;background:#0e0e0e;border:0;color:var(--text);padding:10px;border-radius:10px}
@@ -33,26 +33,33 @@
     .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
     a.btn{background:#151515;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:8px 10px;text-decoration:none;font-size:.95rem}
     a.btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
-
-    /* Gallery */
-    section.gallery{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:12px;display:grid;gap:12px}
-    .thumbgrid{display:grid;gap:8px;grid-template-columns:repeat(1,1fr)}
-    @media(min-width:600px){.thumbgrid{grid-template-columns:repeat(2,1fr)}}
-    @media(min-width:900px){.thumbgrid{grid-template-columns:repeat(4,1fr)}}
-    .thumb{position:relative;border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;background:#111;aspect-ratio:16/9}
-    .thumb img{width:100%;height:100%;object-fit:cover;transform:scale(1);transition:transform .25s ease}
-    .thumb:hover img{transform:scale(1.03)}
-
-    /* Lightbox */
-    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:50}
-    .lightbox.open{display:flex}
-    .lightbox img{max-width:92vw;max-height:86vh}
-    .lb-controls{position:fixed;inset:auto 0 24px 0;display:flex;gap:12px;justify-content:center}
-    .lb-btn{background:#151515;color:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 14px;cursor:pointer}
-    .lb-close{position:fixed;top:16px;right:16px}
-
     footer{color:var(--muted);font-size:.9rem;text-align:center;padding:10px}
-  </style>
+  
+    /*__LOD_GALLERY_STYLES__*/
+    .gallery{display:grid;gap:10px;margin-top:12px}
+    @media (min-width: 640px){.gallery{grid-template-columns:repeat(2,1fr)}}
+    @media (min-width: 1024px){.gallery{grid-template-columns:repeat(4,1fr)}}
+
+    .thumb{position:relative;width:100%;overflow:hidden;border:1px solid var(--border);border-radius:12px;background:#0f0f0f}
+    .thumb::before{content:"";display:block;aspect-ratio:4/5;}
+    @media (min-width: 640px){ .thumb::before{aspect-ratio:3/2;} }
+    @media (min-width: 1024px){ .thumb::before{aspect-ratio:16/9;} }
+    .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+    .thumb .ph{position:absolute;inset:0;display:grid;place-items:center;font-weight:700;color:var(--muted);opacity:.8}
+
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:50}
+    .lightbox.open{display:flex}
+    .lightbox figure{max-width:92vw;max-height:88vh;margin:0;position:relative}
+    .lightbox img{width:100%;height:auto;max-height:88vh;object-fit:contain}
+    .lb-close, .lb-prev, .lb-next{
+      position:absolute;border:1px solid var(--border);background:#151515;color:var(--text);
+      border-radius:10px;padding:10px;cursor:pointer;user-select:none
+    }
+    .lb-close{top:10px;right:10px}
+    .lb-prev{bottom:10px;left:10px}
+    .lb-next{bottom:10px;right:10px}
+    
+</style>
 </head>
 <body>
   <div class="wrap">
@@ -61,6 +68,7 @@
     </nav>
 
     <header class="hero" role="banner">
+      <div class="cover"><img id="cover" alt="Albumcover"></div>
       <div class="titlebar">
         <h1 id="albumTitle"></h1>
         <div class="sub" id="subtitle"></div>
@@ -75,182 +83,228 @@
     </nav>
 
     <main id="list" class="tracks" aria-live="polite"></main>
-
-    <section class="gallery" aria-label="Fotogalerij">
-      <h2 style="margin:0;font-size:1.1rem">Foto's</h2>
-      <div class="thumbgrid" id="thumbs"></div>
-    </section>
+    <section id="gallery" class="gallery" aria-label="Foto’s"></section>
+    
 
     <footer>album samengesteld door Tomasso 2025</footer>
   </div>
 
-  <!-- Data -->
+  <!-- Data uit je CSV -->
   <script type="application/json" id="data">{
   "album_title": "Legacy Of Dance",
   "subtitle": "",
+  "cover": "image/legacyofdance_hoes1.png",
   "tracks": [
     {
-      "title": "Discovamp",
-      "artist": "Da Lukas,Walterino"
+      "title": "Discovamp-Da Lukas,Walterino",
+      "artist": ""
     },
     {
-      "title": "Set My Heart On Fire (I'm Alive x And The Beat Goes On)",
-      "artist": "Majestic,The Jammin Kid,Céline Dion"
+      "title": "Set My Heart On Fire (I'm Alive x And The Beat Goes On)-Majestic,The Jammin Kid,Céline Dion",
+      "artist": ""
     },
     {
-      "title": "This Disko Feelin' - Radio Mix",
-      "artist": "Disko Junkie"
+      "title": "This Disko Feelin'",
+      "artist": "Radio Mix-Disko Junkie"
     },
     {
-      "title": "Toronto Nights",
-      "artist": "Angelo Ferreri,Hatiras"
+      "title": "Toronto Nights-Angelo Ferreri,Hatiras",
+      "artist": ""
     },
     {
-      "title": "Mi Gente - Edc Mexico Clubmix",
-      "artist": "Block & Crown"
+      "title": "Mi Gente",
+      "artist": "Edc Mexico Clubmix-Block & Crown"
     },
     {
-      "title": "Happy Children (Block & Crown Nu Disco Edit)",
-      "artist": "P. Lion,Block & Crown"
+      "title": "Happy Children (Block & Crown Nu Disco Edit)-P. Lion,Block & Crown",
+      "artist": ""
     },
     {
-      "title": "Dance & Shout - Original mix",
-      "artist": "Crazibiza"
+      "title": "Dance & Shout",
+      "artist": "Original mix-Crazibiza"
     },
     {
-      "title": "The Groove Of All Grooves",
-      "artist": "Block & Crown"
+      "title": "The Groove Of All Grooves-Block & Crown",
+      "artist": ""
     },
     {
-      "title": "This Groove",
-      "artist": "Oliver Heldens,Lenno"
+      "title": "This Groove-Oliver Heldens,Lenno",
+      "artist": ""
     },
     {
-      "title": "From Me To You - Radio Edit",
-      "artist": "Roog,Alain Clark"
+      "title": "From Me To You",
+      "artist": "Radio Edit-Roog,Alain Clark"
     },
     {
-      "title": "Stupid Love - Vitaclub Warehouse Mix",
-      "artist": "Lady Gaga,BloodPop®,BURNS,Vitaclub"
+      "title": "Stupid Love",
+      "artist": "Vitaclub Warehouse Mix-Lady Gaga,BloodPop®,BURNS,Vitaclub"
     },
     {
-      "title": "My Name Is Not Susan - Extended",
-      "artist": "DJ Katch"
+      "title": "My Name Is Not Susan",
+      "artist": "Extended-DJ Katch"
     },
     {
-      "title": "Intoxicated",
-      "artist": "Martin Solveig,Good Times Ahead"
+      "title": "Intoxicated-Martin Solveig,Good Times Ahead",
+      "artist": ""
     },
     {
-      "title": "I Want You",
-      "artist": "La Fuente"
+      "title": "I Want You-La Fuente",
+      "artist": ""
     },
     {
-      "title": "Can't Get Enough - Original Mix",
-      "artist": "Block & Crown,Jesus Davila"
+      "title": "Can't Get Enough",
+      "artist": "Original Mix-Block & Crown,Jesus Davila"
     },
     {
-      "title": "THE DJ MANIFESTO - Radio Edit",
-      "artist": "Angelo Ferreri,DJ Delta (IT)"
+      "title": "THE DJ MANIFESTO",
+      "artist": "Radio Edit-Angelo Ferreri,DJ Delta (IT)"
     },
     {
-      "title": "Bomba",
-      "artist": "Those 2 Guys,Christian Lukes,Divine"
+      "title": "Bomba-Those 2 Guys,Christian Lukes,Divine",
+      "artist": ""
     },
     {
-      "title": "123 Get Loose Now - Original Mix",
-      "artist": "Block & Crown,Jose"
+      "title": "123 Get Loose Now",
+      "artist": "Original Mix-Block & Crown,Jose"
     },
     {
-      "title": "Some Other Girls",
-      "artist": "Babert"
+      "title": "Some Other Girls-Babert",
+      "artist": ""
     },
     {
-      "title": "The Beautiful (Hoxton Whores Club Mix)",
-      "artist": "Gala,Hoxton Whores"
+      "title": "The Beautiful (Hoxton Whores Club Mix)-Gala,Hoxton Whores",
+      "artist": ""
     },
     {
-      "title": "Playin' House - Daniel Jaze Remix",
-      "artist": "LucaJLove,Sasa di Toma,Daniel Jaze"
+      "title": "Playin' House",
+      "artist": "Daniel Jaze Remix-LucaJLove,Sasa di Toma,Daniel Jaze"
     },
     {
-      "title": "Be Free - Original Mix",
-      "artist": "Soulvation"
+      "title": "Be Free",
+      "artist": "Original Mix-Soulvation"
     },
     {
-      "title": "Italian Style - Original Mix",
-      "artist": "Block & Crown"
+      "title": "Italian Style",
+      "artist": "Original Mix-Block & Crown"
     },
     {
-      "title": "Hypnotic Tango",
-      "artist": "Les Bisous"
+      "title": "Hypnotic Tango-Les Bisous",
+      "artist": ""
     },
     {
-      "title": "Remember the Good Times",
-      "artist": "Block & Crown"
+      "title": "Remember the Good Times-Block & Crown",
+      "artist": ""
     },
     {
-      "title": "Deep Down (feat. Never Dull) - Nathan Dawe Remix",
-      "artist": "Alok,Ella Eyre,Kenny Dope,Never Dull,Nathan Dawe"
+      "title": "Deep Down (feat. Never Dull)",
+      "artist": "Nathan Dawe Remix-Alok,Ella Eyre,Kenny Dope,Never Dull,Nathan Dawe"
     },
     {
-      "title": "The Beat of the Drum",
-      "artist": "Alaia & Gallo"
+      "title": "The Beat of the Drum-Alaia & Gallo",
+      "artist": ""
     },
     {
-      "title": "Break 4 Love - Matt Jam Lamont & Scott Diaz Classic Vocal Mix",
-      "artist": "Raze,Matt Jam Lamont,Scott Diaz"
+      "title": "Break 4 Love",
+      "artist": "Matt Jam Lamont & Scott Diaz Classic Vocal Mix-Raze,Matt Jam Lamont,Scott Diaz"
     },
     {
-      "title": "The Beat Is Rockin'",
-      "artist": "Erick E"
+      "title": "The Beat Is Rockin'-Erick E",
+      "artist": ""
     },
     {
-      "title": "Ratata",
-      "artist": "La Fuente"
+      "title": "Ratata-La Fuente",
+      "artist": ""
     },
     {
-      "title": "Jumpin Underwater - Original Mix",
-      "artist": "Block & Crown,Lissat"
+      "title": "Jumpin Underwater",
+      "artist": "Original Mix-Block & Crown,Lissat"
     },
     {
-      "title": "Voices In My Head",
-      "artist": "Anyma,Argy,Son of Son"
+      "title": "Voices In My Head-Anyma,Argy,Son of Son",
+      "artist": ""
     },
     {
-      "title": "Pump the Power - Original Mix",
-      "artist": "Block & Crown"
+      "title": "Pump the Power",
+      "artist": "Original Mix-Block & Crown"
     },
     {
-      "title": "Touch Me (Radio Edit) [feat. Cassandra]",
-      "artist": "Rui Da Silva,Cassandra"
+      "title": "Touch Me (Radio Edit) [feat. Cassandra]-Rui Da Silva,Cassandra",
+      "artist": ""
     },
     {
-      "title": "Lay All Your Love On Me - Extended Mix",
-      "artist": "Kevin McKay"
+      "title": "Lay All Your Love On Me",
+      "artist": "Extended Mix-Kevin McKay"
     },
     {
-      "title": "Kill The Vibe",
-      "artist": "David Guetta,MORTEN,Prophecy"
+      "title": "Kill The Vibe-David Guetta,MORTEN,Prophecy",
+      "artist": ""
     }
   ],
-  "photos": [
-    "image/legacy-of-dance/01.jpg",
-    "image/legacy-of-dance/02.jpg",
-    "image/legacy-of-dance/03.jpg",
-    "image/legacy-of-dance/04.jpg",
-    "image/legacy-of-dance/05.jpg",
-    "image/legacy-of-dance/06.jpg",
-    "image/legacy-of-dance/07.jpg",
-    "image/legacy-of-dance/08.jpg",
-    "image/legacy-of-dance/09.jpg",
-    "image/legacy-of-dance/10.jpg",
-    "image/legacy-of-dance/11.jpg",
-    "image/legacy-of-dance/12.jpg",
-    "image/legacy-of-dance/13.jpg",
-    "image/legacy-of-dance/14.jpg",
-    "image/legacy-of-dance/15.jpg",
-    "image/legacy-of-dance/16.jpg"
+  "gallery": [
+    {
+      "base": "LOD01",
+      "dir": "image/"
+    },
+    {
+      "base": "LOD02",
+      "dir": "image/"
+    },
+    {
+      "base": "LOD03",
+      "dir": "image/"
+    },
+    {
+      "base": "LOD04",
+      "dir": "image/"
+    },
+    {
+      "base": "LOD05",
+      "dir": "image/"
+    },
+    {
+      "base": "LOD06",
+      "dir": "image/"
+    },
+    {
+      "base": "LOD07",
+      "dir": "image/"
+    },
+    {
+      "base": "LOD08",
+      "dir": "image/"
+    },
+    {
+      "base": "LOD09",
+      "dir": "image/"
+    },
+    {
+      "base": "LOD10",
+      "dir": "image/"
+    },
+    {
+      "base": "LOD11",
+      "dir": "image/"
+    },
+    {
+      "base": "LOD12",
+      "dir": "image/"
+    },
+    {
+      "base": "LOD13",
+      "dir": "image/"
+    },
+    {
+      "base": "LOD14",
+      "dir": "image/"
+    },
+    {
+      "base": "LOD15",
+      "dir": "image/"
+    },
+    {
+      "base": "LOD16",
+      "dir": "image/"
+    }
   ]
 }</script>
 
@@ -261,14 +315,14 @@
     const $list = document.getElementById("list");
     const $filter = document.getElementById("filter");
     const $clear = document.getElementById("clearBtn");
-    const $thumbs = document.getElementById("thumbs");
+    const $cover = document.getElementById("cover");
 
-    $title.textContent = data.album_title || "";
-    $subtitle.textContent = data.subtitle || "";
+    $title.textContent = data.album_title;
+    $subtitle.textContent = data.subtitle;
+    $cover.src = data.cover;
 
     function escapeHtml(s){ return (s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;","&gt;":">","\"":"&quot;","'":"&#039;"}[c])); }
 
-    // Render tracks (no cover thumbs)
     function render(tracks){
       $list.innerHTML = "";
       tracks.forEach((t,i)=>{
@@ -321,61 +375,108 @@
       render(filtered);
     }
 
-    $filter.addEventListener("input",()=>applyFilter(data.tracks||[]));
-    $clear.addEventListener("click",()=>{$filter.value="";applyFilter(data.tracks||[]);$filter.focus();});
+    $filter.addEventListener("input",()=>applyFilter(data.tracks));
+    $clear.addEventListener("click",()=>{$filter.value="";applyFilter(data.tracks);$filter.focus();});
 
-    render(data.tracks||[]);
-
-    // ----- Gallery (16 photos) -----
-    const photos = Array.isArray(data.photos) ? data.photos.slice(0,16) : [];
-    let currentIndex = -1;
-
-    function openLightbox(i){
-      currentIndex=i;
-      lb.classList.add("open");
-      lbImg.src=photos[currentIndex];
-      lbImg.alt=`Foto ${currentIndex+1}`;
-    }
-    function closeLightbox(){
-      lb.classList.remove("open");
-      currentIndex=-1;
-    }
-    function next(){ if(photos.length){ currentIndex=(currentIndex+1)%photos.length; lbImg.src=photos[currentIndex]; } }
-    function prev(){ if(photos.length){ currentIndex=(currentIndex-1+photos.length)%photos.length; lbImg.src=photos[currentIndex]; } }
-
-    // Build thumbs
-    photos.forEach((src,i)=>{
-      const t=document.createElement("button");
-      t.className="thumb";
-      t.type="button";
-      t.innerHTML=`<img src="${src}" alt="Thumbnail ${i+1}">`;
-      t.addEventListener("click",()=>openLightbox(i));
-      $thumbs.appendChild(t);
-    });
-
-    // Create lightbox
-    const lb=document.createElement("div");
-    lb.className="lightbox";
-    lb.innerHTML=`
-      <button class="lb-btn lb-close" aria-label="Sluiten">✕</button>
-      <img id="lbImg" alt="">
-      <div class="lb-controls">
-        <button class="lb-btn" id="prevBtn" aria-label="Vorige">◀ Vorige</button>
-        <button class="lb-btn" id="nextBtn" aria-label="Volgende">Volgende ▶</button>
-      </div>
-    `;
-    document.body.appendChild(lb);
-    const lbImg=lb.querySelector("#lbImg");
-    lb.querySelector(".lb-close").addEventListener("click",closeLightbox);
-    lb.querySelector("#nextBtn").addEventListener("click",next);
-    lb.querySelector("#prevBtn").addEventListener("click",prev);
-    lb.addEventListener("click",(e)=>{ if(e.target===lb) closeLightbox(); });
-    document.addEventListener("keydown",(e)=>{
-      if(!lb.classList.contains("open")) return;
-      if(e.key==="Escape") closeLightbox();
-      if(e.key==="ArrowRight") next();
-      if(e.key==="ArrowLeft") prev();
-    });
+    render(data.tracks);
   </script>
+
+    <div class="lightbox" id="lightbox" aria-modal="true" role="dialog">
+      <figure>
+        <img id="lbImg" alt="">
+        <button class="lb-close" id="lbClose" type="button" aria-label="Sluiten">✕</button>
+        <button class="lb-prev" id="lbPrev" type="button" aria-label="Vorige">◀</button>
+        <button class="lb-next" id="lbNext" type="button" aria-label="Volgende">▶</button>
+      </figure>
+    </div>
+    
+
+    <script>
+    /*__LOD_GALLERY_SCRIPT__*/
+    (function(){
+      const data = JSON.parse(document.getElementById("data").textContent);
+      const gallery = data.gallery || [];
+      const container = document.getElementById("gallery");
+      if(!container || !gallery.length) return;
+
+      const exts = [".jpg",".jpeg",".png",".webp"];
+
+      function addPlaceholder(node, label){
+        const ph = document.createElement("div");
+        ph.className = "ph";
+        ph.textContent = label;
+        node.appendChild(ph);
+      }
+
+      function makeImgWithFallback(base, dir, holder){
+        const img = document.createElement("img");
+        let i = 0, failed = false;
+        function tryNext(){
+          if(i >= exts.length){
+            failed = true;
+            addPlaceholder(holder, base);
+            return;
+          }
+          const src = (dir||"") + base + exts[i++];
+          img.src = src;
+        }
+        img.addEventListener("error", tryNext, { once:false });
+        tryNext();
+        return img;
+      }
+
+      const items = [];
+      gallery.forEach((g, idx)=>{
+        const a = document.createElement("a");
+        a.href = "#";
+        a.dataset.idx = idx;
+        a.className = "thumb";
+
+        const img = makeImgWithFallback(g.base, g.dir, a);
+        a.appendChild(img);
+        a.addEventListener("click", (e)=>{
+          e.preventDefault();
+          openLightbox(idx);
+        });
+        container.appendChild(a);
+        items.push({ base:g.base, dir:g.dir });
+      });
+
+      const lb = document.getElementById("lightbox");
+      const lbImg = document.getElementById("lbImg");
+      const btnClose = document.getElementById("lbClose");
+      const btnPrev = document.getElementById("lbPrev");
+      const btnNext = document.getElementById("lbNext");
+      let cur = 0;
+
+      function setImg(idx){
+        cur = (idx+items.length)%items.length;
+        let i = 0;
+        function tryNext(){
+          if(i >= exts.length){ return; }
+          const src = items[cur].dir + items[cur].base + exts[i++];
+          lbImg.onerror = tryNext;
+          lbImg.src = src;
+        }
+        tryNext();
+      }
+      function openLightbox(i){ lb.classList.add("open"); setImg(i); }
+      function closeLightbox(){ lb.classList.remove("open"); lbImg.removeAttribute("src"); }
+      function prev(){ setImg(cur-1); }
+      function next(){ setImg(cur+1); }
+
+      btnClose.addEventListener("click", closeLightbox);
+      btnPrev.addEventListener("click", prev);
+      btnNext.addEventListener("click", next);
+      lb.addEventListener("click", (e)=>{ if(e.target===lb) closeLightbox(); });
+      window.addEventListener("keydown", (e)=>{
+        if(!lb.classList.contains("open")) return;
+        if(e.key==="Escape") closeLightbox();
+        if(e.key==="ArrowLeft") prev();
+        if(e.key==="ArrowRight") next();
+      });
+    })();
+    </script>
+    
 </body>
 </html>
