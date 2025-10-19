@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Milli Vanilli — Tracklist</title>
+  <meta name="theme-color" content="#0a0a0a">
+  <style>
+    :root{--bg:#0a0a0a;--surface:#121212;--surface2:#151515;--text:#f5f5f5;--muted:#c7c7c7;--border:#2a2a2a;--focus:#fff}
+    html{scrollbar-gutter:stable both-edges}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;background:var(--bg);color:var(--text)}
+    img{display:block;max-width:100%;height:auto}
+    .wrap{max-width:980px;margin-inline:auto;padding:16px;display:grid;gap:16px}
+    .topnav{display:flex;gap:10px;align-items:center;padding:10px;background:#0e0e0e;border:1px solid var(--border);border-radius:10px;position:sticky;top:0;z-index:5}
+    .homebtn{display:inline-block;background:#191919;border:1px solid var(--border);padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--text)}
+    .homebtn:hover{background:#222}
+    header.hero{border:1px solid var(--border);background:var(--surface);border-radius:16px;overflow:hidden}
+    .cover img{width:100%}
+    .titlebar{padding:14px;background:var(--surface2);border-top:1px solid var(--border)}
+    h1{margin:0;font-size:1.3rem}
+    .sub{color:var(--muted)}
+
+    .bio{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:14px;line-height:1.55;color:var(--text);}
+    .bio p{margin:0 0 .9rem 0}
+    .bio p:last-child{margin-bottom:0}
+    .bio b{color:#fff}
+
+    .toolbar{position:sticky;top:64px;z-index:4;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px}
+    .search{display:flex;gap:8px}
+    .search input{flex:1;background:#0e0e0e;border:0;color:var(--text);padding:10px;border-radius:10px}
+    .search button{background:#151515;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px;cursor:pointer}
+
+    main.tracks{display:grid;gap:10px}
+    .item{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:12px;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start}
+    .idx{min-width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--border);border-radius:8px;background:#151515;font-weight:700}
+    .meta b{display:block;font-size:1rem;line-height:1.3}
+    .artist{display:block;color:var(--muted);margin-top:2px}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    a.btn{background:#151515;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:8px 10px;text-decoration:none;font-size:.95rem}
+    a.btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+    footer{color:var(--muted);font-size:.9rem;text-align:center;padding:10px}
+
+    .galleryRow{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:12px;display:grid;gap:10px}
+    .galleryRow h3{margin:0 0 6px 0;font-size:1rem;color:var(--muted);font-weight:600}
+
+    .thumbGrid{display:grid;grid-template-columns:1fr;gap:10px}
+    @media(min-width:560px){.thumbGrid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:760px){.thumbGrid{grid-template-columns:repeat(4,1fr)}}
+
+    .thumb{width:100%;aspect-ratio:4/5;object-fit:cover;background:#0c0c0c;border:1px solid #222;border-radius:10px;cursor:zoom-in;transition:transform .08s ease;}
+    @media(min-width:560px){ .thumb{ aspect-ratio:3/2; } }
+    @media(min-width:760px){ .thumb{ aspect-ratio:16/9; } }
+    .thumb:hover{transform:scale(1.01)}
+
+    .lightbox{position:fixed; inset:0; display:none; place-items:center;background:rgba(0,0,0,.86); backdrop-filter:saturate(115%) blur(2px);z-index:9999; padding:16px;}
+    .lightbox.open{display:grid}
+    .lb-inner{max-width:min(96vw,1200px);max-height:90vh;position:relative}
+    .lb-img{max-width:100%;max-height:90vh;border-radius:12px;border:1px solid #333}
+    .lb-ui{position:absolute; inset-inline:0; bottom:-44px; display:flex; justify-content:center; gap:8px}
+    .iconbtn{background:#171717;border:1px solid #2a2a2a;color:var(--text);border-radius:999px;padding:.5rem .9rem;cursor:pointer}
+    .iconbtn:hover{background:#1e1e1e}
+    .lb-close{position:absolute; top:-44px; right:0}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topnav" aria-label="Hoofdmenu">
+      <a class="homebtn" href="index.html">← Hoofdmenu</a>
+    </nav>
+
+    <header class="hero" role="banner">
+      <div class="cover"><img id="cover" alt="Albumcover"></div>
+      <div class="titlebar">
+        <h1 id="albumTitle"></h1>
+        <div class="sub" id="subtitle"></div>
+      </div>
+    </header>
+
+    <section class="bio" aria-label="Korte biografie van Milli Vanilli">
+      <p><b>Milli Vanilli – De opkomst, val en blijvende erfenis van een popfenomeen</b></p>
+      <p>Milli Vanilli was een Duits popduo gevormd door Rob Pilatus en Fab Morvan, dat eind jaren tachtig wereldberoemd werd met hun onweerstaanbare mix van dance, pop en R&amp;B. Onder leiding van producer Frank Farian scoorde het duo in 1988 en 1989 gigantische hits met nummers als “Girl You Know It’s True,” “Blame It on the Rain,” “Baby Don’t Forget My Number” en “Girl I’m Gonna Miss You.” Hun debuutalbum <i>Girl You Know It’s True</i> verkocht wereldwijd miljoenen exemplaren en leverde hen zelfs een Grammy Award op voor Best New Artist in 1990.</p>
+      <p>Maar hun succes kende een dramatische wending toen bleek dat Pilatus en Morvan niet zelf hadden gezongen op de opnames. Tijdens een live-optreden liep de tape vast — een moment dat het begin markeerde van een van de grootste schandalen in de popgeschiedenis. Hun Grammy werd ingetrokken en de reputatie van het duo kreeg een zware klap.</p>
+      <p>Toch probeerden Rob en Fab zich muzikaal te herpakken, ditmaal met hun eigen stemmen. Ondanks de storm bleven ze geloven in hun passie voor muziek. Fab Morvan, de overlevende van het duo, is later blijven optreden en spreekt met trots over hun muzikale nalatenschap.</p>
+      <p>Vandaag de dag wordt Milli Vanilli gezien als een fascinerend hoofdstuk in de popgeschiedenis. Hun dansbare nummers, opvallende stijl en energieke uitstraling blijven symbool staan voor de late jaren ’80 en vroege ’90. Ondanks alles blijft hun muziek onweerstaanbaar — een bewijs dat goede pop nooit echt verdwijnt.</p>
+    </section>
+
+    <nav class="toolbar" aria-label="Zoekbalk">
+      <div class="search">
+        <input id="filter" type="search" placeholder="Zoek in titels of artiest…" aria-label="Zoek in titels of artiest">
+        <button id="clearBtn" type="button">Wissen</button>
+      </div>
+    </nav>
+
+    <main id="list" class="tracks" aria-live="polite"></main>
+
+    <footer>album samengesteld door Tomasso 2025</footer>
+  </div>
+
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Foto viewer">
+    <div class="lb-inner">
+      <img id="lb-img" class="lb-img" src="" alt="" />
+      <div class="lb-ui">
+        <button class="iconbtn" id="lb-prev" aria-label="Vorige foto">◀︎</button>
+        <button class="iconbtn" id="lb-next" aria-label="Volgende foto">▶︎</button>
+        <button class="iconbtn lb-close" id="lb-close" aria-label="Sluiten">✕</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="application/json" id="data">{
+  "album_title": "Milli Vanilli — Milli Vanilli Forever True 'revisited'",
+  "subtitle": "",
+  "cover": "image/millivanilli_cover.png",
+  "tracks": [
+    {"title": "Baby Don't Forget My Number", "artist": "Milli Vanilli"},
+    {"title": "Blame It on the Rain", "artist": "Milli Vanilli"},
+    {"title": "Keep On Running", "artist": "Milli Vanilli"},
+    {"title": "All or Nothing", "artist": "Milli Vanilli"},
+    {"title": "Can't You Feel My Love", "artist": "Milli Vanilli"},
+    {"title": "Dream to Remember", "artist": "Milli Vanilli"},
+    {"title": "Ma Baker", "artist": "Milli Vanilli"},
+    {"title": "Hush", "artist": "Milli Vanilli"},
+    {"title": "Money", "artist": "Milli Vanilli"},
+    {"title": "Is It Love", "artist": "Milli Vanilli"},
+    {"title": "More Than You'll Ever Know", "artist": "Milli Vanilli"},
+    {"title": "Take It as It Comes", "artist": "Milli Vanilli"},
+    {"title": "Girl I'm Gonna Miss You - US Single Version", "artist": "Milli Vanilli"},
+    {"title": "Girl You Know It's True - US Single Version", "artist": "Milli Vanilli"},
+    {"title": "Boy in the Tree", "artist": "Milli Vanilli"},
+    {"title": "Dance with a Devil", "artist": "Milli Vanilli"},
+    {"title": "Girl You Know It's True (Maxi Version) - Super Club Mix", "artist": "Milli Vanilli"},
+    {"title": "Girl I'm Gonna Miss You (Long Version)", "artist": "Milli Vanilli"},
+    {"title": "Keep on Running", "artist": "Milli Vanilli"},
+    {"title": "All or Nothing - US Club Mix", "artist": "Milli Vanilli"},
+    {"title": "It's Your Thing", "artist": "Milli Vanilli"},
+    {"title": "Baby Don't Forget My Number - Subway Mix", "artist": "Milli Vanilli"},
+    {"title": "Tell Me Where It Hurts", "artist": ""},
+    {"title": "Crazy Cane", "artist": "The Real Milli Vanilli"},
+    {"title": "When I Die", "artist": "The Real Milli Vanilli"},
+    {"title": "Body Slam", "artist": "The Real Milli Vanilli"},
+    {"title": "Nice'n'Easy", "artist": "The Real Milli Vanilli"},
+    {"title": "Hard as Hell", "artist": "The Real Milli Vanilli"},
+    {"title": "In My Life", "artist": "The Real Milli Vanilli"},
+    {"title": "Blame It On The Rain Megamix", "artist": "Milli Vanilli"},
+    {"title": "Too Late (True Love)", "artist": "The Real Milli Vanilli"},
+    {"title": "The End of Good Times", "artist": "The Real Milli Vanilli"},
+    {"title": "I'll Be Loving You", "artist": "The Real Milli Vanilli"},
+    {"title": "Big Brother", "artist": "The Real Milli Vanilli"}
+  ]
+}</script>
+
+  <script>
+    const data = JSON.parse(document.getElementById("data").textContent);
+    const $title = document.getElementById("albumTitle");
+    const $subtitle = document.getElementById("subtitle");
+    const $list = document.getElementById("list");
+    const $filter = document.getElementById("filter");
+    const $clear = document.getElementById("clearBtn");
+    const $cover = document.getElementById("cover");
+
+    $title.textContent = data.album_title || "Album";
+    $subtitle.textContent = data.subtitle || "";
+
+    if (data.cover) {
+      $cover.src = data.cover;
+      $cover.onerror = () => {
+        if ($cover.src.endsWith(data.cover)) {
+          $cover.onerror = null;
+          $cover.src = data.cover.replace(/^image\//, "");
+        }
+      };
+    }
+
+    function escapeHtml(s){ return (s||"").replace(/[&<>\"']/g,c=>({"&":"&amp;","<":"&lt;","&gt;":">","\"":"&quot;","'":"&#039;"}[c])); }
+
+    const PHOTO_COUNT = 84;
+    const THUMBS_PER_GROUP = 4;
+    const START_NUM = 1;
+    const makeName = (i) => `milli${String(i).padStart(2,'0')}`;
+    const exts = ['webp','jpg','jpeg','png'];
+
+    function resolveExistingSrc(basePath, basename, extensions){
+      return new Promise((resolve)=>{
+        let idx = 0, done = false;
+        const tryNext = () => {
+          if (idx >= extensions.length){
+            const svg = encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0c0c0c"/><text x="50" y="54" text-anchor="middle" font-size="10" fill="#666">no image</text></svg>');
+            resolve(`data:image/svg+xml;charset=utf-8,${svg}`); return;
+          }
+          const url = `${basePath}${basename}.${extensions[idx++]}`;
+          const probe = new Image();
+          probe.decoding = 'async';
+          probe.onload = () => { if(!done){ done=true; resolve(url); } };
+          probe.onerror = () => { if(!done) tryNext(); };
+          probe.src = url;
+        };
+        tryNext();
+      });
+    }
+
+    async function buildSrcList(){
+      const base = 'image/millivanilli/';
+      const indices = Array.from({length:PHOTO_COUNT}, (_,k)=> START_NUM + k);
+      return Promise.all(indices.map(n => resolveExistingSrc(base, makeName(n), exts)));
+    }
+
+    function renderInterleavedEveryTwo(tracks, sources){
+      $list.innerHTML = "";
+      let photoIdx = 0;
+
+      tracks.forEach((t, i) => {
+        const card = document.createElement("div");
+        card.className = "item";
+
+        const idx = document.createElement("div");
+        idx.className = "idx";
+        idx.textContent = (i+1).toString();
+        card.appendChild(idx);
+
+        const meta = document.createElement("div");
+        meta.className = "meta";
+        meta.innerHTML = `<b>${escapeHtml(t.title||"")}</b><span class="artist">${escapeHtml(t.artist||"")}</span>`;
+
+        const actions = document.createElement("div");
+        actions.className = "actions";
+
+        if (t.title || t.artist){
+          const a = document.createElement("a");
+          a.className = "btn";
+          const q = encodeURIComponent(`${t.title||""} ${t.artist||""}`.trim());
+          a.href = `https://www.youtube.com/results?search_query=${q}`;
+          a.target = "_blank"; a.rel = "noopener noreferrer";
+          a.textContent = "YouTube (zoek)";
+          actions.appendChild(a);
+        }
+
+        const infoBtn = document.createElement("a");
+        infoBtn.className = "btn";
+        const artist = t.artist || (t.title || "");
+        infoBtn.href = `https://nl.wikipedia.org/w/index.php?search=${encodeURIComponent(artist)}`;
+        infoBtn.target = "_blank"; infoBtn.rel = "noopener noreferrer";
+        infoBtn.textContent = "Wikipedia";
+        actions.appendChild(infoBtn);
+
+        meta.appendChild(actions);
+        card.appendChild(meta);
+        $list.appendChild(card);
+
+        const isBoundary = ((i+1) % 2 === 0) || (i === tracks.length - 1);
+        if (isBoundary && photoIdx < sources.length){
+          const row = document.createElement('div');
+          row.className = 'galleryRow';
+          row.innerHTML = `<h3>Foto’s</h3>`;
+
+          const grid = document.createElement('div');
+          grid.className = 'thumbGrid';
+
+          for (let k=0; k<THUMBS_PER_GROUP; k++){
+            if (photoIdx >= sources.length) break;
+            const globalIndex = photoIdx++;
+            const src = sources[globalIndex];
+
+            const img = document.createElement('img');
+            img.className = 'thumb';
+            img.alt = `Milli Vanilli foto ${globalIndex+1}`;
+            img.loading = 'lazy';
+            img.decoding = 'async';
+            img.src = src;
+            img.dataset.index = String(globalIndex);
+            img.addEventListener('click', (e) => {
+              const idx = Number(e.currentTarget.dataset.index);
+              openLightbox(idx, sources);
+            });
+
+            grid.appendChild(img);
+          }
+
+          row.appendChild(grid);
+          $list.appendChild(row);
+        }
+      });
+
+      if (photoIdx < sources.length){
+        const row = document.createElement('div');
+        row.className = 'galleryRow';
+        row.innerHTML = `<h3>Meer foto’s</h3>`;
+
+        const grid = document.createElement('div');
+        grid.className = 'thumbGrid';
+
+        for (let g = photoIdx; g < sources.length; g++){ 
+          const img = document.createElement('img');
+          img.className = 'thumb';
+          img.alt = `Milli Vanilli foto ${g+1}`;
+          img.loading = 'lazy';
+          img.decoding = 'async';
+          img.src = sources[g];
+          img.dataset.index = String(g);
+          img.addEventListener('click', (e) => {
+            const idx = Number(e.currentTarget.dataset.index);
+            openLightbox(idx, sources);
+          });
+          grid.appendChild(img);
+        }
+        row.appendChild(grid);
+        $list.appendChild(row);
+      }
+    }
+
+    function applyFilter(allTracks, sources){
+      const q = ($filter.value||"").toLowerCase().trim();
+      if(!q){ renderInterleavedEveryTwo(allTracks, sources); return; }
+      const filtered = allTracks.filter(t =>
+        (t.title||"").toLowerCase().includes(q) ||
+        (t.artist||"").toLowerCase().includes(q)
+      );
+      renderInterleavedEveryTwo(filtered, sources);
+    }
+
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    const btnPrev = document.getElementById('lb-prev');
+    const btnNext = document.getElementById('lb-next');
+    const btnClose = document.getElementById('lb-close');
+    let current = 0;
+
+    function openLightbox(i, list = window.__gallerySources){
+      current = i;
+      updateLightbox(list);
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(){
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+      lbImg.src = ''; lbImg.alt = '';
+    }
+    function updateLightbox(list = window.__gallerySources){
+      lbImg.src = list[current];
+      lbImg.alt = `Milli Vanilli foto ${current+1}`;
+    }
+    function prev(list = window.__gallerySources){ current = (current - 1 + list.length) % list.length; updateLightbox(list); }
+    function next(list = window.__gallerySources){ current = (current + 1) % list.length; updateLightbox(list); }
+
+    btnPrev?.addEventListener('click', () => prev());
+    btnNext?.addEventListener('click', () => next());
+    btnClose?.addEventListener('click', closeLightbox);
+    lb?.addEventListener('click', (e)=>{ if(e.target === lb) closeLightbox(); });
+    document.addEventListener('keydown', (e)=>{
+      if(!lb.classList.contains('open')) return;
+      if(e.key === 'Escape') closeLightbox();
+      if(e.key === 'ArrowLeft') prev();
+      if(e.key === 'ArrowRight') next();
+    });
+    let sx=0, sy=0;
+    lb?.addEventListener('touchstart',(e)=>{ sx=e.touches[0].clientX; sy=e.touches[0].clientY; },{passive:true});
+    lb?.addEventListener('touchend',(e)=>{
+      const dx=e.changedTouches[0].clientX - sx;
+      const dy=e.changedTouches[0].clientY - sy;
+      if(Math.abs(dx)>Math.abs(dy) && Math.abs(dx)>30){ dx>0 ? prev() : next(); }
+    },{passive:true});
+
+    (async () => {
+      const srcList = await buildSrcList();
+      window.__gallerySources = srcList;
+      applyFilter(data.tracks, srcList);
+    })();
+  </script>
+</body>
+</html>
