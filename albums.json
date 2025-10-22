@@ -146,4 +146,25 @@
     "series": "Legacy Of Dance",
     "volume": 1
   }
+  {
+    "file": "synthesizer-greatest-1_withcover.html",
+    "title": "Synthesizer Greatest 1",
+    "cover": "image/synth1.png",
+    "series": "lovesoul",
+    "volume": 1
+  },
+  {
+    "file": "synthesizer-greatest-2_withcover.html",
+    "title": "Synthesizer Greatest 2",
+    "cover": "image/synth2.png",
+    "series": "lovesoul",
+    "volume": 2
+  },
+  {
+    "file": "synthesizer-greatest-3_withcover.html",
+    "title": "Synthesizer Greatest 3",
+    "cover": "image/synth3.png",
+    "series": "lovesoul",
+    "volume": 3
+  },
 ]
