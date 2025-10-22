@@ -145,7 +145,7 @@
     "cover": "image/legacyofdance_hoes1.png",
     "series": "Legacy Of Dance",
     "volume": 1
-  }
+  },
   {
     "file": "synthesizer-greatest-1_withcover.html",
     "title": "Synthesizer Greatest 1",
@@ -166,5 +166,5 @@
     "cover": "image/synth3.png",
     "series": "lovesoul",
     "volume": 3
-  },
+  }
 ]
