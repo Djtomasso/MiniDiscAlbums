@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Synthesizer Greatest 1 — Tracklist</title>
+  <meta name="theme-color" content="#0a0a0a">
+  <style>
+    :root{--bg:#0a0a0a;--surface:#121212;--surface2:#151515;--text:#f5f5f5;--muted:#c7c7c7;--border:#2a2a2a;--focus:#fff}
+    html{scrollbar-gutter:stable both-edges}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;background:var(--bg);color:var(--text)}
+    img{display:block;max-width:100%;height:auto}
+    .wrap{max-width:820px;margin:auto;padding:16px;display:grid;gap:16px}
+    header.hero{border:1px solid var(--border);background:var(--surface);border-radius:16px;overflow:hidden}
+    .topnav{display:flex;gap:10px;align-items:center;padding:10px;background:#0e0e0e;border:1px solid var(--border);border-radius:10px;position:sticky;top:0;z-index:5}
+    .homebtn{display:inline-block;background:#191919;border:1px solid var(--border);padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--text)}
+    .homebtn:hover{background:#222}
+    .cover img{width:100%}
+    .titlebar{padding:14px;background:var(--surface2);border-top:1px solid var(--border)}
+    h1{margin:0;font-size:1.3rem}
+    .sub{color:var(--muted)}
+    .toolbar{position:sticky;top:64px;z-index:4;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px}
+    .search{display:flex;gap:8px}
+    .search input{flex:1;background:#0e0e0e;border:0;color:var(--text);padding:10px;border-radius:10px}
+    .search button{background:#151515;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px}
+
+    main.tracks{display:grid;gap:10px}
+    .item{border:1px solid var(--border);background:#0f0f0f;border-radius:12px;padding:12px;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start}
+    .idx{min-width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--border);border-radius:8px;background:#151515;font-weight:700}
+    .meta b{display:block;font-size:1rem;line-height:1.3}
+    .artist{display:block;color:var(--muted);margin-top:2px}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    a.btn{background:#151515;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:8px 10px;text-decoration:none;font-size:.95rem;transition:all .2s}
+a.btn.youtube{background:#ff2ea5;color:#fff;border:none}
+a.btn.youtube:hover{filter:brightness(1.1)}
+a.btn.wiki{background:#0a0a0a;border:1px solid #a36fff;color:#fff}
+a.btn.google{background:#333;border:1px solid #444;color:#fff}
+a.btn.google:hover{filter:brightness(1.2)}
+    a.btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+    footer{color:var(--muted);font-size:.9rem;text-align:center;padding:10px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topnav" aria-label="Hoofdmenu">
+      <a class="homebtn" href="index.html">← Hoofdmenu</a>
+    </nav>
+
+    <header class="hero" role="banner">
+      <div class="cover"><img id="cover" alt="Albumcover"></div>
+      <div class="titlebar">
+        <h1 id="albumTitle"></h1>
+        <div class="sub" id="subtitle"></div>
+      </div>
+    </header>
+
+    <nav class="toolbar" aria-label="Zoekbalk">
+      <div class="search">
+        <input id="filter" type="search" placeholder="Zoek in titels of artiest…" aria-label="Zoek in titels of artiest">
+        <button id="clearBtn" type="button">Wissen</button>
+      </div>
+    </nav>
+
+    <main id="list" class="tracks" aria-live="polite"></main>
+
+    <footer>album samengesteld door Tomasso 2025</footer>
+  </div>
+
+  <script type="application/json" id="data">
+{
+  "album_title": "1989 HITS Volume 2",
+  "subtitle": "",
+  "cover": "image/1989_2.png",
+  "tracks": [
+    {
+      "title": "Starvoyager-The Inter Galactic",
+      "artist": "Cruise"
+    },
+    {
+      "title": "Tell It Like It Is",
+      "artist": "Don Johnson"
+    },
+    {
+      "title": "Batdance (Single Version)",
+      "artist": "Prince"
+    },
+    {
+      "title": "A Bit Of...",
+      "artist": "Kiss Amc"
+    },
+    {
+      "title": "Do The Right Thing (Happiness 7'' Remix)",
+      "artist": "Redhead Kingpin & The Fbi"
+    },
+    {
+      "title": "When I Looked At Him (Single Version)",
+      "artist": "Expose"
+    },
+    {
+      "title": "Sweet Surrender",
+      "artist": "Wet Wet Wet"
+    },
+    {
+      "title": "I'm Every Woman ('89 Version)",
+      "artist": "Chaka Khan"
+    },
+    {
+      "title": "Are You My Baby",
+      "artist": "Wendy & Lisa"
+    },
+    {
+      "title": "It's Only Love",
+      "artist": "Simply Red"
+    },
+    {
+      "title": "Into Temptation",
+      "artist": "Crowded House"
+    },
+    {
+      "title": "Room In Your Heart",
+      "artist": "Living In A Box"
+    },
+    {
+      "title": "Forever Your Girl (Single Version)",
+      "artist": "Paula Abdul"
+    },
+    {
+      "title": "Spin Me Around",
+      "artist": "Zeon Jones"
+    },
+    {
+      "title": "The Message Is Love",
+      "artist": "Arthur Baker & Backbeat Disiples & Al Green"
+    },
+    {
+      "title": "Hey Dj I Can't Dance (To That Music You're Playing)",
+      "artist": "Beatmasters & Betty Boo"
+    },
+    {
+      "title": "Love Train",
+      "artist": "Holly Johnson"
+    },
+    {
+      "title": "The Arms Of Orion (Edit)",
+      "artist": "Prince & Sheena Easton"
+    },
+    {
+      "title": "Waltz Darling",
+      "artist": "Malcolm Mclaren & Bootzilla Orchestra"
+    },
+    {
+      "title": "Get On The Dance Floor",
+      "artist": "Rob Base & Dj Ez Rock"
+    },
+    {
+      "title": "That's How I'm Living",
+      "artist": "Tony Scott"
+    },
+    {
+      "title": "Laat Je Gaan",
+      "artist": "Petra & Co"
+    },
+    {
+      "title": "Sit & Wait",
+      "artist": "Sydney Youngblood"
+    },
+    {
+      "title": "Dagen Dat Ik Je Vergeet",
+      "artist": "Kadanz"
+    },
+    {
+      "title": "Take Me To Your Heart",
+      "artist": "Rick Astley"
+    },
+    {
+      "title": "Numero Uno (Radio)",
+      "artist": "Starlight"
+    },
+    {
+      "title": "Stakker Humanoid",
+      "artist": "Humanoid"
+    },
+    {
+      "title": "Life's Just A Ballgame (Radio Remix)",
+      "artist": "Womack & Womack"
+    },
+    {
+      "title": "Living Years",
+      "artist": "Mike & The Mechanics"
+    },
+    {
+      "title": "Joy And Pain",
+      "artist": "Donna Allen"
+    },
+    {
+      "title": "Put A Little Love In Your Heart",
+      "artist": "Annie Lennox & Al Green"
+    },
+    {
+      "title": "Friends",
+      "artist": "Jody Watley With Eric B. & Rakim"
+    },
+    {
+      "title": "In The Air Tonight (Extended Version)",
+      "artist": "Phil Collins"
+    },
+    {
+      "title": "Good Thing",
+      "artist": "Fine Young Cannibals"
+    },
+    {
+      "title": "The Real Wild House",
+      "artist": "Raul Orellana"
+    }
+  ]
+}
+  </script>
+
+  <script>
+    const data = JSON.parse(document.getElementById("data").textContent);
+    const $title = document.getElementById("albumTitle");
+    const $subtitle = document.getElementById("subtitle");
+    const $list = document.getElementById("list");
+    const $filter = document.getElementById("filter");
+    const $clear = document.getElementById("clearBtn");
+    const $cover = document.getElementById("cover");
+
+    $title.textContent = data.album_title || "Album";
+    $subtitle.textContent = data.subtitle || "";
+
+    if (data.cover) {
+      $cover.src = data.cover;
+      $cover.onerror = () => {
+        if ($cover.src.endsWith(data.cover)) {
+          $cover.onerror = null;
+          $cover.src = data.cover.replace(/^image\//, "");
+        }
+      };
+    }
+
+    function escapeHtml(s){ return (s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;","&gt;":">","\"":"&quot;","'":"&#039;"}[c])); }
+
+    
+function render(tracks){
+  $list.innerHTML = "";
+  tracks.forEach((t, i) => {
+    const card = document.createElement("div");
+    card.className = "item";
+
+    const idx = document.createElement("div");
+    idx.className = "idx";
+    idx.textContent = (i+1).toString();
+    card.appendChild(idx);
+
+    const meta = document.createElement("div");
+    meta.className = "meta";
+    meta.innerHTML = `<b>${escapeHtml(t.title||"")}</b><span class="artist">${escapeHtml(t.artist||"")}</span>`;
+
+    const actions = document.createElement("div");
+    actions.className = "actions";
+
+    // YouTube button
+    if (t.title || t.artist){
+      const a = document.createElement("a");
+      a.className = "btn youtube";
+      const q = encodeURIComponent(`${t.title||""} ${t.artist||""}`.trim());
+      a.href = `https://www.youtube.com/results?search_query=${q}`;
+      a.target = "_blank"; a.rel = "noopener noreferrer";
+      a.textContent = "YouTube (zoek)";
+      actions.appendChild(a);
+    }
+
+    // Wikipedia button
+    const infoBtn = document.createElement("a");
+    infoBtn.className = "btn wiki";
+    const artist = t.artist || (t.title || "");
+    infoBtn.href = `https://nl.wikipedia.org/w/index.php?search=${encodeURIComponent(artist)}`;
+    infoBtn.target = "_blank"; infoBtn.rel = "noopener noreferrer";
+    infoBtn.textContent = "Wikipedia";
+    actions.appendChild(infoBtn);
+
+    // Google button
+    const googleBtn = document.createElement("a");
+    googleBtn.className = "btn google";
+    const query = encodeURIComponent(`${t.title||""} ${t.artist||""}`.trim());
+    googleBtn.href = `https://www.google.com/search?q=${query}`;
+    googleBtn.target = "_blank"; googleBtn.rel = "noopener noreferrer";
+    googleBtn.textContent = "Google";
+    actions.appendChild(googleBtn);
+
+    meta.appendChild(actions);
+    card.appendChild(meta);
+    $list.appendChild(card);
+  });
+}
+render(data.tracks);
+
+  </script>
+</body>
+</html>
