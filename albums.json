@@ -29,28 +29,28 @@
   },
   {
     "file": "eros-ramazzotti-sempre-eros-una_withcover.html",
-    "title": "Eros Ramazzotti — Sempre Eros Una",
+    "title": "Eros Ramazzotti \u2014 Sempre Eros Una",
     "cover": "image/eros-sempre-eros-una.png",
     "series": "Sempre Eros",
     "volume": 1
   },
   {
     "file": "eros-ramazzotti-sempre-eros-due_withcover.html",
-    "title": "Eros Ramazzotti — Sempre Eros Due",
+    "title": "Eros Ramazzotti \u2014 Sempre Eros Due",
     "cover": "image/eros-sempre-eros-due.png",
     "series": "Sempre Eros",
     "volume": 2
   },
   {
     "file": "janet-jackson-janet_withcover.html",
-    "title": "Janet Jackson — Janet",
+    "title": "Janet Jackson \u2014 Janet",
     "cover": "image/janet-jackson-janet.png",
     "series": "Janet Jackson",
     "volume": 1
   },
   {
     "file": "millivanilli_withcover.html",
-    "title": "Milli Vanilli — Forever True 'revisited'",
+    "title": "Milli Vanilli \u2014 Forever True 'revisited'",
     "cover": "image/millivanilli_cover.png",
     "series": "Milli Vanilli",
     "volume": 1
@@ -85,28 +85,28 @@
   },
   {
     "file": "rhythm-nation-1814_withcover.html",
-    "title": "Janet Jackson — Rhythm Nation 1814",
+    "title": "Janet Jackson \u2014 Rhythm Nation 1814",
     "cover": "image/rhythm-nation-1814.png",
     "series": "Janet Jackson",
     "volume": 1
   },
   {
     "file": "rhythm-nation-remixes_withcover.html",
-    "title": "Janet Jackson — Rhythm Nation 1814 (Remixes)",
+    "title": "Janet Jackson \u2014 Rhythm Nation 1814 (Remixes)",
     "cover": "image/rhythm-nation-remixes.png",
     "series": "Janet Jackson",
     "volume": 2
   },
   {
     "file": "madonna-born-to-reinvent_withcover.html",
-    "title": "Madonna — born to reinvent",
+    "title": "Madonna \u2014 born to reinvent",
     "cover": "image/madonna 1 albumhoesmd.png",
     "series": "Madonna",
     "volume": 1
   },
   {
     "file": "madonna-spirit-in-motion_withcover.html",
-    "title": "Madonna — spirit in motion",
+    "title": "Madonna \u2014 spirit in motion",
     "cover": "image/madonna 2 albumhoesmd.png",
     "series": "Madonna",
     "volume": 2
@@ -208,5 +208,47 @@
     "cover": "image/1988_3.png",
     "series": "HITS 1988",
     "volume": 3
+  },
+  {
+    "file": "italo-disco-one_withcover.html",
+    "title": "Italo Disco One",
+    "cover": "image/italodisco1.png",
+    "series": "Italo Disco",
+    "volume": 1
+  },
+  {
+    "file": "italo-disco-two_withcover.html",
+    "title": "Italo Disco Two",
+    "cover": "image/italodisco2.png",
+    "series": "Italo Disco",
+    "volume": 2
+  },
+  {
+    "file": "italo-disco-three_withcover.html",
+    "title": "Italo Disco Three",
+    "cover": "image/italodisco3.png",
+    "series": "Italo Disco",
+    "volume": 3
+  },
+  {
+    "file": "italo-disco-four_withcover.html",
+    "title": "Italo Disco Four",
+    "cover": "image/italodisco4.png",
+    "series": "Italo Disco",
+    "volume": 4
+  },
+  {
+    "file": "italo-disco-five_withcover.html",
+    "title": "Italo Disco Five",
+    "cover": "image/italodisco5.png",
+    "series": "Italo Disco",
+    "volume": 5
+  },
+  {
+    "file": "italo-disco-six_withcover.html",
+    "title": "Italo Disco Six",
+    "cover": "image/italodisco6.png",
+    "series": "Italo Disco",
+    "volume": 6
   }
 ]
