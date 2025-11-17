@@ -274,9 +274,16 @@
   },
   {
     "file": "zyx-italo-disco-quattro_withcover.html",
-    "title": "ZYX Italo Disco Quattro",
+    "title": "ZYX Italo Disco quattro_withcover",
     "cover": "image/italodiscoquattro.png",
     "series": "ZYX Italo Disco",
     "volume": 4
+  },
+    {
+    "file": "lindaroosjessica_withcover.html",
+    "title": "Linda, Roos & Jessica",
+    "cover": "image/lindaroosjessica.png",
+    "series": "Linda Roos & Jessica",
+    "volume": 1
   }
 ]
