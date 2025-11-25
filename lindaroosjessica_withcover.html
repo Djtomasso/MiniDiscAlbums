@@ -22,6 +22,27 @@ body {
   color:var(--text);
 }
 
+/* Hoofdmenu knop */
+.backmenu {
+  position: sticky;
+  top: 10px;
+  z-index: 9999;
+  padding: 0 0 4px 0;
+}
+.backmenu a {
+  display: inline-block;
+  padding: 10px 18px;
+  background: #151515;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: #ffffff;
+  text-decoration: none;
+}
+.backmenu a:hover {
+  background: #1d1d1d;
+}
+
 .wrap {
   max-width:820px;
   margin:auto;
@@ -165,6 +186,7 @@ a.btn.google  { background:#333; color:white; border:1px solid #444; }
   border-radius:10px;
   background:#222;
   object-fit:cover;
+  cursor:pointer;
 }
 
 /* Mobiel ratio 4:5 */
@@ -198,7 +220,7 @@ footer {
   display:none;
   align-items:center;
   justify-content:center;
-  z-index:9999;
+  z-index:99999;
 }
 
 #lightbox-img {
@@ -235,58 +257,64 @@ footer {
 </head>
 
 <body>
+
 <div class="wrap">
 
-<header class="hero">
-  <div class="cover">
-    <img src="image/lindaroosjessica.png" alt="Albumcover">
+  <!-- Hoofdmenu-knop boven de cover -->
+  <div class="backmenu">
+    <a href="index.html">← Hoofdmenu</a>
   </div>
-  <div class="titlebar">
-    <h1>Linda, Roos & Jessica</h1>
-    <div class="sub">Biografie, Tracks & Fotoverzameling</div>
-  </div>
-</header>
 
-<div class="bio">
-Linda, Roos & Jessica was een muzikaal trio dat midden jaren ’90 uitgroeide tot één van de meest herkenbare fenomenen van de Nederlandse popcultuur. Het trio bestond uit Babette van Veen (Linda), Guusje Nederhorst (Roos) en Katja Schuurman (Jessica), die hun bekendheid vooral te danken hadden aan hun rollen in Goede Tijden, Slechte Tijden. De vriendinnengroep in de soap werd zo populair dat ze de stap naar muziek maakten — een stap die onverwacht een gigantisch succes werd.
+  <header class="hero">
+    <div class="cover">
+      <img src="image/lindaroosjessica.png" alt="Albumcover">
+    </div>
+    <div class="titlebar">
+      <h1>Linda, Roos & Jessica</h1>
+      <div class="sub">Biografie, Tracks & Fotoverzameling</div>
+    </div>
+  </header>
+
+  <div class="bio">
+Linda, Roos & Jessica was een muzikaal trio dat midden jaren ’90 uitgroeide tot één van de meest herkenbare fenomenen van de Nederlandse popcultuur. Het trio bestond uit Babette van Veen (Linda), Caroline de Bruijn (Roos) en Guusje Nederhorst (Jessica), die hun bekendheid vooral te danken hadden aan hun rollen in Goede Tijden, Slechte Tijden. De vriendinnengroep in de soap werd zo populair dat ze de stap naar muziek maakten — een stap die onverwacht een gigantisch succes werd.
 
 In 1995 brachten ze de megahit “Ademnood” uit, een vrolijke, energieke popsong die lange tijd op nummer 1 stond. Hun herkenbare uitstraling, humor en luchtige sound maakten hen direct geliefd bij een breed publiek. Daarna volgden hits als “Alles of Niets” en “Druppels”, waarmee ze hun plek in de jaren ’90-cultuur definitief verstevigden.
 
 Aan het einde van de jaren ’90 stopten ze met nieuwe muziek en vervolgden de actrices hun eigen carrièrepad. In 2004 overleed Guusje Nederhorst, wat grote impact had op fans én collega’s. Haar creatieve nalatenschap blijft voortleven, onder meer dankzij haar iconische kinderboekenreeks Woezel & Pip.
 
-In 2025 kwamen Linda, Roos & Jessica weer volop in de spotlights. Ter ere van het bijna 30-jarig bestaan van “Ademnood” organiseerden Babette van Veen en Katja Schuurman een groot feest en speciaal optreden. Het evenement bracht oud en nieuw publiek samen en vormde een warme ode aan de tijdloze charme van het trio. Ook verscheen er in 2025 een nieuwe single, die de nostalgie van toen combineerde met een frisse knipoog naar het heden.
+In 2025 kwamen Linda, Roos & Jessica weer volop in de spotlights. Ter ere van het bijna 30-jarig bestaan van “Ademnood” organiseerden Babette van Veen en Katja Schuurman (die Jessica vertegenwoordigde) een groot feest en speciaal optreden. Het evenement bracht oud en nieuw publiek samen en vormde een warme ode aan de tijdloze charme van het trio. Ook verscheen er in 2025 een nieuwe single, die de nostalgie van toen combineerde met een frisse knipoog naar het heden.
 
 Vandaag de dag blijft Linda, Roos & Jessica synoniem aan vriendschap, vrolijkheid en pure jaren ’90-nostalgie. Hun muziek wordt nog steeds veel gedraaid, en hun invloed op de Nederlandse popmuziek blijft onverminderd groot.
-</div>
-
-<nav class="toolbar">
-  <div class="search">
-    <input id="filter" type="search" placeholder="Zoek in titels of artiest…">
-    <button id="clearBtn">Wissen</button>
   </div>
-</nav>
 
-<main id="list" class="tracks"></main>
+  <nav class="toolbar">
+    <div class="search">
+      <input id="filter" type="search" placeholder="Zoek in titels of artiest…">
+      <button id="clearBtn">Wissen</button>
+    </div>
+  </nav>
 
-<h2>Foto's</h2>
-<div class="thumbgrid" id="thumbs"></div>
+  <main id="list" class="tracks"></main>
 
-<footer>
-  album samengesteld door Tomasso 2025
-</footer>
+  <h2>Foto's</h2>
+  <div class="thumbgrid" id="thumbs"></div>
+
+  <footer>
+    album samengesteld door Tomasso 2025
+  </footer>
 
 </div>
 
 <!-- LIGHTBOX -->
 <div id="lightbox">
   <img id="lightbox-img" alt="">
-  <button id="lb-prev" class="lb-btn" aria-label="Vorige foto">&lsaquo;</button>
-  <button id="lb-next" class="lb-btn" aria-label="Volgende foto">&rsaquo;</button>
-  <button id="lb-close" aria-label="Sluiten">&times;</button>
+  <button id="lb-prev" class="lb-btn">&lsaquo;</button>
+  <button id="lb-next" class="lb-btn">&rsaquo;</button>
+  <button id="lb-close">&times;</button>
 </div>
 
 <script>
-/* Tracks uit jouw CSV */
+/* Tracks */
 const tracks = [
   {title:"Lange Nacht", artist:"Linda Roos & Jessica"},
   {title:"Ademnood", artist:"Linda Roos & Jessica"},
@@ -310,7 +338,6 @@ const list    = document.getElementById("list");
 const filter  = document.getElementById("filter");
 const clearBtn= document.getElementById("clearBtn");
 
-/* Render tracks */
 function render(tr) {
   list.innerHTML = "";
   tr.forEach((t,i)=>{
@@ -371,7 +398,7 @@ for(let i=1;i<=32;i++){
   thumbImages.push(img);
 }
 
-/* Lightbox logica */
+/* Lightbox */
 const lightbox   = document.getElementById("lightbox");
 const lbImg      = document.getElementById("lightbox-img");
 const lbPrev     = document.getElementById("lb-prev");
@@ -400,10 +427,12 @@ function showPrev() {
   lbImg.src    = thumbImages[currentIndex].src;
 }
 
+/* Buttons */
 lbNext.onclick  = showNext;
 lbPrev.onclick  = showPrev;
 lbClose.onclick = closeLightbox;
 
+/* Klik buiten beeld om te sluiten */
 lightbox.addEventListener("click", (e)=>{
   if(e.target === lightbox) closeLightbox();
 });
@@ -430,11 +459,9 @@ lbImg.addEventListener("touchend", e => {
 
 /* Thumbs klikbaar maken */
 thumbImages.forEach((img, idx)=>{
-  img.style.cursor = "pointer";
   img.addEventListener("click", ()=>openLightbox(idx));
 });
 </script>
 
 </body>
 </html>
-
