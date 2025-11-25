@@ -31,15 +31,22 @@
     "file": "eros-ramazzotti-sempre-eros-una_withcover.html",
     "title": "Eros Ramazzotti \u2014 Sempre Eros Una",
     "cover": "image/eros-sempre-eros-una.png",
-    "series": "Sempre Eros",
+    "series": "Eros Ramazzotti",
     "volume": 1
   },
   {
     "file": "eros-ramazzotti-sempre-eros-due_withcover.html",
     "title": "Eros Ramazzotti \u2014 Sempre Eros Due",
     "cover": "image/eros-sempre-eros-due.png",
-    "series": "Sempre Eros",
+    "series": "Eros Ramazzotti",
     "volume": 2
+  },
+  {
+    "file": "eros_unastoria_withcover.html.html",
+    "title": "Eros Ramazzotti \u2014 Una Storia Importante",
+    "cover": "image/eros_unastoria.jpg",
+    "series": "Eros Ramazzotti",
+    "volume": 1
   },
   {
     "file": "simplyred_recollections2025_withcover.html",
