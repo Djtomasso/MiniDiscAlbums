@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Simply Red — Recollections 2025</title>
+
+<style>
+:root {
+  --bg:#0a0a0a;
+  --surface:#121212;
+  --surface2:#151515;
+  --text:#f5f5f5;
+  --muted:#c7c7c7;
+  --border:#2a2a2a;
+}
+
+body {
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* Hoofdmenu knop */
+.backmenu {
+  position: sticky;
+  top: 10px;
+  z-index: 9999;
+  padding: 0 0 4px 0;
+}
+.backmenu a {
+  display: inline-block;
+  padding: 10px 18px;
+  background: #151515;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: #ffffff;
+  text-decoration: none;
+}
+.backmenu a:hover {
+  background: #1d1d1d;
+}
+
+.wrap {
+  max-width:820px;
+  margin:auto;
+  padding:16px;
+  display:grid;
+  gap:16px;
+}
+
+/* Header */
+header.hero {
+  border:1px solid var(--border);
+  background:var(--surface);
+  border-radius:16px;
+  overflow:hidden;
+}
+
+.cover img {
+  width:100%;
+  display:block;
+}
+
+.titlebar {
+  padding:14px;
+  background:var(--surface2);
+  border-top:1px solid var(--border);
+}
+
+h1 { margin:0; font-size:1.4rem; }
+.sub { color:var(--muted); }
+
+/* Biography / albumtekst */
+.bio {
+  white-space:pre-line;
+  background:#121212;
+  padding:16px;
+  border-radius:12px;
+  line-height:1.5;
+}
+
+/* Search bar */
+.toolbar {
+  position:sticky;
+  top:0;
+  z-index:5;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px;
+}
+
+.search {
+  display:flex;
+  gap:8px;
+}
+
+.search input {
+  flex:1;
+  background:#0e0e0e;
+  border:0;
+  color:var(--text);
+  padding:10px;
+  border-radius:10px;
+}
+
+.search button {
+  background:#151515;
+  color:var(--text);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:10px;
+}
+
+/* Tracks */
+.tracks {
+  display:grid;
+  gap:12px;
+}
+
+.item {
+  border:1px solid var(--border);
+  background:#0f0f0f;
+  border-radius:12px;
+  padding:12px;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:10px;
+}
+
+.idx {
+  min-width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--border);
+  background:#151515;
+  border-radius:8px;
+  font-weight:700;
+}
+
+.meta b {
+  display:block;
+  font-size:1rem;
+}
+
+.artist {
+  display:block;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+/* Buttons */
+.actions {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:8px;
+}
+
+a.btn {
+  padding:8px 10px;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:.95rem;
+}
+
+/* Button colors */
+a.btn.youtube { background:#ff2ea5; color:white; }
+a.btn.wiki    { background:#0a0a0a; color:white; border:1px solid #a36fff; }
+a.btn.google  { background:#333; color:white; border:1px solid #444; }
+
+/* Thumbnails */
+.thumbgrid {
+  display:grid;
+  gap:10px;
+  grid-template-columns:repeat(auto-fill, minmax(140px,1fr));
+}
+
+.thumbgrid img {
+  width:100%;
+  display:block;
+  border-radius:10px;
+  background:#222;
+  object-fit:cover;
+  cursor:pointer;
+}
+
+/* Mobiel ratio 4:5 */
+@media (max-width: 600px) {
+  .thumbgrid img { aspect-ratio: 4 / 5; }
+}
+
+/* Tablet ratio 3:2 */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .thumbgrid img { aspect-ratio: 3 / 2; }
+}
+
+/* Desktop ratio 16:9 + max 4 per rij */
+@media (min-width: 1025px) {
+  .thumbgrid img { aspect-ratio: 16 / 9; }
+  .thumbgrid { grid-template-columns: repeat(4, 1fr); }
+}
+
+footer {
+  color:var(--muted);
+  text-align:center;
+  font-size:.9rem;
+  padding:10px;
+}
+
+/* Lightbox */
+#lightbox {
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.9);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:99999;
+}
+
+#lightbox-img {
+  max-width:90%;
+  max-height:85%;
+  border-radius:10px;
+}
+
+.lb-btn {
+  position:fixed;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:40px;
+  color:white;
+  background:none;
+  border:0;
+  cursor:pointer;
+}
+
+#lb-prev { left:20px; }
+#lb-next { right:20px; }
+
+#lb-close {
+  position:fixed;
+  top:20px;
+  right:25px;
+  font-size:40px;
+  color:white;
+  background:none;
+  border:0;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+  <!-- Hoofdmenu-knop boven de cover -->
+  <div class="backmenu">
+    <a href="index.html">← Hoofdmenu</a>
+  </div>
+
+  <header class="hero">
+    <div class="cover">
+      <img src="image/simply_cover.jpg" alt="Simply Red - Recollections 2025">
+    </div>
+    <div class="titlebar">
+      <h1>Simply Red</h1>
+      <div class="sub">Recollections 2025 — Tracklist & Fotoverzameling</div>
+    </div>
+  </header>
+
+  <div class="bio">
+Simply Red vieren vier decennia muziek met Recollections — 40 schitterende, nieuw opgenomen versies van hun klassieke songs. Geproduceerd samen met hun vaste producer Andy Wright, de nieuwe opnames doen volledig recht aan de originele tijdloze favorieten als Money’s Too Tight To Mention, Holding Back The Years, Stars, Fairground en vele anderen. Mick Hucknall legt uit: “Om 40 jaar Simply Red te vieren, vonden we het passend om deze nieuwe versies uit te brengen. Andy Wright heeft op fantastische wijze de sfeer en de klank van de originele opnames weten te vangen en behouden. Zo konden we de cirkel rondmaken en samen met jullie ons 40-jarig jubileum vieren.” Het jubileumjaar was al onvergetelijk, met Hucknalls optreden bij The Tonight Show with Jimmy Fallon samen met The Roots, een verrassingsoptreden op Glastonbury met Rod Stewart en een uitverkochte UK & Europese tour. Met meer dan 60 miljoen verkochte albums, vijf UK #1-albums, 2 miljard streams en een erfenis van hits die generaties overspant, blijft Simply Red een van de meest geliefde Britse bands. Een tijdloze hommage aan Simply Red — verleden, heden en toekomst.
+  </div>
+
+  <nav class="toolbar">
+    <div class="search">
+      <input id="filter" type="search" placeholder="Zoek in titels of artiest…">
+      <button id="clearBtn">Wissen</button>
+    </div>
+  </nav>
+
+  <main id="list" class="tracks"></main>
+
+  <h2>Foto's</h2>
+  <div class="thumbgrid" id="thumbs"></div>
+
+  <footer>
+    album samengesteld door Tomasso 2025
+  </footer>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <img id="lightbox-img" alt="">
+  <button id="lb-prev" class="lb-btn">&lsaquo;</button>
+  <button id="lb-next" class="lb-btn">&rsaquo;</button>
+  <button id="lb-close">&times;</button>
+</div>
+
+<script>
+/* TRACKS – uit het CSV-bestand */
+const tracks = [
+  {title:"Come To My Aid", artist:"Simply Red"},
+  {title:"Sad Old Red", artist:"Simply Red"},
+  {title:"Look At You Now", artist:"Simply Red"},
+  {title:"Heaven", artist:"Simply Red"},
+  {title:"Jericho", artist:"Simply Red"},
+  {title:"Money's Too Tight (To Mention)", artist:"Simply Red"},
+  {title:"Holding Back The Years", artist:"Simply Red"},
+  {title:"Picture Book", artist:"Simply Red"},
+  {title:"Open Up The Red Box", artist:"Simply Red"},
+  {title:"The Right Thing", artist:"Simply Red"},
+  {title:"To Be With You", artist:"Simply Red"},
+  {title:"It's Only Love", artist:"Simply Red"},
+  {title:"A New Flame", artist:"Simply Red"},
+  {title:"You've Got It", artist:"Simply Red"},
+  {title:"Ev'ry Time We Say Goodbye", artist:"Simply Red"},
+  {title:"More", artist:"Simply Red"},
+  {title:"If You Don't Know Me By Now", artist:"Simply Red"},
+  {title:"Enough", artist:"Simply Red"},
+  {title:"Something Got Me Started", artist:"Simply Red"},
+  {title:"Thrill Me", artist:"Simply Red"},
+  {title:"Stars", artist:"Simply Red"},
+  {title:"Your Mirror", artist:"Simply Red"},
+  {title:"For Your Babies", artist:"Simply Red"},
+  {title:"Angel", artist:"Simply Red"},
+  {title:"Fairground", artist:"Simply Red"},
+  {title:"Never Never Love", artist:"Simply Red"},
+  {title:"So Beautiful", artist:"Simply Red"},
+  {title:"The Air That I Breathe", artist:"Simply Red"},
+  {title:"Mellow My Mind", artist:"Simply Red"},
+  {title:"Say You Love Me", artist:"Simply Red"},
+  {title:"Night Nurse", artist:"Simply Red"},
+  {title:"Ain't That A Lot Of Love", artist:"Simply Red"},
+  {title:"Home", artist:"Simply Red"},
+  {title:"Fake", artist:"Simply Red"},
+  {title:"A Song For You", artist:"Simply Red"},
+  {title:"Sunrise", artist:"Simply Red"},
+  {title:"You Make Me Feel Brand New", artist:"Simply Red"},
+  {title:"So Not Over You", artist:"Simply Red"}
+];
+
+const list    = document.getElementById("list");
+const filter  = document.getElementById("filter");
+const clearBtn= document.getElementById("clearBtn");
+
+function render(tr) {
+  list.innerHTML = "";
+  tr.forEach((t,i)=>{
+    const q = encodeURIComponent(t.title+" "+t.artist);
+    list.innerHTML += `
+      <div class="item">
+        <div class="idx">${i+1}</div>
+        <div class="meta">
+          <b>${t.title}</b>
+          <span class="artist">${t.artist}</span>
+          <div class="actions">
+            <a class="btn youtube" target="_blank" href="https://www.youtube.com/results?search_query=${q}">YouTube (zoek)</a>
+            <a class="btn google"  target="_blank" href="https://www.google.com/search?q=${q}">Google</a>
+            <a class="btn wiki"    target="_blank" href="https://nl.wikipedia.org/w/index.php?search=${encodeURIComponent(t.artist)}">Wikipedia</a>
+          </div>
+        </div>
+      </div>`;
+  });
+}
+
+render(tracks);
+
+filter.addEventListener("input", ()=>{
+  const q = filter.value.toLowerCase();
+  render(
+    tracks.filter(t =>
+      t.title.toLowerCase().includes(q) ||
+      t.artist.toLowerCase().includes(q)
+    )
+  );
+});
+
+clearBtn.addEventListener("click", ()=>{
+  filter.value="";
+  render(tracks);
+});
+
+/* Thumbnails + multi-extensie loader */
+const exts   = ["jpg","jpeg","png","webp"];
+const thumbs = document.getElementById("thumbs");
+const thumbImages = [];
+
+for(let i=1;i<=32;i++){
+  const base = "simply" + String(i).padStart(2,"0");
+  const img  = document.createElement("img");
+  img.alt    = base;
+
+  let idx = 0;
+  function tryNext(){
+    if(idx >= exts.length) return;
+    img.src = "image/simply/" + base + "." + exts[idx];
+    idx++;
+    img.onerror = tryNext;
+  }
+
+  tryNext();
+  thumbs.appendChild(img);
+  thumbImages.push(img);
+}
+
+/* Lightbox */
+const lightbox   = document.getElementById("lightbox");
+const lbImg      = document.getElementById("lightbox-img");
+const lbPrev     = document.getElementById("lb-prev");
+const lbNext     = document.getElementById("lb-next");
+const lbClose    = document.getElementById("lb-close");
+
+let currentIndex = 0;
+
+function openLightbox(index) {
+  currentIndex = index;
+  lbImg.src    = thumbImages[index].src;
+  lightbox.style.display = "flex";
+}
+
+function closeLightbox() {
+  lightbox.style.display = "none";
+}
+
+function showNext() {
+  currentIndex = (currentIndex + 1) % thumbImages.length;
+  lbImg.src    = thumbImages[currentIndex].src;
+}
+
+function showPrev() {
+  currentIndex = (currentIndex - 1 + thumbImages.length) % thumbImages.length;
+  lbImg.src    = thumbImages[currentIndex].src;
+}
+
+/* Buttons */
+lbNext.onclick  = showNext;
+lbPrev.onclick  = showPrev;
+lbClose.onclick = closeLightbox;
+
+/* Klik buiten beeld om te sluiten */
+lightbox.addEventListener("click", (e)=>{
+  if(e.target === lightbox) closeLightbox();
+});
+
+/* Keyboard navigation */
+document.addEventListener("keydown",(e)=>{
+  if(lightbox.style.display!=="flex") return;
+  if(e.key==="Escape")      closeLightbox();
+  if(e.key==="ArrowRight")  showNext();
+  if(e.key==="ArrowLeft")   showPrev();
+});
+
+/* Swipe op mobiel */
+let touchStartX = 0;
+lbImg.addEventListener("touchstart", e => {
+  touchStartX = e.changedTouches[0].clientX;
+});
+
+lbImg.addEventListener("touchend", e => {
+  const diff = e.changedTouches[0].clientX - touchStartX;
+  if (diff > 40)  showPrev();
+  if (diff < -40) showNext();
+});
+
+/* Thumbs klikbaar maken */
+thumbImages.forEach((img, idx)=>{
+  img.addEventListener("click", ()=>openLightbox(idx));
+});
+</script>
+
+</body>
+</html>
