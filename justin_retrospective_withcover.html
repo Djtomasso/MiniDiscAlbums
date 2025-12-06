@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Justin Timberlake — 20/20 Retrospective</title>
+
+<style>
+:root {
+  --bg:#0a0a0a;
+  --surface:#121212;
+  --surface2:#151515;
+  --text:#f5f5f5;
+  --muted:#c7c7c7;
+  --border:#2a2a2a;
+}
+
+body {
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* Hoofdmenu knop */
+.backmenu {
+  position: sticky;
+  top: 10px;
+  z-index: 9999;
+  padding: 0 0 4px 0;
+}
+.backmenu a {
+  display: inline-block;
+  padding: 10px 18px;
+  background: #151515;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: #ffffff;
+  text-decoration: none;
+}
+.backmenu a:hover {
+  background: #1d1d1d;
+}
+
+.wrap {
+  max-width:820px;
+  margin:auto;
+  padding:16px;
+  display:grid;
+  gap:16px;
+}
+
+/* Header */
+header.hero {
+  border:1px solid var(--border);
+  background:var(--surface);
+  border-radius:16px;
+  overflow:hidden;
+}
+
+.cover img {
+  width:100%;
+  display:block;
+}
+
+.titlebar {
+  padding:14px;
+  background:var(--surface2);
+  border-top:1px solid var(--border);
+}
+
+h1 { margin:0; font-size:1.4rem; }
+.sub { color:var(--muted); }
+
+/* Biografie */
+.bio {
+  white-space:pre-line;
+  background:#121212;
+  padding:16px;
+  border-radius:12px;
+  line-height:1.5;
+}
+
+/* Search bar */
+.toolbar {
+  position:sticky;
+  top:0;
+  z-index:5;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px;
+}
+
+.search {
+  display:flex;
+  gap:8px;
+}
+
+.search input {
+  flex:1;
+  background:#0e0e0e;
+  border:0;
+  color:var(--text);
+  padding:10px;
+  border-radius:10px;
+}
+
+.search button {
+  background:#151515;
+  color:var(--text);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:10px;
+}
+
+/* Tracks */
+.tracks {
+  display:grid;
+  gap:12px;
+}
+
+.item {
+  border:1px solid var(--border);
+  background:#0f0f0f;
+  border-radius:12px;
+  padding:12px;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:10px;
+}
+
+.idx {
+  min-width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--border);
+  background:#151515;
+  border-radius:8px;
+  font-weight:700;
+}
+
+.meta b {
+  display:block;
+  font-size:1rem;
+}
+
+.artist {
+  display:block;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+/* Buttons */
+.actions {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:8px;
+}
+
+a.btn {
+  padding:8px 10px;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:.95rem;
+}
+
+/* Button colors (volgens je vaste stijl) */
+a.btn.youtube { background:#ff2ea5; color:white; }
+a.btn.wiki    { background:#0a0a0a; color:white; border:1px solid #a36fff; }
+a.btn.google  { background:#333; color:white; border:1px solid #444; }
+
+/* Thumbnails in blokken tussen de tracks */
+.thumbblock {
+  margin:4px 0 8px 0;
+}
+.thumbgrid {
+  display:grid;
+  gap:10px;
+  grid-template-columns:repeat(auto-fill, minmax(140px,1fr));
+}
+.thumbgrid img {
+  width:100%;
+  display:block;
+  border-radius:10px;
+  background:#222;
+  object-fit:cover;
+  cursor:pointer;
+}
+
+/* Mobiel ratio 4:5 */
+@media (max-width: 600px) {
+  .thumbgrid img { aspect-ratio: 4 / 5; }
+}
+
+/* Tablet ratio 3:2 */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .thumbgrid img { aspect-ratio: 3 / 2; }
+}
+
+/* Desktop ratio 16:9 + max 4 per rij */
+@media (min-width: 1025px) {
+  .thumbgrid img { aspect-ratio: 16 / 9; }
+  .thumbgrid { grid-template-columns: repeat(4, 1fr); }
+}
+
+footer {
+  color:var(--muted);
+  text-align:center;
+  font-size:.9rem;
+  padding:10px;
+}
+
+/* Lightbox */
+#lightbox {
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.9);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:99999;
+}
+
+#lightbox-img {
+  max-width:90%;
+  max-height:85%;
+  border-radius:10px;
+}
+
+.lb-btn {
+  position:fixed;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:40px;
+  color:white;
+  background:none;
+  border:0;
+  cursor:pointer;
+}
+
+#lb-prev { left:20px; }
+#lb-next { right:20px; }
+
+#lb-close {
+  position:fixed;
+  top:20px;
+  right:25px;
+  font-size:40px;
+  color:white;
+  background:none;
+  border:0;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+  <!-- Hoofdmenu-knop boven de cover -->
+  <div class="backmenu">
+    <a href="index.html">← Hoofdmenu</a>
+  </div>
+
+  <header class="hero">
+    <div class="cover">
+      <img src="image/2020retrospective.png" alt="Justin Timberlake - 20/20 Retrospective">
+    </div>
+    <div class="titlebar">
+      <h1>Justin Timberlake</h1>
+      <div class="sub">20/20 Retrospective — Tracklist & Fotoverzameling</div>
+    </div>
+  </header>
+
+  <div class="bio">
+Justin Timberlake: Van Mickey Mouse tot Prince of Pop
+Justin Randall Timberlake (geboren op 31 januari 1981 in Memphis, Tennessee) is een van de meest veelzijdige entertainers van zijn generatie. Zijn carrière begon als kindster in The Mickey Mouse Club, waar hij het podium deelde met toekomstige sterren als Britney Spears en Ryan Gosling.
+
+In de late jaren '90 werd hij wereldberoemd als frontman van de boyband *NSYNC. Met hits als Bye Bye Bye domineerden ze de hitlijsten, maar Justin wilde meer. In 2002 nam hij het risico om solo te gaan met zijn debuutalbum Justified. Dankzij de productie van The Neptunes en Timbaland, en hits als Cry Me a River, transformeerde hij van tieneridool naar een serieuze R&B-artiest.
+
+Zijn definitieve status als superster behaalde hij in 2006 met FutureSex/LoveSounds. Met de futuristische sound van SexyBack en My Love vernieuwde hij de popmuziek. Naast muziek bewees Justin zich ook als getalenteerd acteur in films als The Social Network en Friends with Benefits.
+
+Na een lange muzikale pauze keerde hij in 2013 triomfantelijk terug met The 20/20 Experience, een album dat teruggreep naar klassieke soul. Recentere projecten, zoals de hit Can't Stop the Feeling! (uit de film Trolls) en zijn album Everything I Thought It Was (2024), laten zien dat hij nog steeds relevant is.
+
+Met 10 Grammy Awards, 4 Emmy's en een lopende wereldtournee (The Forget Tomorrow World Tour), blijft Justin Timberlake een icoon die zang, dans en acteren moeiteloos combineert.
+  </div>
+
+  <nav class="toolbar">
+    <div class="search">
+      <input id="filter" type="search" placeholder="Zoek in titels of artiest…">
+      <button id="clearBtn">Wissen</button>
+    </div>
+  </nav>
+
+  <main id="list" class="tracks"></main>
+
+  <footer>
+    album samengesteld door Tomasso 2025
+  </footer>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <img id="lightbox-img" alt="">
+  <button id="lb-prev" class="lb-btn">&lsaquo;</button>
+  <button id="lb-next" class="lb-btn">&rsaquo;</button>
+  <button id="lb-close">&times;</button>
+</div>
+
+<script>
+/* TRACKS – uit je CSV, gesplitst op laatste '-' */
+const tracks = [
+  {title:"SexyBack (feat. Timbaland)", artist:"Justin Timberlake, Timbaland"},
+  {title:"My Love (feat. T.I.)", artist:"Justin Timberlake, T.I."},
+  {title:"Selfish", artist:"Justin Timberlake"},
+  {title:"Mirrors", artist:"Justin Timberlake"},
+  {title:"Summer Love", artist:"Justin Timberlake"},
+  {title:"Cry Me a River", artist:"Justin Timberlake"},
+  {title:"No Angels", artist:"Justin Timberlake"},
+  {title:"CAN'T STOP THE FEELING! (from DreamWorks Animation's \"TROLLS\")", artist:"Justin Timberlake"},
+  {title:"Rock Your Body", artist:"Justin Timberlake"},
+  {title:"Say Something (feat. Chris Stapleton)", artist:"Justin Timberlake, Chris Stapleton"},
+  {title:"Suit & Tie (feat. JAY-Z)", artist:"Justin Timberlake, JAY-Z"},
+  {title:"What Goes Around...Comes Around - Radio Edit", artist:"Justin Timberlake"},
+  {title:"Until The End Of Time (with Beyonce)", artist:"Justin Timberlake, Beyonce"},
+  {title:"Like I Love You", artist:"Justin Timberlake"},
+  {title:"LoveStoned / I Think She Knows (Interlude)", artist:"Justin Timberlake"},
+  {title:"Filthy", artist:"Justin Timberlake"},
+  {title:"Let The Groove Get In", artist:"Justin Timberlake"},
+  {title:"Man of the Woods", artist:"Justin Timberlake"},
+  {title:"Pusher Love Girl", artist:"Justin Timberlake"},
+  {title:"4 Minutes (feat. Justin Timberlake & Timbaland)", artist:"Madonna, Justin Timberlake, Timbaland"},
+  {title:"Give It To Me (feat. Alicia Keys)", artist:"Justin Timberlake, Alicia Keys"},
+  {title:"Morning Light (feat. Alicia Keys)", artist:"Justin Timberlake, Alicia Keys"},
+  {title:"Signs (feat. Snoop Dogg)", artist:"Justin Timberlake, Snoop Dogg"},
+  {title:"Love Never Felt So Good", artist:"Michael Jackson, Justin Timberlake"},
+  {title:"Carry Out (featuring Justin Timberlake)", artist:"Timbaland, Justin Timberlake"},
+  {title:"Take Back The Night", artist:"Justin Timberlake"},
+  {title:"Breeze Off The Pond", artist:"Justin Timberlake"},
+  {title:"Higher, Higher", artist:"Justin Timberlake"},
+  {title:"Flannel", artist:"Justin Timberlake"},
+  {title:"Wave", artist:"Justin Timberlake"},
+  {title:"Sauce", artist:"Justin Timberlake"}
+];
+
+const list    = document.getElementById("list");
+const filter  = document.getElementById("filter");
+const clearBtn= document.getElementById("clearBtn");
+
+const photoExts = ["jpg","jpeg","png","webp"];
+const totalPhotos = 40;
+const tracksPerBlock = 3;
+const photosPerBlock = 4;
+
+let allThumbs = [];
+
+/* Render tracks + photo-blokken */
+function render(tr) {
+  list.innerHTML = "";
+  allThumbs = [];
+  let photoIndex = 1;
+
+  function addTrackItem(track, nr) {
+    const item = document.createElement("div");
+    item.className = "item";
+
+    const idxDiv = document.createElement("div");
+    idxDiv.className = "idx";
+    idxDiv.textContent = nr;
+
+    const metaDiv = document.createElement("div");
+    metaDiv.className = "meta";
+
+    const titleEl = document.createElement("b");
+    titleEl.textContent = track.title;
+
+    const artistEl = document.createElement("span");
+    artistEl.className = "artist";
+    artistEl.textContent = track.artist;
+
+    const actions = document.createElement("div");
+    actions.className = "actions";
+
+    const q = encodeURIComponent(track.title + " " + track.artist);
+
+    const yt = document.createElement("a");
+    yt.className = "btn youtube";
+    yt.target = "_blank";
+    yt.href = "https://www.youtube.com/results?search_query=" + q;
+    yt.textContent = "YouTube (zoek)";
+
+    const g = document.createElement("a");
+    g.className = "btn google";
+    g.target = "_blank";
+    g.href = "https://www.google.com/search?q=" + q;
+    g.textContent = "Google";
+
+    const w = document.createElement("a");
+    w.className = "btn wiki";
+    w.target = "_blank";
+    w.href = "https://en.wikipedia.org/w/index.php?search=" + encodeURIComponent(track.artist);
+    w.textContent = "Wikipedia";
+
+    actions.appendChild(yt);
+    actions.appendChild(g);
+    actions.appendChild(w);
+
+    metaDiv.appendChild(titleEl);
+    metaDiv.appendChild(artistEl);
+    metaDiv.appendChild(actions);
+
+    item.appendChild(idxDiv);
+    item.appendChild(metaDiv);
+    list.appendChild(item);
+  }
+
+  function addPhotoBlock() {
+    if (photoIndex > totalPhotos) return;
+
+    const block = document.createElement("div");
+    block.className = "thumbblock";
+
+    const grid = document.createElement("div");
+    grid.className = "thumbgrid";
+    block.appendChild(grid);
+
+    let count = 0;
+    while (count < photosPerBlock && photoIndex <= totalPhotos) {
+      const numStr = String(photoIndex).padStart(2,"0");
+      const img = document.createElement("img");
+      img.alt = "Justin Timberlake " + numStr;
+
+      let extIdx = 0;
+      function tryNext() {
+        if (extIdx >= photoExts.length) return;
+        img.src = "image/justin/justin" + numStr + "." + photoExts[extIdx];
+        extIdx++;
+        img.onerror = tryNext;
+      }
+      tryNext();
+
+      grid.appendChild(img);
+      allThumbs.push(img);
+      photoIndex++;
+      count++;
+    }
+
+    list.appendChild(block);
+  }
+
+  for (let i=0;i<tr.length;i++) {
+    addTrackItem(tr[i], i+1);
+    if ((i+1) % tracksPerBlock === 0) {
+      addPhotoBlock();
+    }
+  }
+
+  /* Overgebleven foto's onderaan */
+  while (photoIndex <= totalPhotos) {
+    addPhotoBlock();
+  }
+
+  setupLightbox();
+}
+
+render(tracks);
+
+filter.addEventListener("input", ()=>{
+  const q = filter.value.toLowerCase();
+  render(
+    tracks.filter(t =>
+      t.title.toLowerCase().includes(q) ||
+      t.artist.toLowerCase().includes(q)
+    )
+  );
+});
+
+clearBtn.addEventListener("click", ()=>{
+  filter.value="";
+  render(tracks);
+});
+
+/* LIGHTBOX LOGICA */
+const lightbox   = document.getElementById("lightbox");
+const lbImg      = document.getElementById("lightbox-img");
+const lbPrev     = document.getElementById("lb-prev");
+const lbNext     = document.getElementById("lb-next");
+const lbClose    = document.getElementById("lb-close");
+
+let currentIndex = 0;
+
+function openLightbox(index) {
+  if (!allThumbs.length) return;
+  currentIndex = index;
+  lbImg.src    = allThumbs[index].src;
+  lightbox.style.display = "flex";
+}
+
+function closeLightbox() {
+  lightbox.style.display = "none";
+}
+
+function showNext() {
+  if (!allThumbs.length) return;
+  currentIndex = (currentIndex + 1) % allThumbs.length;
+  lbImg.src    = allThumbs[currentIndex].src;
+}
+
+function showPrev() {
+  if (!allThumbs.length) return;
+  currentIndex = (currentIndex - 1 + allThumbs.length) % allThumbs.length;
+  lbImg.src    = allThumbs[currentIndex].src;
+}
+
+function setupLightbox() {
+  allThumbs.forEach((img, idx)=>{
+    img.onclick = () => openLightbox(idx);
+  });
+}
+
+lbNext.onclick  = showNext;
+lbPrev.onclick  = showPrev;
+lbClose.onclick = closeLightbox;
+
+lightbox.addEventListener("click", (e)=>{
+  if(e.target === lightbox) closeLightbox();
+});
+
+/* Keyboard navigation */
+document.addEventListener("keydown",(e)=>{
+  if(lightbox.style.display!=="flex") return;
+  if(e.key==="Escape")      closeLightbox();
+  if(e.key==="ArrowRight")  showNext();
+  if(e.key==="ArrowLeft")   showPrev();
+});
+
+/* Swipe op mobiel */
+let touchStartX = 0;
+lbImg.addEventListener("touchstart", e => {
+  touchStartX = e.changedTouches[0].clientX;
+});
+
+lbImg.addEventListener("touchend", e => {
+  const diff = e.changedTouches[0].clientX - touchStartX;
+  if (diff > 40)  showPrev();
+  if (diff < -40) showNext();
+});
+</script>
+
+</body>
+</html>
