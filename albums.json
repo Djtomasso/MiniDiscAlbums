@@ -42,7 +42,7 @@
     "volume": 2
   },
   {
-    "file": "eros_unastoria_withcover.html",
+    "file": "eros_unastoria_withcover.html.html",
     "title": "Eros Ramazzotti \u2014 Una Storia Importante",
     "cover": "image/eros_unastoria.jpg",
     "series": "Eros Ramazzotti",
@@ -298,6 +298,13 @@
     "title": "Linda, Roos & Jessica",
     "cover": "image/lindaroosjessica.png",
     "series": "Linda Roos & Jessica",
+    "volume": 1
+  },
+    {
+    "file": "justin_retrospective_withcover.html",
+    "title": "20/20 Retrospective",
+    "cover": "image/2020retrospective.png",
+    "series": "Justin Timberlake",
     "volume": 1
   }
 ]
