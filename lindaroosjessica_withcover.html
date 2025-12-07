@@ -177,7 +177,8 @@ a.btn.google  { background:#333; color:white; border:1px solid #444; }
 .thumbgrid {
   display:grid;
   gap:10px;
-  grid-template-columns:repeat(auto-fill, minmax(140px,1fr));
+  /* standaard 2 naast elkaar */
+  grid-template-columns:repeat(2,1fr);
 }
 
 .thumbgrid img {
@@ -199,7 +200,7 @@ a.btn.google  { background:#333; color:white; border:1px solid #444; }
   .thumbgrid img { aspect-ratio: 3 / 2; }
 }
 
-/* Desktop ratio 16:9 + max 4 per rij */
+/* Desktop ratio 16:9 + 4 per rij */
 @media (min-width: 1025px) {
   .thumbgrid img { aspect-ratio: 16 / 9; }
   .thumbgrid { grid-template-columns: repeat(4, 1fr); }
@@ -338,6 +339,7 @@ const list    = document.getElementById("list");
 const filter  = document.getElementById("filter");
 const clearBtn= document.getElementById("clearBtn");
 
+/* Render tracks */
 function render(tr) {
   list.innerHTML = "";
   tr.forEach((t,i)=>{
@@ -388,7 +390,7 @@ for(let i=1;i<=32;i++){
   let idx = 0;
   function tryNext(){
     if(idx >= exts.length) return;
-    img.src = "image/LRJ/" + base + "." + exts[idx];
+    img.src = "image/lindaroosjessica/" + base + "." + exts[idx];
     idx++;
     img.onerror = tryNext;
   }
@@ -432,7 +434,6 @@ lbNext.onclick  = showNext;
 lbPrev.onclick  = showPrev;
 lbClose.onclick = closeLightbox;
 
-/* Klik buiten beeld om te sluiten */
 lightbox.addEventListener("click", (e)=>{
   if(e.target === lightbox) closeLightbox();
 });
