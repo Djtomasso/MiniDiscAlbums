@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Simply Red 38 Recollections</title>
+<title>Simply Red — 38 Recollections</title>
 
 <style>
 :root {
@@ -177,7 +177,8 @@ a.btn.google  { background:#333; color:white; border:1px solid #444; }
 .thumbgrid {
   display:grid;
   gap:10px;
-  grid-template-columns:repeat(auto-fill, minmax(140px,1fr));
+  /* altijd 2 naast elkaar onder desktop */
+  grid-template-columns:repeat(2,1fr);
 }
 
 .thumbgrid img {
@@ -199,7 +200,7 @@ a.btn.google  { background:#333; color:white; border:1px solid #444; }
   .thumbgrid img { aspect-ratio: 3 / 2; }
 }
 
-/* Desktop ratio 16:9 + max 4 per rij */
+/* Desktop ratio 16:9 + 4 per rij */
 @media (min-width: 1025px) {
   .thumbgrid img { aspect-ratio: 16 / 9; }
   .thumbgrid { grid-template-columns: repeat(4, 1fr); }
@@ -267,16 +268,16 @@ footer {
 
   <header class="hero">
     <div class="cover">
-      <img src="image/simply_cover.jpg" alt="Simply Red 38 Recollections">
+      <img src="image/simply_cover.jpg" alt="Simply Red - Recollections 2025">
     </div>
     <div class="titlebar">
       <h1>Simply Red</h1>
-      <div class="sub">38 Recollections — Tracklist</div>
+      <div class="sub">Recollections 2025 — Tracklist & Fotoverzameling</div>
     </div>
   </header>
 
   <div class="bio">
-Simply Red vieren vier decennia muziek met Recollections — 38 schitterende, nieuw opgenomen versies van hun klassieke songs. Geproduceerd samen met hun vaste producer Andy Wright, de nieuwe opnames doen volledig recht aan de originele tijdloze favorieten als Money’s Too Tight To Mention, Holding Back The Years, Stars, Fairground en vele anderen. Mick Hucknall legt uit: “Om 40 jaar Simply Red te vieren, vonden we het passend om deze nieuwe versies uit te brengen. Andy Wright heeft op fantastische wijze de sfeer en de klank van de originele opnames weten te vangen en behouden. Zo konden we de cirkel rondmaken en samen met jullie ons 40-jarig jubileum vieren.” Het jubileumjaar was al onvergetelijk, met Hucknalls optreden bij The Tonight Show with Jimmy Fallon samen met The Roots, een verrassingsoptreden op Glastonbury met Rod Stewart en een uitverkochte UK & Europese tour. Met meer dan 60 miljoen verkochte albums, vijf UK #1-albums, 2 miljard streams en een erfenis van hits die generaties overspant, blijft Simply Red een van de meest geliefde Britse bands. Een tijdloze hommage aan Simply Red — verleden, heden en toekomst.
+Simply Red vieren vier decennia muziek met Recollections — 40 schitterende, nieuw opgenomen versies van hun klassieke songs. Geproduceerd samen met hun vaste producer Andy Wright, de nieuwe opnames doen volledig recht aan de originele tijdloze favorieten als Money’s Too Tight To Mention, Holding Back The Years, Stars, Fairground en vele anderen. Mick Hucknall legt uit: “Om 40 jaar Simply Red te vieren, vonden we het passend om deze nieuwe versies uit te brengen. Andy Wright heeft op fantastische wijze de sfeer en de klank van de originele opnames weten te vangen en behouden. Zo konden we de cirkel rondmaken en samen met jullie ons 40-jarig jubileum vieren.” Het jubileumjaar was al onvergetelijk, met Hucknalls optreden bij The Tonight Show with Jimmy Fallon samen met The Roots, een verrassingsoptreden op Glastonbury met Rod Stewart en een uitverkochte UK & Europese tour. Met meer dan 60 miljoen verkochte albums, vijf UK #1-albums, 2 miljard streams en een erfenis van hits die generaties overspant, blijft Simply Red een van de meest geliefde Britse bands. Een tijdloze hommage aan Simply Red — verleden, heden en toekomst.
   </div>
 
   <nav class="toolbar">
@@ -306,7 +307,7 @@ Simply Red vieren vier decennia muziek met Recollections — 38 schitterende, ni
 </div>
 
 <script>
-/* TRACKS – uit het CSV-bestand */
+/* TRACKS – ingevuld uit CSV eerder */
 const tracks = [
   {title:"Come To My Aid", artist:"Simply Red"},
   {title:"Sad Old Red", artist:"Simply Red"},
@@ -446,7 +447,6 @@ lbNext.onclick  = showNext;
 lbPrev.onclick  = showPrev;
 lbClose.onclick = closeLightbox;
 
-/* Klik buiten beeld om te sluiten */
 lightbox.addEventListener("click", (e)=>{
   if(e.target === lightbox) closeLightbox();
 });
