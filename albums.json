@@ -224,6 +224,27 @@
     "volume": 3
   },
   {
+    "file": "1990-hits-volume-1_withcover.html",
+    "title": "1990 HITS VOLUME 1: THE ULTIMATE COLLECTION",
+    "cover": "image/1990_volume1.png",
+    "series": "HITS 1990",
+    "volume": 1
+  },
+  {
+    "file": "1990-hits-volume-2_withcover.html",
+    "title": "1990 HITS VOLUME 2: THE ULTIMATE COLLECTION",
+    "cover": "image/1990_volume2.png",
+    "series": "HITS 1990",
+    "volume": 2
+  },
+  {
+    "file": "1990-hits-volume-3_withcover.html",
+    "title": "1990 HITS VOLUME 3: THE ULTIMATE COLLECTION",
+    "cover": "image/1990_volume3.png",
+    "series": "HITS 1990",
+    "volume": 3
+  },
+  {
     "file": "italo-disco-one_withcover.html",
     "title": "Italo Disco One",
     "cover": "image/italodisco1.png",
