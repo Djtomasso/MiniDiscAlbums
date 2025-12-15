@@ -48,6 +48,20 @@
     "series": "Eros Ramazzotti",
     "volume": 3
   },
+   {
+    "file": "lisa_biography_part1_withcover.html",
+    "title": "Lisa Stansfield \u2014 Lisa's Biography (part 1)",
+    "cover": "image/lisa_part1.png",
+    "series": "Lisa Stansfield",
+    "volume": 1
+  },
+  {
+    "file": "lisa_biography_part2_withcover.html",
+    "title": "Eros Ramazzotti \u2014 Lisa's Biography (part 2)",
+    "cover": "image/lisa_part2.png",
+    "series": "Lisa Stansfield",
+    "volume": 2
+  },
   {
     "file": "simplyred_recollections2025_withcover.html",
     "title": "Simply Red \u2014 38 Recollections",
