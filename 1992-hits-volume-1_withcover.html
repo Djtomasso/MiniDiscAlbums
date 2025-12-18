@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>1992 HITS Volume 1 — The Ultimate Collection</title>
+
+<style>
+:root{
+  --bg:#0a0a0a;
+  --surface:#121212;
+  --surface2:#151515;
+  --text:#f5f5f5;
+  --muted:#c7c7c7;
+  --border:#2a2a2a;
+}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* Hoofdmenu knop (boven cover, niet links op pagina) */
+.backmenu{
+  position: sticky;
+  top: 10px;
+  z-index: 9999;
+  padding: 0 0 4px 0;
+}
+.backmenu a{
+  display:inline-block;
+  padding:10px 18px;
+  background:#151515;
+  border:1px solid #2a2a2a;
+  border-radius:12px;
+  font-size:1rem;
+  color:#fff;
+  text-decoration:none;
+}
+.backmenu a:hover{ background:#1d1d1d; }
+
+.wrap{
+  max-width:820px;
+  margin:auto;
+  padding:16px;
+  display:grid;
+  gap:16px;
+}
+
+/* Header */
+header.hero{
+  border:1px solid var(--border);
+  background:var(--surface);
+  border-radius:16px;
+  overflow:hidden;
+}
+.cover img{ width:100%; display:block; }
+
+.titlebar{
+  padding:14px;
+  background:var(--surface2);
+  border-top:1px solid var(--border);
+}
+h1{ margin:0; font-size:1.4rem; }
+.sub{ color:var(--muted); }
+
+/* Search bar */
+.toolbar{
+  position:sticky;
+  top:0;
+  z-index:5;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px;
+}
+.search{ display:flex; gap:8px; }
+.search input{
+  flex:1;
+  background:#0e0e0e;
+  border:0;
+  color:var(--text);
+  padding:10px;
+  border-radius:10px;
+}
+.search button{
+  background:#151515;
+  color:var(--text);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:10px;
+}
+
+/* Tracks */
+.tracks{ display:grid; gap:12px; }
+.item{
+  border:1px solid var(--border);
+  background:#0f0f0f;
+  border-radius:12px;
+  padding:12px;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:10px;
+}
+.idx{
+  min-width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--border);
+  background:#151515;
+  border-radius:8px;
+  font-weight:700;
+}
+.meta b{ display:block; font-size:1rem; }
+.artist{ display:block; color:var(--muted); margin-top:2px; }
+
+/* Buttons */
+.actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:8px;
+}
+a.btn{
+  padding:8px 10px;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:.95rem;
+}
+
+/* Vaste knopkleuren */
+a.btn.youtube{ background:#ff2ea5; color:white; border:none; }
+a.btn.wiki{ background:#0a0a0a; color:white; border:1px solid #a36fff; }
+a.btn.google{ background:#333; color:white; border:1px solid #444; }
+
+footer{
+  color:var(--muted);
+  text-align:center;
+  font-size:.9rem;
+  padding:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+  <div class="backmenu">
+    <a href="index.html">← Hoofdmenu</a>
+  </div>
+
+  <header class="hero">
+    <div class="cover">
+      <img src="image/1992_vol1.png" alt="1992 HITS Volume 1: The Ultimate Collection">
+    </div>
+    <div class="titlebar">
+      <h1>1992 HITS Volume 1</h1>
+      <div class="sub">The Ultimate Collection</div>
+    </div>
+  </header>
+
+  <nav class="toolbar">
+    <div class="search">
+      <input id="filter" type="search" placeholder="Zoek in titels of artiest…">
+      <button id="clearBtn">Wissen</button>
+    </div>
+  </nav>
+
+  <main id="list" class="tracks"></main>
+
+  <footer>album samengesteld door Tomasso 2025</footer>
+
+</div>
+
+<script>
+/* Tracklist (titel vóór laatste '-', artiest na laatste '-') */
+const tracks = [
+  {title:"Why Not Jazz", artist:"Bfi"},
+  {title:"Are You Ready To Fly", artist:"Rozalla"},
+  {title:"Too Blind To See It", artist:"Kym Sims"},
+  {title:"Stay", artist:"Shakespears Sister"},
+  {title:"Motorcycle Emptiness", artist:"Manic Street Preachers"},
+  {title:"Feel So High", artist:"Des'ree"},
+  {title:"Feel The Rhythm", artist:"Def La Desh & The Fresh Witness"},
+  {title:"Diamonds And Pearls (Single Version)", artist:"Prince & The New Power Generation"},
+  {title:"Chic Mystique", artist:"Chic"},
+  {title:"We All Need Love", artist:"Double You"},
+  {title:"Am I The Same Girl", artist:"Swing Out Sister"},
+  {title:"Jam (Single Version)", artist:"Michael Jackson"},
+  {title:"Ain't No Doubt (Radio Edit)", artist:"Jimmy Nail"},
+  {title:"Libera L'anima", artist:"Jovanotti"},
+  {title:"Mistadobalina (Radio Edit)", artist:"Del Tha Funkee Homosapien"},
+  {title:"Money Don't Matter 2 Night (Single Version)", artist:"Prince"},
+  {title:"We Got A Love Thang (Silky 7'')", artist:"Ce Ce Peniston"},
+  {title:"I Wonder Why", artist:"Curtis Stigers"},
+  {title:"America What Time Is Love (Radio Edit)", artist:"The Klf"},
+  {title:"Ride Like The Wind", artist:"East Side Beat"},
+  {title:"Mad About The Boy", artist:"Dinah Washington"},
+  {title:"I Will Always Love You", artist:"Whitney Houston"},
+  {title:"Deeply Dippy", artist:"Right Said Fred"},
+  {title:"Layla", artist:"Eric Clapton"},
+  {title:"You Bring On The Sun", artist:"London Beat"},
+  {title:"O Fortuna", artist:"Fortuna Feat.Satenig"},
+  {title:"Vlieg Met Me Mee (Live)", artist:"Paul De Leeuw"},
+  {title:"Nana", artist:"N.U.K.E."},
+  {title:"Das Boot", artist:"U 96"},
+  {title:"Steppin' Out Tonight", artist:"Beckie Bell"},
+  {title:"Don't Talk Just Kiss", artist:"Right Said Fred & Jocelyn Brown"},
+  {title:"Nothing Else Matters", artist:"Metallica"},
+  {title:"These Are The Days Of Our Lives", artist:"Queen"},
+  {title:"To Be With You", artist:"Mr.Big"},
+  {title:"Please Don't Go (Radio Mix)", artist:"Double You"},
+  {title:"Twilight Zone", artist:"2 Unlimited"},
+  {title:"I Can't Dance", artist:"Genesis"},
+  {title:"Sweat (A La La La La Long)", artist:"Inner Circle"}
+];
+
+const list = document.getElementById("list");
+const filter = document.getElementById("filter");
+const clearBtn = document.getElementById("clearBtn");
+
+function render(arr){
+  list.innerHTML = "";
+  arr.forEach((t,i)=>{
+    const q = encodeURIComponent(t.title + " " + t.artist);
+    const wikiQ = encodeURIComponent(t.artist);
+    const div = document.createElement("div");
+    div.className = "item";
+    div.innerHTML = `
+      <div class="idx">${i+1}</div>
+      <div class="meta">
+        <b>${t.title}</b>
+        <span class="artist">${t.artist}</span>
+        <div class="actions">
+          <a class="btn youtube" target="_blank" href="https://www.youtube.com/results?search_query=${q}">YouTube (zoek)</a>
+          <a class="btn wiki" target="_blank" href="https://nl.wikipedia.org/w/index.php?search=${wikiQ}">Wikipedia</a>
+          <a class="btn google" target="_blank" href="https://www.google.com/search?q=${q}">Google</a>
+        </div>
+      </div>`;
+    list.appendChild(div);
+  });
+}
+
+render(tracks);
+
+filter.addEventListener("input", ()=>{
+  const q = filter.value.toLowerCase();
+  render(tracks.filter(t =>
+    t.title.toLowerCase().includes(q) ||
+    t.artist.toLowerCase().includes(q)
+  ));
+});
+
+clearBtn.addEventListener("click", ()=>{
+  filter.value = "";
+  render(tracks);
+});
+</script>
+
+</body>
+</html>
