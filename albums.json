@@ -57,10 +57,17 @@
   },
   {
     "file": "lisa_biography_part2_withcover.html",
-    "title": "Eros Ramazzotti \u2014 Lisa's Biography (part 2)",
+    "title": "Lisa Stansfield \u2014 Lisa's Biography (part 2)",
     "cover": "image/lisa_part2.png",
     "series": "Lisa Stansfield",
     "volume": 2
+  },
+  {
+    "file": "lisastansfield_biography_withcover.html",
+    "title": "Lisa Stansfield \u2014 Biography",
+    "cover": "image/lisastansfieldbiography.png",
+    "series": "Lisa Stansfield",
+    "volume": 3
   },
   {
     "file": "simplyred_recollections2025_withcover.html",
