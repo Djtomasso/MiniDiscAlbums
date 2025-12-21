@@ -69,6 +69,7 @@
 
   <script>
     const MANIFEST_URL = './albums.json';
+    const TRACKS_URL   = './tracks_index.json';
     const PLACEHOLDER = './image/placeholder.png';
 
     const $grid = document.getElementById('albums');
@@ -166,6 +167,7 @@
 
     /* ===== Laden & tonen ===== */
     let manifest = [];
+    let tracksIndex = null; // map: album.file -> [{t,a}...]
 
     async function loadManifest(){
       const res = await fetch(MANIFEST_URL, {cache:'no-store'});
@@ -189,15 +191,35 @@
       $grid.hidden = false;
     }
 
-    function applyFilter(){
-      const q = ($q.value || '').toLowerCase().trim();
-      const filtered = !q ? manifest : manifest.filter(a =>
-        (a.title || '').toLowerCase().includes(q) ||
-        (a.series || '').toLowerCase().includes(q)
+    
+function applyFilter(){
+  const q = ($q.value || '').toLowerCase().trim();
+
+  if(!q){
+    const sorted = manifest.slice().sort(smartSort);
+    render(sorted);
+    return;
+  }
+
+  const base = manifest.filter(a =>
+    (a.title || '').toLowerCase().includes(q) ||
+    (a.series || '').toLowerCase().includes(q)
+  );
+
+  if(tracksIndex){
+    const extra = manifest.filter(a => {
+      if(base.includes(a)) return false;
+      const tr = tracksIndex[a.file] || [];
+      return tr.some(x =>
+        (x.t || '').toLowerCase().includes(q) ||
+        (x.a || '').toLowerCase().includes(q)
       );
-      const sorted = filtered.sort(smartSort);
-      render(sorted);
-    }
+    });
+    render(base.concat(extra).sort(smartSort));
+  }else{
+    render(base.sort(smartSort));
+  }
+}
 
     $q.addEventListener('input', applyFilter);
     $clear.addEventListener('click', () => { $q.value=''; applyFilter(); $q.focus(); });
@@ -205,6 +227,7 @@
     (async () => {
       try{
         await loadManifest();
+        await loadTracksIndex();
         applyFilter(); // sorteer direct bij start
       }catch(err){
         $status.textContent = 'Kon albums.json niet laden. Controleer of het bestand in de root staat.';
