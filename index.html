@@ -67,10 +67,10 @@
     <footer>overzicht door Tomasso 2025</footer>
   </div>
 
-  <script>
+  <script>const TRACKS_URL = '/MiniDiscAlbums/tracks_index.json';
+
     const MANIFEST_URL = '/MiniDiscAlbums/albums.json';
-	const TRACKS_URL   = '/MiniDiscAlbums/tracks_index.json';
-    const PLACEHOLDER = './image/placeholder.png';
+    const PLACEHOLDER = '/MiniDiscAlbums/image/placeholder.png';
 
     const $grid = document.getElementById('albums');
     const $status = document.getElementById('status');
@@ -177,6 +177,20 @@
       manifest = list.slice(); // kopie
     }
 
+async function loadTracksIndex(){
+  try{
+    const res = await fetch(TRACKS_URL, { cache: 'no-store' });
+    if(!res.ok) throw new Error('tracks_index.json niet gevonden');
+    const data = await res.json();
+    // verwacht: { "<albumfile>": [ { "t": "...", "a": "..." }, ... ], ... }
+    tracksIndex = (data && typeof data === 'object') ? data : null;
+  }catch(err){
+    // Track-index is optioneel: als dit faalt blijft album-zoekfunctie werken
+    console.warn('Track-index niet geladen:', err);
+    tracksIndex = null;
+  }
+}
+
     function render(list){
       if(!list.length){
         $grid.hidden = true;
@@ -196,16 +210,17 @@ function applyFilter(){
   const q = ($q.value || '').toLowerCase().trim();
 
   if(!q){
-    const sorted = manifest.slice().sort(smartSort);
-    render(sorted);
+    render(manifest.slice().sort(smartSort));
     return;
   }
 
+  // matches op albummetadata
   const base = manifest.filter(a =>
     (a.title || '').toLowerCase().includes(q) ||
     (a.series || '').toLowerCase().includes(q)
   );
 
+  // matches op tracks (optioneel)
   if(tracksIndex){
     const extra = manifest.filter(a => {
       if(base.includes(a)) return false;
@@ -227,10 +242,10 @@ function applyFilter(){
     (async () => {
       try{
         await loadManifest();
-       // await loadTracksIndex();
+        await loadTracksIndex();
         applyFilter(); // sorteer direct bij start
       }catch(err){
-        $status.textContent = 'Kon albums.json niet laden. Controleer of het bestand in de root staat.';
+        $status.textContent = 'Kon data niet laden. Open de console (F12) voor details.';
         $status.className = 'error';
         console.error(err);
       }
