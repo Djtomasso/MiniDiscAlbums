@@ -67,10 +67,9 @@
     <footer>overzicht door Tomasso 2025</footer>
   </div>
 
-  <script>const TRACKS_URL = '/MiniDiscAlbums/tracks_index.json';
-
-    const MANIFEST_URL = '/MiniDiscAlbums/albums.json';
-    const PLACEHOLDER = '/MiniDiscAlbums/image/placeholder.png';
+  <script>
+    const MANIFEST_URL = './albums.json';
+    const PLACEHOLDER = './image/placeholder.png';
 
     const $grid = document.getElementById('albums');
     const $status = document.getElementById('status');
@@ -167,7 +166,6 @@
 
     /* ===== Laden & tonen ===== */
     let manifest = [];
-    let tracksIndex = null; // map: album.file -> [{t,a}...]
 
     async function loadManifest(){
       const res = await fetch(MANIFEST_URL, {cache:'no-store'});
@@ -176,31 +174,6 @@
       if(!Array.isArray(list)) throw new Error('albums.json is geen array');
       manifest = list.slice(); // kopie
     }
-
-async function loadTracksIndex(){
-  try{
-    const res = await fetch(TRACKS_URL, { cache: 'no-store' });
-    if(!res.ok) throw new Error('tracks_index.json niet gevonden (HTTP ' + res.status + ')');
-    const txt = await res.text();
-    const cleaned = txt.replace(/^\uFEFF/, '').trim(); // strip BOM + whitespace
-    const data = JSON.parse(cleaned);
-    tracksIndex = (data && typeof data === 'object') ? data : null;
-
-    if(tracksIndex){
-      console.log('✅ tracks_index geladen, albums:', Object.keys(tracksIndex).length);
-    }else{
-      console.warn('⚠️ tracks_index geladen maar leeg/ongeldig.');
-    }
-  }catch(err){
-    console.warn('Track-index niet geladen:', err);
-    tracksIndex = null;
-  }
-}catch(err){
-    // Track-index is optioneel: als dit faalt blijft album-zoekfunctie werken
-    console.warn('Track-index niet geladen:', err);
-    tracksIndex = null;
-  }
-}
 
     function render(list){
       if(!list.length){
@@ -216,36 +189,15 @@ async function loadTracksIndex(){
       $grid.hidden = false;
     }
 
-    
-function applyFilter(){
-  const q = ($q.value || '').toLowerCase().trim();
-
-  if(!q){
-    render(manifest.slice().sort(smartSort));
-    return;
-  }
-
-  // matches op albummetadata
-  const base = manifest.filter(a =>
-    (a.title || '').toLowerCase().includes(q) ||
-    (a.series || '').toLowerCase().includes(q)
-  );
-
-  // matches op tracks (optioneel)
-  if(tracksIndex){
-    const extra = manifest.filter(a => {
-      if(base.includes(a)) return false;
-      const tr = tracksIndex[a.file] || [];
-      return tr.some(x =>
-        (x.t || '').toLowerCase().includes(q) ||
-        (x.a || '').toLowerCase().includes(q)
+    function applyFilter(){
+      const q = ($q.value || '').toLowerCase().trim();
+      const filtered = !q ? manifest : manifest.filter(a =>
+        (a.title || '').toLowerCase().includes(q) ||
+        (a.series || '').toLowerCase().includes(q)
       );
-    });
-    render(base.concat(extra).sort(smartSort));
-  }else{
-    render(base.sort(smartSort));
-  }
-}
+      const sorted = filtered.sort(smartSort);
+      render(sorted);
+    }
 
     $q.addEventListener('input', applyFilter);
     $clear.addEventListener('click', () => { $q.value=''; applyFilter(); $q.focus(); });
@@ -253,10 +205,9 @@ function applyFilter(){
     (async () => {
       try{
         await loadManifest();
-        await loadTracksIndex();
         applyFilter(); // sorteer direct bij start
       }catch(err){
-        $status.textContent = 'Kon data niet laden. Open de console (F12) voor details.';
+        $status.textContent = 'Kon albums.json niet laden. Controleer of het bestand in de root staat.';
         $status.className = 'error';
         console.error(err);
       }
