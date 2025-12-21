@@ -83,10 +83,10 @@ h1 { margin:0; font-size:1.4rem; }
 }
 
 /* Search bar */
-.toolbar {
-  position:sticky;
-  top:0;
-  z-index:5;
+.toolbar{
+  position: sticky;
+  top: 64px;   /* exact zoals je werkende pagina */
+  z-index: 4;  /* altijd onder het menu */
   background:var(--surface);
   border:1px solid var(--border);
   border-radius:12px;
@@ -180,8 +180,7 @@ a.btn.google  { background:#333; color:white; border:1px solid #444; }
 .thumbgrid {
   display:grid;
   gap:10px;
-  /* standaard: altijd 2 naast elkaar op mobiel + tablet + Z Fold */
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns:repeat(auto-fill, minmax(140px,1fr));
 }
 .thumbgrid img {
   width:100%;
@@ -197,12 +196,12 @@ a.btn.google  { background:#333; color:white; border:1px solid #444; }
   .thumbgrid img { aspect-ratio: 4 / 5; }
 }
 
-/* Tablet / Z Fold ratio 3:2 */
+/* Tablet ratio 3:2 */
 @media (min-width: 601px) and (max-width: 1024px) {
   .thumbgrid img { aspect-ratio: 3 / 2; }
 }
 
-/* Desktop ratio 16:9 + 4 per rij */
+/* Desktop ratio 16:9 + max 4 per rij */
 @media (min-width: 1025px) {
   .thumbgrid img { aspect-ratio: 16 / 9; }
   .thumbgrid { grid-template-columns: repeat(4, 1fr); }
@@ -315,7 +314,7 @@ Met 10 Grammy Awards, 4 Emmy's en een lopende wereldtournee (The Forget Tomorrow
 </div>
 
 <script>
-/* TRACKS – uit je CSV */
+/* TRACKS – uit je CSV, gesplitst op laatste '-' */
 const tracks = [
   {title:"SexyBack (feat. Timbaland)", artist:"Justin Timberlake, Timbaland"},
   {title:"My Love (feat. T.I.)", artist:"Justin Timberlake, T.I."},

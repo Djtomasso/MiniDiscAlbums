@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Simply Red — 38 Recollections</title>
+<title>Simply Red 38 Recollections</title>
 
 <style>
 :root {
@@ -83,10 +83,10 @@ h1 { margin:0; font-size:1.4rem; }
 }
 
 /* Search bar */
-.toolbar {
-  position:sticky;
-  top:0;
-  z-index:5;
+.toolbar{
+  position: sticky;
+  top: 64px;   /* exact zoals je werkende pagina */
+  z-index: 4;  /* altijd onder het menu */
   background:var(--surface);
   border:1px solid var(--border);
   border-radius:12px;
@@ -177,8 +177,7 @@ a.btn.google  { background:#333; color:white; border:1px solid #444; }
 .thumbgrid {
   display:grid;
   gap:10px;
-  /* altijd 2 naast elkaar onder desktop */
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:repeat(auto-fill, minmax(140px,1fr));
 }
 
 .thumbgrid img {
@@ -200,7 +199,7 @@ a.btn.google  { background:#333; color:white; border:1px solid #444; }
   .thumbgrid img { aspect-ratio: 3 / 2; }
 }
 
-/* Desktop ratio 16:9 + 4 per rij */
+/* Desktop ratio 16:9 + max 4 per rij */
 @media (min-width: 1025px) {
   .thumbgrid img { aspect-ratio: 16 / 9; }
   .thumbgrid { grid-template-columns: repeat(4, 1fr); }
@@ -268,11 +267,11 @@ footer {
 
   <header class="hero">
     <div class="cover">
-      <img src="image/simply_cover.jpg" alt="Simply Red - 38 Recollections">
+      <img src="image/simply_cover.jpg" alt="Simply Red 38 Recollections">
     </div>
     <div class="titlebar">
       <h1>Simply Red</h1>
-      <div class="sub">38 Recollections — Tracklist & Fotoverzameling</div>
+      <div class="sub">38 Recollections — Tracklist</div>
     </div>
   </header>
 
@@ -307,7 +306,7 @@ Simply Red vieren vier decennia muziek met Recollections — 38 schitterende, ni
 </div>
 
 <script>
-/* TRACKS – ingevuld uit CSV eerder */
+/* TRACKS – uit het CSV-bestand */
 const tracks = [
   {title:"Come To My Aid", artist:"Simply Red"},
   {title:"Sad Old Red", artist:"Simply Red"},
@@ -447,6 +446,7 @@ lbNext.onclick  = showNext;
 lbPrev.onclick  = showPrev;
 lbClose.onclick = closeLightbox;
 
+/* Klik buiten beeld om te sluiten */
 lightbox.addEventListener("click", (e)=>{
   if(e.target === lightbox) closeLightbox();
 });
@@ -479,4 +479,3 @@ thumbImages.forEach((img, idx)=>{
 
 </body>
 </html>
-

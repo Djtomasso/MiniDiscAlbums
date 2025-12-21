@@ -83,10 +83,10 @@ h1 { margin:0; font-size:1.4rem; }
 }
 
 /* Search bar */
-.toolbar {
-  position:sticky;
-  top:0;
-  z-index:5;
+.toolbar{
+  position: sticky;
+  top: 64px;   /* exact zoals je werkende pagina */
+  z-index: 4;  /* altijd onder het menu */
   background:var(--surface);
   border:1px solid var(--border);
   border-radius:12px;
@@ -177,8 +177,7 @@ a.btn.google  { background:#333; color:white; border:1px solid #444; }
 .thumbgrid {
   display:grid;
   gap:10px;
-  /* standaard 2 naast elkaar */
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:repeat(auto-fill, minmax(140px,1fr));
 }
 
 .thumbgrid img {
@@ -200,7 +199,7 @@ a.btn.google  { background:#333; color:white; border:1px solid #444; }
   .thumbgrid img { aspect-ratio: 3 / 2; }
 }
 
-/* Desktop ratio 16:9 + 4 per rij */
+/* Desktop ratio 16:9 + max 4 per rij */
 @media (min-width: 1025px) {
   .thumbgrid img { aspect-ratio: 16 / 9; }
   .thumbgrid { grid-template-columns: repeat(4, 1fr); }
@@ -339,7 +338,6 @@ const list    = document.getElementById("list");
 const filter  = document.getElementById("filter");
 const clearBtn= document.getElementById("clearBtn");
 
-/* Render tracks */
 function render(tr) {
   list.innerHTML = "";
   tr.forEach((t,i)=>{
@@ -434,6 +432,7 @@ lbNext.onclick  = showNext;
 lbPrev.onclick  = showPrev;
 lbClose.onclick = closeLightbox;
 
+/* Klik buiten beeld om te sluiten */
 lightbox.addEventListener("click", (e)=>{
   if(e.target === lightbox) closeLightbox();
 });
@@ -466,6 +465,3 @@ thumbImages.forEach((img, idx)=>{
 
 </body>
 </html>
-
-
-
