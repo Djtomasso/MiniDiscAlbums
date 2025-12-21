@@ -69,7 +69,7 @@
 
   <script>
     const MANIFEST_URL = '/MiniDiscAlbums/albums.json';
-    const TRACKS_URL = '/MiniDiscAlbums/tracks_index.json';
+	const TRACKS_URL   = '/MiniDiscAlbums/tracks_index.json';
     const PLACEHOLDER = './image/placeholder.png';
 
     const $grid = document.getElementById('albums');
@@ -227,7 +227,7 @@ function applyFilter(){
     (async () => {
       try{
         await loadManifest();
-        await loadTracksIndex();
+       // await loadTracksIndex();
         applyFilter(); // sorteer direct bij start
       }catch(err){
         $status.textContent = 'Kon albums.json niet laden. Controleer of het bestand in de root staat.';
