@@ -1,10 +1,900 @@
 {
-  "all-time-special-songs-one_withcover.html": [],
-  "all-time-special-songs-two_withcover.html": [],
-  "all-time-special-songs-three_withcover.html": [],
-  "all-time-special-songs-four_withcover.html": [],
-  "eros-ramazzotti-sempre-eros-una_withcover.html": [],
-  "eros-ramazzotti-sempre-eros-due_withcover.html": [],
+  "all-time-special-songs-one_withcover.html": [
+    {
+      "t": "Butterfly",
+      "a": "Crazy Town"
+    },
+    {
+      "t": "Letter from America",
+      "a": "The Proclaimers"
+    },
+    {
+      "t": "Life In a Northern Town",
+      "a": "The Dream Academy"
+    },
+    {
+      "t": "Slip into Something More Comfortable",
+      "a": "Kinobe"
+    },
+    {
+      "t": "Theme From A Summer Place",
+      "a": "Percy Faith & His Orchestra"
+    },
+    {
+      "t": "(Just Like) Starting Over",
+      "a": "John Lennon"
+    },
+    {
+      "t": "Follow Me",
+      "a": "Amanda Lear"
+    },
+    {
+      "t": "Hey Mal Yo",
+      "a": "O Malhao"
+    },
+    {
+      "t": "Live It Up",
+      "a": "Mental As Anything"
+    },
+    {
+      "t": "My Sister's Crown",
+      "a": "Vesna"
+    },
+    {
+      "t": "Red Light Spells Danger",
+      "a": "Billy Ocean"
+    },
+    {
+      "t": "St. Elmo's Fire (Man In Motion)",
+      "a": "John Parr"
+    },
+    {
+      "t": "I'll Never Fall In Love Again",
+      "a": "Tom Jones"
+    },
+    {
+      "t": "Killing In The Name",
+      "a": "Rage Against The Machine"
+    },
+    {
+      "t": "Only Time",
+      "a": "Enya"
+    },
+    {
+      "t": "Rose rouge",
+      "a": "St Germain"
+    },
+    {
+      "t": "Take Me Home Tonight",
+      "a": "Eddie Money"
+    },
+    {
+      "t": "Blame It On The Milky Way",
+      "a": "VENICE"
+    },
+    {
+      "t": "Dancing in the City",
+      "a": "Marshall Hain"
+    },
+    {
+      "t": "Somewhere Out There",
+      "a": "Linda Ronstadt and James Ingram"
+    },
+    {
+      "t": "Tinseltown in the Rain",
+      "a": "The Blue Nile"
+    },
+    {
+      "t": "You",
+      "a": "Judith"
+    },
+    {
+      "t": "Dreamin'",
+      "a": "Cliff Richard"
+    },
+    {
+      "t": "End Of The Line",
+      "a": "Traveling Wilburys"
+    },
+    {
+      "t": "Gloria",
+      "a": "Laura Branigan"
+    },
+    {
+      "t": "I Feel It",
+      "a": "Hannes"
+    },
+    {
+      "t": "Let's Go",
+      "a": "De Glows"
+    },
+    {
+      "t": "With You I'm Born Again",
+      "a": "Billy Preston & Syreeta"
+    },
+    {
+      "t": "Conselho - Ao Vivo",
+      "a": "Samba De Raiz"
+    },
+    {
+      "t": "Im Nin'alu (Played in Full Mix)",
+      "a": "Ofra Haza"
+    },
+    {
+      "t": "January - February",
+      "a": "Barbara Dickson"
+    },
+    {
+      "t": "La Belle De Jour",
+      "a": "Alceu Valenca"
+    },
+    {
+      "t": "Lay Love on You",
+      "a": "Luisa Fernandez"
+    },
+    {
+      "t": "Let Me Think About It - Radio Edit",
+      "a": "Ida Corr ft. Fedde Le Grand"
+    },
+    {
+      "t": "God Only Knows - Remastered 1996",
+      "a": "The Beach Boys"
+    },
+    {
+      "t": "Lean On (feat. MO & DJ Snake)",
+      "a": "Major Lazer"
+    },
+    {
+      "t": "Mono",
+      "a": "The Monotones"
+    },
+    {
+      "t": "This Is My Night",
+      "a": "Chaka Khan"
+    },
+    {
+      "t": "Turn of a Card",
+      "a": "Pony Sherrell"
+    },
+    {
+      "t": "You Needed Me",
+      "a": "Anne Murray"
+    }
+  ],
+  "all-time-special-songs-two_withcover.html": [
+    {
+      "t": "A Little Bit Further Away",
+      "a": "Kokomo"
+    },
+    {
+      "t": "Goodbye",
+      "a": "Mary Hopkin"
+    },
+    {
+      "t": "I'm Gonna Shoot the Deejay",
+      "a": "The Press"
+    },
+    {
+      "t": "Never",
+      "a": "Shirley Bassey"
+    },
+    {
+      "t": "Sweet Like Chocolate (Radio Edit)",
+      "a": "Shanks & Bigfoot"
+    },
+    {
+      "t": "Closest Thing to Heaven",
+      "a": "The Kane Gang"
+    },
+    {
+      "t": "Oude Maasweg",
+      "a": "The Amazing Stroopwafels"
+    },
+    {
+      "t": "Can't Rely on You",
+      "a": "Paloma Faith"
+    },
+    {
+      "t": "El Sonidito - Magan Remix",
+      "a": "Hechizeros Band"
+    },
+    {
+      "t": "Chuck E's in Love",
+      "a": "Rickie Lee Jones"
+    },
+    {
+      "t": "Love Is Contagious",
+      "a": "Taja Sevelle"
+    },
+    {
+      "t": "Out On My Own",
+      "a": "Michelle"
+    },
+    {
+      "t": "Tutta n'ata storia - 2017 Remaster",
+      "a": "Pino Daniele"
+    },
+    {
+      "t": "All I Need (feat. Beth Hirsch)",
+      "a": "Air"
+    },
+    {
+      "t": "At Seventeen",
+      "a": "Janis Ian"
+    },
+    {
+      "t": "Coming Around Again",
+      "a": "Carly Simon"
+    },
+    {
+      "t": "Glory Box",
+      "a": "Portishead"
+    },
+    {
+      "t": "Here Comes That Rainy Day Feeling Again",
+      "a": "The Fortunes"
+    },
+    {
+      "t": "Rosie",
+      "a": "Joan Armatrading"
+    },
+    {
+      "t": "Agua (instrumental)",
+      "a": "Los Dinamitos Estefan"
+    },
+    {
+      "t": "Argentina",
+      "a": "Conquistador"
+    },
+    {
+      "t": "I Know There's Something Going On - Single Version",
+      "a": "Frida"
+    },
+    {
+      "t": "If You Feel The Funk",
+      "a": "La Toya Jackson"
+    },
+    {
+      "t": "One of These Nights - 2013 Remaster",
+      "a": "Eagles"
+    },
+    {
+      "t": "Take That to the Bank",
+      "a": "Shalamar"
+    },
+    {
+      "t": "Body To Body",
+      "a": "XYP"
+    },
+    {
+      "t": "Robinson Crusoe",
+      "a": "The Art Of Noise"
+    },
+    {
+      "t": "Time Is Now",
+      "a": "Moloko"
+    },
+    {
+      "t": "Believer",
+      "a": "Imagine Dragons"
+    },
+    {
+      "t": "Eagle - Short Version",
+      "a": "ABBA"
+    },
+    {
+      "t": "Feel It Still",
+      "a": "Portugal. The Man"
+    },
+    {
+      "t": "Loving You Is Sweeter Than Ever",
+      "a": "Nick Kamen"
+    },
+    {
+      "t": "Show Me Your Love",
+      "a": "Tina Karol"
+    },
+    {
+      "t": "America - From _The Jazz Singer_ Soundtrack",
+      "a": "Neil Diamond"
+    },
+    {
+      "t": "Cogli la prima mela",
+      "a": "Angelo Branduardi"
+    },
+    {
+      "t": "Le temps est bon",
+      "a": "Bon Entendeur ft. Isabelle Pierre"
+    },
+    {
+      "t": "Let Your Sun Shine",
+      "a": "Frank Ashton & Mariska van Kolck"
+    },
+    {
+      "t": "Thank You",
+      "a": "The Pale Fountains"
+    },
+    {
+      "t": "This Guy's In Love With You",
+      "a": "Herb Alpert & The Tijuana Brass"
+    },
+    {
+      "t": "Another Weekend",
+      "a": "Five Star"
+    },
+    {
+      "t": "Thinking About Your Love - Extended 12 Inch Version",
+      "a": "Turner and Skipworth"
+    }
+  ],
+  "all-time-special-songs-three_withcover.html": [
+    {
+      "t": "Heaven",
+      "a": "The Chimes"
+    },
+    {
+      "t": "Lucky Love",
+      "a": "Ace of Base"
+    },
+    {
+      "t": "How ’Bout Us (Single Version)",
+      "a": "Champaign"
+    },
+    {
+      "t": "Diamonds on the Soles of Her Shoes",
+      "a": "Paul Simon"
+    },
+    {
+      "t": "Strung Out",
+      "a": "Wendy & Lisa"
+    },
+    {
+      "t": "These Days",
+      "a": "Take That"
+    },
+    {
+      "t": "I’m Not Scared",
+      "a": "Eighth Wonder"
+    },
+    {
+      "t": "Suit & Tie",
+      "a": "Justin Timberlake feat. JAY-Z"
+    },
+    {
+      "t": "Love On Top",
+      "a": "Beyoncé"
+    },
+    {
+      "t": "Chandelier",
+      "a": "Sia"
+    },
+    {
+      "t": "Hold My Hand",
+      "a": "Jess Glynne"
+    },
+    {
+      "t": "I’ll Find My Way Home",
+      "a": "Jon & Vangelis"
+    },
+    {
+      "t": "Hold On to Love",
+      "a": "Jon Anderson"
+    },
+    {
+      "t": "Adiemus",
+      "a": "Adiemus"
+    },
+    {
+      "t": "Slipping Through My Fingers",
+      "a": "ABBA"
+    },
+    {
+      "t": "Bakerman",
+      "a": "Laid Back"
+    },
+    {
+      "t": "How Long",
+      "a": "Ace"
+    },
+    {
+      "t": "Keep Your Eye On Me",
+      "a": "Herb Alpert"
+    },
+    {
+      "t": "Standing Outside In The Rain",
+      "a": "Skipper Wise"
+    },
+    {
+      "t": "Boom! There She Was (US Mix)",
+      "a": "Scritti Politti"
+    },
+    {
+      "t": "De Magische Klok (By The Sleepy Lagoon)",
+      "a": "Efteling"
+    },
+    {
+      "t": "Kiss My Eyes (Made In Jamaica)",
+      "a": "Bob Sinclar & Camille Lefort"
+    },
+    {
+      "t": "Make the World Go ’Round",
+      "a": "DJ Cassidy feat. R. Kelly"
+    },
+    {
+      "t": "More Than You’ll Ever Know",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Foto’s Van Jou En Mij (Flits)",
+      "a": "F en de broer van Roos"
+    },
+    {
+      "t": "Qué Bueno Bailas",
+      "a": "Sparx"
+    },
+    {
+      "t": "Rise To The Occasion (Hip-Hop Version)",
+      "a": "Climie Fisher"
+    },
+    {
+      "t": "Workin’ Out Fine",
+      "a": "Princess Freesia"
+    },
+    {
+      "t": "All True Man",
+      "a": "Alexander O’Neal"
+    },
+    {
+      "t": "Make That Move (Single Version)",
+      "a": "Shalamar"
+    },
+    {
+      "t": "Only A Fool (Breaks His Own Heart)",
+      "a": "Mighty Sparrow & Byron Lee"
+    },
+    {
+      "t": "This I Swear",
+      "a": "Richard Darbyshire"
+    },
+    {
+      "t": "When I Looked At Him",
+      "a": "Exposé"
+    },
+    {
+      "t": "Crunchy Granola Suite",
+      "a": "Percy Faith"
+    },
+    {
+      "t": "Get Dat",
+      "a": "Rayelle"
+    },
+    {
+      "t": "Good Morning Starshine",
+      "a": "Oliver"
+    },
+    {
+      "t": "Heather",
+      "a": "Carpenters"
+    },
+    {
+      "t": "Till Death Do Us Part",
+      "a": "Madonna"
+    }
+  ],
+  "all-time-special-songs-four_withcover.html": [
+    {
+      "t": "(Forever) Live And Die",
+      "a": "Orchestral Manoeuvres In The Dark"
+    },
+    {
+      "t": "Half a Minute",
+      "a": "Matt Bianco"
+    },
+    {
+      "t": "A Little Bit Further Away",
+      "a": "Kokomo"
+    },
+    {
+      "t": "Baby Come To Me",
+      "a": "Patti Austin & James Ingram"
+    },
+    {
+      "t": "Dagen Dat Ik Je Vergeet",
+      "a": "Kadanz"
+    },
+    {
+      "t": "Who's Gonna Catch You When You Fall",
+      "a": "Mel & Kim"
+    },
+    {
+      "t": "Angel By My Side",
+      "a": "Boaz"
+    },
+    {
+      "t": "Dreiklangsdimensionen",
+      "a": "Rheingold"
+    },
+    {
+      "t": "Gente di mare",
+      "a": "Umberto Tozzi & Raf"
+    },
+    {
+      "t": "Satellite",
+      "a": "The Hooters"
+    },
+    {
+      "t": "Love Can Move Mountains",
+      "a": "Celine Dion"
+    },
+    {
+      "t": "A Night in New York - Remastered",
+      "a": "Elbow Bones And The Racketeers"
+    },
+    {
+      "t": "Glad To know You - Single Edit",
+      "a": "Kitty Grant"
+    },
+    {
+      "t": "Hang On In There Baby",
+      "a": "Johnny Bristol"
+    },
+    {
+      "t": "Again",
+      "a": "The Night People"
+    },
+    {
+      "t": "Il mio giorno preferito",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Just Can't Get Enough",
+      "a": "Depeche Mode"
+    },
+    {
+      "t": "Live It Up",
+      "a": "Time Bandits"
+    },
+    {
+      "t": "Hooked On A Feeling",
+      "a": "Blue Swede and Bjoern Skifs"
+    },
+    {
+      "t": "Morning Light (feat. Alicia Keys)",
+      "a": "Justin Timberlake"
+    },
+    {
+      "t": "Nothing Really Matters",
+      "a": "Madonna"
+    },
+    {
+      "t": "It's Your Conscience - Single Edit",
+      "a": "Deniece Williams"
+    },
+    {
+      "t": "One Night Affair",
+      "a": "Spargo"
+    },
+    {
+      "t": "What a Fool Believes (with Michael McDonald) - Live",
+      "a": "Kenny Loggins"
+    },
+    {
+      "t": "Standing On The Inside",
+      "a": "Full House"
+    },
+    {
+      "t": "Peg",
+      "a": "Steely Dan"
+    },
+    {
+      "t": "You Can't Change That",
+      "a": "Raydio"
+    },
+    {
+      "t": "Queen Of Hearts",
+      "a": "Juice Newton"
+    },
+    {
+      "t": "Save Your Love (For # 1)",
+      "a": "Rene & Angela"
+    },
+    {
+      "t": "Top Of The World",
+      "a": "Carpenters"
+    },
+    {
+      "t": "Waiting for a Star to Fall",
+      "a": "Boy Meets Girl"
+    },
+    {
+      "t": "Sharazan",
+      "a": "Al Bano And Romina Power"
+    },
+    {
+      "t": "One Step",
+      "a": "Kissing The Pink"
+    },
+    {
+      "t": "Warum?",
+      "a": "Tic Tac Toe"
+    },
+    {
+      "t": "Southern Nights",
+      "a": "Glen Campbell"
+    },
+    {
+      "t": "Whispering Hope",
+      "a": "Jo Stafford & Gordon MacRae"
+    },
+    {
+      "t": "All the Love in the World",
+      "a": "Dionne Warwick"
+    },
+    {
+      "t": "Shine",
+      "a": "Take That"
+    },
+    {
+      "t": "Zing! Went the Strings of My Heart",
+      "a": "The Trammps"
+    },
+    {
+      "t": "Take it to the street",
+      "a": "Novoband"
+    }
+  ],
+  "eros-ramazzotti-sempre-eros-una_withcover.html": [
+    {
+      "t": "A mezza via",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Adesso tu",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Amarti e l'immenso per me",
+      "a": "Eros Ramazzotti & Antonella Bucci"
+    },
+    {
+      "t": "Amore contro",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Andare... In ogni senso",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Buona vita",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Canzoni lontane",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Cara prof",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Cose che ho visto",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Cose della vita",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Cosi",
+      "a": "Eros Ramazzotti with Il Volo"
+    },
+    {
+      "t": "Dammi la luna",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Dolce Barbara",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Dove c'e musica",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "E ancor mi chiedo",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Esodi",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Favola",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Fuoco nel fuoco",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "I Belong to You (feat. Anastacia)",
+      "a": "Eros Ramazzotti and Anastacia"
+    },
+    {
+      "t": "Il mio amore per te",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Il mio giorno preferito",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "In compagnia",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "In segno d'amicizia",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Io amero",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "La Luce Buona Delle Stelle",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "La nostra vita",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "L'aquila e il condor",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "L'aurora",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Lei pero",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Lettera al futuro",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Libero dialogo",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "L'ultima rivoluzione",
+      "a": "Eros Ramazzotti"
+    }
+  ],
+  "eros-ramazzotti-sempre-eros-due_withcover.html": [
+    {
+      "t": "L'uragano Meri",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Ma che bello questo amore",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Memorie",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Musica e",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Nostalsong",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Occhi di speranza",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Oggi che giorno e",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Per Le Strade Una Canzone (feat. Luis Fonsi)",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Per me per sempre",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Piu bella cosa",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Piu che puoi",
+      "a": "Eros Ramazzotti with Cher"
+    },
+    {
+      "t": "Quasi amore",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Questo immenso show",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Questo mio vivere un po fuori",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Se bastasse una canzone",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Senza perderci di vista",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Silver e missie",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Solo con te",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Solo ieri",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Sta passando novembre",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Stella gemella",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Taxi Story",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Terra promessa",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Ti sposero perche",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Un attimo di pace",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Una storia importante",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Un'altra te",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Un'emozione per sempre",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Uno di noi",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Yo sin ti",
+      "a": "Eros Ramazzotti"
+    }
+  ],
   "eros_unastoria_withcover.html": [
     {
       "t": "Il mio giorno preferito",
@@ -142,10 +1032,6 @@
     },
     {
       "t": "She's Always There",
-      "a": "Lisa Stansfield"
-    },
-    {
-      "t": "Set Your Loving Free",
       "a": "Lisa Stansfield"
     }
   ],
@@ -495,36 +1381,3458 @@
       "a": "Simply Red"
     }
   ],
-  "janet-jackson-janet_withcover.html": [],
-  "millivanilli_withcover.html": [],
-  "summer-party-001_withcover.html": [],
-  "its-summer-time_withcover.html": [],
-  "summer-holiday_withcover.html": [],
-  "hello-summer_withcover.html": [],
-  "rhythm-nation-1814_withcover.html": [],
-  "rhythm-nation-remixes_withcover.html": [],
-  "madonna-born-to-reinvent_withcover.html": [],
-  "madonna-spirit-in-motion_withcover.html": [],
-  "lovesoul1_withcover.html": [],
-  "lovesoul2_withcover.html": [],
-  "lovesoul3_withcover.html": [],
-  "lovesoul4_withcover.html": [],
-  "legacy-of-dance_withcover.html": [],
-  "synthesizer-greatest-1_withcover.html": [],
-  "synthesizer-greatest-2_withcover.html": [],
-  "synthesizer-greatest-3_withcover.html": [],
-  "1989-hits-volume-1_withcover.html": [],
-  "1989-hits-volume-2_withcover.html": [],
-  "1989-hits-volume-3_withcover.html": [],
-  "1988-hits-volume-1_withcover.html": [],
-  "1988-hits-volume-2_withcover.html": [],
-  "1988-hits-volume-3_withcover.html": [],
-  "1990-hits-volume-1_withcover.html": [],
-  "1990-hits-volume-2_withcover.html": [],
-  "1990-hits-volume-3_withcover.html": [],
-  "1991-hits-volume-1_withcover.html": [],
-  "1991-hits-volume-2_withcover.html": [],
-  "1991-hits-volume-3_withcover.html": [],
+  "janet-jackson-janet_withcover.html": [
+    {
+      "t": "All For You",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "All Nite (Don't Stop)",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Alright - Shep Pettibone Remix",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Because Of Love",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Black Cat",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Come Back To Me",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Control",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Doesn't Really Matter",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Escapade",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Go Deep",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Got 'Til It's Gone",
+      "a": "Janet Jackson ft. Joni Mitchell"
+    },
+    {
+      "t": "I Get Lonely",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "If",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Let's Wait Awhile",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Lonely",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Love Will Never Do (Without You)",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Made For Now - Latin Version",
+      "a": "Janet Jackson ft. Daddy Yankee"
+    },
+    {
+      "t": "Miss You Much",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Nasty",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Rhythm Nation",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Runaway",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Someday Is Tonight",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Son Of A Gun ( I Betcha Think This Song Is About You)",
+      "a": "Janet Jackson, Carly Simon, Missy Elliott, Jimmy Jam and Terry Lewis"
+    },
+    {
+      "t": "State Of The World",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "That's The Way Love Goes",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "The Body That Loves You",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "The Knowledge",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "The Pleasure Principle - Edit",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Throb",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Together Again",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "What Have You Done For Me Lately",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "When I Think Of You",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Whoops Now - Single Version",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "You Want This",
+      "a": "Janet Jackson"
+    }
+  ],
+  "millivanilli_withcover.html": [
+    {
+      "t": "Baby Don't Forget My Number",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Blame It on the Rain",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Keep On Running",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "All or Nothing",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Can't You Feel My Love",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Dream to Remember",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Ma Baker",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Hush",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Money",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Is It Love",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "More Than You'll Ever Know",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Take It as It Comes",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Girl I'm Gonna Miss You - US Single Version",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Girl You Know It's True - US Single Version",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Boy in the Tree",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Dance with a Devil",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Girl You Know It's True (Maxi Version) - Super Club Mix",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Girl I'm Gonna Miss You (Long Version)",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Keep on Running",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "All or Nothing - US Club Mix",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "It's Your Thing",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Baby Don't Forget My Number - Subway Mix",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Keep On Running (Running Man Mix)",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Blame It On The Rain Megamix",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Tell Me Where It Hurts",
+      "a": "The Real Milli Vanilli"
+    },
+    {
+      "t": "Crazy Cane",
+      "a": "The Real Milli Vanilli"
+    },
+    {
+      "t": "When I Die",
+      "a": "The Real Milli Vanilli"
+    },
+    {
+      "t": "Body Slam",
+      "a": "The Real Milli Vanilli"
+    },
+    {
+      "t": "Nice'n'Easy",
+      "a": "The Real Milli Vanilli"
+    },
+    {
+      "t": "Hard as Hell",
+      "a": "The Real Milli Vanilli"
+    },
+    {
+      "t": "In My Life",
+      "a": "The Real Milli Vanilli"
+    },
+    {
+      "t": "Too Late (True Love)",
+      "a": "The Real Milli Vanilli"
+    },
+    {
+      "t": "The End of Good Times",
+      "a": "The Real Milli Vanilli"
+    },
+    {
+      "t": "I'll Be Loving You",
+      "a": "The Real Milli Vanilli"
+    },
+    {
+      "t": "Big Brother",
+      "a": "The Real Milli Vanilli"
+    },
+    {
+      "t": "Too Late (Saka Wonder Club Mix)",
+      "a": "The Real Milli Vanilli"
+    }
+  ],
+  "summer-party-001_withcover.html": [
+    {
+      "t": "I Can't Wait",
+      "a": "Nu Shooz"
+    },
+    {
+      "t": "Manteca",
+      "a": "King Africa"
+    },
+    {
+      "t": "Quero Ser Tua (Eurovision 2014 - Portugal)",
+      "a": "Suzy"
+    },
+    {
+      "t": "Aloha (Wari Boom)",
+      "a": "Polinesia"
+    },
+    {
+      "t": "Haus Am See",
+      "a": "Peter Fox"
+    },
+    {
+      "t": "Use It Up And Wear It Out (12\" Single Edit)",
+      "a": "Odyssey"
+    },
+    {
+      "t": "Nu Nu (Original Club Mix)",
+      "a": "Lidell Townsell"
+    },
+    {
+      "t": "Winter In July",
+      "a": "Bomb The Bass"
+    },
+    {
+      "t": "Hubba Hubba Zoot-Zoo",
+      "a": "Caramba"
+    },
+    {
+      "t": "La Bicicleta",
+      "a": "Carlos Vives ft. Shakira"
+    },
+    {
+      "t": "Summer Dreaming",
+      "a": "Kate Yanai"
+    },
+    {
+      "t": "Trick Me",
+      "a": "Kelis"
+    },
+    {
+      "t": "Waltz Darling [Extended Version]",
+      "a": "Malcolm McLaren"
+    },
+    {
+      "t": "Songbird (Single Version)",
+      "a": "Kenny G"
+    },
+    {
+      "t": "Horchata De Chufa",
+      "a": "King Africa Con Trancas Y Barrancas"
+    },
+    {
+      "t": "El Mariachi Loco",
+      "a": "La Banda Del Capitan Canalla"
+    },
+    {
+      "t": "Le Leo (Featuring Lilian Vieira)",
+      "a": "Kraak & Smaak"
+    },
+    {
+      "t": "Qualified",
+      "a": "Lois Lane"
+    },
+    {
+      "t": "Glad You Came (Radio Edit)",
+      "a": "The Wanted"
+    },
+    {
+      "t": "Ma Che Bello Queste Amore",
+      "a": "Eros Ramazzotti"
+    }
+  ],
+  "its-summer-time_withcover.html": [
+    {
+      "t": "Boys (Summertime Love)",
+      "a": "Sabrina"
+    },
+    {
+      "t": "Summer Jam",
+      "a": "The Underdog Project"
+    },
+    {
+      "t": "Walking On Sunshine",
+      "a": "Katrina and the Waves"
+    },
+    {
+      "t": "Hot Hot Hot",
+      "a": "Arrow"
+    },
+    {
+      "t": "Kokomo",
+      "a": "The Beach Boys"
+    },
+    {
+      "t": "In the Summertime",
+      "a": "Mungo Jerry"
+    },
+    {
+      "t": "Summer Son",
+      "a": "Texas"
+    },
+    {
+      "t": "Holiday Rap",
+      "a": "MC Miker G & DJ Sven"
+    },
+    {
+      "t": "On The Beach",
+      "a": "Chris Rea"
+    },
+    {
+      "t": "Club Tropicana",
+      "a": "Wham!"
+    },
+    {
+      "t": "Summer Breeze",
+      "a": "Seals & Crofts"
+    },
+    {
+      "t": "Summer Nights",
+      "a": "John Travolta & Olivia Newton-John"
+    },
+    {
+      "t": "Heatwave",
+      "a": "Martha & the Vandellas"
+    },
+    {
+      "t": "Cruel Summer",
+      "a": "Bananarama"
+    },
+    {
+      "t": "Sunny",
+      "a": "Bobby Hebb"
+    },
+    {
+      "t": "Beachball",
+      "a": "Nalin & Kane"
+    },
+    {
+      "t": "Let's Twist Again",
+      "a": "Chubby Checker"
+    },
+    {
+      "t": "La Isla Bonita",
+      "a": "Madonna"
+    },
+    {
+      "t": "Surfin' USA",
+      "a": "The Beach Boys"
+    },
+    {
+      "t": "Summer Of '69",
+      "a": "Bryan Adams"
+    }
+  ],
+  "summer-holiday_withcover.html": [
+    {
+      "t": "Summer Holiday",
+      "a": "Cliff Richard"
+    },
+    {
+      "t": "Vamos a la Playa",
+      "a": "Righeira"
+    },
+    {
+      "t": "Holiday",
+      "a": "Madonna"
+    },
+    {
+      "t": "In the Heat of the Night",
+      "a": "Sandra"
+    },
+    {
+      "t": "Summer Moved On",
+      "a": "a-ha"
+    },
+    {
+      "t": "Endless Summer",
+      "a": "Scooter"
+    },
+    {
+      "t": "Holiday Rap",
+      "a": "MC Miker G & DJ Sven"
+    },
+    {
+      "t": "School's Out",
+      "a": "Alice Cooper"
+    },
+    {
+      "t": "California Girls",
+      "a": "The Beach Boys"
+    },
+    {
+      "t": "Barbados",
+      "a": "Typically Tropical"
+    },
+    {
+      "t": "Heat of the Moment",
+      "a": "Asia"
+    },
+    {
+      "t": "Hot in the City",
+      "a": "Billy Idol"
+    },
+    {
+      "t": "Sunny Afternoon",
+      "a": "The Kinks"
+    },
+    {
+      "t": "Vacation",
+      "a": "The Go-Go's"
+    },
+    {
+      "t": "Here Comes the Sun",
+      "a": "The Beatles"
+    },
+    {
+      "t": "All Summer Long",
+      "a": "Kid Rock"
+    },
+    {
+      "t": "Dancing in the Street",
+      "a": "Martha & the Vandellas"
+    },
+    {
+      "t": "Hot Stuff",
+      "a": "Donna Summer"
+    },
+    {
+      "t": "Sunshine Reggae",
+      "a": "Laid Back"
+    },
+    {
+      "t": "Long Hot Summer",
+      "a": "Style Council"
+    }
+  ],
+  "hello-summer_withcover.html": [
+    {
+      "t": "Summer in the City",
+      "a": "The Lovin' Spoonful"
+    },
+    {
+      "t": "Hot Fun in the Summertime",
+      "a": "Sly & The Family Stone"
+    },
+    {
+      "t": "Under the Boardwalk",
+      "a": "The Drifters"
+    },
+    {
+      "t": "Summertime Blues",
+      "a": "Eddie Cochran"
+    },
+    {
+      "t": "Sealed with a Kiss",
+      "a": "Brian Hyland"
+    },
+    {
+      "t": "Let's Go to the Beach",
+      "a": "Confetti's"
+    },
+    {
+      "t": "Dreadlock Holiday",
+      "a": "10cc"
+    },
+    {
+      "t": "Sun is Shining",
+      "a": "Bob Marley"
+    },
+    {
+      "t": "Island in the Sun",
+      "a": "Weezer"
+    },
+    {
+      "t": "A Summer Place",
+      "a": "Percy Faith"
+    },
+    {
+      "t": "Walking on the Beach",
+      "a": "Flash & The Pan"
+    },
+    {
+      "t": "Summer Lady",
+      "a": "Santana"
+    },
+    {
+      "t": "Summertime",
+      "a": "DJ Jazzy Jeff & The Fresh Prince"
+    },
+    {
+      "t": "Summer Rain",
+      "a": "Belinda Carlisle"
+    },
+    {
+      "t": "Beach Boys Medley",
+      "a": "Gidea Park"
+    },
+    {
+      "t": "Samba de Janeiro",
+      "a": "Bellini"
+    },
+    {
+      "t": "Holidays",
+      "a": "Miami Sound Machine"
+    },
+    {
+      "t": "Heatwave",
+      "a": "Linda Ronstadt"
+    },
+    {
+      "t": "Sunburn",
+      "a": "Muse"
+    },
+    {
+      "t": "In the Summer",
+      "a": "Billy Stewart"
+    }
+  ],
+  "rhythm-nation-1814_withcover.html": [
+    {
+      "t": "Interlude: Pledge",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Rhythm Nation",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Interlude: T.V.",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "State Of The World",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Interlude: Race",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "The Knowledge",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Interlude: Let's Dance",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Miss You Much",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Interlude: Come Back Interlude",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Love Will Never Do (Without You)",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Livin' In A World (They Didn't Make)",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Alright",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Interlude: Hey Baby",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Escapade",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Interlude: No Acid",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Black Cat",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Lonely",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Come Back To Me",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Someday Is Tonight",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Interlude: Livin'...In Complete Darkness",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "1814 Megamix (Full Version)",
+      "a": "Janet Jackson"
+    }
+  ],
+  "rhythm-nation-remixes_withcover.html": [
+    {
+      "t": "Rhythm Nation (Music Video Version)",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Come Back To Me - The Abandoned Heart Mix",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "State Of The World - United Nations 7\"",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Vuelve A Mi",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Black Cat ft.Vernon Reid, Vaughn Halyard",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Love Will Never Do (Without You) - Acapella",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Love Will Never Do (Without You) - Shep's Original 7\"",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Alright - 12\" R&B Mix",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Alright (remixed)",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Escapade - We've Got It Made 7\"",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Miss You Much - Slammin' R&B Mix",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Miss You Much (DMC Remix by Ben Liebrand) - Janet Jackson",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "You Need Me",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "The Skin Game - Pt. 1",
+      "a": "Janet Jackson"
+    }
+  ],
+  "madonna-born-to-reinvent_withcover.html": [
+    {
+      "t": "4 Minutes (feat. Justin Timberlake and Timbaland)",
+      "a": "Madonna"
+    },
+    {
+      "t": "American Life",
+      "a": "Madonna"
+    },
+    {
+      "t": "American Pie",
+      "a": "Madonna"
+    },
+    {
+      "t": "Beautiful Stranger",
+      "a": "Madonna"
+    },
+    {
+      "t": "Borderline",
+      "a": "Madonna"
+    },
+    {
+      "t": "Causing a Commotion",
+      "a": "Madonna"
+    },
+    {
+      "t": "Cherish",
+      "a": "Madonna"
+    },
+    {
+      "t": "Crazy for You",
+      "a": "Madonna"
+    },
+    {
+      "t": "Dear Jessie",
+      "a": "Madonna"
+    },
+    {
+      "t": "Deeper and Deeper",
+      "a": "Madonna"
+    },
+    {
+      "t": "Die Another Day",
+      "a": "Madonna"
+    },
+    {
+      "t": "Don't Cry for Me Argentina",
+      "a": "Madonna"
+    },
+    {
+      "t": "Don't Tell Me",
+      "a": "Madonna"
+    },
+    {
+      "t": "Dress You Up",
+      "a": "Madonna"
+    },
+    {
+      "t": "Drowned World / Substitute for Love",
+      "a": "Madonna"
+    },
+    {
+      "t": "Erotica",
+      "a": "Madonna"
+    },
+    {
+      "t": "Express Yourself",
+      "a": "Madonna"
+    },
+    {
+      "t": "Fever",
+      "a": "Madonna"
+    },
+    {
+      "t": "Frozen",
+      "a": "Madonna"
+    },
+    {
+      "t": "Give It 2 Me",
+      "a": "Madonna"
+    },
+    {
+      "t": "Hanky Panky",
+      "a": "Madonna"
+    },
+    {
+      "t": "Heartbeat",
+      "a": "Madonna"
+    },
+    {
+      "t": "Holiday",
+      "a": "Madonna"
+    },
+    {
+      "t": "Human Nature",
+      "a": "Madonna"
+    },
+    {
+      "t": "Hung Up",
+      "a": "Madonna"
+    },
+    {
+      "t": "I'm Going Bananas",
+      "a": "Madonna"
+    },
+    {
+      "t": "Into the Groove",
+      "a": "Madonna"
+    },
+    {
+      "t": "Jump",
+      "a": "Madonna"
+    },
+    {
+      "t": "Justify My Love",
+      "a": "Madonna"
+    },
+    {
+      "t": "Keep It Together",
+      "a": "Madonna"
+    },
+    {
+      "t": "La Isla Bonita",
+      "a": "Madonna"
+    }
+  ],
+  "madonna-spirit-in-motion_withcover.html": [
+    {
+      "t": "Like a Prayer",
+      "a": "Madonna"
+    },
+    {
+      "t": "Like a Virgin",
+      "a": "Madonna"
+    },
+    {
+      "t": "Live to Tell",
+      "a": "Madonna"
+    },
+    {
+      "t": "Lucky Star",
+      "a": "Madonna"
+    },
+    {
+      "t": "Material Girl",
+      "a": "Madonna"
+    },
+    {
+      "t": "Miles Away",
+      "a": "Madonna"
+    },
+    {
+      "t": "Music",
+      "a": "Madonna"
+    },
+    {
+      "t": "Nothing Really Matters",
+      "a": "Madonna"
+    },
+    {
+      "t": "Oh Father",
+      "a": "Madonna"
+    },
+    {
+      "t": "Open Your Heart",
+      "a": "Madonna"
+    },
+    {
+      "t": "Papa Don't Preach",
+      "a": "Madonna"
+    },
+    {
+      "t": "Rain [LP Version]",
+      "a": "Madonna"
+    },
+    {
+      "t": "Ray of Light",
+      "a": "Madonna"
+    },
+    {
+      "t": "Rescue Me",
+      "a": "Madonna"
+    },
+    {
+      "t": "Secret",
+      "a": "Madonna"
+    },
+    {
+      "t": "Sorry",
+      "a": "Madonna"
+    },
+    {
+      "t": "Take a Bow",
+      "a": "Madonna"
+    },
+    {
+      "t": "The Power of Good-Bye",
+      "a": "Madonna"
+    },
+    {
+      "t": "Till Death Do Us Part",
+      "a": "Madonna"
+    },
+    {
+      "t": "True Blue",
+      "a": "Madonna"
+    },
+    {
+      "t": "Vogue - Edit",
+      "a": "Madonna"
+    },
+    {
+      "t": "What It Feels Like for a Girl",
+      "a": "Madonna"
+    },
+    {
+      "t": "Where's the Party",
+      "a": "Madonna"
+    },
+    {
+      "t": "Who's That Girl",
+      "a": "Madonna"
+    },
+    {
+      "t": "You'll See (Single Edit)",
+      "a": "Madonna"
+    },
+    {
+      "t": "\"Keep It Together (12\"\" Remix)-Madonna\"",
+      "a": "Madonna"
+    },
+    {
+      "t": "Holiday [12'' Version]",
+      "a": "Madonna"
+    },
+    {
+      "t": "Vogue (12'' Version)",
+      "a": "Madonna"
+    }
+  ],
+  "lovesoul1_withcover.html": [
+    {
+      "t": "Betcha By Golly Wow",
+      "a": "The Stylistics"
+    },
+    {
+      "t": "Can't Give You Anything (But My Love)",
+      "a": "The Stylistics"
+    },
+    {
+      "t": "Could It Be I'm Falling in Love - 7\" Version",
+      "a": "David Grant & Jaki Graham"
+    },
+    {
+      "t": "Do What You Do",
+      "a": "Jermaine Jackson"
+    },
+    {
+      "t": "Don't Know Much",
+      "a": "Linda Ronstadt & Aaron Neville"
+    },
+    {
+      "t": "Easy",
+      "a": "Commodores"
+    },
+    {
+      "t": "Endless Love - Endless Love/Soundtrack Version",
+      "a": "Lionel Richie & Diana Ross"
+    },
+    {
+      "t": "Gonna Make You An Offer You Can't Refuse - 2015 Remaster",
+      "a": "Jimmy Helms"
+    },
+    {
+      "t": "Greatest Love of All",
+      "a": "Whitney Houston"
+    },
+    {
+      "t": "Hang On In There Baby",
+      "a": "Johnny Bristol"
+    },
+    {
+      "t": "A Night to Remember - Single Version",
+      "a": "Shalamar"
+    },
+    {
+      "t": "A Whole New World (Aladdin's Theme)",
+      "a": "Peabo Bryson & Regina Belle"
+    },
+    {
+      "t": "A Woman Needs Love (Just Like You Do)",
+      "a": "Ray Parker Jr. ft. Raydio"
+    },
+    {
+      "t": "After the Love Has Gone",
+      "a": "Earth, Wind & Fire"
+    },
+    {
+      "t": "Again - Original Version",
+      "a": "Night People"
+    },
+    {
+      "t": "Baby, Come To Me",
+      "a": "Patti Austin & James Ingram"
+    },
+    {
+      "t": "Best Love",
+      "a": "Rose Royce"
+    }
+  ],
+  "lovesoul2_withcover.html": [
+    {
+      "t": "Have You Seen Her-The Chi",
+      "a": "Lites"
+    },
+    {
+      "t": "Hold Back the Night",
+      "a": "The Trammps"
+    },
+    {
+      "t": "How 'Bout Us - Single Version",
+      "a": "Champaign"
+    },
+    {
+      "t": "I Can Make You Feel Good",
+      "a": "Shalamar"
+    },
+    {
+      "t": "I Just Called To Say I Love You",
+      "a": "Stevie Wonder"
+    },
+    {
+      "t": "I Say a Little Prayer",
+      "a": "Aretha Franklin"
+    },
+    {
+      "t": "I'll Be Around",
+      "a": "The Spinners"
+    },
+    {
+      "t": "I'll Never Love This Way Again",
+      "a": "Dionne Warwick"
+    },
+    {
+      "t": "I'm Gonna Love You Just A Little More Baby",
+      "a": "Barry White"
+    },
+    {
+      "t": "Just The Way You Are",
+      "a": "Barry White"
+    },
+    {
+      "t": "Kiss and Say Goodbye",
+      "a": "The Manhattans"
+    },
+    {
+      "t": "Lady Love",
+      "a": "Lou Rawls"
+    },
+    {
+      "t": "Lately",
+      "a": "Stevie Wonder"
+    },
+    {
+      "t": "Let's Get It On",
+      "a": "Marvin Gaye"
+    },
+    {
+      "t": "Love Don't Live Here Anymore",
+      "a": "Rose Royce"
+    },
+    {
+      "t": "Love Train",
+      "a": "The O'Jays"
+    },
+    {
+      "t": "Love's Theme",
+      "a": "The Love Unlimited Orchestra"
+    }
+  ],
+  "lovesoul3_withcover.html": [
+    {
+      "t": "Lovin' You",
+      "a": "Minnie Riperton"
+    },
+    {
+      "t": "Me and Mrs. Jones",
+      "a": "Billy Paul"
+    },
+    {
+      "t": "More Than A Woman - Remastered",
+      "a": "Tavares"
+    },
+    {
+      "t": "My Girl",
+      "a": "The Temptations"
+    },
+    {
+      "t": "Never Knew Love Like This Before",
+      "a": "Stephanie Mills"
+    },
+    {
+      "t": "On My Own",
+      "a": "Patti LaBelle & Michael McDonald"
+    },
+    {
+      "t": "Only A Fool (Breaks His Own Heart)",
+      "a": "Mighty Sparrow & Byron Lee"
+    },
+    {
+      "t": "Out Here On My Own",
+      "a": "Irene Cara"
+    },
+    {
+      "t": "Reunited - Single Version",
+      "a": "Peaches & Herb"
+    },
+    {
+      "t": "Saving All My Love for You",
+      "a": "Whitney Houston"
+    },
+    {
+      "t": "Say You, Say Me",
+      "a": "Lionel Richie"
+    },
+    {
+      "t": "See You When I Git There",
+      "a": "Lou Rawls"
+    },
+    {
+      "t": "Sexual Healing",
+      "a": "Marvin Gaye"
+    },
+    {
+      "t": "Shake You Down",
+      "a": "Gregory Abbott"
+    },
+    {
+      "t": "Shine On",
+      "a": "L.T.D."
+    },
+    {
+      "t": "Special Lady",
+      "a": "Ray & Goodman & Brown"
+    },
+    {
+      "t": "Still",
+      "a": "Commodores"
+    },
+    {
+      "t": "Stuck On You",
+      "a": "Lionel Richie"
+    }
+  ],
+  "lovesoul4_withcover.html": [
+    {
+      "t": "Suddenly",
+      "a": "Billy Ocean"
+    },
+    {
+      "t": "The Love I Lost",
+      "a": "Harold Melvin & The Blue Notes & Teddy Pendergrass"
+    },
+    {
+      "t": "Theme From Mahogany (Do You Know Where You're Going To) - Single Version",
+      "a": "Diana Ross"
+    },
+    {
+      "t": "There'll Be Sad Songs (To Make You Cry)",
+      "a": "Billy Ocean"
+    },
+    {
+      "t": "Three Times A Lady",
+      "a": "Commodores"
+    },
+    {
+      "t": "Tonight I Celebrate My Love",
+      "a": "Peabo Bryson & Roberta Flack"
+    },
+    {
+      "t": "Too Much, Too Little, Too Late-Deniece William &",
+      "a": "Johnny Mathis"
+    },
+    {
+      "t": "When a Man Loves a Woman - 2000 Remaster",
+      "a": "Percy Sledge"
+    },
+    {
+      "t": "Where Do Broken Hearts Go",
+      "a": "Whitney Houston"
+    },
+    {
+      "t": "Wishing on a Star - Edit",
+      "a": "Rose Royce"
+    },
+    {
+      "t": "With You I'm Born Again",
+      "a": "Billy Preston & Syreeta"
+    },
+    {
+      "t": "You Are The Sunshine Of My Life",
+      "a": "Stevie Wonder"
+    },
+    {
+      "t": "You Are",
+      "a": "Lionel Richie"
+    },
+    {
+      "t": "You'll Never Find Another Love Like Mine",
+      "a": "Lou Rawls"
+    },
+    {
+      "t": "You'll Never Know - Radio Edit-Hi",
+      "a": "Gloss"
+    },
+    {
+      "t": "You're The First, The Last, My Everything",
+      "a": "Barry White"
+    },
+    {
+      "t": "All the Love in the World",
+      "a": "Dionne Warwick"
+    },
+    {
+      "t": "It's Your Conscience - Single Edit",
+      "a": "Deniece Williams"
+    }
+  ],
+  "legacy-of-dance_withcover.html": [
+    {
+      "t": "Discovamp",
+      "a": "Da Lukas,Walterino"
+    },
+    {
+      "t": "Set My Heart On Fire (I'm Alive x And The Beat Goes On)",
+      "a": "Majestic,The Jammin Kid,Céline Dion"
+    },
+    {
+      "t": "This Disko Feelin'-Radio Mix",
+      "a": "Disko Junkie"
+    },
+    {
+      "t": "Toronto Nights",
+      "a": "Angelo Ferreri,Hatiras"
+    },
+    {
+      "t": "Mi Gente-Edc Mexico Clubmix",
+      "a": "Block & Crown"
+    },
+    {
+      "t": "Happy Children (Block & Crown Nu Disco Edit)",
+      "a": "P. Lion,Block & Crown"
+    },
+    {
+      "t": "Dance & Shout-Original mix",
+      "a": "Crazibiza"
+    },
+    {
+      "t": "The Groove Of All Grooves",
+      "a": "Block & Crown"
+    },
+    {
+      "t": "This Groove",
+      "a": "Oliver Heldens,Lenno"
+    },
+    {
+      "t": "From Me To You-Radio Edit",
+      "a": "Roog,Alain Clark"
+    },
+    {
+      "t": "Stupid Love-Vitaclub Warehouse Mix",
+      "a": "Lady Gaga,BloodPop®,BURNS,Vitaclub"
+    },
+    {
+      "t": "My Name Is Not Susan-Extended",
+      "a": "DJ Katch"
+    },
+    {
+      "t": "Intoxicated",
+      "a": "Martin Solveig,Good Times Ahead"
+    },
+    {
+      "t": "I Want You",
+      "a": "La Fuente"
+    },
+    {
+      "t": "Can't Get Enough-Original Mix",
+      "a": "Block & Crown,Jesus Davila"
+    },
+    {
+      "t": "THE DJ MANIFESTO-Radio Edit",
+      "a": "Angelo Ferreri,DJ Delta (IT)"
+    },
+    {
+      "t": "Bomba",
+      "a": "Those 2 Guys,Christian Lukes,Divine"
+    },
+    {
+      "t": "123 Get Loose Now-Original Mix",
+      "a": "Block & Crown,Jose"
+    },
+    {
+      "t": "Some Other Girls",
+      "a": "Babert"
+    },
+    {
+      "t": "The Beautiful (Hoxton Whores Club Mix)",
+      "a": "Gala,Hoxton Whores"
+    },
+    {
+      "t": "Playin' House-Daniel Jaze Remix",
+      "a": "LucaJLove,Sasa di Toma,Daniel Jaze"
+    },
+    {
+      "t": "Be Free-Original Mix",
+      "a": "Soulvation"
+    },
+    {
+      "t": "Italian Style-Original Mix",
+      "a": "Block & Crown"
+    },
+    {
+      "t": "Hypnotic Tango",
+      "a": "Les Bisous"
+    },
+    {
+      "t": "Remember the Good Times",
+      "a": "Block & Crown"
+    },
+    {
+      "t": "Deep Down (feat. Never Dull)-Nathan Dawe Remix",
+      "a": "Alok,Ella Eyre,Kenny Dope,Never Dull,Nathan Dawe"
+    },
+    {
+      "t": "The Beat of the Drum",
+      "a": "Alaia & Gallo"
+    },
+    {
+      "t": "Break 4 Love-Matt Jam Lamont & Scott Diaz Classic Vocal Mix",
+      "a": "Raze,Matt Jam Lamont,Scott Diaz"
+    },
+    {
+      "t": "The Beat Is Rockin'",
+      "a": "Erick E"
+    },
+    {
+      "t": "Ratata",
+      "a": "La Fuente"
+    },
+    {
+      "t": "Jumpin Underwater-Original Mix",
+      "a": "Block & Crown,Lissat"
+    },
+    {
+      "t": "Voices In My Head",
+      "a": "Anyma,Argy,Son of Son"
+    },
+    {
+      "t": "Pump the Power-Original Mix",
+      "a": "Block & Crown"
+    },
+    {
+      "t": "Touch Me (Radio Edit) [feat. Cassandra]",
+      "a": "Rui Da Silva,Cassandra"
+    },
+    {
+      "t": "Lay All Your Love On Me-Extended Mix",
+      "a": "Kevin McKay"
+    },
+    {
+      "t": "Kill The Vibe",
+      "a": "David Guetta,MORTEN,Prophecy"
+    }
+  ],
+  "synthesizer-greatest-1_withcover.html": [
+    {
+      "t": "Souvenir de Chine-Jean",
+      "a": "Michel Jarre"
+    },
+    {
+      "t": "Forbidden Colours",
+      "a": "Ryuichi Sakamoto and David Sylvian"
+    },
+    {
+      "t": "Legs - 2017 Remaster",
+      "a": "The Art Of Noise"
+    },
+    {
+      "t": "Mammagamma",
+      "a": "The Alan Parsons Project"
+    },
+    {
+      "t": "Magnetic Fields Pt. 2-Jean",
+      "a": "Michel Jarre"
+    },
+    {
+      "t": "Conquest of Paradise",
+      "a": "Vangelis"
+    },
+    {
+      "t": "Oxygene Pt. 4-Jean",
+      "a": "Michel Jarre"
+    },
+    {
+      "t": "Chase",
+      "a": "Giorgio Moroder"
+    },
+    {
+      "t": "The Inter Galactic-Cruise - Radio Mix",
+      "a": "Vangelis"
+    },
+    {
+      "t": "Axel F",
+      "a": "Harold Faltermeyer"
+    },
+    {
+      "t": "Dervish D.",
+      "a": "Vangelis"
+    },
+    {
+      "t": "Zoolookologie-Jean",
+      "a": "Michel Jarre"
+    },
+    {
+      "t": "Beat Box (Diversion 1)",
+      "a": "The Art Of Noise"
+    },
+    {
+      "t": "Oxygene Pt. 2-Jean",
+      "a": "Michel Jarre"
+    },
+    {
+      "t": "Paranoimia (feat. Max Headroom) - 7\" Mix",
+      "a": "Art Of Noise"
+    }
+  ],
+  "synthesizer-greatest-2_withcover.html": [
+    {
+      "t": "\"Tied Up - 7\"\" Version",
+      "a": "Yello\""
+    },
+    {
+      "t": "Aurora",
+      "a": "Nova"
+    },
+    {
+      "t": "Chariots Of Fire",
+      "a": "Vangelis"
+    },
+    {
+      "t": "I Hear You Now",
+      "a": "Jon & Vangelis"
+    },
+    {
+      "t": "I'll Find My Way Home",
+      "a": "Jon & Vangelis"
+    },
+    {
+      "t": "Spiral",
+      "a": "Vangelis"
+    },
+    {
+      "t": "The Model - 2009 Remaster",
+      "a": "Kraftwerk"
+    },
+    {
+      "t": "Close (To The Edit)",
+      "a": "The Art Of Noise"
+    },
+    {
+      "t": "To the Unknown Man",
+      "a": "Vangelis"
+    },
+    {
+      "t": "Rubberbandman",
+      "a": "Yello"
+    },
+    {
+      "t": "The Race",
+      "a": "Yello"
+    },
+    {
+      "t": "Magnetic Fields Pt. 5-Jean",
+      "a": "Michel Jarre"
+    },
+    {
+      "t": "The Robots - 2009 Remaster",
+      "a": "Kraftwerk"
+    },
+    {
+      "t": "Oh Yeah - Remastered 2005",
+      "a": "Yello"
+    },
+    {
+      "t": "Zoolook - Remastered-Jean",
+      "a": "Michel Jarre"
+    },
+    {
+      "t": "Vicious Games - Remastered 2005",
+      "a": "Yello"
+    }
+  ],
+  "synthesizer-greatest-3_withcover.html": [
+    {
+      "t": "Pulstar",
+      "a": "Vangelis"
+    },
+    {
+      "t": "Love",
+      "a": "The Art Of Noise"
+    },
+    {
+      "t": "Equinoxe Pt. 5-Jean",
+      "a": "Michel Jarre"
+    },
+    {
+      "t": "Tubular Bells",
+      "a": "Mike Oldfield"
+    },
+    {
+      "t": "Lost Again",
+      "a": "Yello"
+    },
+    {
+      "t": "Visitors [The Alien Mix]",
+      "a": "Koto"
+    },
+    {
+      "t": "Robinson Crusoe",
+      "a": "The Art Of Noise"
+    },
+    {
+      "t": "The Eve Of The War",
+      "a": "Ben Liebrand"
+    },
+    {
+      "t": "Autobahn - Single Edit",
+      "a": "Kraftwerk"
+    },
+    {
+      "t": "\"Crockett's Theme - From \"\"Miami Vice II\"\" Soundtrack",
+      "a": "Jan Hammer\""
+    },
+    {
+      "t": "Miami Vice Theme",
+      "a": "Jan Hammer"
+    },
+    {
+      "t": "Moments In Love",
+      "a": "Art Of Noise"
+    },
+    {
+      "t": "The Future Mix [Radio Version]",
+      "a": "Star Voyager"
+    },
+    {
+      "t": "Puls(t)ar",
+      "a": "Ben Liebrand"
+    },
+    {
+      "t": "Shotgun into the night",
+      "a": "Laserdance"
+    }
+  ],
+  "1989-hits-volume-1_withcover.html": [
+    {
+      "t": "Wait",
+      "a": "Robert Howard & Kym Mazelle"
+    },
+    {
+      "t": "My Best Friend",
+      "a": "Lois Lane"
+    },
+    {
+      "t": "Leningrad",
+      "a": "Billy Joel"
+    },
+    {
+      "t": "Glamour Boys",
+      "a": "Living Colour"
+    },
+    {
+      "t": "Keeping The Dream Alive",
+      "a": "Freiheit"
+    },
+    {
+      "t": "He Kom Aan",
+      "a": "Dimitri Van Toren & Flairck"
+    },
+    {
+      "t": "Fight The Power",
+      "a": "Public Enemy"
+    },
+    {
+      "t": "Love House (Single Version)",
+      "a": "Samantha Fox"
+    },
+    {
+      "t": "Kissing A Fool",
+      "a": "George Michael"
+    },
+    {
+      "t": "Got To Get (Edit)",
+      "a": "Rob 'n' Raz Feat. Leila K"
+    },
+    {
+      "t": "Get A Life",
+      "a": "Soul Ii Soul"
+    },
+    {
+      "t": "Don't Push It",
+      "a": "Ruth Joy"
+    },
+    {
+      "t": "More Than I Can Say",
+      "a": "Justian & Mandy"
+    },
+    {
+      "t": "Handle With Care",
+      "a": "Travelling Willbury's"
+    },
+    {
+      "t": "Dear Jessie",
+      "a": "Madonna"
+    },
+    {
+      "t": "Deluxe",
+      "a": "Samy Deluxe feat. Ali A$"
+    },
+    {
+      "t": "Look Who's Dancing",
+      "a": "Ziggy Marley And The Melody Makers"
+    },
+    {
+      "t": "Respect (Single Version)",
+      "a": "Real Roxanne"
+    },
+    {
+      "t": "I'm Still Missing Your Love",
+      "a": "S.O.S. Band"
+    },
+    {
+      "t": "Real Love",
+      "a": "El Debarge"
+    },
+    {
+      "t": "Name And Number",
+      "a": "Curiosity Killed The Cat"
+    },
+    {
+      "t": "Adieu, Sweet Bahnhof (Live)",
+      "a": "Nits"
+    },
+    {
+      "t": "Here We Are",
+      "a": "Gloria Estefan"
+    },
+    {
+      "t": "You'll Never Stop Me From Loving You",
+      "a": "Sonia"
+    },
+    {
+      "t": "Thats The Way Love Is",
+      "a": "Ten City"
+    },
+    {
+      "t": "Money For Nothing",
+      "a": "Dire Straits"
+    },
+    {
+      "t": "You Got It",
+      "a": "New Kids On The Block"
+    },
+    {
+      "t": "Move Your Feet To The Rhythm Of The Beat",
+      "a": "Hithouse"
+    },
+    {
+      "t": "De Wind",
+      "a": "Kadanz"
+    },
+    {
+      "t": "Blame It On The Boogie",
+      "a": "Big Fun"
+    },
+    {
+      "t": "Take It To The Street",
+      "a": "Novo Band"
+    },
+    {
+      "t": "Girl I'm Gonna Miss You",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Buffalo Stance",
+      "a": "Neneh Cherry"
+    },
+    {
+      "t": "If Only I Could",
+      "a": "Sydney Youngblood"
+    },
+    {
+      "t": "Licence To Kill",
+      "a": "Gladys Knight"
+    },
+    {
+      "t": "Belfast Child",
+      "a": "Simple Minds"
+    }
+  ],
+  "1989-hits-volume-2_withcover.html": [
+    {
+      "t": "Starvoyager-The Inter Galactic",
+      "a": "Cruise"
+    },
+    {
+      "t": "Tell It Like It Is",
+      "a": "Don Johnson"
+    },
+    {
+      "t": "Batdance (Single Version)",
+      "a": "Prince"
+    },
+    {
+      "t": "A Bit Of...",
+      "a": "Kiss Amc"
+    },
+    {
+      "t": "Do The Right Thing (Happiness 7'' Remix)",
+      "a": "Redhead Kingpin & The Fbi"
+    },
+    {
+      "t": "When I Looked At Him (Single Version)",
+      "a": "Expose"
+    },
+    {
+      "t": "Sweet Surrender",
+      "a": "Wet Wet Wet"
+    },
+    {
+      "t": "I'm Every Woman ('89 Version)",
+      "a": "Chaka Khan"
+    },
+    {
+      "t": "Are You My Baby",
+      "a": "Wendy & Lisa"
+    },
+    {
+      "t": "It's Only Love",
+      "a": "Simply Red"
+    },
+    {
+      "t": "Into Temptation",
+      "a": "Crowded House"
+    },
+    {
+      "t": "Room In Your Heart",
+      "a": "Living In A Box"
+    },
+    {
+      "t": "Forever Your Girl (Single Version)",
+      "a": "Paula Abdul"
+    },
+    {
+      "t": "Spin Me Around",
+      "a": "Zeon Jones"
+    },
+    {
+      "t": "The Message Is Love",
+      "a": "Arthur Baker & Backbeat Disiples & Al Green"
+    },
+    {
+      "t": "Hey Dj I Can't Dance (To That Music You're Playing)",
+      "a": "Beatmasters & Betty Boo"
+    },
+    {
+      "t": "Love Train",
+      "a": "Holly Johnson"
+    },
+    {
+      "t": "The Arms Of Orion (Edit)",
+      "a": "Prince & Sheena Easton"
+    },
+    {
+      "t": "Waltz Darling",
+      "a": "Malcolm Mclaren & Bootzilla Orchestra"
+    },
+    {
+      "t": "Get On The Dance Floor",
+      "a": "Rob Base & Dj Ez Rock"
+    },
+    {
+      "t": "That's How I'm Living",
+      "a": "Tony Scott"
+    },
+    {
+      "t": "Laat Je Gaan",
+      "a": "Petra & Co"
+    },
+    {
+      "t": "Sit & Wait",
+      "a": "Sydney Youngblood"
+    },
+    {
+      "t": "Dagen Dat Ik Je Vergeet",
+      "a": "Kadanz"
+    },
+    {
+      "t": "Take Me To Your Heart",
+      "a": "Rick Astley"
+    },
+    {
+      "t": "Numero Uno (Radio)",
+      "a": "Starlight"
+    },
+    {
+      "t": "Stakker Humanoid",
+      "a": "Humanoid"
+    },
+    {
+      "t": "Life's Just A Ballgame (Radio Remix)",
+      "a": "Womack & Womack"
+    },
+    {
+      "t": "Living Years",
+      "a": "Mike & The Mechanics"
+    },
+    {
+      "t": "Joy And Pain",
+      "a": "Donna Allen"
+    },
+    {
+      "t": "Put A Little Love In Your Heart",
+      "a": "Annie Lennox & Al Green"
+    },
+    {
+      "t": "Friends",
+      "a": "Jody Watley With Eric B. & Rakim"
+    },
+    {
+      "t": "In The Air Tonight (Extended Version)",
+      "a": "Phil Collins"
+    },
+    {
+      "t": "Good Thing",
+      "a": "Fine Young Cannibals"
+    },
+    {
+      "t": "The Real Wild House",
+      "a": "Raul Orellana"
+    }
+  ],
+  "1989-hits-volume-3_withcover.html": [
+    {
+      "t": "Musica E (Single Version)",
+      "a": "Eros Ramazotti"
+    },
+    {
+      "t": "Have A Little Faith In Me",
+      "a": "John Hiatt"
+    },
+    {
+      "t": "'n Sneeuwwitte Bruidsjurk",
+      "a": "Henk Wijngaard"
+    },
+    {
+      "t": "Blow The House Down",
+      "a": "Living In A Box"
+    },
+    {
+      "t": "Straight Up",
+      "a": "Paula Abdul"
+    },
+    {
+      "t": "We Are Growing",
+      "a": "Margareth Singana"
+    },
+    {
+      "t": "Can't Stay Away From You",
+      "a": "Gloria Estefan & Miami Sound Machine"
+    },
+    {
+      "t": "Just Keep Rockin (Sk'house Mix Edit)",
+      "a": "Double Trouble & Rebel Mc"
+    },
+    {
+      "t": "Bring Me Edelweiss",
+      "a": "Edelweiss"
+    },
+    {
+      "t": "Manchild",
+      "a": "Neneh Cherry"
+    },
+    {
+      "t": "Swing The Mood",
+      "a": "Jive Bunny And The Mastermixers"
+    },
+    {
+      "t": "Sowing The Seeds Of Love (Single Version)",
+      "a": "Tears For Fears"
+    },
+    {
+      "t": "It's The First Time",
+      "a": "Lois Lane"
+    },
+    {
+      "t": "Street Tuff",
+      "a": "Double Trouble & Rebel Mc"
+    },
+    {
+      "t": "French Kiss (Single Version)",
+      "a": "Lil Louis"
+    },
+    {
+      "t": "We Cheer You Up (Join The Pin Up Club)",
+      "a": "Barbarella"
+    },
+    {
+      "t": "Wonderful",
+      "a": "Patty & Shift"
+    },
+    {
+      "t": "Blame It On The Rain",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "I Beg Your Pardon",
+      "a": "Kon Kan"
+    },
+    {
+      "t": "Too Many Broken Hearts",
+      "a": "Jason Donovan"
+    },
+    {
+      "t": "Especially For You",
+      "a": "Jason Donavan & Kylie Minogue"
+    },
+    {
+      "t": "Anything For You",
+      "a": "Gloria Estefan"
+    },
+    {
+      "t": "Dance Classics The Mix",
+      "a": "Ben Liebrand"
+    },
+    {
+      "t": "Wild Thing - Tone",
+      "a": "Loc"
+    },
+    {
+      "t": "Americanos",
+      "a": "Holly Johnson"
+    },
+    {
+      "t": "That's What I Like",
+      "a": "Jive Bunny & The Mastermixers"
+    },
+    {
+      "t": "Amor De Mis Amores",
+      "a": "Paco"
+    },
+    {
+      "t": "Little Jackie Wants To Be A Star",
+      "a": "Lisa Lisa & Cult Jam"
+    },
+    {
+      "t": "First Time",
+      "a": "Robin Beck"
+    },
+    {
+      "t": "Keep On Movin'",
+      "a": "Soul Ii Soul"
+    },
+    {
+      "t": "Something's Jumpin' In Your Shirt",
+      "a": "Malcolm Mclaren & Lisa Marie"
+    },
+    {
+      "t": "Why Not Me",
+      "a": "Judds"
+    },
+    {
+      "t": "Say No Go",
+      "a": "De La Soul"
+    },
+    {
+      "t": "All Around The World",
+      "a": "Lisa Stansfield"
+    },
+    {
+      "t": "Lullaby",
+      "a": "The Cure"
+    },
+    {
+      "t": "Love In An Elevator",
+      "a": "Aerosmith"
+    },
+    {
+      "t": "Ska Train",
+      "a": "Beatmasters & Jum Jum"
+    }
+  ],
+  "1988-hits-volume-1_withcover.html": [
+    {
+      "t": "Ponte A Cantar",
+      "a": "Jose Feliciano"
+    },
+    {
+      "t": "Tango",
+      "a": "Dalbello"
+    },
+    {
+      "t": "Somewhere Down The Crazy River",
+      "a": "Robbie Robertson"
+    },
+    {
+      "t": "That's The Way It Is",
+      "a": "Mel & Kim"
+    },
+    {
+      "t": "Englishman In New York",
+      "a": "Sting"
+    },
+    {
+      "t": "China In Your Hand",
+      "a": "T'pau"
+    },
+    {
+      "t": "I Need You (European Radio Mix)",
+      "a": "B.V.S.M.P"
+    },
+    {
+      "t": "Big Fun",
+      "a": "Inner City"
+    },
+    {
+      "t": "One More Try",
+      "a": "George Michael"
+    },
+    {
+      "t": "I Owe You Nothing",
+      "a": "Bros"
+    },
+    {
+      "t": "I Think We're Alone Now",
+      "a": "Tiffany"
+    },
+    {
+      "t": "Stop Loving You",
+      "a": "Toto"
+    },
+    {
+      "t": "The Only Way Is Up",
+      "a": "Yazz & The Plastic Population"
+    },
+    {
+      "t": "Nothing Gonna Change My Love For You",
+      "a": "Glenn Medeiros"
+    },
+    {
+      "t": "Rok Da House",
+      "a": "Beatmaster Feat. The Cookie Crew"
+    },
+    {
+      "t": "Mr Manic And Sister Cool",
+      "a": "Shakatak"
+    },
+    {
+      "t": "Good Life (Master Reese Edit 7')",
+      "a": "Inner City"
+    },
+    {
+      "t": "Harvest For The World",
+      "a": "The Christians"
+    },
+    {
+      "t": "Sideshow (Single Version)",
+      "a": "Wendy & Lisa"
+    },
+    {
+      "t": "Bedrock",
+      "a": "Georgio"
+    },
+    {
+      "t": "Tbm Mix",
+      "a": "Sample Syndicate"
+    },
+    {
+      "t": "Im Nin'alu (7' English Mix)",
+      "a": "Ofra Haza"
+    },
+    {
+      "t": "Heart Of Gold",
+      "a": "Johnny Hates Jazz"
+    },
+    {
+      "t": "Doctorin' The House",
+      "a": "Coldcut Feat. Yazz & The Plastic Population"
+    },
+    {
+      "t": "Shake Your Love",
+      "a": "Debbie Gibson"
+    },
+    {
+      "t": "Twist In My Sobriety (Single Version)",
+      "a": "Tanita Tikaram"
+    },
+    {
+      "t": "Superfly Guy",
+      "a": "S-Express"
+    },
+    {
+      "t": "Stop This Crazy Thing",
+      "a": "Coldcut & Junior Reid"
+    },
+    {
+      "t": "Girlfriend",
+      "a": "Pebbles"
+    },
+    {
+      "t": "Mushanga",
+      "a": "Toto"
+    },
+    {
+      "t": "Letter From America",
+      "a": "Proclaimers"
+    },
+    {
+      "t": "The Harder I Try",
+      "a": "Brother Beyond"
+    },
+    {
+      "t": "Never Knew Love Like This (Single Version)",
+      "a": "Alexander O'neal & Cherrelle"
+    },
+    {
+      "t": "Circle In The Sand",
+      "a": "Belinda Carlisle"
+    },
+    {
+      "t": "A Little Peace Of Heaven",
+      "a": "Godley & Creme"
+    },
+    {
+      "t": "Roses Are Red",
+      "a": "Mac Band & Mccambell Brothers"
+    },
+    {
+      "t": "Zijn Het Je Ogen",
+      "a": "Koos Alberts"
+    }
+  ],
+  "1988-hits-volume-2_withcover.html": [
+    {
+      "t": "Heart",
+      "a": "Pet Shop Boys"
+    },
+    {
+      "t": "Another Part Of Me",
+      "a": "Michael Jackson"
+    },
+    {
+      "t": "I Lie And I Cheat",
+      "a": "Won Ton Ton"
+    },
+    {
+      "t": "Faith",
+      "a": "Wee Papa Girl Rappers"
+    },
+    {
+      "t": "She Wants To Dance With Me",
+      "a": "Rick Astley"
+    },
+    {
+      "t": "A Love Supreme (Single Version)",
+      "a": "Will Downing"
+    },
+    {
+      "t": "My Arms Keep Missing You",
+      "a": "Rick Astley"
+    },
+    {
+      "t": "Love Will Save The Day (Single Version)",
+      "a": "Whitney Houston"
+    },
+    {
+      "t": "Heaven Is A Place On Earth (Single Version)",
+      "a": "Belinda Carlisle"
+    },
+    {
+      "t": "Alphabet St. (Single Version)",
+      "a": "Prince"
+    },
+    {
+      "t": "Play It Cool",
+      "a": "Freiheit"
+    },
+    {
+      "t": "Girl You Know It's True",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Rise To The Occasion (Hip Hop Mix)",
+      "a": "Climie Fisher"
+    },
+    {
+      "t": "Tell It To My Heart",
+      "a": "Taylor Dayne"
+    },
+    {
+      "t": "Teardrops (Radio Mix)",
+      "a": "Womack & Womack"
+    },
+    {
+      "t": "Yeke Yeke",
+      "a": "Mory Kante"
+    },
+    {
+      "t": "Angeleyes",
+      "a": "Wet Wet Wet"
+    },
+    {
+      "t": "A Groovy Kind Of Love",
+      "a": "Phil Collins"
+    },
+    {
+      "t": "(I've Had) The Time Of My Life",
+      "a": "Bill Medley & Jennifer Warnes"
+    },
+    {
+      "t": "One More Try",
+      "a": "George Michael"
+    },
+    {
+      "t": "Hungry Eyes",
+      "a": "Eric Carmen"
+    },
+    {
+      "t": "Dance Little Sister",
+      "a": "Terence Trent D arby"
+    },
+    {
+      "t": "Maladie D'amour",
+      "a": "Robert Strating"
+    },
+    {
+      "t": "Paradise (Remix)",
+      "a": "Sade"
+    },
+    {
+      "t": "Ella Elle L'a",
+      "a": "France Gall"
+    },
+    {
+      "t": "The Only 1",
+      "a": "The Revellettes"
+    },
+    {
+      "t": "Etienne",
+      "a": "Guesch Patti"
+    },
+    {
+      "t": "Senza Una Donna",
+      "a": "Zucchero"
+    },
+    {
+      "t": "Left To My Own Devices",
+      "a": "Pet Shop Boys"
+    },
+    {
+      "t": "Is This Love (Single Version)",
+      "a": "Whitesnake"
+    },
+    {
+      "t": "Pink Cadillac",
+      "a": "Natalie Cole"
+    },
+    {
+      "t": "The Race",
+      "a": "Yello"
+    },
+    {
+      "t": "Love Lies",
+      "a": "Ellert"
+    },
+    {
+      "t": "My One Temptation",
+      "a": "Mica Paris"
+    },
+    {
+      "t": "Packjammed",
+      "a": "Stock, Aitken & Waterman"
+    },
+    {
+      "t": "Love Is Stronger Than Pride",
+      "a": "Sade"
+    }
+  ],
+  "1988-hits-volume-3_withcover.html": [
+    {
+      "t": "Just Got Paid",
+      "a": "Johnny Kemp"
+    },
+    {
+      "t": "Paid In Full",
+      "a": "Eric B. & Rakim"
+    },
+    {
+      "t": "Beat Dis",
+      "a": "Bomb The Bass"
+    },
+    {
+      "t": "Touchy!",
+      "a": "A-Ha"
+    },
+    {
+      "t": "Children Say (Remix Single Edit)",
+      "a": "Level 42"
+    },
+    {
+      "t": "I Want You Back (1988 Remix)",
+      "a": "Michael Jackson With The Jackson 5"
+    },
+    {
+      "t": "Need You Tonight",
+      "a": "Inxs"
+    },
+    {
+      "t": "She's Like The Wind",
+      "a": "Patrick Swayze"
+    },
+    {
+      "t": "Ma Che Bello Questo Amore",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Some Guys Have All The Luck (Single Version)",
+      "a": "Maxi Priest"
+    },
+    {
+      "t": "House Arrest",
+      "a": "Krush"
+    },
+    {
+      "t": "Pamela",
+      "a": "Toto"
+    },
+    {
+      "t": "When Will I Be Famous",
+      "a": "Bros"
+    },
+    {
+      "t": "Prove Your Love",
+      "a": "Taylor Dayne"
+    },
+    {
+      "t": "Stuck On Earth",
+      "a": "Alf"
+    },
+    {
+      "t": "Max",
+      "a": "Paolo Conte"
+    },
+    {
+      "t": "Is She Really Going Out With Him (A Capella Version)",
+      "a": "Joe Jackson"
+    },
+    {
+      "t": "Divine Emotions",
+      "a": "Narada Michael Walden"
+    },
+    {
+      "t": "Reckless",
+      "a": "Afrika Bambaataa & Ub 40"
+    },
+    {
+      "t": "The Twist",
+      "a": "Fat Boys"
+    },
+    {
+      "t": "Breakfast In Bed",
+      "a": "Ub 40 & Chrissie Hynde"
+    },
+    {
+      "t": "Perfect",
+      "a": "Fairground Attraction"
+    },
+    {
+      "t": "Theme From S-Express (Herbal Tea Casualty Mix)",
+      "a": "S-Express"
+    },
+    {
+      "t": "What A Wonderful World",
+      "a": "Louis Armstrong"
+    },
+    {
+      "t": "Everywhere",
+      "a": "Fleetwood Mac"
+    },
+    {
+      "t": "Wee Rule",
+      "a": "Wee Papa Girl Rappers"
+    },
+    {
+      "t": "Sign Your Name",
+      "a": "Terence Trent D'arby"
+    },
+    {
+      "t": "Stop (Single Version)",
+      "a": "Sam Brown"
+    },
+    {
+      "t": "Who's Leaving Who",
+      "a": "Hazell Dean"
+    },
+    {
+      "t": "The Party (Single Version)",
+      "a": "Kraze"
+    },
+    {
+      "t": "Criticize",
+      "a": "Alexander O'neal"
+    },
+    {
+      "t": "Dragon's Legend (Single Version)",
+      "a": "Koto"
+    },
+    {
+      "t": "Wishing I Was Lucky",
+      "a": "Wet Wet Wet"
+    },
+    {
+      "t": "Take Me To Your Heart",
+      "a": "Rick Astley"
+    },
+    {
+      "t": "Don't Blame It On That Girl",
+      "a": "Matt Bianco"
+    },
+    {
+      "t": "The Way To Your Heart",
+      "a": "Soulsister"
+    },
+    {
+      "t": "Can't Stay Away From You",
+      "a": "Gloria Estefan & Miami Sound Machine"
+    },
+    {
+      "t": "Jack To The Sound Of The Underground",
+      "a": "Hithouse"
+    }
+  ],
+  "1990-hits-volume-1_withcover.html": [
+    {
+      "t": "Poison",
+      "a": "Bell Biv Devoe"
+    },
+    {
+      "t": "Opposites Attract",
+      "a": "Paula Abdul"
+    },
+    {
+      "t": "Blauwe Plekken",
+      "a": "Herman Van Veen"
+    },
+    {
+      "t": "Unchained Melody",
+      "a": "Righteous Brothers"
+    },
+    {
+      "t": "What U Waitin' 4",
+      "a": "Jungle Brothers"
+    },
+    {
+      "t": "Groove Is In The Heart",
+      "a": "Deee-Lite"
+    },
+    {
+      "t": "I Still Haven't Found What I'm Looking For",
+      "a": "The Chimes"
+    },
+    {
+      "t": "Hold On",
+      "a": "En Vogue"
+    },
+    {
+      "t": "She Ain't Worth It",
+      "a": "Glenn Medeiros"
+    },
+    {
+      "t": "Livin' In The Light",
+      "a": "Caron Wheeler"
+    },
+    {
+      "t": "Leave A Light On",
+      "a": "Belinda Carlisle"
+    },
+    {
+      "t": "We Almost Got It Together",
+      "a": "Tanita Tikaram"
+    },
+    {
+      "t": "Happenin' All Over Again",
+      "a": "Lonnie Gordon"
+    },
+    {
+      "t": "Rhythm Nation (Edit)",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Standing Outside In The Rain",
+      "a": "Skipper Wise"
+    },
+    {
+      "t": "Take Your Time",
+      "a": "Mantronix"
+    },
+    {
+      "t": "A Better Love",
+      "a": "Londonbeat"
+    },
+    {
+      "t": "Gangsterboogie",
+      "a": "Tony Scott"
+    },
+    {
+      "t": "What Time Is Love (7'' Radio)",
+      "a": "Klf & Children Of The Revolution"
+    },
+    {
+      "t": "Yo Yo",
+      "a": "Plaza"
+    },
+    {
+      "t": "La Raza",
+      "a": "Kid Frost"
+    },
+    {
+      "t": "Next To You",
+      "a": "Aswad"
+    },
+    {
+      "t": "Got To Have Your Love",
+      "a": "Mantronix"
+    },
+    {
+      "t": "Ritmo De La Noche",
+      "a": "Chocolate"
+    },
+    {
+      "t": "I Might",
+      "a": "Shakin' Stevens"
+    },
+    {
+      "t": "This Beat Is Technotronic (Single Version)",
+      "a": "Technotronic"
+    },
+    {
+      "t": "Jij Daar",
+      "a": "Petra & Co"
+    },
+    {
+      "t": "Doin' The Do",
+      "a": "Betty Boo"
+    },
+    {
+      "t": "Praying For Time",
+      "a": "George Michael"
+    },
+    {
+      "t": "Cult Of Snap!",
+      "a": "Snap!"
+    },
+    {
+      "t": "Get Up (Before The Night Is Over)",
+      "a": "Technotronic"
+    },
+    {
+      "t": "Something Happened On The Way To Heaven",
+      "a": "Phil Collins"
+    },
+    {
+      "t": "Maldon",
+      "a": "Zouk Machine"
+    },
+    {
+      "t": "Words",
+      "a": "Christians"
+    },
+    {
+      "t": "I'm Your Baby Tonight",
+      "a": "Whitney Houston"
+    },
+    {
+      "t": "Have You Seen Her (Single Version)",
+      "a": "M.C. Hammer"
+    },
+    {
+      "t": "Hijo De La Luna",
+      "a": "Mecano"
+    },
+    {
+      "t": "Nah Neh Nah",
+      "a": "Vaya Con Dios"
+    },
+    {
+      "t": "How Am I Supposed To Live Without You",
+      "a": "Michael Bolton"
+    }
+  ],
+  "1990-hits-volume-2_withcover.html": [
+    {
+      "t": "Se Bastasse Una Canzone",
+      "a": "Eros Ramazzotti"
+    },
+    {
+      "t": "Vogue",
+      "a": "Madonna"
+    },
+    {
+      "t": "Live Together",
+      "a": "Lisa Stansfield"
+    },
+    {
+      "t": "All Or Nothing",
+      "a": "Milli Vanilli"
+    },
+    {
+      "t": "Lily Was Here",
+      "a": "Candy Dulfer"
+    },
+    {
+      "t": "Follow My Rainbow",
+      "a": "Sheena Easton"
+    },
+    {
+      "t": "Git On Up",
+      "a": "Fast Eddie"
+    },
+    {
+      "t": "Rich In Paradise",
+      "a": "FPI Project"
+    },
+    {
+      "t": "Body Language",
+      "a": "Adventures Of Stevie V"
+    },
+    {
+      "t": "Move To The Big Band",
+      "a": "Ben Liebrand"
+    },
+    {
+      "t": "Rok The Nation",
+      "a": "Rob 'n' Raz"
+    },
+    {
+      "t": "Bakerman",
+      "a": "Laid Back"
+    },
+    {
+      "t": "Wash Your Face In My Sink",
+      "a": "Dream Warriors"
+    },
+    {
+      "t": "I Like You",
+      "a": "Culture Beat"
+    },
+    {
+      "t": "Show 'm The Bass",
+      "a": "Mc Miker G"
+    },
+    {
+      "t": "Here We Are",
+      "a": "Gloria Estefan"
+    },
+    {
+      "t": "Pray (Radio Edit)",
+      "a": "Mc Hammer"
+    },
+    {
+      "t": "Sit & Wait",
+      "a": "Sydney Youngblood"
+    },
+    {
+      "t": "Keep On Running",
+      "a": "The Real Milli Vanilli"
+    },
+    {
+      "t": "Ice Ice Baby",
+      "a": "Vanilla Ice"
+    },
+    {
+      "t": "Louise",
+      "a": "Clouseau"
+    },
+    {
+      "t": "Sadeness Part 1",
+      "a": "Enigma"
+    },
+    {
+      "t": "Inna City Mamma",
+      "a": "Neneh Cherry"
+    },
+    {
+      "t": "Fools Gold (Edit)",
+      "a": "Stone Roses"
+    },
+    {
+      "t": "King Kong Five",
+      "a": "Mano Negra"
+    },
+    {
+      "t": "Homely Girl",
+      "a": "Ub40"
+    },
+    {
+      "t": "Get Into It",
+      "a": "Tony Scott"
+    },
+    {
+      "t": "Must Be The Music",
+      "a": "King Bee"
+    },
+    {
+      "t": "Caruso",
+      "a": "Luciano Pavarotti"
+    },
+    {
+      "t": "All Around The World",
+      "a": "Lisa Stansfield"
+    },
+    {
+      "t": "Ooops Up!",
+      "a": "Snap!"
+    },
+    {
+      "t": "Get A Life",
+      "a": "Soul Ii Soul"
+    },
+    {
+      "t": "I Promised Myself",
+      "a": "Nick Kamen"
+    },
+    {
+      "t": "Infinity",
+      "a": "Guru Josh"
+    },
+    {
+      "t": "Tom's Diner",
+      "a": "Dna Featuring Suzanne Vega"
+    },
+    {
+      "t": "Back By Dope Demand",
+      "a": "King Bee"
+    },
+    {
+      "t": "Sacrifice",
+      "a": "Elton John"
+    },
+    {
+      "t": "Dub Be Good To Me",
+      "a": "Beats International"
+    },
+    {
+      "t": "Dirty Cash (Money Talks)",
+      "a": "Adventures Of Stevie V"
+    }
+  ],
+  "1990-hits-volume-3_withcover.html": [
+    {
+      "t": "Got To Get",
+      "a": "Rob 'n' Raz"
+    },
+    {
+      "t": "Do What You Want",
+      "a": "2 In A Room"
+    },
+    {
+      "t": "It's On You",
+      "a": "Mc Sar"
+    },
+    {
+      "t": "Blueshouse",
+      "a": "B.B. Queen"
+    },
+    {
+      "t": "Step By Step",
+      "a": "New Kids On The Block"
+    },
+    {
+      "t": "I'll Be Your Baby Tonight",
+      "a": "Robert Palmer"
+    },
+    {
+      "t": "It's A Shame (My Sister)",
+      "a": "Monie Love"
+    },
+    {
+      "t": "Diamante",
+      "a": "Zucchero"
+    },
+    {
+      "t": "Put Your Hands Together",
+      "a": "D-Mob"
+    },
+    {
+      "t": "Out Of Love",
+      "a": "Toto"
+    },
+    {
+      "t": "Don't Stop",
+      "a": "Mc Sar"
+    },
+    {
+      "t": "I Can't Stand It",
+      "a": "Twenty 4 Seven"
+    },
+    {
+      "t": "Rhythm Of Life",
+      "a": "Oleta Adams"
+    },
+    {
+      "t": "Rub You The Right Way (Single Version)",
+      "a": "Johnny Gill"
+    },
+    {
+      "t": "Get On Up And Dance",
+      "a": "Icy D. & Doc Daze"
+    },
+    {
+      "t": "Dance Classics The Summermix",
+      "a": "Ben Liebrand"
+    },
+    {
+      "t": "Advice For The Young At Heart",
+      "a": "Tears For Fears"
+    },
+    {
+      "t": "Are You Ready For Loving Me",
+      "a": "Rene Froger"
+    },
+    {
+      "t": "Hold On",
+      "a": "Wilson Phillips"
+    },
+    {
+      "t": "Escapade",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Freedom '90",
+      "a": "George Michael"
+    },
+    {
+      "t": "Better World",
+      "a": "Rebel Mc"
+    },
+    {
+      "t": "Whatcha Gonna Do With My Lovin'",
+      "a": "Inner City"
+    },
+    {
+      "t": "A Dream's A Dream",
+      "a": "Soul Ii Soul"
+    },
+    {
+      "t": "Wil Niet Dat Je Weggaat",
+      "a": "Clouseau"
+    },
+    {
+      "t": "Saxuality",
+      "a": "Candy Dulfer"
+    },
+    {
+      "t": "Enjoy The Silence (Single Mix)",
+      "a": "Depeche Mode"
+    },
+    {
+      "t": "Fortune Fairytales",
+      "a": "Lois Lane"
+    },
+    {
+      "t": "Vision Of Love",
+      "a": "Mariah Carey"
+    },
+    {
+      "t": "All I Wanna Do Is Make Love To You (Single Version)",
+      "a": "Heart"
+    },
+    {
+      "t": "Tonight",
+      "a": "New Kids On The Block"
+    },
+    {
+      "t": "Close To You",
+      "a": "Maxi Priest"
+    },
+    {
+      "t": "Show Me Heaven",
+      "a": "Maria Mckee"
+    },
+    {
+      "t": "Killer (Single Version)",
+      "a": "Adamski Feat. Seal"
+    },
+    {
+      "t": "Me So Horny (Nasty Version)",
+      "a": "2 Live Crew"
+    },
+    {
+      "t": "What's A Woman",
+      "a": "Vaya Con Dios"
+    },
+    {
+      "t": "U Can't Touch This",
+      "a": "Mc Hammer"
+    },
+    {
+      "t": "The Power",
+      "a": "Snap!"
+    }
+  ],
+  "1991-hits-volume-1_withcover.html": [
+    {
+      "t": "Tick Tock (Single Version)",
+      "a": "Vaughan Brothers"
+    },
+    {
+      "t": "Parachute",
+      "a": "Something Happens"
+    },
+    {
+      "t": "Love Is A Wonderful Thing",
+      "a": "Michael Bolton"
+    },
+    {
+      "t": "Sopa De Carasol",
+      "a": "Banda Blanca"
+    },
+    {
+      "t": "Wear Your Love Like Heaven",
+      "a": "Definition Of Sound"
+    },
+    {
+      "t": "Baby Baby",
+      "a": "Amy Grant"
+    },
+    {
+      "t": "Ich Hab Getraumt Von Dir",
+      "a": "Matthias Reim"
+    },
+    {
+      "t": "Gimme Some",
+      "a": "Tony Scott"
+    },
+    {
+      "t": "A Little Time",
+      "a": "Beautiful South"
+    },
+    {
+      "t": "Think",
+      "a": "Information Society"
+    },
+    {
+      "t": "Love ... Thy Will Be Done",
+      "a": "Martika"
+    },
+    {
+      "t": "Justified & Ancient (Stand By The Jams) Featuring Tammy Wynette",
+      "a": "The Klf"
+    },
+    {
+      "t": "Where Does My Heart Beat Now",
+      "a": "Celine Dion"
+    },
+    {
+      "t": "My Name Is Not Susan (Waddell 7'')",
+      "a": "Whitney Houston"
+    },
+    {
+      "t": "I Say Yeah",
+      "a": "Secchi Feat. Orlando Johnson"
+    },
+    {
+      "t": "Caribbean Blue",
+      "a": "Enya"
+    },
+    {
+      "t": "From Da Soul (Radio-Edit Of Dope-Clubmix)",
+      "a": "Tony Scott"
+    },
+    {
+      "t": "This Is Your Life",
+      "a": "Banderas"
+    },
+    {
+      "t": "Paradise",
+      "a": "Timmy T"
+    },
+    {
+      "t": "Are You Dreaming",
+      "a": "Twenty 4 Seven"
+    },
+    {
+      "t": "Lekker Swingen Met Die Hap",
+      "a": "Hans Versnel & De Meestermixers"
+    },
+    {
+      "t": "Rhythm Of My Heart",
+      "a": "Rod Stewart"
+    },
+    {
+      "t": "Heal The Pain",
+      "a": "George Michael"
+    },
+    {
+      "t": "Smells Like Teen Spirit",
+      "a": "Nirvana"
+    },
+    {
+      "t": "Glad",
+      "a": "Kim Appleby"
+    },
+    {
+      "t": "Ring My Bell",
+      "a": "Dj Jazzy Jeff & The Fresh Prince"
+    },
+    {
+      "t": "Sucker Dj",
+      "a": "Dimples D."
+    },
+    {
+      "t": "I Love Your Smile (Radio Version)",
+      "a": "Shanice"
+    },
+    {
+      "t": "Generation Of Love",
+      "a": "Jesus Loves You"
+    },
+    {
+      "t": "Dance Tago Mago",
+      "a": "Kaoma"
+    },
+    {
+      "t": "Kozmik",
+      "a": "Ziggy Marley & Melody Makers"
+    },
+    {
+      "t": "Dominator",
+      "a": "Human Resource"
+    },
+    {
+      "t": "Go For It (Heart & Fire)",
+      "a": "Joey B Ellis & Tynetta Hare"
+    },
+    {
+      "t": "Just A Groove",
+      "a": "Nomad"
+    },
+    {
+      "t": "Change",
+      "a": "Lisa Stansfield"
+    },
+    {
+      "t": "Unfinished Sympathy",
+      "a": "Massive"
+    },
+    {
+      "t": "All 4 Love",
+      "a": "Color Me Badd"
+    },
+    {
+      "t": "Ice Ice Baby",
+      "a": "Vanilla Ice"
+    },
+    {
+      "t": "Knockin' Boots",
+      "a": "Candyman"
+    }
+  ],
+  "1991-hits-volume-2_withcover.html": [
+    {
+      "t": "Thinking Of You",
+      "a": "Maureen Walsh"
+    },
+    {
+      "t": "Keeping The Faith",
+      "a": "De La Soul"
+    },
+    {
+      "t": "Show Me Heaven",
+      "a": "Maria Mckee"
+    },
+    {
+      "t": "Rave The Rhythm",
+      "a": "Channel X"
+    },
+    {
+      "t": "Touch Me (All Night Long)",
+      "a": "Cathy Dennis"
+    },
+    {
+      "t": "Move That Body",
+      "a": "Technotronic & Reggie"
+    },
+    {
+      "t": "Ain't My Beating Heart",
+      "a": "Ten Sharp"
+    },
+    {
+      "t": "Skat Strut (Video Version)",
+      "a": "Mc Skat Kat & The Stray Mob"
+    },
+    {
+      "t": "I Left My Wallet In El Segundo",
+      "a": "A Tribe Called Quest"
+    },
+    {
+      "t": "Gonna Catch You",
+      "a": "Lonnie Gordon"
+    },
+    {
+      "t": "Live And Let Die",
+      "a": "Guns N' Roses"
+    },
+    {
+      "t": "Satisfaction",
+      "a": "Mc Juice"
+    },
+    {
+      "t": "Get Here",
+      "a": "Oleta Adams"
+    },
+    {
+      "t": "A Better Love",
+      "a": "Londonbeat"
+    },
+    {
+      "t": "Wiggle It [Radio Edit]",
+      "a": "2 In A Room"
+    },
+    {
+      "t": "The Whistle Song (Paul Shapiro Supreme 7'' Mix)",
+      "a": "Frankie Knuckles"
+    },
+    {
+      "t": "A Roller Skating Jam Named 'saturdays'",
+      "a": "De La Soul"
+    },
+    {
+      "t": "Her (Radio Edit)",
+      "a": "Guy"
+    },
+    {
+      "t": "White Men",
+      "a": "Pilgrims"
+    },
+    {
+      "t": "Ala Li La",
+      "a": "Denis Azor"
+    },
+    {
+      "t": "Move Any Mountain",
+      "a": "Shamen"
+    },
+    {
+      "t": "Een Beetje Misselijk",
+      "a": "Buster Fonteijn"
+    },
+    {
+      "t": "Call It What You Want",
+      "a": "N.K.O.T.B"
+    },
+    {
+      "t": "Geef Het Op",
+      "a": "Clouseau"
+    },
+    {
+      "t": "All My Loving",
+      "a": "Los Manolos"
+    },
+    {
+      "t": "Quadrophonia",
+      "a": "Quadrophonia"
+    },
+    {
+      "t": "Blauw",
+      "a": "The Scene"
+    },
+    {
+      "t": "Go (Single Version)",
+      "a": "Moby"
+    },
+    {
+      "t": "The One And Only",
+      "a": "Chesney Hawkes"
+    },
+    {
+      "t": "Emotions (Maxi-Single)",
+      "a": "Mariah Carey"
+    },
+    {
+      "t": "All Together Now",
+      "a": "Farm"
+    },
+    {
+      "t": "How To Dance",
+      "a": "Bingo Boys And Princessa"
+    },
+    {
+      "t": "Set Adrift On Memory Bliss (Radio Mix)",
+      "a": "Pm Dawn"
+    },
+    {
+      "t": "Future Love Paradise (Single Version)",
+      "a": "Seal"
+    },
+    {
+      "t": "Let There Be Love",
+      "a": "Simple Minds"
+    },
+    {
+      "t": "Calling Elvis",
+      "a": "Dire Straits"
+    },
+    {
+      "t": "Wicked Game (Edit)",
+      "a": "Chris Isaak"
+    },
+    {
+      "t": "3 A.M. Eternal",
+      "a": "Klf"
+    },
+    {
+      "t": "I Wanna Sex You Up",
+      "a": "Color Me Badd"
+    },
+    {
+      "t": "Crazy (Single Version)",
+      "a": "Seal"
+    }
+  ],
+  "1991-hits-volume-3_withcover.html": [
+    {
+      "t": "Let The Beat Hit 'em (Radio Mix 1)",
+      "a": "Lisa Lisa & Cult Jam"
+    },
+    {
+      "t": "Rave Alarm",
+      "a": "Praga Khan"
+    },
+    {
+      "t": "Love Will Never Do Without You (Work It Out 7\" With Intro)",
+      "a": "Janet Jackson"
+    },
+    {
+      "t": "Is It Good To You",
+      "a": "Heavy D & The Boyz"
+    },
+    {
+      "t": "Stars",
+      "a": "Simply Red"
+    },
+    {
+      "t": "These Are The Days Of Our Lives",
+      "a": "Queen"
+    },
+    {
+      "t": "I Wanna Get With U",
+      "a": "Guy"
+    },
+    {
+      "t": "Wild Places (1991 Version)",
+      "a": "Duncan Browne"
+    },
+    {
+      "t": "Under Pressure",
+      "a": "Boyz Ii Men & Tony Scott"
+    },
+    {
+      "t": "Things That Make You Go Hmmm",
+      "a": "C & C Music Factory"
+    },
+    {
+      "t": "Mercy Mercy Me (I Want You)",
+      "a": "Robert Palmer"
+    },
+    {
+      "t": "Hello Afrika",
+      "a": "Dr Alban & Leila K"
+    },
+    {
+      "t": "Motownphilly",
+      "a": "Boyz Ii Men"
+    },
+    {
+      "t": "Where Are You Baby?",
+      "a": "Betty Boo"
+    },
+    {
+      "t": "Uptown",
+      "a": "Womack & Womack"
+    },
+    {
+      "t": "Get Ready For This",
+      "a": "2 Unlimited"
+    },
+    {
+      "t": "It's A Shame (My Sister)",
+      "a": "Monie Love Ft. True Image"
+    },
+    {
+      "t": "Diamonds And Pearls (Single Version)",
+      "a": "Prince & The New Power Generation"
+    },
+    {
+      "t": "Turn Da Music Up (Milanoradio Edit)",
+      "a": "2 Brothers On The 4Th Floor"
+    },
+    {
+      "t": "Vrienden Voor Het Leven",
+      "a": "Danny De Munk"
+    },
+    {
+      "t": "Valintine",
+      "a": "Nils Lofgren Feat. Bruce Springsteen"
+    },
+    {
+      "t": "What Comes Naturally (Single Version)",
+      "a": "Sheena Easton"
+    },
+    {
+      "t": "Cowboys And Angels (Single Version)",
+      "a": "George Michael"
+    },
+    {
+      "t": "Can I Kick It (Single Version)",
+      "a": "A Tribe Called Quest"
+    },
+    {
+      "t": "Nobody Else",
+      "a": "Rene Froger"
+    },
+    {
+      "t": "Guaranteed (Single Version)",
+      "a": "Level 42"
+    },
+    {
+      "t": "I Adore Mi Amor",
+      "a": "Color Me Badd"
+    },
+    {
+      "t": "It Ain't Over 'til It's Over",
+      "a": "Lenny Kravitz"
+    },
+    {
+      "t": "Pray (Radio Edit)",
+      "a": "Mc Hammer"
+    },
+    {
+      "t": "Falling",
+      "a": "Julee Cruise"
+    },
+    {
+      "t": "Hole Hearted",
+      "a": "Extreme"
+    },
+    {
+      "t": "Can't Help Myself (Radio Edit)",
+      "a": "2 Brothers On The 4Th Floor"
+    },
+    {
+      "t": "Sadeness Part 1",
+      "a": "Enigma"
+    },
+    {
+      "t": "Because I Love You (Radio Edit)",
+      "a": "Stevie B."
+    },
+    {
+      "t": "Ring Ring Ring",
+      "a": "De La Soul"
+    },
+    {
+      "t": "Devotion",
+      "a": "Nomad Feat. Mikee Freedom"
+    },
+    {
+      "t": "Gypsy Woman",
+      "a": "Crystal Waters"
+    },
+    {
+      "t": "More Than Words",
+      "a": "Extreme"
+    }
+  ],
   "1992-hits-volume-1_withcover.html": [
     {
       "t": "Why Not Jazz",
@@ -991,16 +5299,870 @@
       "a": "Jon Secada"
     }
   ],
-  "italo-disco-one_withcover.html": [],
-  "italo-disco-two_withcover.html": [],
-  "italo-disco-three_withcover.html": [],
-  "italo-disco-four_withcover.html": [],
-  "italo-disco-five_withcover.html": [],
-  "italo-disco-six_withcover.html": [],
-  "zyx-italo-disco-uno_withcover.html": [],
-  "zyx-italo-disco-due_withcover.html": [],
-  "zyx-italo-disco-tre_withcover.html": [],
-  "zyx-italo-disco-quattro_withcover.html": [],
+  "italo-disco-one_withcover.html": [
+    {
+      "t": "Believe In Yourself - Special Extended Remix",
+      "a": "The Creatures"
+    },
+    {
+      "t": "Hypnotic Tango - Original 12\" Version",
+      "a": "My Mine"
+    },
+    {
+      "t": "I Like Chopin",
+      "a": "Gazebo"
+    },
+    {
+      "t": "You Are a Danger - Original Extended Version",
+      "a": "Gary Low"
+    },
+    {
+      "t": "Happy Station - Ben Liebrand Remix",
+      "a": "Fun Fun"
+    },
+    {
+      "t": "Easy Lady",
+      "a": "Ivana Spagna"
+    },
+    {
+      "t": "Paris Latino",
+      "a": "Bandolero"
+    },
+    {
+      "t": "Stop Bajon",
+      "a": "Tullio De Piscopo"
+    },
+    {
+      "t": "Tonight - Original Edit",
+      "a": "Ken Laszlo"
+    },
+    {
+      "t": "Future Brain",
+      "a": "Den Harrow"
+    },
+    {
+      "t": "Ti Sento",
+      "a": "Matia Bazar"
+    },
+    {
+      "t": "Bambina (Radio Version)",
+      "a": "David Lyme"
+    },
+    {
+      "t": "Tarzan Boy",
+      "a": "Baltimora"
+    },
+    {
+      "t": "Don Quichotte - No Estan Aqui",
+      "a": "Magazine 60"
+    },
+    {
+      "t": "Sexy Girl",
+      "a": "Sabrina"
+    },
+    {
+      "t": "I.c. Love Affair - Piano Version",
+      "a": "Dfc Team"
+    },
+    {
+      "t": "Call Me",
+      "a": "Ivana Spagna"
+    }
+  ],
+  "italo-disco-two_withcover.html": [
+    {
+      "t": "La Colegiala",
+      "a": "Gary Low"
+    },
+    {
+      "t": "Don't Cry Tonight - Original Version",
+      "a": "Savage"
+    },
+    {
+      "t": "Japanese War Game",
+      "a": "Koto"
+    },
+    {
+      "t": "Chase",
+      "a": "Giorgio Moroder"
+    },
+    {
+      "t": "My Forbidden Lover (Original 12\" Mix)",
+      "a": "Tapps"
+    },
+    {
+      "t": "Disco Band",
+      "a": "Scotch"
+    },
+    {
+      "t": "Ussr",
+      "a": "Eddy Huntington"
+    },
+    {
+      "t": "Dragon's Legend - Dub Version",
+      "a": "Koto"
+    },
+    {
+      "t": "Boys (Summertime Love)",
+      "a": "Sabrina"
+    },
+    {
+      "t": "Secret (Edit Mix)",
+      "a": "Albert One"
+    },
+    {
+      "t": "Jabdah",
+      "a": "Koto"
+    },
+    {
+      "t": "Visitors - 12\" Version",
+      "a": "Koto"
+    },
+    {
+      "t": "Bolero",
+      "a": "Fancy"
+    },
+    {
+      "t": "Delirio Mind",
+      "a": "Scotch"
+    }
+  ],
+  "italo-disco-three_withcover.html": [
+    {
+      "t": "Don Quichotte - No Estan Aqui",
+      "a": "Magazine 60"
+    },
+    {
+      "t": "Bambina (Original 12-Inch Version)",
+      "a": "David Lyme"
+    },
+    {
+      "t": "Happy Children",
+      "a": "P. Lion"
+    },
+    {
+      "t": "Dream",
+      "a": "P. Lion"
+    },
+    {
+      "t": "Your Love - Radio Edit",
+      "a": "Lime"
+    },
+    {
+      "t": "Babe, We're Gonna Love Tonight",
+      "a": "Lime"
+    },
+    {
+      "t": "Power Run",
+      "a": "Laserdance"
+    },
+    {
+      "t": "Hit Mix - Extended Version",
+      "a": "Fun Fun"
+    },
+    {
+      "t": "Letter From My Heart - 12\" Version",
+      "a": "Steve Allen"
+    },
+    {
+      "t": "Can't Stop - Remix",
+      "a": "Attack"
+    },
+    {
+      "t": "Geil - 1986",
+      "a": "Bruce & Bongo"
+    },
+    {
+      "t": "Midnight Girl - Extended",
+      "a": "Italian Boys"
+    },
+    {
+      "t": "Around My Dream",
+      "a": "Silver Pozzoli"
+    },
+    {
+      "t": "Void Vision",
+      "a": "Cyber People"
+    },
+    {
+      "t": "Crockett's Theme",
+      "a": "Koto"
+    }
+  ],
+  "italo-disco-four_withcover.html": [
+    {
+      "t": "Give Me Your Love - Extended Version",
+      "a": "Fun Fun"
+    },
+    {
+      "t": "Balla..Balla! (Italien Hit Connection)",
+      "a": "Francesco Napoli"
+    },
+    {
+      "t": "You Are a Danger",
+      "a": "Gary Low"
+    },
+    {
+      "t": "Power Run",
+      "a": "Laserdance"
+    },
+    {
+      "t": "Shotgun (Into The Night) remix",
+      "a": "Laserdance"
+    },
+    {
+      "t": "Stop Bajon - Club Mix",
+      "a": "Tullio De Piscopo"
+    },
+    {
+      "t": "Don't Cry Tonight - 12'' Version [Remastered]",
+      "a": "Savage"
+    },
+    {
+      "t": "Love Spy",
+      "a": "Mike Mareen"
+    },
+    {
+      "t": "Color My Love",
+      "a": "Fun Fun"
+    },
+    {
+      "t": "Hey Hey Guy",
+      "a": "Ken Laszlo"
+    },
+    {
+      "t": "Baila Bolero - Bolero Dance Mix",
+      "a": "Fun Fun"
+    },
+    {
+      "t": "La Casa Latina",
+      "a": "Off"
+    },
+    {
+      "t": "General Kuster",
+      "a": "Swan"
+    },
+    {
+      "t": "Never say you love me",
+      "a": "David Lyme"
+    },
+    {
+      "t": "Never can change my mind",
+      "a": "Gart Cooper"
+    }
+  ],
+  "italo-disco-five_withcover.html": [
+    {
+      "t": "Harem",
+      "a": "Solo"
+    },
+    {
+      "t": "I'm Loosing You - Remastered",
+      "a": "Savage"
+    },
+    {
+      "t": "Electrica Salsa feat. Sven Vaeth - Original (Baba Baba)",
+      "a": "OFF"
+    },
+    {
+      "t": "Chinatown",
+      "a": "Cruisin' Gang"
+    },
+    {
+      "t": "America",
+      "a": "Cruisin' Gang"
+    },
+    {
+      "t": "On the Beach Tonight",
+      "a": "Cruisin' Gang"
+    },
+    {
+      "t": "Don't Talk About It - Version A",
+      "a": "Hot Cold"
+    },
+    {
+      "t": "Just Gotta Tell Her (12 inch Version)",
+      "a": "Hot Cold"
+    },
+    {
+      "t": "Baila Bolero - Marc Hartman Remix",
+      "a": "Fun Fun"
+    },
+    {
+      "t": "Perfect Love",
+      "a": "Linda Jo Rizzo"
+    },
+    {
+      "t": "Self Control",
+      "a": "Raf"
+    },
+    {
+      "t": "I Love My Radio - Radio Version",
+      "a": "Taffy"
+    },
+    {
+      "t": "I'm Ready",
+      "a": "Kano"
+    },
+    {
+      "t": "Baila",
+      "a": "Ivan"
+    },
+    {
+      "t": "Comanchero - Vocal Radio",
+      "a": "Moon Ray"
+    }
+  ],
+  "italo-disco-six_withcover.html": [
+    {
+      "t": "1.2.3.4.5.6.7.8 (Extended Vocal Remix)",
+      "a": "Ken Laszlo"
+    },
+    {
+      "t": "For Your Love - Extended Version",
+      "a": "Albert One"
+    },
+    {
+      "t": "Dragon's Legend",
+      "a": "Koto"
+    },
+    {
+      "t": "How Old Are You [Vocal Mix ]",
+      "a": "Miko Mission"
+    },
+    {
+      "t": "Secrets - Single Version",
+      "a": "Albert One"
+    },
+    {
+      "t": "Somebody (Hey Girl) - Radio Version",
+      "a": "Video"
+    },
+    {
+      "t": "San Salvador - Single Version",
+      "a": "Azoto"
+    },
+    {
+      "t": "Bolero (Hold Me In Your Arms Again) - 12\" Version",
+      "a": "Fancy"
+    },
+    {
+      "t": "Ma quale idea",
+      "a": "Pino D'Angio"
+    },
+    {
+      "t": "The World Is You",
+      "a": "Miko Mission"
+    },
+    {
+      "t": "Heigh Ho",
+      "a": "Fabian Nesti"
+    },
+    {
+      "t": "Passion",
+      "a": "The Flirts"
+    },
+    {
+      "t": "Fotonovela",
+      "a": "Ivan"
+    },
+    {
+      "t": "Living In Japan - David Phillips Remix",
+      "a": "Fun Fun"
+    },
+    {
+      "t": "Color of love",
+      "a": "Alan Barcklay"
+    }
+  ],
+  "zyx-italo-disco-uno_withcover.html": [
+    {
+      "t": "Never say you love me",
+      "a": "David Lyme"
+    },
+    {
+      "t": "Sexual Fever",
+      "a": "De Gama"
+    },
+    {
+      "t": "I.C. love afair",
+      "a": "DFC team"
+    },
+    {
+      "t": "USSR",
+      "a": "Eddy Huntington"
+    },
+    {
+      "t": "Heigh Ho",
+      "a": "Fabian Nesti"
+    },
+    {
+      "t": "Bolero",
+      "a": "Fancy"
+    },
+    {
+      "t": "Balla balla",
+      "a": "Francesco Napoli"
+    },
+    {
+      "t": "Baila Bolero (remix)",
+      "a": "Fun Fun"
+    },
+    {
+      "t": "Color Of My Love",
+      "a": "Fun Fun"
+    },
+    {
+      "t": "Give me love",
+      "a": "Fun Fun"
+    },
+    {
+      "t": "Mega hit mix",
+      "a": "Fun Fun"
+    },
+    {
+      "t": "Take me to the top",
+      "a": "Advance"
+    },
+    {
+      "t": "Color of love",
+      "a": "Alan Barcklay"
+    },
+    {
+      "t": "I need somebody to love",
+      "a": "Alan Cook"
+    },
+    {
+      "t": "For your love",
+      "a": "Albert One"
+    },
+    {
+      "t": "Secrets",
+      "a": "Albert One"
+    },
+    {
+      "t": "Hey Robin",
+      "a": "Alpha Town"
+    },
+    {
+      "t": "Can't stop",
+      "a": "Attack"
+    },
+    {
+      "t": "Tarzan Boy",
+      "a": "Baltimora"
+    },
+    {
+      "t": "Ciao boys",
+      "a": "Barbara"
+    },
+    {
+      "t": "Walkin away from you",
+      "a": "Brain Ice"
+    },
+    {
+      "t": "Geil",
+      "a": "Bruce & Bongo"
+    },
+    {
+      "t": "Il veliero",
+      "a": "Chaplinband"
+    },
+    {
+      "t": "You can set me free",
+      "a": "Coo Coo"
+    },
+    {
+      "t": "You can't set me free (remix)",
+      "a": "Coo Coo"
+    },
+    {
+      "t": "China town",
+      "a": "Cruisin Gang"
+    },
+    {
+      "t": "On the beach&China Town",
+      "a": "Cruisin' Gang"
+    },
+    {
+      "t": "Void Vision",
+      "a": "Cyber people"
+    },
+    {
+      "t": "Future Brain",
+      "a": "Dan Harrow"
+    }
+  ],
+  "zyx-italo-disco-due_withcover.html": [
+    {
+      "t": "Visitors",
+      "a": "Koto"
+    },
+    {
+      "t": "Flash",
+      "a": "Laserdance"
+    },
+    {
+      "t": "Humanoid invasion",
+      "a": "Laserdance"
+    },
+    {
+      "t": "Power run",
+      "a": "Laserdance"
+    },
+    {
+      "t": "Shotgun into the night",
+      "a": "Laserdance"
+    },
+    {
+      "t": "Candy Love",
+      "a": "Lilly & Sussie"
+    },
+    {
+      "t": "Perfect lover",
+      "a": "Linda Jo Rizzo"
+    },
+    {
+      "t": "PopCorn",
+      "a": "M & H band"
+    },
+    {
+      "t": "Take me back",
+      "a": "Dan Harrow"
+    },
+    {
+      "t": "Never can change my mind",
+      "a": "Gart Cooper"
+    },
+    {
+      "t": "La Colegiala",
+      "a": "Gary Low"
+    },
+    {
+      "t": "You Are A Danger",
+      "a": "Gary Low"
+    },
+    {
+      "t": "I like Chopin",
+      "a": "Gazebo"
+    },
+    {
+      "t": "Love and passion",
+      "a": "Gipsy & Queen"
+    },
+    {
+      "t": "Don't talk about it",
+      "a": "Hot & Cold"
+    },
+    {
+      "t": "Just got together",
+      "a": "Hot & Cold"
+    },
+    {
+      "t": "Forever Lovers",
+      "a": "Italian Boys"
+    },
+    {
+      "t": "Until the morning",
+      "a": "Italian Boys"
+    },
+    {
+      "t": "Baila",
+      "a": "Ivan"
+    },
+    {
+      "t": "Fotonovella",
+      "a": "Ivan"
+    },
+    {
+      "t": "I'm Going To",
+      "a": "Jago"
+    },
+    {
+      "t": "I'm Ready",
+      "a": "Kano"
+    },
+    {
+      "t": "Kasso",
+      "a": "Kasso"
+    },
+    {
+      "t": "Walkman",
+      "a": "Kasso"
+    },
+    {
+      "t": "1 2 3 4 5 6 7 8",
+      "a": "Ken Laszlo"
+    },
+    {
+      "t": "Tonight",
+      "a": "Ken Laszlo"
+    },
+    {
+      "t": "Its so funny",
+      "a": "King Kong"
+    },
+    {
+      "t": "Champions cue",
+      "a": "Koto"
+    },
+    {
+      "t": "Dragon's Lair",
+      "a": "Koto"
+    }
+  ],
+  "zyx-italo-disco-tre_withcover.html": [
+    {
+      "t": "Jabdah",
+      "a": "Koto"
+    },
+    {
+      "t": "Pretty baby",
+      "a": "Silver Pozzolli"
+    },
+    {
+      "t": "Chica boom",
+      "a": "Silver Pozzolli"
+    },
+    {
+      "t": "Around my dream (remix)",
+      "a": "Silver Pozzolli"
+    },
+    {
+      "t": "Step By Step",
+      "a": "Silver Pozzoli"
+    },
+    {
+      "t": "Harem",
+      "a": "Solo"
+    },
+    {
+      "t": "Call me",
+      "a": "Spagna"
+    },
+    {
+      "t": "Naughty boy",
+      "a": "Macho gang"
+    },
+    {
+      "t": "Don Quichotte",
+      "a": "Magazine 60"
+    },
+    {
+      "t": "Margherita",
+      "a": "Massara"
+    },
+    {
+      "t": "More than a kiss",
+      "a": "Michael Bedford"
+    },
+    {
+      "t": "How old are you",
+      "a": "Miko Mission"
+    },
+    {
+      "t": "The World Is You",
+      "a": "Miko Mission"
+    },
+    {
+      "t": "Ready for love",
+      "a": "Morgana"
+    },
+    {
+      "t": "We Just",
+      "a": "Mozes"
+    },
+    {
+      "t": "I go down (sa sa sa)",
+      "a": "Mr ME"
+    },
+    {
+      "t": "Can Delight",
+      "a": "My Mine"
+    },
+    {
+      "t": "Hypnotic Tango",
+      "a": "My mine"
+    },
+    {
+      "t": "Ritmo De La Noche",
+      "a": "Mystic"
+    },
+    {
+      "t": "Electrica Salsa",
+      "a": "Off"
+    },
+    {
+      "t": "La Casa Latina",
+      "a": "Off"
+    },
+    {
+      "t": "Dream",
+      "a": "P.Lion"
+    },
+    {
+      "t": "Happy Children",
+      "a": "P.Lion"
+    },
+    {
+      "t": "Daimond",
+      "a": "P4f"
+    },
+    {
+      "t": "Maqualeidea",
+      "a": "Pino D'angelo"
+    },
+    {
+      "t": "Selfcontrol",
+      "a": "Raff"
+    },
+    {
+      "t": "Vamos A La Playa",
+      "a": "Righeira"
+    },
+    {
+      "t": "No Tengo di Nero",
+      "a": "Righiera"
+    },
+    {
+      "t": "Let me talk in love",
+      "a": "Roberto Camero"
+    },
+    {
+      "t": "Dolce Vita",
+      "a": "Ryan Paris"
+    },
+    {
+      "t": "Boys",
+      "a": ""
+    },
+    {
+      "t": "Hot girl",
+      "a": "Sabrina"
+    },
+    {
+      "t": "Sexy Girl",
+      "a": "Sabrina"
+    },
+    {
+      "t": "I'm loosing you",
+      "a": "Savage"
+    },
+    {
+      "t": "Delirio Mind",
+      "a": "Scotch"
+    }
+  ],
+  "zyx-italo-disco-quattro_withcover.html": [
+    {
+      "t": "Money runner",
+      "a": "Scotch"
+    },
+    {
+      "t": "Easy Lady",
+      "a": "Spagna"
+    },
+    {
+      "t": "Just a game",
+      "a": "Vanessa"
+    },
+    {
+      "t": "ItaloHeat",
+      "a": "Various Artists"
+    },
+    {
+      "t": "Somebody(hey girl)",
+      "a": "Video"
+    },
+    {
+      "t": "Vicious games",
+      "a": "Yello"
+    },
+    {
+      "t": "My name is Bond",
+      "a": "Zinno"
+    },
+    {
+      "t": "America",
+      "a": "The Cruisin' Gang"
+    },
+    {
+      "t": "Kalimba De Lun",
+      "a": "Tony Esposito"
+    },
+    {
+      "t": "We got the love",
+      "a": "Touch of soul"
+    },
+    {
+      "t": "Primavera",
+      "a": "Tullo de Piscopo"
+    },
+    {
+      "t": "Papachico",
+      "a": "Tony Esposito"
+    },
+    {
+      "t": "General Kuster",
+      "a": "Swan"
+    },
+    {
+      "t": "Midnight dancer",
+      "a": "Syntech"
+    },
+    {
+      "t": "My forbidden lovers",
+      "a": "Tapps"
+    },
+    {
+      "t": "Believe in yourself",
+      "a": "The Creatures"
+    },
+    {
+      "t": "You can say to everybody",
+      "a": "Steve Clark"
+    },
+    {
+      "t": "Love is in the air",
+      "a": "Steve Allen"
+    },
+    {
+      "t": "Ready for love",
+      "a": "Stel"
+    },
+    {
+      "t": "A letter from my heart",
+      "a": "Steve Allen"
+    },
+    {
+      "t": "I Love My Radio My Midnight Radio",
+      "a": "Taffy"
+    },
+    {
+      "t": "How Old Are You (Ben Liebrand Remix)",
+      "a": "Miko Mission"
+    },
+    {
+      "t": "Give Me Your Love (Special 12Inch)",
+      "a": "Fun Fun"
+    },
+    {
+      "t": "Happy Song (Extended)",
+      "a": "Babys Gang"
+    },
+    {
+      "t": "Shaker Shake [Vocal Version]",
+      "a": "Time"
+    },
+    {
+      "t": "Lover To Lover",
+      "a": "Joe Yellow"
+    },
+    {
+      "t": "Batida",
+      "a": "Cariocas"
+    }
+  ],
   "lindaroosjessica_withcover.html": [
     {
       "t": "Lange Nacht",
