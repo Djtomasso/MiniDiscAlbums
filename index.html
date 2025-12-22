@@ -77,6 +77,12 @@ const TRACKS_CACHE_KEY = 'md_tracks_index_cache_v1';
 const TRACKS_CACHE_TIME_KEY = 'md_tracks_index_cache_time_v1';
 const TRACKS_CACHE_TTL_MS = 1000 * 60 * 60 * 24 * 7; // 7 dagen
 
+// --- Force reset track cache on every page load ---
+try {
+  localStorage.removeItem(TRACKS_CACHE_KEY);
+  localStorage.removeItem(TRACKS_CACHE_TIME_KEY);
+} catch (_) {}
+
 function loadTracksCache(){
   try{
     const t = parseInt(localStorage.getItem(TRACKS_CACHE_TIME_KEY) || '0', 10);
