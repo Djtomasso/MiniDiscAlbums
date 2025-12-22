@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>MiniDisc Collection</title>
   <meta name="theme-color" content="#0a0a0a" />
+  <!-- voorkomt favicon.ico 404 (optioneel) -->
+  <link rel="icon" href="data:,">
+
   <style>
     :root{
       --bg:#0a0a0a; --surface:#121212; --surface2:#151515;
@@ -45,34 +48,32 @@
     }
     .empty, .error{color:var(--muted);text-align:center;padding:20px;border:1px dashed var(--border);border-radius:12px}
     footer{color:var(--muted);font-size:.9rem;text-align:center;padding:10px}
-	
-/* Scroll-to-top button (centered) */
-#scrollTopBtn{
-  position: fixed;
-  left: 50%;
-  bottom: 18px;
-  transform: translateX(-50%);
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  background: #151515;
-  color: var(--text);
-  font-size: 20px;
-  line-height: 1;
-  cursor: pointer;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  transition: opacity .25s ease, transform .25s ease;
-}
 
-#scrollTopBtn:hover{
-  background: #1d1d1d;
-  transform: translateX(-50%) translateY(-2px);
-}
-
+    /* Scroll-to-top button (centered) */
+    #scrollTopBtn{
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: #151515;
+      color: var(--text);
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+      display: none;            /* wordt via JS getoond */
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: transform .25s ease, background .25s ease;
+    }
+    #scrollTopBtn:hover{
+      background: #1d1d1d;
+      transform: translateX(-50%) translateY(-2px);
+    }
   </style>
 </head>
 
@@ -95,43 +96,42 @@
 
     <footer>overzicht door Tomasso 2025</footer>
   </div>
-  
-<button id="scrollTopBtn" aria-label="Scroll naar boven">
-  ↑
-</button>
 
-  <script>    const TRACKS_URL = '/MiniDiscAlbums/tracks_index.json';
+  <!-- Scroll-to-top button (moet boven het script staan) -->
+  <button id="scrollTopBtn" aria-label="Scroll naar boven">↑</button>
 
+  <script>
+    const TRACKS_URL = '/MiniDiscAlbums/tracks_index.json';
     const MANIFEST_URL = '/MiniDiscAlbums/albums.json';
     const PLACEHOLDER = '/MiniDiscAlbums/image/placeholder.png';
 
-// --- Track index lazy-load + cache ---
-const TRACKS_CACHE_KEY = 'md_tracks_index_cache_v1';
-const TRACKS_CACHE_TIME_KEY = 'md_tracks_index_cache_time_v1';
-const TRACKS_CACHE_TTL_MS = 1000 * 60 * 60 * 24 * 7; // 7 dagen
+    // --- Track index lazy-load + cache ---
+    const TRACKS_CACHE_KEY = 'md_tracks_index_cache_v1';
+    const TRACKS_CACHE_TIME_KEY = 'md_tracks_index_cache_time_v1';
+    const TRACKS_CACHE_TTL_MS = 1000 * 60 * 60 * 24 * 7; // 7 dagen
 
-// --- Force reset track cache on every page load ---
-try {
-  localStorage.removeItem(TRACKS_CACHE_KEY);
-  localStorage.removeItem(TRACKS_CACHE_TIME_KEY);
-} catch (_) {}
+    // --- Force reset track cache on every page load ---
+    try {
+      localStorage.removeItem(TRACKS_CACHE_KEY);
+      localStorage.removeItem(TRACKS_CACHE_TIME_KEY);
+    } catch (_) {}
 
-function loadTracksCache(){
-  try{
-    const t = parseInt(localStorage.getItem(TRACKS_CACHE_TIME_KEY) || '0', 10);
-    if(!t || (Date.now() - t) > TRACKS_CACHE_TTL_MS) return null;
-    const raw = localStorage.getItem(TRACKS_CACHE_KEY);
-    if(!raw) return null;
-    const data = JSON.parse(raw);
-    return (data && typeof data === 'object') ? data : null;
-  }catch(_){ return null; }
-}
-function saveTracksCache(obj){
-  try{
-    localStorage.setItem(TRACKS_CACHE_KEY, JSON.stringify(obj));
-    localStorage.setItem(TRACKS_CACHE_TIME_KEY, String(Date.now()));
-  }catch(_){}
-}
+    function loadTracksCache(){
+      try{
+        const t = parseInt(localStorage.getItem(TRACKS_CACHE_TIME_KEY) || '0', 10);
+        if(!t || (Date.now() - t) > TRACKS_CACHE_TTL_MS) return null;
+        const raw = localStorage.getItem(TRACKS_CACHE_KEY);
+        if(!raw) return null;
+        const data = JSON.parse(raw);
+        return (data && typeof data === 'object') ? data : null;
+      }catch(_){ return null; }
+    }
+    function saveTracksCache(obj){
+      try{
+        localStorage.setItem(TRACKS_CACHE_KEY, JSON.stringify(obj));
+        localStorage.setItem(TRACKS_CACHE_TIME_KEY, String(Date.now()));
+      }catch(_){}
+    }
 
     const $grid = document.getElementById('albums');
     const $status = document.getElementById('status');
@@ -239,26 +239,26 @@ function saveTracksCache(obj){
       manifest = list.slice(); // kopie
     }
 
-async function loadTracksIndex(){
-  // 1) probeer cache
-  const cached = loadTracksCache();
-  if(cached){
-    tracksIndex = cached;
-    return;
-  }
-  try{
-    const res = await fetch(TRACKS_URL, { cache: 'no-store' });
-    if(!res.ok) throw new Error('tracks_index.json niet gevonden (HTTP ' + res.status + ')');
-    const txt = await res.text();
-    const cleaned = txt.replace(/^\uFEFF/, '').trim(); // strip BOM + whitespace
-    const data = JSON.parse(cleaned);
-    tracksIndex = (data && typeof data === 'object') ? data : null;
-    if(tracksIndex) saveTracksCache(tracksIndex);
-  }catch(err){
-    console.warn('Track-index niet geladen:', err);
-    tracksIndex = null;
-  }
-}
+    async function loadTracksIndex(){
+      // 1) probeer cache
+      const cached = loadTracksCache();
+      if(cached){
+        tracksIndex = cached;
+        return;
+      }
+      try{
+        const res = await fetch(TRACKS_URL, { cache: 'no-store' });
+        if(!res.ok) throw new Error('tracks_index.json niet gevonden (HTTP ' + res.status + ')');
+        const txt = await res.text();
+        const cleaned = txt.replace(/^\uFEFF/, '').trim(); // strip BOM + whitespace
+        const data = JSON.parse(cleaned);
+        tracksIndex = (data && typeof data === 'object') ? data : null;
+        if(tracksIndex) saveTracksCache(tracksIndex);
+      }catch(err){
+        console.warn('Track-index niet geladen:', err);
+        tracksIndex = null;
+      }
+    }
 
     function render(list){
       if(!list.length){
@@ -274,47 +274,45 @@ async function loadTracksIndex(){
       $grid.hidden = false;
     }
 
-    
-async function applyFilter(){
-  const q = ($q.value || '').toLowerCase().trim();
+    async function applyFilter(){
+      const q = ($q.value || '').toLowerCase().trim();
 
-  if(!q){
-    render(manifest.slice().sort(smartSort));
-    return;
-  }
+      if(!q){
+        render(manifest.slice().sort(smartSort));
+        return;
+      }
 
-  // matches op album metadata
-  const base = manifest.filter(a =>
-    (a.title || '').toLowerCase().includes(q) ||
-    (a.series || '').toLowerCase().includes(q)
-  );
-
-  // Voor performance: laad tracks pas bij "echte" zoekopdracht
-  // (>=3 tekens) en alleen als nog niet geladen.
-  if(q.length >= 3 && tracksIndex === undefined && !tracksLoading){
-    tracksLoading = true;
-    // subtiele status update; render alvast album matches
-    render(base.sort(smartSort));
-    $status.textContent = 'Tracks index laden...';
-    $status.className = 'empty';
-    await loadTracksIndex();
-    tracksLoading = false;
-  }
-
-  if(tracksIndex && q.length >= 3){
-    const extra = manifest.filter(a => {
-      if(base.includes(a)) return false;
-      const tr = tracksIndex[a.file] || [];
-      return tr.some(x =>
-        (x.t || '').toLowerCase().includes(q) ||
-        (x.a || '').toLowerCase().includes(q)
+      // matches op album metadata
+      const base = manifest.filter(a =>
+        (a.title || '').toLowerCase().includes(q) ||
+        (a.series || '').toLowerCase().includes(q)
       );
-    });
-    render(base.concat(extra).sort(smartSort));
-  }else{
-    render(base.sort(smartSort));
-  }
-}
+
+      // Voor performance: laad tracks pas bij "echte" zoekopdracht
+      // (>=3 tekens) en alleen als nog niet geladen.
+      if(q.length >= 3 && tracksIndex === undefined && !tracksLoading){
+        tracksLoading = true;
+        render(base.sort(smartSort));
+        $status.textContent = 'Tracks index laden...';
+        $status.className = 'empty';
+        await loadTracksIndex();
+        tracksLoading = false;
+      }
+
+      if(tracksIndex && q.length >= 3){
+        const extra = manifest.filter(a => {
+          if(base.includes(a)) return false;
+          const tr = tracksIndex[a.file] || [];
+          return tr.some(x =>
+            (x.t || '').toLowerCase().includes(q) ||
+            (x.a || '').toLowerCase().includes(q)
+          );
+        });
+        render(base.concat(extra).sort(smartSort));
+      }else{
+        render(base.sort(smartSort));
+      }
+    }
 
     $q.addEventListener('input', () => applyFilter());
     $clear.addEventListener('click', () => { $q.value=''; applyFilter(); $q.focus(); });
@@ -329,30 +327,33 @@ async function applyFilter(){
         console.error(err);
       }
     })();
-	// Scroll-to-top button logic
-const scrollBtn = document.getElementById('scrollTopBtn');
 
-window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY || document.documentElement.scrollTop;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    // ===== Scroll-to-top button logic (robust) =====
+    (function () {
+      const btn = document.getElementById('scrollTopBtn');
+      if (!btn) return; // geen errors als knop ontbreekt
 
-  // Toon na 1/3 van de pagina
-  if (scrollY > docHeight / 3) {
-    scrollBtn.style.display = 'flex';
-    scrollBtn.style.opacity = '1';
-  } else {
-    scrollBtn.style.display = 'none';
-  }
-});
+      function updateBtn() {
+        const scrollY = window.scrollY || document.documentElement.scrollTop || 0;
+        const docHeight = (document.documentElement.scrollHeight || 0) - window.innerHeight;
 
-scrollBtn.addEventListener('click', () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-});
+        // Toon na 1/3 van de scrollbare hoogte
+        if (docHeight > 0 && scrollY > docHeight / 3) {
+          btn.style.display = 'flex';
+        } else {
+          btn.style.display = 'none';
+        }
+      }
 
+      window.addEventListener('scroll', updateBtn, { passive: true });
+      window.addEventListener('resize', updateBtn);
+
+      btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      updateBtn(); // initieel
+    })();
   </script>
-
 </body>
 </html>
