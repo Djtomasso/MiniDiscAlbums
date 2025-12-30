@@ -51,8 +51,8 @@
     footer{color:var(--muted);font-size:.9rem;text-align:center;padding:10px}
 
     /* Subtle reflow animation when grid contents change */
-    .grid.reflow .card{opacity:0;transform:scale(0.98)}
-    .grid.reflow .card.reflow-in{opacity:1;transform:scale(1)}
+    .grid.reflow .card{opacity:0}
+    .grid.reflow .card.reflow-in{opacity:1}
 
     /* Scroll-to-top button (centered) */
     #scrollTopBtn{
@@ -273,7 +273,7 @@
       const isDesktop = window.matchMedia('(min-width:980px)').matches;
       const cards = Array.from($grid.querySelectorAll('.card'));
       // reset (also reset any per-card alignment)
-      cards.forEach(c => { c.style.gridColumn = ''; c.style.justifySelf = ''; });
+      cards.forEach(c => { c.style.gridColumn = ''; c.style.justifySelf = ''; c.style.transform = ''; });
 
       if(!isDesktop) return;
 
@@ -295,10 +295,17 @@
         last[0].style.gridColumn = '2';
         last[1].style.gridColumn = '3';
       }else if(rem === 3){
-        // 3 kaarten: kolom 2,3,4 (kolom 1 leeg) — behoud 1-kolom breedte
+        // 3 kaarten: zet in kolom 2,3,4 en schuif de hele laatste rij een halve kolom naar links
+        // zodat de 3 kaarten optisch gecentreerd staan tussen kolom 1-4 (zonder te 'spannen').
         last[0].style.gridColumn = '2';
         last[1].style.gridColumn = '3';
         last[2].style.gridColumn = '4';
+
+        // bereken shift = 0.5 * (card width + gap)
+        const gap = parseFloat(getComputedStyle($grid).columnGap || getComputedStyle($grid).gap || '0') || 0;
+        const w = last[0].getBoundingClientRect().width || 0;
+        const shift = (w + gap) / 2;
+        last.forEach(c => { c.style.transform = `translateX(-${shift}px)`; });
       }
 
     }
