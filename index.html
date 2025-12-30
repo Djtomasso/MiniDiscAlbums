@@ -272,13 +272,15 @@
     function alignLastRow(){
       const isDesktop = window.matchMedia('(min-width:980px)').matches;
       const cards = Array.from($grid.querySelectorAll('.card'));
-      // reset
-      cards.forEach(c => { c.style.gridColumn = ''; });
+      // reset (also reset any per-card alignment)
+      cards.forEach(c => { c.style.gridColumn = ''; c.style.justifySelf = ''; });
 
       if(!isDesktop) return;
 
       const count = cards.length;
-      if(count <= 0) return;
+      // Alleen centreren als er minstens 1 volle rij (4) is én een onvolledige laatste rij.
+      // Dit voorkomt "opgeblazen" cards bij zoekresultaten met 1-3 items.
+      if(count < 5) return;
 
       const rem = count % 4;
       if(rem === 0) return;
@@ -286,18 +288,20 @@
       const last = cards.slice(-rem);
 
       if(rem === 1){
-        // 1 kaart: span 2 kolommen in het midden (kol 2-3)
-        last[0].style.gridColumn = '2 / span 2';
+        // 1 kaart: zet in kolom 2 (zelfde breedte, niet spannen)
+        last[0].style.gridColumn = '2';
       }else if(rem === 2){
-        // 2 kaarten: kol 2 en 3
+        // 2 kaarten: kolom 2 en 3
         last[0].style.gridColumn = '2';
         last[1].style.gridColumn = '3';
       }else if(rem === 3){
-        // 3 kaarten: visueel gecentreerd over kolommen 1-4
-        last[0].style.gridColumn = '1 / span 2';
+        // 3 kaarten: kolom 2,3,4 (kolom 1 leeg) — behoud 1-kolom breedte
+        last[0].style.gridColumn = '2';
         last[1].style.gridColumn = '3';
         last[2].style.gridColumn = '4';
       }
+    }
+
     }
 
 
