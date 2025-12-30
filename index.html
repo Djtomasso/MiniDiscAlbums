@@ -273,7 +273,7 @@
       const isDesktop = window.matchMedia('(min-width:980px)').matches;
       const cards = Array.from($grid.querySelectorAll('.card'));
       // reset (also reset any per-card alignment)
-      cards.forEach(c => { c.style.gridColumn = ''; c.style.justifySelf = ''; c.style.transform = ''; });
+      cards.forEach(c => { c.style.gridColumn = ''; c.style.justifySelf = ''; });
 
       if(!isDesktop) return;
 
