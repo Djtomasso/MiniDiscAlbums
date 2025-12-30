@@ -32,7 +32,7 @@
     }
     .grid{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
     @media(min-width:680px){ .grid{ grid-template-columns:repeat(3,1fr)} }
-    @media(min-width:980px){ .grid{ grid-template-columns:repeat(4,1fr)} .grid.cols-3{ grid-template-columns:repeat(3,1fr)} }
+    @media(min-width:980px){ .grid{ grid-template-columns:repeat(4,1fr)} }
     .card{
       border:1px solid var(--border);background:var(--surface);
       border-radius:14px;overflow:hidden;display:grid;grid-template-rows:auto 1fr
@@ -75,6 +75,9 @@
       background: #1d1d1d;
       transform: translateX(-50%) translateY(-2px);
     }
+  
+    /* Last-row centering (desktop 4-col grid; positions set via JS) */
+
   </style>
 </head>
 
@@ -260,14 +263,41 @@
         tracksIndex = null;
       }
     }
+    // ===== Last row centering (desktop 4-col grid) =====
+    function alignLastRow(){
+      const isDesktop = window.matchMedia('(min-width:980px)').matches;
+      const cards = Array.from($grid.querySelectorAll('.card'));
+      // reset
+      cards.forEach(c => { c.style.gridColumn = ''; });
+
+      if(!isDesktop) return;
+
+      const count = cards.length;
+      if(count <= 0) return;
+
+      const rem = count % 4;
+      if(rem === 0) return;
+
+      const last = cards.slice(-rem);
+
+      if(rem === 1){
+        // 1 kaart: span 2 kolommen in het midden (kol 2-3)
+        last[0].style.gridColumn = '2 / span 2';
+      }else if(rem === 2){
+        // 2 kaarten: kol 2 en 3
+        last[0].style.gridColumn = '2';
+        last[1].style.gridColumn = '3';
+      }else if(rem === 3){
+        // 3 kaarten: kol 2,3,4 (laat kol 1 leeg)
+        last[0].style.gridColumn = '2';
+        last[1].style.gridColumn = '3';
+        last[2].style.gridColumn = '4';
+      }
+    }
+
+
 
     function render(list){
-      // Desktop layout: normaal 4 kolommen, maar als totaal geen veelvoud van 4 is -> 3 kolommen (strakkere laatste rij)
-      $grid.classList.remove('cols-3');
-      if ((list.length % 4) !== 0) {
-        $grid.classList.add('cols-3');
-      }
-
       if(!list.length){
         $grid.hidden = true;
         $status.textContent = 'Geen albums gevonden.';
@@ -279,6 +309,7 @@
       $status.textContent = '';
       $status.className = 'empty';
       $grid.hidden = false;
+      alignLastRow();
     }
 
     async function applyFilter(){
