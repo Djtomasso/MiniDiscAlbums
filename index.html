@@ -36,6 +36,7 @@
     .card{
       border:1px solid var(--border);background:var(--surface);
       border-radius:14px;overflow:hidden;display:grid;grid-template-rows:auto 1fr
+      transition: transform 180ms ease, opacity 180ms ease;
     }
     /* Vierkante thumbnails */
     .cover{aspect-ratio:1/1;background:#0c0c0c}
@@ -48,6 +49,10 @@
     }
     .empty, .error{color:var(--muted);text-align:center;padding:20px;border:1px dashed var(--border);border-radius:12px}
     footer{color:var(--muted);font-size:.9rem;text-align:center;padding:10px}
+
+    /* Subtle reflow animation when grid contents change */
+    .grid.reflow .card{opacity:0;transform:scale(0.98)}
+    .grid.reflow .card.reflow-in{opacity:1;transform:scale(1)}
 
     /* Scroll-to-top button (centered) */
     #scrollTopBtn{
@@ -309,6 +314,17 @@
       $status.textContent = '';
       $status.className = 'empty';
       $grid.hidden = false;
+
+      // trigger subtle reflow animation
+      $grid.classList.add('reflow');
+      requestAnimationFrame(() => {
+        $grid.querySelectorAll('.card').forEach(c => c.classList.add('reflow-in'));
+      });
+      setTimeout(() => {
+        $grid.classList.remove('reflow');
+        $grid.querySelectorAll('.card').forEach(c => c.classList.remove('reflow-in'));
+      }, 200);
+
       alignLastRow();
     }
 
