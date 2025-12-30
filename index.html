@@ -59,8 +59,9 @@
       height: 58px;
       border-radius: 50%;
       border: 1px solid var(--border);
-      background: #151515;
-      color: var(--text);
+      background: #ff2ea5;     /* fel roze */
+      color: #ffffff;          /* witte pijl */
+	  border-color: #ff2ea5;
       font-size: 26px;
       line-height: 1;
       cursor: pointer;
@@ -338,10 +339,12 @@
         const docHeight = (document.documentElement.scrollHeight || 0) - window.innerHeight;
 
         // Toon na 1/3 van de scrollbare hoogte
-        if (docHeight > 0 && scrollY > docHeight / 4) {
-          btn.style.display = 'flex';
-        } else {
-          btn.style.display = 'none';
+        if (docHeight > 0 && scrollY > docHeight / 5) {
+		btn.style.display = 'flex';
+		btn.classList.add('active');
+		} else {
+		btn.style.display = 'none';
+		btn.classList.remove('active');
         }
       }
 
