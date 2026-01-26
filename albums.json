@@ -48,7 +48,7 @@
     "series": "Eros Ramazzotti",
     "volume": 3
   },
-    {
+  {
     "file": "george-michael_for-living-loving_part1_withcover.html",
     "title": "George Michael \u2014 For Living & Loving",
     "cover": "image/george1cover.png",
@@ -62,7 +62,7 @@
     "series": "George Michael",
     "volume": 2
   },
-   {
+  {
     "file": "lisa_biography_part1_withcover.html",
     "title": "Lisa Stansfield \u2014 Lisa's Biography (part 1)",
     "cover": "image/lisa_part1.png",
@@ -301,25 +301,25 @@
     "volume": 3
   },
   {
-  "file": "1992-hits-volume-1_withcover.html",
-  "title": "1992 HITS VOLUME 1: THE ULTIMATE COLLECTION",
-  "cover": "image/1992_vol1.png",
-  "series": "HITS 1992",
-  "volume": 1
+    "file": "1992-hits-volume-1_withcover.html",
+    "title": "1992 HITS VOLUME 1: THE ULTIMATE COLLECTION",
+    "cover": "image/1992_vol1.png",
+    "series": "HITS 1992",
+    "volume": 1
   },
   {
-  "file": "1992-hits-volume-2_withcover.html",
-  "title": "1992 HITS VOLUME 2: THE ULTIMATE COLLECTION",
-  "cover": "image/1992_vol2.png",
-  "series": "HITS 1992",
-  "volume": 2
+    "file": "1992-hits-volume-2_withcover.html",
+    "title": "1992 HITS VOLUME 2: THE ULTIMATE COLLECTION",
+    "cover": "image/1992_vol2.png",
+    "series": "HITS 1992",
+    "volume": 2
   },
   {
-  "file": "1992-hits-volume-3_withcover.html",
-  "title": "1992 HITS VOLUME 3: THE ULTIMATE COLLECTION",
-  "cover": "image/1992_vol3.png",
-  "series": "HITS 1992",
-  "volume": 3
+    "file": "1992-hits-volume-3_withcover.html",
+    "title": "1992 HITS VOLUME 3: THE ULTIMATE COLLECTION",
+    "cover": "image/1992_vol3.png",
+    "series": "HITS 1992",
+    "volume": 3
   },
   {
     "file": "italo-disco-one_withcover.html",
@@ -391,7 +391,7 @@
     "series": "ZYX Italo Disco",
     "volume": 4
   },
-    {
+  {
     "file": "lindaroosjessica_withcover.html",
     "title": "Linda, Roos & Jessica",
     "cover": "image/lindaroosjessica.png",
@@ -404,5 +404,90 @@
     "cover": "image/2020retrospective.png",
     "series": "Justin Timberlake",
     "volume": 1
+  },
+
+  {
+    "file": "tutb1_withcover.html",
+    "title": "Turn Up The Bass \u2014 Classic House & Dance Music (1)",
+    "cover": "image/TUTB1.png",
+    "series": "Turn Up The Bass",
+    "volume": 1
+  },
+  {
+    "file": "tutb2_withcover.html",
+    "title": "Turn Up The Bass \u2014 Classic House & Dance Music (2)",
+    "cover": "image/TUTB2.png",
+    "series": "Turn Up The Bass",
+    "volume": 2
+  },
+  {
+    "file": "tutb3_withcover.html",
+    "title": "Turn Up The Bass \u2014 Classic House & Dance Music (3)",
+    "cover": "image/TUTB3.png",
+    "series": "Turn Up The Bass",
+    "volume": 3
+  },
+  {
+    "file": "tutb4_withcover.html",
+    "title": "Turn Up The Bass \u2014 Classic House & Dance Music (4)",
+    "cover": "image/TUTB4.png",
+    "series": "Turn Up The Bass",
+    "volume": 4
+  },
+  {
+    "file": "tutb5_withcover.html",
+    "title": "Turn Up The Bass \u2014 Classic House & Dance Music (5)",
+    "cover": "image/TUTB5.png",
+    "series": "Turn Up The Bass",
+    "volume": 5
+  },
+  {
+    "file": "tutb6_withcover.html",
+    "title": "Turn Up The Bass \u2014 Classic House & Dance Music (6)",
+    "cover": "image/TUTB6.png",
+    "series": "Turn Up The Bass",
+    "volume": 6
+  },
+  {
+    "file": "tutb7_withcover.html",
+    "title": "Turn Up The Bass \u2014 Classic House & Dance Music (7)",
+    "cover": "image/TUTB7.png",
+    "series": "Turn Up The Bass",
+    "volume": 7
+  },
+  {
+    "file": "tutb8_withcover.html",
+    "title": "Turn Up The Bass \u2014 Classic House & Dance Music (8)",
+    "cover": "image/TUTB8.png",
+    "series": "Turn Up The Bass",
+    "volume": 8
+  },
+  {
+    "file": "tutb9_withcover.html",
+    "title": "Turn Up The Bass \u2014 Classic House & Dance Music (9)",
+    "cover": "image/TUTB9.png",
+    "series": "Turn Up The Bass",
+    "volume": 9
+  },
+  {
+    "file": "tutb10_withcover.html",
+    "title": "Turn Up The Bass \u2014 Classic House & Dance Music (10)",
+    "cover": "image/TUTB10.png",
+    "series": "Turn Up The Bass",
+    "volume": 10
+  },
+  {
+    "file": "tutb11_withcover.html",
+    "title": "Turn Up The Bass \u2014 Classic House & Dance Music (11)",
+    "cover": "image/TUTB11.png",
+    "series": "Turn Up The Bass",
+    "volume": 11
+  },
+  {
+    "file": "tutb12_withcover.html",
+    "title": "Turn Up The Bass \u2014 Classic House & Dance Music (12)",
+    "cover": "image/TUTB12.png",
+    "series": "Turn Up The Bass",
+    "volume": 12
   }
 ]
