@@ -84,6 +84,27 @@
     "volume": 3
   },
   {
+    "file": "disco1_withcover.html",
+    "title": "70's DISCO HITS 1",
+    "cover": "image/disco_1.png",
+    "series": "70's DISCO HITS",
+    "volume": 1
+  },
+  {
+    "file": "disco2_withcover.html",
+    "title": "70's DISCO HITS 2",
+    "cover": "image/disco_2.png",
+    "series": "70's DISCO HITS",
+    "volume": 2
+  },
+  {
+    "file": "disco3_withcover.html",
+    "title": "70's DISCO HITS 3",
+    "cover": "image/disco_3.png",
+    "series": "70's DISCO HITS",
+    "volume": 3
+  },
+  {
     "file": "simplyred_recollections2025_withcover.html",
     "title": "Simply Red \u2014 38 Recollections",
     "cover": "image/simply_cover.jpg",
