@@ -105,6 +105,13 @@
     "volume": 3
   },
   {
+    "file": "level42_withcover.html",
+    "title": "Level 42 \u2014 Beyond the 42nd Parallel",
+    "cover": "image/level42_cover.jpg",
+    "series": "Level 42",
+    "volume": 1
+  },
+  {
     "file": "simplyred_recollections2025_withcover.html",
     "title": "Simply Red \u2014 38 Recollections",
     "cover": "image/simply_cover.jpg",

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Level 42 — Beyond the 42nd Parallel</title>
+
+<style>
+:root{
+  --bg:#0a0a0a;
+  --surface:#121212;
+  --surface2:#151515;
+  --text:#f5f5f5;
+  --muted:#c7c7c7;
+  --border:#2a2a2a;
+}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* Hoofdmenu knop */
+.backmenu{
+  position: sticky;
+  top: 10px;
+  z-index: 9999;
+  padding: 0 0 4px 0;
+}
+.backmenu a{
+  display:inline-block;
+  padding:10px 18px;
+  background:#151515;
+  border:1px solid #2a2a2a;
+  border-radius:12px;
+  font-size:1rem;
+  color:#fff;
+  text-decoration:none;
+}
+.backmenu a:hover{ background:#1d1d1d; }
+
+.wrap{
+  max-width:820px;
+  margin:auto;
+  padding:16px;
+  display:grid;
+  gap:16px;
+}
+
+/* Header */
+header.hero{
+  border:1px solid var(--border);
+  background:var(--surface);
+  border-radius:16px;
+  overflow:hidden;
+}
+.cover img{ width:100%; display:block; }
+
+.titlebar{
+  padding:14px;
+  background:var(--surface2);
+  border-top:1px solid var(--border);
+}
+h1{ margin:0; font-size:1.4rem; }
+.sub{ color:var(--muted); }
+
+/* Search bar */
+.toolbar{
+  position: sticky;
+  top: 64px;
+  z-index: 4;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px;
+}
+.search{ display:flex; gap:8px; }
+.search input{
+  flex:1;
+  background:#0e0e0e;
+  border:0;
+  color:var(--text);
+  padding:10px;
+  border-radius:10px;
+}
+.search button{
+  background:#151515;
+  color:var(--text);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:10px;
+}
+
+/* Tracks */
+.tracks{ display:grid; gap:12px; }
+.item{
+  border:1px solid var(--border);
+  background:#0f0f0f;
+  border-radius:12px;
+  padding:12px;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:10px;
+}
+.idx{
+  min-width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--border);
+  background:#151515;
+  border-radius:8px;
+  font-weight:700;
+}
+.meta b{ display:block; font-size:1rem; }
+.artist{ display:block; color:var(--muted); margin-top:2px; }
+
+/* Buttons (jouw vaste stijl) */
+.actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:8px;
+}
+a.btn{
+  padding:8px 10px;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:.95rem;
+}
+a.btn.youtube{ background:#ff2ea5; color:white; border:none; }
+a.btn.wiki{ background:#0a0a0a; color:white; border:1px solid #a36fff; }
+a.btn.google{ background:#333; color:white; border:1px solid #444; }
+
+/* Thumbnails tussen tracks */
+.thumbblock{ margin:4px 0 8px 0; }
+.thumbgrid{
+  display:grid;
+  gap:10px;
+  /* standaard: 2 kolommen mobiel+tablet (incl. Z Fold) */
+  grid-template-columns: repeat(2, 1fr);
+}
+.thumbgrid img{
+  width:100%;
+  display:block;
+  border-radius:10px;
+  background:#222;
+  object-fit:cover;
+  cursor:pointer;
+}
+
+/* 4:5 mobiel */
+@media (max-width:600px){
+  .thumbgrid img{ aspect-ratio: 4 / 5; }
+}
+
+/* 3:2 tablet */
+@media (min-width:601px) and (max-width:1024px){
+  .thumbgrid img{ aspect-ratio: 3 / 2; }
+}
+
+/* 16:9 desktop + 4 per rij */
+@media (min-width:1025px){
+  .thumbgrid img{ aspect-ratio: 16 / 9; }
+  .thumbgrid{ grid-template-columns: repeat(4, 1fr); }
+}
+
+footer{
+  color:var(--muted);
+  text-align:center;
+  font-size:.9rem;
+  padding:10px;
+}
+
+/* Lightbox */
+#lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.9);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:99999;
+}
+#lightbox-img{
+  max-width:90%;
+  max-height:85%;
+  border-radius:10px;
+}
+.lb-btn{
+  position:fixed;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:40px;
+  color:white;
+  background:none;
+  border:0;
+  cursor:pointer;
+}
+#lb-prev{ left:20px; }
+#lb-next{ right:20px; }
+#lb-close{
+  position:fixed;
+  top:20px;
+  right:25px;
+  font-size:40px;
+  color:white;
+  background:none;
+  border:0;
+  cursor:pointer;
+}
+
+/* Biografie blok */
+section.bio{
+  border:1px solid var(--border);
+  background:var(--surface);
+  border-radius:16px;
+  padding:14px;
+}
+section.bio h2{
+  margin:0 0 8px 0;
+  font-size:1.2rem;
+}
+section.bio h3{
+  margin:14px 0 6px 0;
+  font-size:1.05rem;
+}
+section.bio p{
+  margin:0 0 10px 0;
+  color:var(--text);
+  line-height:1.45;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+  <div class="backmenu">
+    <a href="index.html">← Hoofdmenu</a>
+  </div>
+
+  <header class="hero">
+    <div class="cover">
+      <img src="image/level42_cover.png" alt="Level 42 — Beyond the 42nd Parallel">
+    </div>
+    <div class="titlebar">
+      <h1>Beyond the 42nd Parallel</h1>
+      <div class="sub">Level 42 — Tracklist &amp; Fotoverzameling</div>
+    </div>
+  </header>
+
+
+  <section class="bio">
+    <h2>Biografie</h2>
+    <p>Zeg je jaren '80, dan zeg je de virtuoze slap-bass van Mark King en de onmiskenbare "Brit-funk" van Level 42. Deze band uit het Britse Isle of Wight wist als een van de weinigen de brug te slaan tussen complexe jazz-fusion en vlijmscherpe popmuziek.</p>
+
+    <h3>De vroege jaren en de doorbraak</h3>
+    <p>De groep werd in 1979 geformeerd door bassist/zanger Mark King, toetsenist Mike Lindup en de gebroeders Gould (Phil op drums en Boon op gitaar). Hoewel ze begonnen als een instrumentale fusionband, dwong hun platenlabel hen om meer te gaan zingen. Dat bleek een gouden greep.</p>
+    <p>Met hun album <em>World Machine</em> (1985) en de gigantische hit "Lessons in Love" (1986) domineerden ze wereldwijd de hitlijsten. Andere bekende klassiekers zijn: "Running in the Family", "Love Games", "Something About You" en "It's Over".</p>
+
+    <h3>De basgitaar met lichtjes</h3>
+    <p>Het absolute handelsmerk van de band was niet alleen de stem van Mike Lindup, maar vooral de duizelingwekkende snelheid waarmee Mark King over zijn snaren "slapte". Tijdens liveconcerten was zijn basgitaar (vaak een op maat gemaakte Jaydee of Status) een attractie op zich.</p>
+    <p>De gitaar was voorzien van LED-lampjes in de hals, die oplichtten tijdens zijn solo's. In een tijd waarin lichtshows steeds groter werden, gaf dit Mark King de uitstraling van een muzikale superheld. Zijn afgeplakte duim — nodig om de fysieke aanslag van de snaren te overleven — werd een iconisch beeld voor elke aspirant-bassist.</p>
+
+    <h3>Erfenis</h3>
+    <p>Hoewel de bezetting door de jaren heen veranderde, is de kern van Level 42 altijd blijven touren. Ze staan nog steeds bekend om hun loepzuivere live-uitvoeringen en die unieke mix van dansbare ritmes en technische hoogstandjes. Ze bewezen dat popmuziek best ingewikkeld mag zijn, zolang de groove maar blijft staan.</p>
+  </section>
+
+
+
+  <nav class="toolbar">
+    <div class="search">
+      <input id="filter" type="search" placeholder="Zoek in titels of artiest…">
+      <button id="clearBtn">Wissen</button>
+    </div>
+  </nav>
+
+  <main id="list" class="tracks"></main>
+
+  <footer>album samengesteld door Tomasso 2026</footer>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <img id="lightbox-img" alt="">
+  <button id="lb-prev" class="lb-btn">&lsaquo;</button>
+  <button id="lb-next" class="lb-btn">&rsaquo;</button>
+  <button id="lb-close">&times;</button>
+</div>
+
+<script>
+/* ========= TRACKS =========
+   Compatibel met build_tracks_index_v3_3 (rawTrackLines).
+   Splitsen op de LAATSTE ' - '.
+*/
+const rawTrackLines = [
+  "The Sun Goes Down - Level 42",
+  "Micro Kid - Level 42",
+  "Starchild - Level 42",
+  "Running In The Family - Level 42",
+  "Forever Now - Level 42",
+  "The Sun Goes Down [98 Mix] - Level 42",
+  "Lessons In Love - Level 42",
+  "Heaven In My Hands - Level 42",
+  "Level 42 - Forever Now - Level 42",
+  "The Chant Has Begun - Level 42",
+  "Take care of yourself - Level 42",
+  "It's over - Level 42",
+  "Take A Look - Level 42",
+  "Guaranteed - Level 42",
+  "Leaving me now - Level 42",
+  "Children Say - Level 42",
+  "Love Games - Level 42",
+  "Overtime (H.P.Horns Radio Mix) - Level 42",
+  "To Be With You Again - Level 42",
+  "The Chinese Way - Level 42",
+  "Freedom - Level 42",
+  "Guaranteed - Level 42",
+  "Running In... (dave 'o'remix) - Level 42",
+  "Love games - Level 42",
+  "Starchild - Level 42",
+  "Tracie (US Remix) - Level 42",
+  "It's Over (Kryptonite mix) - Level 42",
+  "Hot Water - Level 42",
+  "Tracie - Level 42",
+  "Something about you - Level 42",
+  "The Hit Combination - Level 42"
+];
+
+function splitOnLastDash(s){
+  const needle = " - ";
+  const i = s.lastIndexOf(needle);
+  if(i === -1) return { title:s.trim(), artist:"" };
+  return {
+    title: s.slice(0,i).trim(),
+    artist: s.slice(i + needle.length).trim()
+  };
+}
+
+const tracks = rawTrackLines.map(splitOnLastDash);
+
+const list     = document.getElementById("list");
+const filter   = document.getElementById("filter");
+const clearBtn = document.getElementById("clearBtn");
+
+/* ========= FOTO-INSTELLINGEN ========= */
+const photoExts = ["jpg","jpeg","png","webp"];
+const totalPhotos = 32;
+const tracksPerBlock = 4;   // na iedere 4 tracks
+const photosPerBlock = 4;   // 4 thumbnails per block
+
+let allThumbs = [];
+
+function photoPath(photoIndex){
+  const num = String(photoIndex).padStart(2,"0");
+  return { folder: "image/level42/", base: "level42_" + num };
+}
+
+/* ========= RENDER ========= */
+function render(tr){
+  list.innerHTML = "";
+  allThumbs = [];
+  let photoIndex = 1;
+
+  function addTrackItem(track, nr){
+    const q = encodeURIComponent(track.title + " " + track.artist);
+
+    const item = document.createElement("div");
+    item.className = "item";
+    item.innerHTML = `
+      <div class="idx">${nr}</div>
+      <div class="meta">
+        <b>${escapeHtml(track.title)}</b>
+        <span class="artist">${escapeHtml(track.artist)}</span>
+        <div class="actions">
+          <a class="btn youtube" target="_blank" href="https://www.youtube.com/results?search_query=${q}">YouTube (zoek)</a>
+          <a class="btn wiki" target="_blank" href="https://nl.wikipedia.org/w/index.php?search=${encodeURIComponent(track.artist)}">Wikipedia</a>
+          <a class="btn google" target="_blank" href="https://www.google.com/search?q=${q}">Google</a>
+        </div>
+      </div>`;
+    list.appendChild(item);
+  }
+
+  function addPhotoBlock(){
+    if(photoIndex > totalPhotos) return;
+
+    const block = document.createElement("div");
+    block.className = "thumbblock";
+
+    const grid = document.createElement("div");
+    grid.className = "thumbgrid";
+    block.appendChild(grid);
+
+    let count = 0;
+    while(count < photosPerBlock && photoIndex <= totalPhotos){
+      const img = document.createElement("img");
+      img.alt = "Level 42 photo " + photoIndex;
+
+      const p = photoPath(photoIndex);
+
+      let extIdx = 0;
+      function tryNext(){
+        if(extIdx >= photoExts.length) return;
+        img.src = p.folder + p.base + "." + photoExts[extIdx];
+        extIdx++;
+        img.onerror = tryNext;
+      }
+      tryNext();
+
+      grid.appendChild(img);
+      allThumbs.push(img);
+      photoIndex++;
+      count++;
+    }
+
+    list.appendChild(block);
+  }
+
+  for(let i=0;i<tr.length;i++){
+    addTrackItem(tr[i], i+1);
+    if((i+1) % tracksPerBlock === 0){
+      addPhotoBlock();
+    }
+  }
+
+  /* Overgebleven foto's onderaan */
+  while(photoIndex <= totalPhotos){
+    addPhotoBlock();
+  }
+
+  setupLightbox();
+}
+
+function escapeHtml(str){
+  return String(str)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+render(tracks);
+
+/* ========= ZOEK ========= */
+filter.addEventListener("input", ()=>{
+  const q = filter.value.toLowerCase();
+  render(tracks.filter(t =>
+    t.title.toLowerCase().includes(q) ||
+    t.artist.toLowerCase().includes(q)
+  ));
+});
+clearBtn.addEventListener("click", ()=>{
+  filter.value = "";
+  render(tracks);
+});
+
+/* ========= LIGHTBOX ========= */
+const lightbox = document.getElementById("lightbox");
+const lbImg    = document.getElementById("lightbox-img");
+const lbPrev   = document.getElementById("lb-prev");
+const lbNext   = document.getElementById("lb-next");
+const lbClose  = document.getElementById("lb-close");
+
+let currentIndex = 0;
+
+function openLightbox(index){
+  if(!allThumbs.length) return;
+  currentIndex = index;
+  lbImg.src = allThumbs[index].src;
+  lightbox.style.display = "flex";
+}
+function closeLightbox(){ lightbox.style.display = "none"; }
+function showNext(){
+  currentIndex = (currentIndex + 1) % allThumbs.length;
+  lbImg.src = allThumbs[currentIndex].src;
+}
+function showPrev(){
+  currentIndex = (currentIndex - 1 + allThumbs.length) % allThumbs.length;
+  lbImg.src = allThumbs[currentIndex].src;
+}
+function setupLightbox(){
+  allThumbs.forEach((img, idx)=> img.onclick = ()=>openLightbox(idx));
+}
+
+lbNext.onclick = showNext;
+lbPrev.onclick = showPrev;
+lbClose.onclick = closeLightbox;
+
+lightbox.addEventListener("click", (e)=>{
+  if(e.target === lightbox) closeLightbox();
+});
+document.addEventListener("keydown",(e)=>{
+  if(lightbox.style.display !== "flex") return;
+  if(e.key === "Escape") closeLightbox();
+  if(e.key === "ArrowRight") showNext();
+  if(e.key === "ArrowLeft") showPrev();
+});
+
+/* Swipe */
+let touchStartX = 0;
+lbImg.addEventListener("touchstart", e => {
+  touchStartX = e.changedTouches[0].clientX;
+});
+lbImg.addEventListener("touchend", e => {
+  const diff = e.changedTouches[0].clientX - touchStartX;
+  if(diff > 40) showPrev();
+  if(diff < -40) showNext();
+});
+</script>
+
+</body>
+</html>
