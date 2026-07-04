@@ -161,6 +161,20 @@
     "volume": 4
   },
   {
+    "file": "summerpoolparty_withcover.html",
+    "title": "Summer Pool Party",
+    "cover": "image/summerpoolparty.png",
+    "series": "Summer Party",
+    "volume": 5
+  },
+  {
+    "file": "hotsummer_withcover.html",
+    "title": "Hot Summer",
+    "cover": "image/hotsummer.jpg",
+    "series": "Summer Party",
+    "volume": 6
+  },
+  {
     "file": "rhythm-nation-1814_withcover.html",
     "title": "Janet Jackson \u2014 Rhythm Nation 1814",
     "cover": "image/rhythm-nation-1814.png",
